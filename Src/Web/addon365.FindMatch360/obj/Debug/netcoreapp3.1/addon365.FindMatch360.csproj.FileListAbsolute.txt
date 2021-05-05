@@ -99,3 +99,7 @@ D:\Work\GitHub\FindMatch360\Src\Web\addon365.FindMatch360\obj\Debug\netcoreapp3.
 D:\Work\GitHub\FindMatch360\Src\Web\addon365.FindMatch360\obj\Debug\netcoreapp3.1\addon365.FindMatch360.genruntimeconfig.cache
 D:\Work\GitHub\FindMatch360\Src\Web\addon365.FindMatch360\obj\Debug\netcoreapp3.1\addon365.FindMatch360.csproj.CopyComplete
 D:\Work\GitHub\FindMatch360\Src\Web\addon365.FindMatch360\obj\Debug\netcoreapp3.1\Razor\Views\Home\profile.cshtml.g.cs
+D:\Work\GitHub\FindMatch360\Src\Web\addon365.FindMatch360\obj\Debug\netcoreapp3.1\Razor\Views\Home\editprofile.cshtml.g.cs
+D:\Work\GitHub\FindMatch360\Src\Web\addon365.FindMatch360\obj\Debug\netcoreapp3.1\Razor\Views\Home\forgetpassword.cshtml.g.cs
+D:\Work\GitHub\FindMatch360\Src\Web\addon365.FindMatch360\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index2.cshtml.g.cs
+D:\Work\GitHub\FindMatch360\Src\Web\addon365.FindMatch360\obj\Debug\netcoreapp3.1\Razor\Views\Home\Preferences.cshtml.g.cs
