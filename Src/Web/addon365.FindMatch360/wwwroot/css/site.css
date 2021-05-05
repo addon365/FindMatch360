@@ -406,8 +406,16 @@ figure img {
     margin-top:100px;
 }
 .Living-Matrimony-App-bg {
+    background-image: url("img/ac.jpg");
+    background-size: cover;
+    background-position: center center;
+    margin-top: 80px;
+    /* margin-bottom: 83px; */
+    padding-bottom: 80px;
+}
+
+.Living-Matrimony-bg {
     background-color: #f2f2f2;
-  
     background-color: #f2f2f2;
     margin-top: 80px;
     /* margin-bottom: 83px; */
@@ -1211,24 +1219,6 @@ div#blog-right {
         -ms-transform: rotate(-44deg);
         transform: rotate(-44deg);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 a,
 a:hover,
 a:focus {
@@ -1370,8 +1360,19 @@ a.article:hover {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
-    #sidebar {
+
+.Genuine-Members {
+    text-align:center;
+    margin-top: 100px;
+}
+.Genuine-Members h6 {
+    margin-top:20px;
+}
+
+
+
+    @media (max-width: 768px) {
+        #sidebar {
         margin-left: -250px;
     }
 
