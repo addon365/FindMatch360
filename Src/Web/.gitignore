@@ -440,10 +440,3 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-Src/Web/addon365.FindMatch360/obj/Debug/netcoreapp3.1/addon365.FindMatch360.Views.dll
-Src/Web/addon365.FindMatch360/obj/Debug/netcoreapp3.1/addon365.FindMatch360.pdb
-Src/Web/addon365.FindMatch360/obj/Debug/netcoreapp3.1/addon365.FindMatch360.genruntimeconfig.cache
-Src/Web/.vs/addon365.FindMatch360/v16/.suo
-*.dll
-*.exe
-*.pdb
