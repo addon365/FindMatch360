@@ -1,5 +1,7 @@
+using addon365.FindMatch360.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +25,9 @@ namespace addon365.FindMatch360
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<ilamaiMatrimonyContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("ilamaiMatrimonyContext")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
