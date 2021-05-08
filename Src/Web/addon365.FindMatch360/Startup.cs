@@ -1,6 +1,7 @@
 using addon365.FindMatch360.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,12 @@ namespace addon365.FindMatch360
             services.AddControllersWithViews();
             services.AddDbContext<ilamaiMatrimonyContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ilamaiMatrimonyContext")));
+            services.AddIdentity<IdentityUser, IdentityRole>(options=> 
+            {
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+            })
+                .AddEntityFrameworkStores<ilamaiMatrimonyContext>();
 
         }
 
@@ -44,9 +51,9 @@ namespace addon365.FindMatch360
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
