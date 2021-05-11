@@ -1,7 +1,9 @@
-﻿using System;
+﻿using addon365.FindMatch360.CustomValidation;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace addon365.AspCoreIdentity
+namespace addon365.FindMatch360.Models
 {
     public class RegisterViewModel
     {
@@ -12,6 +14,9 @@ namespace addon365.AspCoreIdentity
         public string Gender { get; set; }
         [Required]
         [EmailAddress]
+        [Remote(action: "VerifyEmail", controller: "Account")]
+        [ValidEmailDomain(allowedDomain: "pragimtech.com",
+        ErrorMessage = "Email domain must be pragimtech.com")]
         public string Email { get; set; }
 
         [Required]

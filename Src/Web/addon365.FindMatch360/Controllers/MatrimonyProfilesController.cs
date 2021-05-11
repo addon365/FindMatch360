@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using addon365.FindMatch360.Data;
 using addon365.FindMatch360.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace addon365.FindMatch360.Controllers
 {
+    [Authorize]
     public class MatrimonyProfilesController : Controller
     {
         private readonly ilamaiMatrimonyContext _context;

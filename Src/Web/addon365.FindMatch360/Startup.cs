@@ -59,6 +59,7 @@ namespace addon365.FindMatch360
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                
             });
         }
     }

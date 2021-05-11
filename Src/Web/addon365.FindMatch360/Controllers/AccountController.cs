@@ -1,4 +1,4 @@
-﻿using addon365.AspCoreIdentity;
+﻿using addon365.FindMatch360.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -54,7 +54,7 @@ namespace addon365.FindMatch360.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model,string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -63,12 +63,31 @@ namespace addon365.FindMatch360.Controllers
 
                 if (result.Succeeded)
                 {
-                   
-                    return RedirectToAction("index", "home");
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("index", "home");
+                    }
                 }
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
             return View(model);
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public async Task<IActionResult> VerifyEmail(string email)
+        {
+            var user = await userManager.FindByEmailAsync(email);
+
+            if (user!=null)
+            {
+                return Json($"Email {email} is already in use.");
+            }
+
+            return Json(true);
         }
     }
 }

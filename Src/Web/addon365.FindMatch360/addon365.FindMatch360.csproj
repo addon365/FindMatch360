@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\addon365.AspCoreIdentify\addon365.AspCoreIdentity.csproj" />
     <ProjectReference Include="..\addon365.FindMatch360.Models\addon365.FindMatch360.Models.csproj" />
   </ItemGroup>
 	
