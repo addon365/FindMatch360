@@ -40,7 +40,7 @@ namespace addon365.FindMatch360.Controllers
                 if(result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("campaignregistration", "User");
                 }
                 foreach (var error in result.Errors)
                 {

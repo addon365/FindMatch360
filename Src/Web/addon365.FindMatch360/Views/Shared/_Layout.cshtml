@@ -32,8 +32,8 @@
                             }
                             else
                             {
-                                <a asp-controller="User" asp-action="Register"> <button type="button" class="btn btn-primary register-free">Register free!</button></a>
-                                <a asp-controller="User" asp-action="login"> <button type="button" class="btn btn-danger login">Login</button></a>
+                                <a asp-controller="Account" asp-action="Register"> <button type="button" class="btn btn-primary register-free">Register free!</button></a>
+                                <a asp-controller="Account" asp-action="login"> <button type="button" class="btn btn-danger login">Login</button></a>
                             }
                         </div>
                     </div>
@@ -223,7 +223,22 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
+    <script>
+        $(document).ready(function () {
 
+            $('.input-daterange').datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+                calendarWeeks: true,
+                clearBtn: true,
+                disableTouchKeyboard: true
+            });
+
+        });
+    </script>
     @RenderSection("Scripts", required: false)
+
+
+
 </body>
 </html>

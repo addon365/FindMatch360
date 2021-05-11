@@ -4,206 +4,281 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="matrimonyprofile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateandTimeOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Place)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Height)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nakshatra)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rasi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lagnam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ChevvaiDosham)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthNumberinFamily)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brothers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MarriedBrothers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sisters)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MarriedSisters)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JobPosition)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CompanyAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MonthlyRevenue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FatherName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FatherQualification)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FatherJob)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MotherName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MotherQualification)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MotherJob)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NativeDistrict)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactPerson)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MobileNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExpectedQualification)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateandTimeOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Place)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Height)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nakshatra)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rasi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lagnam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChevvaiDosham)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthNumberinFamily)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brothers)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MarriedBrothers)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sisters)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MarriedSisters)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobPosition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MonthlyRevenue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FatherName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FatherQualification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FatherJob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MotherName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MotherQualification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MotherJob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NativeDistrict)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactPerson)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MobileNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpectedQualification)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MatrimonyProfileId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MatrimonyProfileId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MatrimonyProfileId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <div class="row" id="matrimonyprofile_box_top_left">
+                    <div class="col-md-3" id="matrimonyprofile_box_top">
+                        <div class="matrimonyprofile-box">
+                            <span>3354</span>
+                            <h6>Total Active Profile</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="matrimonyprofile_box_top">
+                        <div class="matrimonyprofile-box">
+                            <span>3059</span>
+                            <h6>Yet to be viewed</h6>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="matrimonyprofile_box_top">
+                        <div class="matrimonyprofile-box">
+                            <span>38</span>
+                            <h6>Matched Profile with you</h6>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="matrimonyprofile_box_top">
+                        <div class="matrimonyprofile-box">
+                            <span>9</span>
+                            <h6>Latest Profile.</h6>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+                <div class="col-md-8"  id="matrimoneyprofile-bg-wrapper">
+                    <div class="row" id="bg_matrimoneyprofile">
+
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-md-12">
+                                <div class="matrimoneyprofile-bg-menubar">
+                                    <ul>
+                                        <li>
+                                            ID : 14514
+                                        </li>
+                                        <li>
+                                            பதிவு செய்யபட்ட தேதி 2021-05-09
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div class="matrimonyprofile-img">
+                                    <img src="~/images/editprofile.png" class="img-fluid" id="img-living">
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+                                <div class="matrimonyprofile-menubar">
+                                    <ul>
+                                        <li>
+                                            <div class="name-profile row">
+                                               
+                                                    <div class="col-md-6">
+                                                        @Html.DisplayNameFor(model => model.Name):
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @Html.DisplayFor(modelItem => item.Name)
+                                                  
+                                                </div>
+                                            </div>
+                                        </li>
+
+
+
+                                        <li>
+                                            <div class="name-profile row">
+                                             
+                                                    <div class="col-md-6">
+                                                        @Html.DisplayNameFor(model => model.DateandTimeOfBirth):
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @Html.DisplayFor(modelItem => item.DateandTimeOfBirth)
+                                                    
+                                                </div>
+                                            </div>
+                                        </li>
+
+
+
+                                       
+                                        <li>
+                                            <div class="name-profile">
+                                                @Html.DisplayNameFor(model => model.Nakshatra):
+
+                                                @Html.DisplayFor(modelItem => item.Nakshatra)
+                                            </div>
+                                        </li>
+
+
+                                        <li>
+                                            <div class="name-profile">
+                                                @Html.DisplayNameFor(model => model.ExpectedQualification):
+
+                                                @Html.DisplayFor(modelItem => item.ExpectedQualification)
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="name-profile">
+                                                @Html.DisplayNameFor(model => model.JobPosition):
+
+                                                @Html.DisplayFor(modelItem => item.JobPosition)
+                                            </div>
+                                        </li>
+
+
+                                        <li>
+                                            <div class="name-profile">
+                                                @Html.DisplayNameFor(model => model.Place):
+
+                                                @Html.DisplayFor(modelItem => item.Place)
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="name-profile">
+                                                @Html.DisplayFor(modelItem => item.Address):
+
+                                                @Html.DisplayNameFor(model => model.Address)
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                                <div class="wishlist">
+
+                                    <h6>Do you like to add in wish list?</h6>
+                                    <ul>
+                                        <li><a> Yes</a></li>
+                                        <li><a> no</a></li>
+                                    </ul>
+
+                                </div>
+
+
+
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="alert alert-dark">
+                        <div id="textbox" class="box-matrimonyprofile">
+                            <p class="alignleft">Similar Profile</p>
+                            <p class="alignright"> (37)</p>
+                        </div>
+                    </div>
+
+                    <div class="Similar-Profile" id="parents">
+
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Similar-Profile" id="parents">
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Similar-Profile" id="parents">
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="Similar-Profile" id="parents">
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="Similar-Profile" id="parents">
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="Similar-Profile" id="parents">
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Similar-Profile" id="parents">
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Similar-Profile" id="parents">
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Similar-Profile" id="parents">
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Similar-Profile" id="parents">
+                        <div id="textbox" class="box-matrimonyprofile-right">
+                            <p class="alignleft">   <img src="~/images/profile_pic.png" class="img-fluid" id="img-living"></p>
+                            <div class="alignright">
+                                <p>Name:venkatesan</p>
+                                <p>Date of brith:venkatesan</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                
+            
+
+           
+        </div>
+    </div>
+  </div>
