@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input asp-for="MobileNo"  class="form-control" placeholder="Phone number" type="text">
+                                    <input asp-for="MobileNo" class="form-control" placeholder="Phone number" type="text">
                                     <span asp-validation-for="MobileNo" class="text-danger"></span>
                                 </div>
                             </div> <!-- form-group// -->
@@ -106,7 +106,9 @@
                                     I agree to the  <span class="terms-conditions"> Terms And Conditions</span>
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block register-button">Register</button>
+                            <a asp-controller="Account" asp-action="campaignregistration">
+                                <button type="submit" class="btn btn-primary btn-block register-button">Register</button>
+                                </a>
 
                         </div>
                         <div class="member-bottom">

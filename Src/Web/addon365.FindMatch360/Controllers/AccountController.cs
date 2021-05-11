@@ -40,7 +40,7 @@ namespace addon365.FindMatch360.Controllers
                 if(result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("campaignregistration", "User");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -70,5 +70,22 @@ namespace addon365.FindMatch360.Controllers
             }
             return View(model);
         }
+        public IActionResult campaignregistration()
+        {
+            return View();
+        }
+
+        public IActionResult campaignregistrationtrack()
+        {
+            return View();
+        }
+
+        public IActionResult campaignregistrationpersonaldetails()
+        {
+            return View();
+        }
+
+
+
     }
 }

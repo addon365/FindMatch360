@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "addon365.FindMatch360", "ad
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "addon365.FindMatch360.Models", "addon365.FindMatch360.Models\addon365.FindMatch360.Models.csproj", "{01C59D94-BF90-48A8-946E-C0C7EE10A94B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "addon365.AspCoreIdentity", "addon365.AspCoreIdentify\addon365.AspCoreIdentity.csproj", "{ACFB999E-BD00-49AD-83A7-7B4FF0BA33DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "addon365.AspCoreIdentity", "addon365.AspCoreIdentify\addon365.AspCoreIdentity.csproj", "{ACFB999E-BD00-49AD-83A7-7B4FF0BA33DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

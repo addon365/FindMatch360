@@ -1,0 +1,208 @@
+﻿@page
+@model addon365.FindMatch360.Views.Account.campaignregistrationpersonaldetailsModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <style>
+        body {
+            color: #999;
+            background: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .form-control, .form-control:focus, .input-group-addon {
+            border-color: #e1e1e1;
+            border-radius: 0;
+        }
+
+        .signup-form {
+            width: 390px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+            .signup-form h2 {
+                color: #636363;
+                margin: 0 0 15px;
+                text-align: center;
+            }
+
+            .signup-form .lead {
+                font-size: 14px;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .signup-form form {
+                border-radius: 1px;
+                margin-bottom: 15px;
+                background: #fff;
+                border: 1px solid #f3f3f3;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                padding: 30px;
+            }
+
+            .signup-form .form-group {
+                margin-bottom: 20px;
+            }
+
+            .signup-form label {
+                font-weight: normal;
+                font-size: 13px;
+            }
+
+            .signup-form .form-control {
+                min-height: 38px;
+                box-shadow: none !important;
+                border-width: 0 0 1px 0;
+            }
+
+            .signup-form .input-group-addon {
+                max-width: 42px;
+                text-align: center;
+                background: none;
+                border-bottom: 1px solid #e1e1e1;
+                padding-left: 5px;
+            }
+
+            .signup-form .btn, .signup-form .btn:active {
+                font-size: 16px;
+                font-weight: bold;
+                background: #50b533 !important;
+                border-radius: 3px;
+                border: none;
+                min-width: 140px;
+            }
+
+                .signup-form .btn:hover, .signup-form .btn:focus {
+                    background: #179b81 !important;
+                }
+
+            .signup-form a {
+                color: #19aa8d;
+                text-decoration: none;
+            }
+
+                .signup-form a:hover {
+                    text-decoration: underline;
+                }
+
+            .signup-form .fa {
+                font-size: 21px;
+                position: relative;
+                top: 8px;
+            }
+
+            .signup-form .fa-paper-plane {
+                font-size: 17px;
+            }
+
+            .signup-form .fa-check {
+                color: #fff;
+                left: 9px;
+                top: 18px;
+                font-size: 7px;
+                position: absolute;
+            }
+    </style>
+</head>
+<body>
+    <div class="campaignregistor-form-bg">
+        <div class="container">
+            <div class="row" id="campaignregistor-wrapper">
+                <div class="col-md-5" id="campignregistration-left">
+                    <div class="campignregistration-title">
+                        <img src="~/images/reg-4.png" class="img-fluid" id="img-living">
+                        <div class="campignregistration-title-bg">
+                            <h5>Create memories with her that last</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7" id="campignregistration-right">
+                    <div class="signup-form">
+                        <form method="post">
+                            <h2>Create Account</h2>
+                            <p class="lead">
+                                Professional details help us to find the best companion
+                            </p>
+                            <div class="form-group">
+                                <label for="sel1">Highest Education:</label>
+                                <select class="form-control" id="sel1">
+                                    <option value="0"> -- Any Bachelors in Engineering / Computers --</option>
+                                    <option value="1">BE</option>
+                                    <option value="2">B.Tech</option>
+                                    <option value="3">BCA</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="Subcaste" placeholder="Enter Education in Detail" required="required">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">
+                                    Employed in:
+                                </label>
+                                <select class="form-control" id="sel1">
+                                    <option value="0">Government/PSU</option>
+                                    <option value="1">Private</option>
+                                    <option value="2">Business</option>
+                                    <option value="3">Defence</option>
+                                    <option value="3">Self Employed</option>
+                                    <option value="3">Not working</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">
+                                    Occupation
+                                </label>
+                                <select class="form-control" id="sel1">
+                                    <option value="0"> - Select Occupation - </option>
+                                    <option value="1">FREQUENTLY USED</option>
+                                    <option value="2">Software Professional</option>
+                                    <option value="3">Teaching / Academician</option>
+                                    <option value="3">Executive</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">
+                                    Annual Income
+
+                                </label>
+                                <select class="form-control" id="sel1">
+                                    <option value="0"> -  Select  - </option>
+                                    <option value="1">0 - 1 Lakh</option>
+                                    <option value="2">Software Professional</option>
+                                    <option value="3">Teaching / Academician</option>
+                                    <option value="3">Executive</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <a asp-controller="Account" asp-action="campaignregistrationProfessionaldetails">
+                                    <button type="submit" class="btn btn-primary btn-block btn-lg">Continue</button>
+                                </a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

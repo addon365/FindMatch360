@@ -74,24 +74,39 @@ body {
 
 /********** website  style sheet***************/
 .register-free {
-    background: #ff7e00;
+    background: #50b533 !important;
     text-align: center;
     padding: 10px 40px;
     border-radius: 6px;
     outline: none;
-    border: 1px solid #ff7e00;
-    font-size: 18px; 
-    
+    border: 1px solid #50b533;
+    font-size: 18px;
 }
+.btn-danger {
+    background: #63b930 !important;
+    text-align: center;
+    padding: 7px 23px !important;
+    border-radius: 6px !important;
+    outline: none;
+    border: 1px solid #63b930 !important;
+    font-size: 18px;
+    margin-left: 10px;
+}
+.imag-right {
+    float: right;
+    padding-top: 50px;
+}
+}
+
 .login {
-    background: #b8000d;
+    background: #50b533;
     width: 130px;
     height: 44px;
     padding: 10px;
     border-radius: 6px;
     outline: none;
     border: 1px solid #b8000d;
-    margin-left:20px;
+    margin-left: 20px;
 }
 .register {
     float:right;
@@ -101,8 +116,8 @@ body {
     margin-bottom: 10px;
 }
 .navbar-wrapper {
-    background-color: #ff7e00 !important;
-    color: #fff!important;
+    background-color: #63b930 !important;
+    color: #fff !important;
 }
 a.nav-link.text-dark {
     font-size: 20px;
@@ -118,7 +133,7 @@ a.nav-link.text-dark {
     padding-left: 1.7rem !important;
 }
 .slider {
-    background-image: url("img/slider.png");
+    background-image:url("img/slider.png");
     background-size: cover;
     background-repeat: repeat;
     background-position: center;
@@ -148,11 +163,11 @@ a.nav-link.text-dark {
     padding-top:180px;
 }
 .signin {
-    background: #ff7e00;
+    background: #63b930;
     !important;
     color: #fff !important;
-    border: 1px solid #ff7e00;
-    margin-left: 5px !important;
+    border: 1px solid #63b930;
+    margin-left: 3px !important;
 }
 select#exampleSelect1 {
     margin-left: 2px !important;
@@ -168,7 +183,7 @@ select#exampleSelect1 {
     font-size: 25px;
 }
 .matrimony {
-    color: #ff7e00 !important;
+    color: #50b533 !important;
 }
 .Living-Matrimony-title h2 {
     text-align:center !important;
@@ -243,7 +258,7 @@ figure img {
     }
 
     .blog .carousel-indicators .active {
-        background: #0fc9af;
+        background: #50b533;
     }
 
 
@@ -449,7 +464,7 @@ figure img {
     font-size: 30px;
 }
 .matrimony-contentent {
-    color: #ff7e00 !important;
+    color: #63b930 !important;
     font-size: 30px;
 }
 .Living-Matrimony-App-bg-content-title {
@@ -494,7 +509,7 @@ figure img {
     color:#fff;
 }
 .footer-bottom {
-    background-color: #ff7e00;
+    background-color: #50b533;
     padding: 20px 0px;
 }
 .footer-bottom-right .fa {
@@ -522,8 +537,8 @@ figure img {
 .Membership-Plan ul {
     list-style-type:none;
 }
-.Membership-Plan ul li a.active {
-   color: #ff7e00 !important;
+    .Membership-Plan ul li a.active {
+        color: #63b930 !important;
     }
 .Membership-Plan-content h2 {
     color: #313131;
@@ -532,7 +547,7 @@ figure img {
     padding-top:20px;
 }
     .Membership-Plan-content h2 span {
-        color: #ff7e00 !important;
+        color: #63b930 !important;
         font-size: 22px;
     }
 .Membership-Plan-content p {
@@ -545,7 +560,7 @@ figure img {
     padding-top:20px;
 }
     .Membership-Plan-right h2 span {
-        color: #ff7e00 !important;
+        color: #63b930 !important;
         font-size: 22px;
     }
 
@@ -728,12 +743,12 @@ figure img {
     float:right;
 }
     .blissful-left h2 {
-        color: #ff7e00 !important;
+        color: #63b930 !important;
         font-family: 'Poppins-SemiBold', sans-serif !important;
     }
 
 a.color-f.f-19.Poppins-Medium.fm-btn2 {
-    background-color: #ff7e00;
+    background-color: #63b930;
     width: 269px;
     height: 48px;
     text-align: center;
@@ -741,7 +756,7 @@ a.color-f.f-19.Poppins-Medium.fm-btn2 {
     border-radius: 6px;
     margin-top: 13px;
     color: #ffffff !important;
-    font-size:30px;
+    font-size: 23px;
 }
 .no-data-center {
     margin-top:50px;
@@ -859,7 +874,7 @@ a.color-f.f-19.Poppins-Medium.fm-btn2 {
         letter-spacing: 4px;
     }
 .terms-conditions {
-    color: #ff7e00 !important;
+    color: #63b930 !important;
 }
 .register-title {
     text-align:center;
@@ -873,7 +888,7 @@ a.color-f.f-19.Poppins-Medium.fm-btn2 {
     padding:10px 10px;
 }
 .register-button {
-    background-color: #ff7e00 !important;
+    background-color: #63b930 !important;
     height: 50px;
     padding: 13px;
     text-align: center;
@@ -885,10 +900,10 @@ a.color-f.f-19.Poppins-Medium.fm-btn2 {
     border: transparent;
 }
 .free {
-    color:#ff7e00;
+    color: #50b533;
 }
 .link {
-    color: #ff7e00;
+    color: #63b930;
 }
 .member-bottom {
     text-align:center;
@@ -915,11 +930,10 @@ a.color-f.f-19.Poppins-Medium.fm-btn2 {
         font-size:20px;
         color:#272727;
     }
-.quick-search-menubar ul li a.active{
-    color:#ff7e00;
-    border-bottom:4px solid #b8000d;
-
-}
+        .quick-search-menubar ul li a.active {
+            color: #63b930;
+            border-bottom: 4px solid #63b930;
+        }
 .id-search-wrapper h6 {
     text-align:center;
 }
@@ -937,16 +951,14 @@ a.color-f.f-19.Poppins-Medium.fm-btn2 {
     text-align:center;
 }
     .id-search-title h2 span {
-        color: #ff7e00;
+        color: #63b930;
     }
 .btn-search {
-    background-color: #ff7e00 !important;
-
+    background-color: #63b930 !important;
     width: 162px;
     height: 54px;
     text-align: center;
     padding: 14px;
-    background-color: #e40955;
     box-shadow: inset 2px 2px 2px rgb(255 255 255 / 40%), inset -2px -4px 2px rgb(0 0 0 / 40%);
     border-radius: 6px;
     /* margin-left: -6px; */
@@ -1116,61 +1128,204 @@ label.home-to {
     padding: 10px 5px !important;
 }
 
+.matrimonyprofile-menubar ul {
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+.matrimonyprofile-menubar
+    .matrimonyprofile-menubar ul li {
+        display:block;
+        padding:0px 10px;
+    }
+.matrimonyprofile-menubar ul li a {
+    text-decoration:none;
+}
+#matrimoneyprofile-bg-wrapper {
+    border: 1px solid #dbdbdb;
+    padding: 10px 10px;
+}
+
+.matrimonyprofile-img {
+    padding:10px 0px;
+}
+.matrimonyprofile-menubar {
+    padding:10px 0px;
+}
+#parents {
+    border: 1px solid #dbdbdb;
+    padding: 10px 10px;
+}
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+.box-matrimonyprofile {
+    padding-bottom:30px;
+}
+
+.alert {
+    position: relative;
+    padding: 0px 0px !important;
+    margin-bottom: 0px !important;
+}
+.box-matrimonyprofile-right {
+    padding-bottom: 73px;
+}
+
+.campignregistration-left   {
+    background:
+}
+#campignregistration-left {
+    background: #F9F9F9;
+}
+.campignregistration-title h6{
+   padding-top:50px;
+}
+
+div#campignregistration-right {
+    background-color:#fff;
+}
+
+#campignregistration-left {
+    background: #50b533;
+}
+
+.campignregistration-title {
+    text-align: center;
+    padding-top: 152px;
+    color:#fff;
+}
+#campaignregistor-wrapper {
+    padding:80px 0px;
+}
+
+.campignregistration-title-bg {
+    padding-top:30px;
+}
+#matrimonyprofile_box_top {
+    border:1px solid rgba(128, 128, 128, 0.42);
+    padding:8px 0px;
+    margin-top:10px;
+}
+#matrimonyprofile_box_top_left {
+    margin-bottom:40px;
+
+}
+
+.matrimonyprofile-box {
+    text-align: center;
+}
+.box-matrimonyprofile p {
+    padding-left:10px;
+    padding-top:5px;
+}
+.matrimoneyprofile-bg-menubar ul {
+    list-style-type:none;
+}
+.matrimoneyprofile-bg-menubar ul li {
+        display:inline;
+        padding:0px 20px;
+    }
+  .matrimoneyprofile-bg-menubar ul li a {
+      text-decoration:none;
+  }
+
+#bg_matrimoneyprofile {
+   border-bottom:1px solid #00000024;
+}
+.wishlist ul {
+    list-style-type: none;
+    
+    padding: 0px;
+    margin-top: 30px;
+}
+    .wishlist ul li {
+        display: inline;
+        padding: 10px 20px;
+        background-color: #999999;
+       
+    }
+
+    .wishlist ul li a {
+        text-decoration:none;
+    }
 
 
+.wishlist {
+    padding-top: 10px;
+}
+.wishlist h6 {
+    color: #e11022;
+    font-size:24px;
+}
+.name-profile-menu {
+   padding-right:30px;
+}
+.wishlist ul li a {
+    color:#fff !important;
+}
+.matrimonyprofile-menubar ul li {
+    display: flex;
+    justify-content: space-between;
+    text-align: justify;
+}
+div#bg_matrimoneyprofiles {
+    border: 1px solid #695a5a00  !important;
+}
 /*
  * Off Canvas sidebar at medium breakpoint
  * --------------------------------------------------
  */
 @media screen and (max-width: 992px) {
-
     .row-offcanvas {
-        position: relative;
-        -webkit-transition: all 0.25s ease-out;
-        -moz-transition: all 0.25s ease-out;
-        transition: all 0.25s ease-out;
-    }
+            position: relative;
+            -webkit-transition: all 0.25s ease-out;
+            -moz-transition: all 0.25s ease-out;
+            transition: all 0.25s ease-out;
+        }
 
-    .row-offcanvas-left
-    .sidebar-offcanvas {
-        left: -33%;
-    }
+        .row-offcanvas-left
+        .sidebar-offcanvas {
+            left: -33%;
+        }
 
-    .row-offcanvas-left.active {
-        left: 33%;
-        margin-left: -6px;
-    }
+        .row-offcanvas-left.active {
+            left: 33%;
+            margin-left: -6px;
+        }
 
-    .sidebar-offcanvas {
-        position: absolute;
-        top: 0;
-        width: 33%;
-        height: 100%;
-        
+        .sidebar-offcanvas {
+            position: absolute;
+            top: 0;
+            width: 33%;
+            height: 100%;
+        }
     }
-}
-
-/*
+    /*
  * Off Canvas wider at sm breakpoint
  * --------------------------------------------------
  */
-@media screen and (max-width: 34em) {
-    .row-offcanvas-left
-    .sidebar-offcanvas {
-        left: -45%;
+    @media screen and (max-width: 34em) {
+        .row-offcanvas-left
+        .sidebar-offcanvas {
+            left: -45%;
+        }
+
+        .row-offcanvas-left.active {
+            left: 45%;
+            margin-left: -6px;
+        }
+
+        .sidebar-offcanvas {
+            width: 45%;
+        }
     }
 
-    .row-offcanvas-left.active {
-        left: 45%;
-        margin-left: -6px;
-    }
-
-    .sidebar-offcanvas {
-        width: 45%;
-    }
-}
-
-.card {
+    .card {
   
 }
 
@@ -1326,13 +1481,13 @@ a[data-toggle="collapse"] {
     right: 20px;
     transform: translateY(-50%);
 }
-
+/*
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #6d7fcc;
 }
-
+    */
 ul.CTAs {
     padding: 20px;
 }
@@ -1421,15 +1576,15 @@ a.article:hover {
             font-size: 20px;
         }
 
-        .register-free {
-            background: #ff7e00;
-            text-align: center;
-            padding: 7px 5px;
-            border-radius: 6px;
-            outline: none;
-            border: 1px solid #ff7e00;
-            font-size: 18px;
-        }
+    .register-free {
+        background: #50b533 !important;
+        text-align: center;
+        padding: 7px 5px;
+        border-radius: 6px;
+        outline: none;
+        border: 1px solid #50b533;
+        font-size: 18px;
+    }
 
         .register {
             float: none !important;
