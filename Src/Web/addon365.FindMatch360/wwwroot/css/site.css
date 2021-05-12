@@ -163,10 +163,10 @@ a.nav-link.text-dark {
     padding-top:180px;
 }
 .signin {
-    background: #63b930;
-    !important;
+    background-image: linear-gradient(#f58320,#ff9902);
+    padding: 16px 10px;
     color: #fff !important;
-    border: 1px solid #63b930;
+    border: 1px solid #f58320;
     margin-left: 3px !important;
 }
 select#exampleSelect1 {
@@ -215,9 +215,6 @@ span.carousel-control-next-icon {
    
 }
 
-.col-md-4 {
-    padding-bottom: 20px;
-}
 
 .white {
     color: #fff !important;
@@ -1142,7 +1139,7 @@ label.home-to {
     text-decoration:none;
 }
 #matrimoneyprofile-bg-wrapper {
-    border: 1px solid #dbdbdb;
+   
     padding: 10px 10px;
 }
 
@@ -1234,9 +1231,6 @@ div#campignregistration-right {
       text-decoration:none;
   }
 
-#bg_matrimoneyprofile {
-   border-bottom:1px solid #00000024;
-}
 .wishlist ul {
     list-style-type: none;
     
@@ -1275,6 +1269,21 @@ div#campignregistration-right {
 }
 div#bg_matrimoneyprofiles {
     border: 1px solid #695a5a00  !important;
+}
+#bg-box-border {
+    border: 1px solid rgba(128, 128, 128, 0.42);
+    padding:10px 0px;
+    margin:10px 0px;
+}
+#register-form-bg {
+    background-color: #ffff;
+    padding: 0px 0px;
+    padding-top: 30px;
+}
+
+.register-free-button {
+    margin-top: 10px;
+    margin-bottom: 31px;
 }
 /*
  * Off Canvas sidebar at medium breakpoint
