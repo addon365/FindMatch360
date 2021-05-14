@@ -1,6 +1,6 @@
 using System;
 
-namespace addon365.FindMatch360.Models
+namespace addon365.FindMatch360.ViewModels
 {
     public class ErrorViewModel
     {

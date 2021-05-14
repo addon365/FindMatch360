@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace addon365.FindMatch360.Models
+namespace addon365.FindMatch360.ViewModels
 {
     public class LoginViewModel
     {

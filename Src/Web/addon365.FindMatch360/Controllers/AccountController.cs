@@ -1,4 +1,5 @@
 ﻿using addon365.FindMatch360.Models;
+using addon365.FindMatch360.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
