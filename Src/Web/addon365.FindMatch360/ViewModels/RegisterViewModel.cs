@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace addon365.FindMatch360.Models
+namespace addon365.FindMatch360.ViewModels
 {
     public class RegisterViewModel
     {
