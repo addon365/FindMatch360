@@ -54,6 +54,43 @@ namespace addon365.FindMatch360.Controllers
         {
             return View();
         }
+
+
+
+        public IActionResult campaignregistrationtrack()
+        {
+            return View();
+        }
+
+
+        public IActionResult campaignregistrationcaste()
+        {
+            return View();
+        }
+
+
+        public IActionResult campaignregistrationProfessionaldetails()
+        {
+            return View();
+        }
+
+
+        public IActionResult campaignregistrationpersonaldetails()
+        {
+            return View();
+        }
+
+
+        public IActionResult campaignregistrationabout()
+        {
+            return View();
+        }
+
+
+
+
+
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model,string returnUrl)
         {
