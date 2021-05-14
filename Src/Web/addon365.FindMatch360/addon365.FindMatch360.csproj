@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\NewFolder1\**" />
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="Views\NewFolder1\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="Views\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="Views\NewFolder1\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.13">
       <PrivateAssets>all</PrivateAssets>
@@ -23,6 +34,97 @@
 
   <ItemGroup>
     <ProjectReference Include="..\addon365.FindMatch360.Models\addon365.FindMatch360.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\admin\assets\fonts\fontawesome-webfont3e6e.svg" />
+    <None Include="wwwroot\admin\assets\fonts\fontawesome-webfont3e6e.woff2" />
+    <None Include="wwwroot\admin\assets\fonts\Simple-Line-Icons4c82.svg" />
+    <None Include="wwwroot\admin\assets\fonts\Simple-Line-Icons4c82.woff2" />
+    <None Include="wwwroot\admin\assets\fonts\weathericons-regular-webfont.svg" />
+    <None Include="wwwroot\admin\assets\fonts\weathericons-regular-webfont.woff2" />
+    <None Include="wwwroot\admin\assets\img\timeline\cd-icon-location.svg" />
+    <None Include="wwwroot\admin\assets\img\timeline\cd-icon-movie.svg" />
+    <None Include="wwwroot\admin\assets\img\timeline\cd-icon-picture.svg" />
+    <None Include="wwwroot\admin\assets\js\alertify.custom.js" />
+    <None Include="wwwroot\admin\assets\js\chart-c3.custom.js" />
+    <None Include="wwwroot\admin\assets\js\chartJs.custom.js" />
+    <None Include="wwwroot\admin\assets\js\custom.js" />
+    <None Include="wwwroot\admin\assets\js\dashboard.js" />
+    <None Include="wwwroot\admin\assets\js\flot.custom.js" />
+    <None Include="wwwroot\admin\assets\js\fullcalendar.js" />
+    <None Include="wwwroot\admin\assets\js\jquery.gmaps.js" />
+    <None Include="wwwroot\admin\assets\js\jquery.ui.custom.js" />
+    <None Include="wwwroot\admin\assets\js\jvectormap.custom.js" />
+    <None Include="wwwroot\admin\assets\js\morris.custom.js" />
+    <None Include="wwwroot\admin\assets\js\radial.custom.js" />
+    <None Include="wwwroot\admin\assets\js\rickshaw.custom.js" />
+    <None Include="wwwroot\admin\assets\js\sparkline.custom.js" />
+    <None Include="wwwroot\admin\assets\lib\ajax-form\form.js" />
+    <None Include="wwwroot\admin\assets\lib\alertify\alertify.min.js" />
+    <None Include="wwwroot\admin\assets\lib\bootstrap-daterangepicker\daterangepicker.js" />
+    <None Include="wwwroot\admin\assets\lib\bootstrap-daterangepicker\moment.js" />
+    <None Include="wwwroot\admin\assets\lib\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\admin\assets\lib\bootstrap\js\popper.min.js" />
+    <None Include="wwwroot\admin\assets\lib\card-master\card.js" />
+    <None Include="wwwroot\admin\assets\lib\chart-c3\c3.min.js" />
+    <None Include="wwwroot\admin\assets\lib\chart-c3\d3.min.js" />
+    <None Include="wwwroot\admin\assets\lib\chartjs\chart.min.js" />
+    <None Include="wwwroot\admin\assets\lib\chartjs\chartjs-sass.js" />
+    <None Include="wwwroot\admin\assets\lib\clockpicker\bootstrap-clockpicker.min.js" />
+    <None Include="wwwroot\admin\assets\lib\datatables\buttons.html5.min.js" />
+    <None Include="wwwroot\admin\assets\lib\datatables\dataTables.buttons.min.js" />
+    <None Include="wwwroot\admin\assets\lib\datatables\dataTables.responsive.min.js" />
+    <None Include="wwwroot\admin\assets\lib\datatables\jquery.dataTables.min.js" />
+    <None Include="wwwroot\admin\assets\lib\datatables\jszip.min.js" />
+    <None Include="wwwroot\admin\assets\lib\datatables\pdfmake.min.js" />
+    <None Include="wwwroot\admin\assets\lib\datatables\vfs_fonts.js" />
+    <None Include="wwwroot\admin\assets\lib\dropzone\js\dropzone.js" />
+    <None Include="wwwroot\admin\assets\lib\flot\jquery.flot.js" />
+    <None Include="wwwroot\admin\assets\lib\flot\jquery.flot.pie.js" />
+    <None Include="wwwroot\admin\assets\lib\flot\jquery.flot.resize.js" />
+    <None Include="wwwroot\admin\assets\lib\flot\jquery.flot.time.js" />
+    <None Include="wwwroot\admin\assets\lib\flot\jquery.flot.tooltip.min.js" />
+    <None Include="wwwroot\admin\assets\lib\footable\footable.all.min.js" />
+    <None Include="wwwroot\admin\assets\lib\formatter\jquery.formatter.min.js" />
+    <None Include="wwwroot\admin\assets\lib\fullcalendar\fullcalendar.min.js" />
+    <None Include="wwwroot\admin\assets\lib\google-map\gmaps.min.js" />
+    <None Include="wwwroot\admin\assets\lib\ion-range-sliders\ion.rangeSlider.min.js" />
+    <None Include="wwwroot\admin\assets\lib\jasny-bootstrap\js\jasny-bootstrap.min.js" />
+    <None Include="wwwroot\admin\assets\lib\jquery-steps\jquery.steps.min.js" />
+    <None Include="wwwroot\admin\assets\lib\jquery-ui\jquery-ui.min.js" />
+    <None Include="wwwroot\admin\assets\lib\jquery-validate\jquery.validate.js" />
+    <None Include="wwwroot\admin\assets\lib\jquery-validate\jquery.validate.min.js" />
+    <None Include="wwwroot\admin\assets\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\admin\assets\lib\js-tree\dist\jstree.min.js" />
+    <None Include="wwwroot\admin\assets\lib\jsgrid\db.js" />
+    <None Include="wwwroot\admin\assets\lib\jsgrid\jsgrid.min.js" />
+    <None Include="wwwroot\admin\assets\lib\lightbox2\dist\js\lightbox.min.js" />
+    <None Include="wwwroot\admin\assets\lib\metisMenu\metisMenu.min.js" />
+    <None Include="wwwroot\admin\assets\lib\momentJs\moment.min.js" />
+    <None Include="wwwroot\admin\assets\lib\morris\morris.js" />
+    <None Include="wwwroot\admin\assets\lib\morris\raphael-2.1.0.min.js" />
+    <None Include="wwwroot\admin\assets\lib\nano-scroll\jquery.nanoscroller.min.js" />
+    <None Include="wwwroot\admin\assets\lib\nestable\jquery.nestable.js" />
+    <None Include="wwwroot\admin\assets\lib\pace\pace.min.js" />
+    <None Include="wwwroot\admin\assets\lib\radial-charts\jquery.easypiechart.js" />
+    <None Include="wwwroot\admin\assets\lib\radial-charts\jquery.knob.js" />
+    <None Include="wwwroot\admin\assets\lib\rickshaw\d3.v3.js" />
+    <None Include="wwwroot\admin\assets\lib\rickshaw\rickshaw.min.js" />
+    <None Include="wwwroot\admin\assets\lib\slimscroll\jquery.slimscroll.min.js" />
+    <None Include="wwwroot\admin\assets\lib\sparkline\jquery.sparkline.min.js" />
+    <None Include="wwwroot\admin\assets\lib\summernote\summernote.js" />
+    <None Include="wwwroot\admin\assets\lib\summernote\summernote.min.js" />
+    <None Include="wwwroot\admin\assets\lib\sweet-alerts2\sweetalert2.min.js" />
+    <None Include="wwwroot\admin\assets\lib\toast\jquery.toast.min.js" />
+    <None Include="wwwroot\admin\assets\lib\vectormap\jquery-jvectormap-2.0.2.min.js" />
+    <None Include="wwwroot\admin\assets\lib\vectormap\jquery-jvectormap-au-mill.js" />
+    <None Include="wwwroot\admin\assets\lib\vectormap\jquery-jvectormap-in-mill.js" />
+    <None Include="wwwroot\admin\assets\lib\vectormap\jquery-jvectormap-uk-mill-en.js" />
+    <None Include="wwwroot\admin\assets\lib\vectormap\jquery-jvectormap-us-aea-en.js" />
+    <None Include="wwwroot\admin\assets\lib\vectormap\jquery-jvectormap-world-mill-en.js" />
+    <None Include="wwwroot\admin\assets\lib\wysihtml5\bootstrap-wysihtml5.js" />
+    <None Include="wwwroot\admin\assets\lib\wysihtml5\wysihtml5-0.3.0.js" />
   </ItemGroup>
 	
 
