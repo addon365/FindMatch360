@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using addon365.FindMatch360.Data;
 
 namespace addon365.FindMatch360.Migrations
 {
     [DbContext(typeof(ilamaiMatrimonyContext))]
-    partial class ilamaiMatrimonyContextModelSnapshot : ModelSnapshot
+    [Migration("20210517094350_seeddata1")]
+    partial class seeddata1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

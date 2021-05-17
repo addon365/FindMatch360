@@ -43,6 +43,7 @@ namespace addon365.FindMatch360.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Seed();
 
             //modelBuilder.Entity<Profile>()
             //    .HasOne(b => b.SubCaste)
