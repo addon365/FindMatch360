@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,12 @@ namespace addon365.FindMatch360.Controllers
         }
 
         public IActionResult paymentoptions()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult CreateProfile()
         {
             return View();
         }

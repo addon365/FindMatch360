@@ -1,0 +1,489 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    /* Tabs*/
+    section {
+        padding: 60px 0;
+    }
+
+        section .section-title {
+            text-align: center;
+            color: #007b5e;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+    #tabs {
+        background: #007b5e;
+        color: #eee;
+    }
+
+        #tabs h6.section-title {
+            color: #eee;
+        }
+
+        #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+            color: #f3f3f3;
+            background-color: transparent;
+            border-color: transparent transparent #f3f3f3;
+            border-bottom: 4px solid !important;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #tabs .nav-tabs .nav-link {
+            border: 1px solid transparent;
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+            color: #eee;
+            font-size: 20px;
+        }
+</style>
+
+<div class="row page-header">
+    <div class="col-lg-6 align-self-center ">
+        <h2>Dashboard</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Account" asp-action="admin">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item active">Member Information</li>
+        </ol>
+    </div>
+    <div class="col-lg-6 align-self-center text-right">
+        <a href="#" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Create New</a>
+    </div>
+</div>
+<section class="main-content" id="tabs">
+
+
+    <div class="container">
+
+        <form>
+           
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile View</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Life Style</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Education Details</a>
+                            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Job Details</a>
+                            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-Horoscope" role="tab" aria-controls="nav-Horoscope" aria-selected="false">Horoscope</a>
+                            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-Family" role="tab" aria-controls="nav-Family" aria-selected="false">Family</a>
+                            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-Preferences" role="tab" aria-controls="nav-Preferences" aria-selected="false">Preferences</a>
+
+
+                        </div>
+                    </nav>
+                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <h2>Profile View</h2>
+
+                            <div class="form-group">
+                                <label>Name:</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">Gender</label>
+                                <select class="form-control" id="sel1">
+                                    <option>Male</option>
+                                    <option>female</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="birthDate" class="control-label">Date of Birth*</label>
+                                <div class="col-sm-12">
+                                    <input type="date" id="birthDate" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">MaritalStatusMasterId</label>
+                                <select class="form-control" id="sel1">
+                                    <option>Signle</option>
+                                    <option>Myself</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">BodyType</label>
+                                <select class="form-control" id="sel1">
+                                    <option>slim </option>
+                                    <option>Average</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Weight:</label>
+                                <input type="number" class="form-control" id="name" placeholder="Enter Weight" name="weight">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Height:</label>
+                                <input type="number" class="form-control" id="name" placeholder="Enter Height" name="height">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">SkinColor</label>
+                                <select class="form-control" id="sel1">
+                                    <option>red </option>
+                                    <option>Average</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">Disability</label>
+                                <select class="form-control" id="sel1">
+                                    <option>Eye </option>
+                                    <option>orthopedic </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="comment">DisabilityDescription:</label>
+                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+
+
+
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <h3> Life style</h3>
+
+                            <div class="form-group">
+                                <label for="sel1">EatingHabit</label>
+                                <select class="form-control" id="sel1">
+                                    <option>1 </option>
+                                    <option>2 </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">Drinking</label>
+                                <select class="form-control" id="sel1">
+                                    <option>yes </option>
+                                    <option>No </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">Smoking</label>
+                                <select class="form-control" id="sel1">
+                                    <option>yes </option>
+                                    <option>No </option>
+                                </select>
+                            </div>
+
+
+
+                        
+
+                        </div>
+                        <div id="nav-contact" class="container tab-pane fade">
+                            <br>
+                            <h3>Education Details</h3>
+                            <div class="form-group">
+                                <label for="sel1">Education Details</label>
+                                <select class="form-control" id="sel1">
+                                    <option>Select Education Details</option>
+                                    <option>B.E </option>
+                                    <option>B.Tech </option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div id="nav-about" class="container tab-pane fade">
+                            <br>
+                            <h3>JobDetails</h3>
+                            <div class="form-group">
+                                <label>EmployeedInMasterId:</label>
+                                <input type="number" class="form-control" id="name" placeholder="Enter EmployeedInMasterIds" name="weight">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="sel1">EmployeedIn </label>
+                                <select class="form-control" id="sel1">
+                                    <option>Select EmployeedIn</option>
+                                    <option>Software Developer </option>
+                                    <option>Account </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="comment">WorkingAddress:</label>
+                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>MonthlyRevenue:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MonthlyRevenue" name="MonthlyRevenue">
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div id="nav-Horoscope" class="container tab-pane fade">
+                            <br>
+                            <h3>Horoscope Details</h3>
+                            <div class="form-group">
+                                <label for="sel1"> Select Horoscope Details </label>
+                                <select class="form-control" id="sel1">
+                                    <option>Hindu</option>
+                                    <option>muslim  </option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Star:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Rasi:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Lagnam:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="birthDate" class="control-label">Date of Birth*</label>
+                                <div class="col-sm-12">
+                                    <input type="date" id="birthDate" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>PlaceOfBirth:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div id="nav-Family" class="container tab-pane fade">
+                            <br>
+                            <h3>Family Information Details</h3>
+                            <div class="form-group">
+                                <label for="sel1"> Select FamilyStatus Details </label>
+                                <select class="form-control" id="sel1">
+                                    <option>Hight</option>
+                                    <option>Average  </option>
+
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="sel1"> Select FamilyValues Details </label>
+                                <select class="form-control" id="sel1">
+                                    <option>Hight</option>
+                                    <option>Average  </option>
+
+                                </select>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label>FatherName:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter FatherName" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>FatherQualification:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter FatherQualification" name="FatherQualification">
+                            </div>
+
+                            <div class="form-group">
+                                <label>FatherJob:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter FatherJob" name="FatherQualification">
+                            </div>
+
+                            <div class="form-group">
+                                <label>MotherName:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter MotherName" name="FatherQualification">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>MotherQualification:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter MotherQualification" name="FatherQualification">
+                            </div>
+
+                            <div class="form-group">
+                                <label>MotherJob:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter MotherJob" name="FatherQualification">
+                            </div>
+
+                            <div class="form-group">
+                                <label>NativeDistrict:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter NativeDistrict" name="FatherQualification">
+                            </div>
+
+                            <div class="form-group">
+                                <label>ContactPerson:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter ContactPerson" name="FatherQualification">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="comment">Address:</label>
+                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>PhoneNo:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PhoneNo" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>MobileNo:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>EmailId:</label>
+                                <input type="email" class="form-control" id="MonthlyRevenue" placeholder="Enter EmailId" name="MonthlyRevenue">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label>MobileNo:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>BirthNumberinFamily:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Brothers:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>MarriedBrothers:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Sisters:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>MarriedSisters:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                            </div>
+
+                        </div>
+
+
+
+                        <div id="nav-Preferences" class="container tab-pane fade">
+                            <br>
+                            <h3> Preferences Details</h3>
+
+
+                            <div class="form-group">
+                                <label>FromAge:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter FromAge" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>UptoAge:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter UptoAge" name="MonthlyRevenue">
+                            </div>
+                            <div class="form-group">
+                                <label>PreferenceReligion:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceReligion" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>PreferenceMotherTongue:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceMotherTongue" name="MonthlyRevenue">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label> PreferenceCaste:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter  PreferenceCaste" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>PreferenceSubCaste:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceSubCaste" name="MonthlyRevenue">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>PreferenceStar:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceStar" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>PreferenceStar:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceStar" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>PreferenceRasis:</label>
+                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceRasi" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>PreferenceChavvaiDosham:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceChavvaiDosham" name="MonthlyRevenue">
+                            </div>
+
+                            <div class="form-group">
+                                <label>PreferenceQualification:</label>
+                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceQualification" name="MonthlyRevenue">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+        </form>
+    </div>
+
+
+
+</section>
+
+
+
