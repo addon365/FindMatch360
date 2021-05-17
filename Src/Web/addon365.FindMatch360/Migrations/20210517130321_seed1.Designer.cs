@@ -10,8 +10,8 @@ using addon365.FindMatch360.Data;
 namespace addon365.FindMatch360.Migrations
 {
     [DbContext(typeof(ilamaiMatrimonyContext))]
-    [Migration("20210517092148_initialCreate")]
-    partial class initialCreate
+    [Migration("20210517130321_seed1")]
+    partial class seed1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,8 +234,8 @@ namespace addon365.FindMatch360.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CasteName")
-                        .HasColumnType("int");
+                    b.Property<string>("CasteName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CasteMasterId");
 
@@ -255,6 +255,18 @@ namespace addon365.FindMatch360.Migrations
                     b.HasKey("DoshamMasterId");
 
                     b.ToTable("DoshamMasters");
+
+                    b.HasData(
+                        new
+                        {
+                            DoshamMasterId = 1,
+                            DoshamName = "Test"
+                        },
+                        new
+                        {
+                            DoshamMasterId = 2,
+                            DoshamName = "Test2"
+                        });
                 });
 
             modelBuilder.Entity("addon365.FindMatch360.Models.Masters.EducationCategoryMaster", b =>
@@ -410,6 +422,73 @@ namespace addon365.FindMatch360.Migrations
                     b.HasKey("MotherTongueMasterId");
 
                     b.ToTable("MotherTongueMasters");
+
+                    b.HasData(
+                        new
+                        {
+                            MotherTongueMasterId = 1,
+                            MotherTongueName = "Not Selected"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 2,
+                            MotherTongueName = "Tamil"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 3,
+                            MotherTongueName = "Telugu"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 4,
+                            MotherTongueName = "Hindi"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 5,
+                            MotherTongueName = "Kannada"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 6,
+                            MotherTongueName = "Malayalam"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 7,
+                            MotherTongueName = "Marathi"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 8,
+                            MotherTongueName = "Bengali"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 9,
+                            MotherTongueName = "Gujarati"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 10,
+                            MotherTongueName = "Punjabi"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 11,
+                            MotherTongueName = "Sindhi"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 12,
+                            MotherTongueName = "Urdu"
+                        },
+                        new
+                        {
+                            MotherTongueMasterId = 13,
+                            MotherTongueName = "Oriya"
+                        });
                 });
 
             modelBuilder.Entity("addon365.FindMatch360.Models.Masters.OccupationMaster", b =>
@@ -455,6 +534,73 @@ namespace addon365.FindMatch360.Migrations
                     b.HasKey("ReligionMasterId");
 
                     b.ToTable("ReligionMasters");
+
+                    b.HasData(
+                        new
+                        {
+                            ReligionMasterId = 1,
+                            ReligionName = "Not Selected"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 2,
+                            ReligionName = "Hindu"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 3,
+                            ReligionName = "Muslim - Shia"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 4,
+                            ReligionName = "Muslim - Sunni"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 5,
+                            ReligionName = "Muslim - Others"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 6,
+                            ReligionName = "Christian"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 7,
+                            ReligionName = "Sikh"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 8,
+                            ReligionName = "Jain - Digambar"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 9,
+                            ReligionName = "Jain - Shwetambar"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 10,
+                            ReligionName = "Jain - Others"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 11,
+                            ReligionName = "Parsi"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 12,
+                            ReligionName = "Buddhist"
+                        },
+                        new
+                        {
+                            ReligionMasterId = 13,
+                            ReligionName = "Inter-Religion"
+                        });
                 });
 
             modelBuilder.Entity("addon365.FindMatch360.Models.Masters.SubCasteMaster", b =>

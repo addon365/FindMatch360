@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using addon365.FindMatch360.Data;
+using addon365.FindMatch360.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,11 @@ namespace addon365.FindMatch360.Controllers
 {
     public class AdminController : Controller
     {
+        private readonly ilamaiMatrimonyContext _context;
+        public AdminController(ilamaiMatrimonyContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();
@@ -28,7 +35,11 @@ namespace addon365.FindMatch360.Controllers
         [AllowAnonymous]
         public IActionResult CreateProfile()
         {
-            return View();
+            var lst = _context.ReligionMasters.ToList();
+            ProfileViewModel viewModel = new ProfileViewModel();
+            viewModel.Religions = lst;
+            return View(viewModel);
+            
         }
     }
 }

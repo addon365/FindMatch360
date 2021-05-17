@@ -686,6 +686,16 @@ namespace addon365.FindMatch360.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "DoshamMasters",
+                columns: new[] { "DoshamMasterId", "DoshamName" },
+                values: new object[] { 1, "Test" });
+
+            migrationBuilder.InsertData(
+                table: "DoshamMasters",
+                columns: new[] { "DoshamMasterId", "DoshamName" },
+                values: new object[] { 2, "Test2" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",

@@ -11,7 +11,7 @@ namespace addon365.FindMatch360.Models.Masters
     {
         [Key]
         public int CasteMasterId { get; set; }
-        public int CasteName { get; set; }
+        public string CasteName { get; set; }
         public ICollection<Profile> Profiles { get; set; }
     }
 }

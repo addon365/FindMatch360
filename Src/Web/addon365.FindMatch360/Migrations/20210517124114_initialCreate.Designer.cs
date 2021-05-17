@@ -10,8 +10,8 @@ using addon365.FindMatch360.Data;
 namespace addon365.FindMatch360.Migrations
 {
     [DbContext(typeof(ilamaiMatrimonyContext))]
-    [Migration("20210517094120_seeddata")]
-    partial class seeddata
+    [Migration("20210517124114_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -255,6 +255,18 @@ namespace addon365.FindMatch360.Migrations
                     b.HasKey("DoshamMasterId");
 
                     b.ToTable("DoshamMasters");
+
+                    b.HasData(
+                        new
+                        {
+                            DoshamMasterId = 1,
+                            DoshamName = "Test"
+                        },
+                        new
+                        {
+                            DoshamMasterId = 2,
+                            DoshamName = "Test2"
+                        });
                 });
 
             modelBuilder.Entity("addon365.FindMatch360.Models.Masters.EducationCategoryMaster", b =>
