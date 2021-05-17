@@ -1,4 +1,4 @@
-﻿@model addon365.FindMatch360.Models.MatrimonyProfile
+﻿@model Profile
 
 @{
     ViewData["Title"] = "Edit";
@@ -23,15 +23,11 @@
                 <input asp-for="DateandTimeOfBirth" class="form-control" />
                 <span asp-validation-for="DateandTimeOfBirth" class="text-danger"></span>
             </div>
+           
             <div class="form-group">
-                <label asp-for="Place" class="control-label"></label>
-                <input asp-for="Place" class="form-control" />
-                <span asp-validation-for="Place" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control" />
-                <span asp-validation-for="Color" class="text-danger"></span>
+                <label asp-for="SkinColor" class="control-label"></label>
+                <input asp-for="SkinColor" class="form-control" />
+                <span asp-validation-for="SkinColor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Height" class="control-label"></label>
@@ -39,9 +35,9 @@
                 <span asp-validation-for="Height" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Nakshatra" class="control-label"></label>
-                <input asp-for="Nakshatra" class="form-control" />
-                <span asp-validation-for="Nakshatra" class="text-danger"></span>
+                <label asp-for="Star" class="control-label"></label>
+                <input asp-for="Star" class="form-control" />
+                <span asp-validation-for="Star" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Rasi" class="control-label"></label>
@@ -53,11 +49,7 @@
                 <input asp-for="Lagnam" class="form-control" />
                 <span asp-validation-for="Lagnam" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="ChevvaiDosham" /> @Html.DisplayNameFor(model => model.ChevvaiDosham)
-                </label>
-            </div>
+           
             <div class="form-group">
                 <label asp-for="BirthNumberinFamily" class="control-label"></label>
                 <input asp-for="BirthNumberinFamily" class="form-control" />
@@ -83,15 +75,11 @@
                 <input asp-for="MarriedSisters" class="form-control" />
                 <span asp-validation-for="MarriedSisters" class="text-danger"></span>
             </div>
+          
             <div class="form-group">
-                <label asp-for="JobPosition" class="control-label"></label>
-                <input asp-for="JobPosition" class="form-control" />
-                <span asp-validation-for="JobPosition" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CompanyAddress" class="control-label"></label>
-                <input asp-for="CompanyAddress" class="form-control" />
-                <span asp-validation-for="CompanyAddress" class="text-danger"></span>
+                <label asp-for="WorkingAddress" class="control-label"></label>
+                <input asp-for="WorkingAddress" class="form-control" />
+                <span asp-validation-for="WorkingAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MonthlyRevenue" class="control-label"></label>
@@ -159,9 +147,9 @@
                 <span asp-validation-for="EmailId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ExpectedQualification" class="control-label"></label>
-                <input asp-for="ExpectedQualification" class="form-control" />
-                <span asp-validation-for="ExpectedQualification" class="text-danger"></span>
+                <label asp-for="PreferenceQualification" class="control-label"></label>
+                <input asp-for="PreferenceQualification" class="form-control" />
+                <span asp-validation-for="PreferenceQualification" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

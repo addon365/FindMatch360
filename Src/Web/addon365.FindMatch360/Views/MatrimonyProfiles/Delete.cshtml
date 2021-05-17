@@ -1,4 +1,4 @@
-﻿@model addon365.FindMatch360.Models.MatrimonyProfile
+﻿@model Profile
 
 @{
     ViewData["Title"] = "Delete";
@@ -23,17 +23,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DateandTimeOfBirth)
         </dd>
+       
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Place)
+            @Html.DisplayNameFor(model => model.SkinColor)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Place)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Color)
+            @Html.DisplayFor(model => model.SkinColor)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Height)
@@ -42,10 +37,10 @@
             @Html.DisplayFor(model => model.Height)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nakshatra)
+            @Html.DisplayNameFor(model => model.Star)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nakshatra)
+            @Html.DisplayFor(model => model.Star)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Rasi)
@@ -59,12 +54,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Lagnam)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ChevvaiDosham)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ChevvaiDosham)
-        </dd>
+     
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.BirthNumberinFamily)
         </dt>
@@ -95,18 +85,8 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MarriedSisters)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobPosition)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobPosition)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyAddress)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CompanyAddress)
-        </dd>
+        
+       
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.MonthlyRevenue)
         </dt>
@@ -185,12 +165,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.EmailId)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpectedQualification)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ExpectedQualification)
-        </dd>
+     
     </dl>
     
     <form asp-action="Delete">

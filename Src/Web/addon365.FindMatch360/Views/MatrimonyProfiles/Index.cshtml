@@ -1,4 +1,4 @@
-﻿@model IEnumerable<addon365.FindMatch360.Models.MatrimonyProfile>
+﻿@model IEnumerable<Profile>
 
 @{
     ViewData["Title"] = "Index";
@@ -107,28 +107,23 @@
                                                             <td class="text">  :@Html.DisplayFor(modelItem => item.DateandTimeOfBirth)</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="title">  @Html.DisplayNameFor(model => model.Nakshatra) </td>
-                                                            <td class="text">:  @Html.DisplayFor(modelItem => item.Nakshatra)</td>
+                                                            <td class="title">  @Html.DisplayNameFor(model => model.Star) </td>
+                                                            <td class="text">:  @Html.DisplayFor(modelItem => item.Star)</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="title">    @Html.DisplayNameFor(model => model.ExpectedQualification)</td>
-                                                            <td class="text">:   @Html.DisplayFor(modelItem => item.ExpectedQualification)</td>
+                                                            <td class="title">    @Html.DisplayNameFor(model => model.PreferenceQualification)</td>
+                                                            <td class="text">:   @Html.DisplayFor(modelItem => item.PreferenceQualification)</td>
                                                         </tr>
 
-                                                        <tr>
-                                                            <td class="title">
-                                                                @Html.DisplayNameFor(model => model.JobPosition)
-                                                            </td>
-                                                            <td class="text">: @Html.DisplayFor(modelItem => item.JobPosition) </td>
-                                                        </tr>
+                                                       
 
 
 
                                                         <tr>
                                                             <td class="title">
-                                                                @Html.DisplayNameFor(model => model.Address)
+                                                                @Html.DisplayNameFor(model => model.WorkingAddress)
                                                             </td>
-                                                            <td class="text">:  @Html.DisplayFor(modelItem => item.CompanyAddress) </td>
+                                                            <td class="text">:  @Html.DisplayFor(modelItem => item.WorkingAddress) </td>
                                                         </tr>
                                                     </table>
                                                 </div>

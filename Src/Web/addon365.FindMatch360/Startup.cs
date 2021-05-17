@@ -1,4 +1,5 @@
 using addon365.FindMatch360.Data;
+using addon365.FindMatch360.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -28,7 +29,7 @@ namespace addon365.FindMatch360
             services.AddControllersWithViews();
             services.AddDbContext<ilamaiMatrimonyContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ilamaiMatrimonyContext")));
-            services.AddIdentity<IdentityUser, IdentityRole>(options=> 
+            services.AddIdentity<ApplicationUser, IdentityRole>(options=> 
             {
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;

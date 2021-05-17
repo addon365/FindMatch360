@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using addon365.FindMatch360.Data;
 
 namespace addon365.FindMatch360.Migrations
 {
     [DbContext(typeof(ilamaiMatrimonyContext))]
-    partial class ilamaiMatrimonyContextModelSnapshot : ModelSnapshot
+    [Migration("20210514083257_identityUserExtended")]
+    partial class identityUserExtended
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,15 +234,12 @@ namespace addon365.FindMatch360.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte>("Gender")
-                        .HasColumnType("tinyint");
-
                     b.Property<string>("ProfileFor")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProfileForId");
 
-                    b.ToTable("profileForMasters");
+                    b.ToTable("ProfileForMaster");
                 });
 
             modelBuilder.Entity("addon365.FindMatch360.Models.MatrimonyProfile", b =>
@@ -289,9 +288,6 @@ namespace addon365.FindMatch360.Migrations
                     b.Property<string>("FatherQualification")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("Gender")
-                        .HasColumnType("tinyint");
-
                     b.Property<string>("Height")
                         .HasColumnType("nvarchar(max)");
 
@@ -333,9 +329,6 @@ namespace addon365.FindMatch360.Migrations
 
                     b.Property<string>("PhoneNo")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Place")
                         .HasColumnType("nvarchar(max)");

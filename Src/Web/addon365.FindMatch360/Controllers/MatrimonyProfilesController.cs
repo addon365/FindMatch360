@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using addon365.FindMatch360.Data;
 using addon365.FindMatch360.Models;
 using Microsoft.AspNetCore.Authorization;
+using addon365.FindMatch360.Models.MatrimonyProfileModels;
 
 namespace addon365.FindMatch360.Controllers
 {
@@ -28,7 +29,7 @@ namespace addon365.FindMatch360.Controllers
         }
 
         // GET: MatrimonyProfiles/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
             {
@@ -56,7 +57,7 @@ namespace addon365.FindMatch360.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MatrimonyProfileId,Name,DateandTimeOfBirth,Place,Color,Height,Nakshatra,Rasi,Lagnam,ChevvaiDosham,BirthNumberinFamily,Brothers,MarriedBrothers,Sisters,MarriedSisters,JobPosition,CompanyAddress,MonthlyRevenue,FatherName,FatherQualification,FatherJob,MotherName,MotherQualification,MotherJob,NativeDistrict,ContactPerson,Address,PhoneNo,MobileNo,EmailId,ExpectedQualification")] MatrimonyProfile matrimonyProfile)
+        public async Task<IActionResult> Create([Bind("MatrimonyProfileId,Name,DateandTimeOfBirth,Place,Color,Height,Nakshatra,Rasi,Lagnam,ChevvaiDosham,BirthNumberinFamily,Brothers,MarriedBrothers,Sisters,MarriedSisters,JobPosition,CompanyAddress,MonthlyRevenue,FatherName,FatherQualification,FatherJob,MotherName,MotherQualification,MotherJob,NativeDistrict,ContactPerson,Address,PhoneNo,MobileNo,EmailId,ExpectedQualification")] Profile matrimonyProfile)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +69,7 @@ namespace addon365.FindMatch360.Controllers
         }
 
         // GET: MatrimonyProfiles/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
@@ -88,7 +89,7 @@ namespace addon365.FindMatch360.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MatrimonyProfileId,Name,DateandTimeOfBirth,Place,Color,Height,Nakshatra,Rasi,Lagnam,ChevvaiDosham,BirthNumberinFamily,Brothers,MarriedBrothers,Sisters,MarriedSisters,JobPosition,CompanyAddress,MonthlyRevenue,FatherName,FatherQualification,FatherJob,MotherName,MotherQualification,MotherJob,NativeDistrict,ContactPerson,Address,PhoneNo,MobileNo,EmailId,ExpectedQualification")] MatrimonyProfile matrimonyProfile)
+        public async Task<IActionResult> Edit(Guid id, [Bind("MatrimonyProfileId,Name,DateandTimeOfBirth,Place,Color,Height,Nakshatra,Rasi,Lagnam,ChevvaiDosham,BirthNumberinFamily,Brothers,MarriedBrothers,Sisters,MarriedSisters,JobPosition,CompanyAddress,MonthlyRevenue,FatherName,FatherQualification,FatherJob,MotherName,MotherQualification,MotherJob,NativeDistrict,ContactPerson,Address,PhoneNo,MobileNo,EmailId,ExpectedQualification")]Profile matrimonyProfile)
         {
             if (id != matrimonyProfile.MatrimonyProfileId)
             {
@@ -119,7 +120,7 @@ namespace addon365.FindMatch360.Controllers
         }
 
         // GET: MatrimonyProfiles/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
             {
@@ -147,7 +148,7 @@ namespace addon365.FindMatch360.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MatrimonyProfileExists(int id)
+        private bool MatrimonyProfileExists(Guid id)
         {
             return _context.MatrimonyProfiles.Any(e => e.MatrimonyProfileId == id);
         }

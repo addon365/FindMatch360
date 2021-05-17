@@ -1,4 +1,4 @@
-﻿@model addon365.FindMatch360.Models.MatrimonyProfile
+﻿@model Profile
 
 @{
     ViewData["Title"] = "Details";
@@ -190,13 +190,10 @@
                                                     <td class="text"> @Html.DisplayFor(model => model.DateandTimeOfBirth)</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="title">  @Html.DisplayNameFor(model => model.ExpectedQualification) </td>
-                                                    <td class="text">:  @Html.DisplayFor(model => model.ExpectedQualification)</td>
+                                                    <td class="title">  @Html.DisplayNameFor(model => model.PreferenceQualification) </td>
+                                                    <td class="text">:  @Html.DisplayFor(model => model.PreferenceQualification)</td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="title"> @Html.DisplayNameFor(model => model.JobPosition)</td>
-                                                    <td class="text">: @Html.DisplayFor(model => model.JobPosition)</td>
-                                                </tr>
+                                              
 
                                                 <tr>
                                                     <td class="title">  @Html.DisplayNameFor(model => model.Address)</td>
@@ -240,18 +237,15 @@
                                             <td class="text">: @Html.DisplayFor(model => model.Name)</td>
                                         </tr>
 
+                                       
                                         <tr>
-                                            <td class="title"> @Html.DisplayNameFor(model => model.JobPosition)</td>
-                                            <td class="text">: @Html.DisplayFor(model => model.JobPosition)</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="title">  @Html.DisplayNameFor(model => model.Color)</td>
-                                            <td class="text">: @Html.DisplayFor(model => model.Color)</td>
+                                            <td class="title">  @Html.DisplayNameFor(model => model.SkinColor)</td>
+                                            <td class="text">: @Html.DisplayFor(model => model.SkinColor)</td>
                                         </tr>
 
                                         <tr>
-                                            <td class="title"> @Html.DisplayNameFor(model => model.Nakshatra) </td>
-                                            <td class="text">@Html.DisplayFor(model => model.Nakshatra)</td>
+                                            <td class="title"> @Html.DisplayNameFor(model => model.Star) </td>
+                                            <td class="text">@Html.DisplayFor(model => model.Star)</td>
                                         </tr>
 
 
@@ -306,10 +300,7 @@
                                             <td class="text"> @Html.DisplayFor(model => model.Height)</td>
                                         </tr>
 
-                                        <tr>
-                                            <td class="title">@Html.DisplayNameFor(model => model.ChevvaiDosham) </td>
-                                            <td class="text"> @Html.DisplayFor(model => model.ChevvaiDosham)</td>
-                                        </tr>
+                                    
 
 
                                         <tr>
@@ -344,14 +335,7 @@
                                 <div class="marriage_profile_right">
 
                                     <table>
-                                        <tr>
-                                            <td class="title">    @Html.DisplayNameFor(model => model.JobPosition) </td>
-                                            <td class="text">:   @Html.DisplayFor(model => model.JobPosition)</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="title">  @Html.DisplayNameFor(model => model.CompanyAddress) </td>
-                                            <td class="text">:  @Html.DisplayFor(model => model.CompanyAddress)</td>
-                                        </tr>
+                                       
                                     </table>
                                 </div>
                             </div>
@@ -458,8 +442,8 @@
                                 <div class="marriage_profile_right">
                                     <table>
                                         <tr>
-                                            <td class="title">       @Html.DisplayNameFor(model => model.ExpectedQualification)</td>
-                                            <td class="text">:   @Html.DisplayFor(model => model.ExpectedQualification)</td>
+                                            <td class="title">       @Html.DisplayNameFor(model => model.PreferenceQualification)</td>
+                                            <td class="text">:   @Html.DisplayFor(model => model.PreferenceQualification)</td>
                                         </tr>
                                         <tr>
                                             <td class="title"> உறவினர்கள் முகவரி 2 </td>
@@ -474,8 +458,8 @@
                                 <div class="marriage_profile_right">
                                     <table>
                                         <tr>
-                                            <td class="title">       @Html.DisplayNameFor(model => model.ExpectedQualification)</td>
-                                            <td class="text">:   @Html.DisplayFor(model => model.ExpectedQualification)</td>
+                                            <td class="title">       @Html.DisplayNameFor(model => model.PreferenceQualification)</td>
+                                            <td class="text">:   @Html.DisplayFor(model => model.PreferenceQualification)</td>
                                         </tr>
                                         <tr>
                                             <td class="title">
@@ -636,17 +620,12 @@
                         <div class="col-sm-10">
                             @Html.DisplayFor(model => model.DateandTimeOfBirth)
                         </div>
+                    
                         <div class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.Place)
+                            @Html.DisplayNameFor(model => model.SkinColor)
                         </div>
                         <div class="col-sm-10">
-                            @Html.DisplayFor(model => model.Place)
-                        </div>
-                        <div class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.Color)
-                        </div>
-                        <div class="col-sm-10">
-                            @Html.DisplayFor(model => model.Color)
+                            @Html.DisplayFor(model => model.SkinColor)
                         </div>
                         <div class="col-sm-2">
                             @Html.DisplayNameFor(model => model.Height)
@@ -655,10 +634,10 @@
                             @Html.DisplayFor(model => model.Height)
                         </div>
                         <div class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.Nakshatra)
+                            @Html.DisplayNameFor(model => model.Star)
                         </div>
                         <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.Nakshatra)
+                            @Html.DisplayFor(model => model.Star)
                         </dd>
                         <div class="col-sm-2">
                             @Html.DisplayNameFor(model => model.Rasi)
@@ -672,12 +651,7 @@
                         <div class="col-sm-10">
                             @Html.DisplayFor(model => model.Lagnam)
                         </div>
-                        <div class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.ChevvaiDosham)
-                        </div>
-                        <div class="col-sm-10">
-                            @Html.DisplayFor(model => model.ChevvaiDosham)
-                        </div>
+                       
                         <div class="col-sm-2">
                             @Html.DisplayNameFor(model => model.BirthNumberinFamily)
                         </div>
@@ -708,18 +682,7 @@
                         <div class="col-sm-10">
                             @Html.DisplayFor(model => model.MarriedSisters)
                         </div>
-                        <div class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.JobPosition)
-                        </div>
-                        <div class="col-sm-10">
-                            @Html.DisplayFor(model => model.JobPosition)
-                        </div>
-                        <div class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.CompanyAddress)
-                        </div>
-                        <div class="col-sm-10">
-                            @Html.DisplayFor(model => model.CompanyAddress)
-                        </div>
+                       
                         <div class="col-sm-2">
                             @Html.DisplayNameFor(model => model.MonthlyRevenue)
                         </div>
@@ -799,10 +762,10 @@
                             @Html.DisplayFor(model => model.EmailId)
                         </div>
                         <div class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.ExpectedQualification)
+                            @Html.DisplayNameFor(model => model.PreferenceQualification)
                         </div>
                         <div class="col-sm-10">
-                            @Html.DisplayFor(model => model.ExpectedQualification)
+                            @Html.DisplayFor(model => model.PreferenceQualification)
                         </div>
 
 

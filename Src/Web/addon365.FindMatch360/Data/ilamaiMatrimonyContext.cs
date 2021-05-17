@@ -1,18 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using addon365.FindMatch360.Models;
+using addon365.FindMatch360.Models.Masters;
+using addon365.FindMatch360.Models.MatrimonyProfileModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace addon365.FindMatch360.Data
 {
-    public class ilamaiMatrimonyContext:IdentityDbContext 
+    public class ilamaiMatrimonyContext:IdentityDbContext<ApplicationUser> 
     {
         public ilamaiMatrimonyContext(DbContextOptions<ilamaiMatrimonyContext> options):base(options)
         {
 
         }
-        public DbSet<addon365.FindMatch360.Models.MatrimonyProfile> MatrimonyProfiles { get; set; }
+        public DbSet<Profile> MatrimonyProfiles { get; set; }
+        public DbSet<ProfileForMaster> profileForMasters { get; set; }
     }
 }

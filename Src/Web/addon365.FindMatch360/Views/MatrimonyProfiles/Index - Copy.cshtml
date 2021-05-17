@@ -1,4 +1,4 @@
-﻿@model IEnumerable<addon365.FindMatch360.Models.MatrimonyProfile>
+﻿@model IEnumerable<Profile>
 
 @{
     ViewData["Title"] = "Index";
@@ -18,17 +18,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.DateandTimeOfBirth)
             </th>
+           
             <th>
-                @Html.DisplayNameFor(model => model.Place)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
+                @Html.DisplayNameFor(model => model.SkinColor)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Height)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nakshatra)
+                @Html.DisplayNameFor(model => model.Star)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Rasi)
@@ -36,9 +34,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Lagnam)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ChevvaiDosham)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.BirthNumberinFamily)
             </th>
@@ -54,11 +50,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.MarriedSisters)
             </th>
+        
             <th>
-                @Html.DisplayNameFor(model => model.JobPosition)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CompanyAddress)
+                @Html.DisplayNameFor(model => model.WorkingAddress)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MonthlyRevenue)
@@ -100,7 +94,7 @@
                 @Html.DisplayNameFor(model => model.EmailId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ExpectedQualification)
+                @Html.DisplayNameFor(model => model.PreferenceQualification)
             </th>
             <th></th>
         </tr>
@@ -114,17 +108,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DateandTimeOfBirth)
             </td>
+           
             <td>
-                @Html.DisplayFor(modelItem => item.Place)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
+                @Html.DisplayFor(modelItem => item.SkinColor)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Height)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nakshatra)
+                @Html.DisplayFor(modelItem => item.Star)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Rasi)
@@ -132,9 +124,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Lagnam)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChevvaiDosham)
-            </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.BirthNumberinFamily)
             </td>
@@ -150,11 +140,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MarriedSisters)
             </td>
+           
             <td>
-                @Html.DisplayFor(modelItem => item.JobPosition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyAddress)
+                @Html.DisplayFor(modelItem => item.WorkingAddress)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MonthlyRevenue)
@@ -196,7 +184,7 @@
                 @Html.DisplayFor(modelItem => item.EmailId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ExpectedQualification)
+                @Html.DisplayFor(modelItem => item.PreferenceQualification)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.MatrimonyProfileId">Edit</a> |

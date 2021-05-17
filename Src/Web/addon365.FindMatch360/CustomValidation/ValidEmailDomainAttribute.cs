@@ -17,8 +17,8 @@ namespace addon365.FindMatch360.CustomValidation
 
         public override bool IsValid(object value)
         {
-            string[] strings = value.ToString().Split('@');
-            return strings[1].ToUpper() == allowedDomain.ToUpper();
+            //string[] strings = value.ToString().Split('@');
+            return true;/*strings[1].ToUpper() == allowedDomain.ToUpper();*/
         }
     }
 }

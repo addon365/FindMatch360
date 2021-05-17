@@ -1,4 +1,5 @@
-﻿using addon365.FindMatch360.Models;
+﻿using addon365.FindMatch360.Data;
+using addon365.FindMatch360.Models;
 using addon365.FindMatch360.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,14 +14,26 @@ namespace addon365.FindMatch360.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ilamaiMatrimonyContext _context;
+        public HomeController(ILogger<HomeController> logger, ilamaiMatrimonyContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+            var ProfileForList = _context.profileForMasters.ToList();
+            RegisterViewModel registerViewModel = new RegisterViewModel();
+            registerViewModel.ProfileForList = ProfileForList;
+            return View(registerViewModel);
+        }
+        [HttpPost]
+
+        public IActionResult Index(RegisterViewModel model)
+        {
+            var m = model;
+
             return View();
         }
 
