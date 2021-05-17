@@ -1,4 +1,8 @@
 ﻿
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
 
 <style>
     body {
@@ -111,7 +115,8 @@
                     <img src="~/images/reg-2.png" class="img-fluid" id="img-living">
                     <div class="campignregistration-title-bg">
                         <h5>
-                            Last year 10000 men found love on ilamai Matrimony..
+                            Trusted by thousands of Indians across the world.
+
                         </h5>
                     </div>
                 </div>
@@ -122,48 +127,54 @@
                     <form method="post">
                         <h2>Create Account</h2>
                         <p class="lead">
-                            Religion details can help us find the right match
+                            Please provide us with your basic details
                         </p>
+
                         <div class="form-group">
-                            <label for="sel1">Caste:</label>
+                            <label for="birthDate" class="col-sm-6 control-label">Date of Birth*</label>
+                            <div class="col-sm-9">
+                                <input type="date" id="birthDate" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1">Religion:</label>
                             <select class="form-control" id="sel1">
                                 <option value="0">Select</option>
-                                <option value="1">24 Manai Telugu Chettiar</option>
-                                <option value="2">Aaru Nattu Vellala</option>
-                                <option value="3">Achirapakkam Chettiar</option>
+                                <option value="1">Hindu</option>
+                                <option value="2">Muslim - Shia</option>
+                                <option value="3">Muslim - Sunni</option>
                             </select>
                         </div>
+
+
                         <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="Subcaste" placeholder="Enter Subcaste" required="required">
+                            <label for="sel1">Mother Tongue:</label>
+                            <select class="form-control" id="sel1">
+                                <option value="0">Select</option>
+                                <option value="1">    --Frequently used--</option>
+                                <option value="2">Bengali</option>
+                                <option value="3">Gujarati</option>
+
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label">Email* </label>
+                            <div class="col-sm-9">
+                                <input type="email" id="email" placeholder="Email" class="form-control" name="email">
                             </div>
                         </div>
 
+
                         <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="Gothram" placeholder="Enter Gothram" required="required">
+                            <label for="password" class="col-sm-3 control-label">Password*</label>
+                            <div class="col-sm-9">
+                                <input type="password" id="password" placeholder="Password" class="form-control">
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-sm-3">Dosham</label>
-                            <div class="col-sm-6">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label class="radio-inline">
-                                            yes
-                                            <input type="radio" id="femaleRadio" value="Female">
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="radio-inline">
-                                            No
-                                            <input type="radio" id="maleRadio" value="Male">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- /.form-group -->
                         <div class="form-group">
                             <a asp-controller="Account" asp-action="campaignregistrationtrack">
                                 <button type="submit" class="btn btn-primary btn-block btn-lg">Continue</button>

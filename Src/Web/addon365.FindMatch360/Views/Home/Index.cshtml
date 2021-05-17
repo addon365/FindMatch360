@@ -20,7 +20,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 finder-block">
 
                     <div class="row" id="register-form-bg">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Matrimony Profile for</label>
                                 <select class="form-control" id="exampleSelect1" asp-for="ProfileFor" asp-items="Model.ProfileForList.Select(m=>new SelectListItem { Text = m.ProfileFor, Value = m.ProfileForId.ToString() })">
@@ -42,10 +42,10 @@
                         </div>
 
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" class="form-control" id="usr" name="username" placeholder="Name" />
+                                <input type="text" asp-for="FullName" class="form-control" id="usr" name="username" placeholder="Name" />
                             </div>
 
                         </div>
@@ -61,7 +61,7 @@
                                     <option value="2">+198</option>
                                     <option value="3">+701</option>
                                 </select>
-                                <input name="" class="form-control" placeholder="Phone number" type="text">
+                                <input asp-for="MobileNo" class="form-control" placeholder="Phone number" type="text">
                             </div> <!-- form-group// -->
                         </div>
 

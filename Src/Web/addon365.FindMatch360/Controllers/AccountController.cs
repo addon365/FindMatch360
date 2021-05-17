@@ -88,6 +88,13 @@ namespace addon365.FindMatch360.Controllers
 
 
 
+        public IActionResult campaignregistration()
+        {
+            return View();
+        }
+
+
+
 
 
 
