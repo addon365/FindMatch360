@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using addon365.FindMatch360.Data;
 
 namespace addon365.FindMatch360.Migrations
 {
     [DbContext(typeof(ilamaiMatrimonyContext))]
-    partial class ilamaiMatrimonyContextModelSnapshot : ModelSnapshot
+    [Migration("20210517092148_initialCreate")]
+    partial class initialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,18 +255,6 @@ namespace addon365.FindMatch360.Migrations
                     b.HasKey("DoshamMasterId");
 
                     b.ToTable("DoshamMasters");
-
-                    b.HasData(
-                        new
-                        {
-                            DoshamMasterId = 1,
-                            DoshamName = "Test"
-                        },
-                        new
-                        {
-                            DoshamMasterId = 2,
-                            DoshamName = "Test2"
-                        });
                 });
 
             modelBuilder.Entity("addon365.FindMatch360.Models.Masters.EducationCategoryMaster", b =>

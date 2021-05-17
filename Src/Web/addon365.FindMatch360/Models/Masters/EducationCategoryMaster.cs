@@ -12,6 +12,7 @@ namespace addon365.FindMatch360.Models.Masters
         [Key]
         public int EducationCategoryMasterId { get; set; }
         public string EducationCategoryName { get; set; }
-        
+        public ICollection<EducationMaster> EducationMasters { get; set; }
+
     }
 }

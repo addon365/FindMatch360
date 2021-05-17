@@ -1,4 +1,5 @@
-﻿using System;
+﻿using addon365.FindMatch360.Models.MatrimonyProfileModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,5 +17,8 @@ namespace addon365.FindMatch360.Models.Masters
         [ForeignKey("EducationCategory")]
         public int EducationCategoryId { get; set; }
         public EducationCategoryMaster EducationCategory { get; set; }
+        
+        public ICollection<ProfilePreferenceEducations> PreferenceEducations { get; set; }
+
     }
 }
