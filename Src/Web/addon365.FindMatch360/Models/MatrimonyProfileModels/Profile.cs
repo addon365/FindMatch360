@@ -1,5 +1,6 @@
 ﻿using addon365.FindMatch360.Models.Masters;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,11 +13,13 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
 
         #region Person basic Details
         public String Name { get; set; }
+       
+        public ICollection<ProfilePhotos> ProfilePhotos { get; set; }
         public byte Gender { get; set; }
         public DateTime DateandTimeOfBirth { get; set; }
 
         [ForeignKey("MarriedStatus")]
-        public int MaritalStatusMasterId { get; set; }
+        public int? MaritalStatusMasterId { get; set; }
         public MaritalStatusMaster MaritalStatus { get; set; }
         public byte BodyType { get; set; }
         public string Weight { get; set; }
@@ -33,15 +36,13 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         #endregion
 
         #region Education Details
-        [ForeignKey("HigherEducation")]
-        public int ProfileEducationsId { get; set; }
-        public ProfileEducations HigherEducation { get; set; }
+        public ICollection<ProfileEducations> ProfileEducations { get; set; }
 
         #endregion
 
         #region JobDetails
         [ForeignKey("EmployeedIn")]
-        public int EmployeedInMasterId { get; set; }
+        public int? EmployeedInMasterId { get; set; }
         public EmployeedInMaster EmployeedIn { get; set; }
         public string WorkingAddress { get; set; }
         public string MonthlyRevenue { get; set; }
@@ -49,25 +50,27 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
 
         #region ReligionDetails
         [ForeignKey("Religion")]
-        public int ReligionMasterId { get; set; }
+        public int? ReligionMasterId { get; set; }
         public ReligionMaster Religion { get; set; }
 
         [ForeignKey("MotherTongue")]
-        public int MotherTongueMasterId { get; set; }
+        public int? MotherTongueMasterId { get; set; }
         public MotherTongueMaster MotherTongue { get; set; }
 
 
         [ForeignKey("Caste")]
-        public int CasteMasterId { get; set; }
+        public int? CasteMasterId { get; set; }
         public CasteMaster Caste { get; set; }
 
         [ForeignKey("SubCaste")]
-        public int SubCasteMasterId { get; set; }
+        public int? SubCasteMasterId { get; set; }
         public SubCasteMaster SubCaste { get; set; }
 
         [ForeignKey("Gothram")]
-        public int GothramMasterId { get; set; }
-        public GothramMaster Gothram { get; set; }   
+        public int? GothramMasterId { get; set; }
+        public GothramMaster Gothram { get; set; }
+
+        public ICollection<ProfileDoshams> ProfileDoshams { get; set; }
         #endregion
 
         #region Horoscope Details
@@ -81,15 +84,15 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         #region Family Information
 
         [ForeignKey("FamilyStatus")]
-        public int FamilyStatusMasterId { get; set; }
+        public int? FamilyStatusMasterId { get; set; }
         public FamilyStatusMaster FamilyStatus { get; set; }
 
         [ForeignKey("FamilyType")]
-        public int FamilyTypeMasterId { get; set; }
+        public int? FamilyTypeMasterId { get; set; }
         public FamilyTypeMaster FamilyType { get; set; }
 
         [ForeignKey("FamilyValues")]
-        public int FamilyValuesMasterId { get; set; }
+        public int? FamilyValuesMasterId { get; set; }
         public FamilyValuesMaster FamilyValues { get; set; }
 
         public string FatherName { get; set; }
@@ -116,23 +119,10 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         #region Preferences
         public byte FromAge { get; set; }
         public byte UptoAge { get; set; }
-
-        [ForeignKey("PreferenceReligion")]
-        public int PreferenceReligionMasterId { get; set; }
-        public ReligionMaster PreferenceReligion { get; set; }
-
-        [ForeignKey("PreferenceMotherTongue")]
-        public int PreferenceMotherTongueMasterId { get; set; }
-        public MotherTongueMaster PreferenceMotherTongue { get; set; }
-
-        [ForeignKey("PreferenceCaste")]
-        public int PreferenceCasteMasterId { get; set; }
-        public CasteMaster PreferenceCaste { get; set; }
-
-        [ForeignKey("PreferenceSubCaste")]
-        public int PreferenceSubCasteMasterId { get; set; }
-        public SubCasteMaster PreferenceSubCaste { get; set; }
-
+        public ICollection<ProfilePreferenceCaste> ProfilePreferenceCastes { get; set; }
+        public ICollection<ProfilePreferenceEducations> ProfilePreferenceEducations { get; set; }
+        public ICollection<ProfilePreferenceReligion> ProfilePreferenceReligions { get; set; }
+        public ICollection<ProfilePreferenceSubCaste> ProfilePreferenceSubCastes { get; set; }
         public string PreferenceStar { get; set; }
         public string PreferenceRasi { get; set; }
         public string PreferenceChavvaiDosham { get; set; }

@@ -23,7 +23,7 @@ namespace addon365.FindMatch360.Controllers
 
         public IActionResult Index()
         {
-            var ProfileForList = _context.profileForMasters.ToList();
+            var ProfileForList = _context.ProfileForMasters.ToList();
             RegisterViewModel registerViewModel = new RegisterViewModel();
             registerViewModel.ProfileForList = ProfileForList;
             return View(registerViewModel);
