@@ -16,7 +16,6 @@ namespace addon365.FindMatch360.Models.Masters
         [ForeignKey("ParentCaste")]
         public int CasteMasterId { get; set; }
         public CasteMaster ParentCaste { get; set; }
-        public ICollection<CasteMaster> Castes { get; set; }
         public ICollection<ProfilePreferenceSubCaste> PreferenceSubCastes { get; set; }
         public ICollection<Profile> Profiles { get; set; }
 

@@ -12,11 +12,23 @@ namespace addon365.FindMatch360.Data
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ProfileForMaster>().HasData(
+               new ProfileForMaster { ProfileForId = 1, ProfileFor = "Myself" },
+               new ProfileForMaster { ProfileForId = 2, ProfileFor = "Daughter" },
+               new ProfileForMaster { ProfileForId = 3, ProfileFor = "Son" },
+               new ProfileForMaster { ProfileForId = 4, ProfileFor = "Sister" },
+               new ProfileForMaster { ProfileForId = 5, ProfileFor = "Brother" },
+               new ProfileForMaster { ProfileForId = 6, ProfileFor = "Relative" },
+               new ProfileForMaster { ProfileForId = 7, ProfileFor = "Friend" }
+              
+
+           );
             modelBuilder.Entity<DoshamMaster>().HasData(
                 new DoshamMaster{DoshamMasterId=1,DoshamName="Test"},
                 new DoshamMaster { DoshamMasterId = 2, DoshamName = "Test2" }
 
             );
+
             modelBuilder.Entity<ReligionMaster>().HasData(
                 new ReligionMaster { ReligionMasterId=1,ReligionName="Not Selected"},
                 new ReligionMaster { ReligionMasterId = 2, ReligionName = "Hindu" },
