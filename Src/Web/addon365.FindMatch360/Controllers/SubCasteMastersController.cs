@@ -60,15 +60,15 @@ namespace addon365.FindMatch360.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SubCasteMasterId,SubCasteName,CasteMasterId")] SubCasteMaster subCasteMaster)
+        public async Task<IActionResult> Create([Bind("SubCasteName,ParentCasteId")] SubCasteViewModel subCasteMaster)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(subCasteMaster);
+                _context.Add(new SubCasteMaster(){SubCasteName=subCasteMaster.SubCasteName,CasteMasterId=Convert.ToInt32(subCasteMaster.ParentCasteId)});
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CasteMasterId"] = new SelectList(_context.CasteMasters, "CasteMasterId", "CasteMasterId", subCasteMaster.CasteMasterId);
+            //ViewData["CasteMasterId"] = new SelectList(_context.CasteMasters, "CasteMasterId", "CasteMasterId", subCasteMaster.ParentCasteId);
             return View(subCasteMaster);
         }
 
