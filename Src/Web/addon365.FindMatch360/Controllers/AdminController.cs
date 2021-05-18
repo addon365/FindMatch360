@@ -35,9 +35,26 @@ namespace addon365.FindMatch360.Controllers
         [AllowAnonymous]
         public IActionResult CreateProfile()
         {
-            var lst = _context.ReligionMasters.ToList();
+            
             ProfileViewModel viewModel = new ProfileViewModel();
-            viewModel.Religions = lst;
+
+            viewModel.MaritalStatusMasters = _context.MaritalStatusMasters.ToList();
+            viewModel.Educations = _context.EducationMasters.ToList();
+            viewModel.EmployeedInLst = _context.EmployeedInMasters.ToList();
+
+            //Religion Details
+            viewModel.Religions = _context.ReligionMasters.ToList();
+            viewModel.MotherTongues = _context.MotherTongueMasters.ToList();
+            viewModel.Castes = _context.CasteMasters.ToList();
+            viewModel.SubCastes = _context.SubCasteMasters.ToList();
+            viewModel.Gothrams = _context.GothramMasters.ToList();
+
+            //Family Information
+            viewModel.FamilyStatuses = _context.FamilyStatusMasters.ToList();
+            viewModel.FamilyTypes = _context.FamilyTypeMasters.ToList();
+            viewModel.FamilyValues = _context.FamilyValuesMasters.ToList();
+
+
             return View(viewModel);
             
         }

@@ -167,25 +167,22 @@
 
                             <div class="form-group">
                                 <label for="sel1">EatingHabit</label>
-                                <select class="form-control" id="sel1">
-                                    <option>1 </option>
-                                    <option>2 </option>
+                                <select class="form-control" id="sel1" asp-for="@Model.EatingHabit" asp-items="@Html.GetEnumSelectList<EatingHabit>()">
+                                    <option>Select Eating Habit</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="sel1">Drinking</label>
-                                <select class="form-control" id="sel1">
-                                    <option>yes </option>
-                                    <option>No </option>
+                                <select class="form-control" id="sel1" asp-for="@Model.Drinking" asp-items="@Html.GetEnumSelectList<DrinkingHabit>()">
+                                    <option>Select Drinking Habit</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="sel1">Smoking</label>
-                                <select class="form-control" id="sel1">
-                                    <option>yes </option>
-                                    <option>No </option>
+                                <select class="form-control" id="sel1" asp-for="@Model.Smoking" asp-items="@Html.GetEnumSelectList<SmokingHabit>()">
+                                    <option>Select Smoking Habit</option>
                                 </select>
                             </div>
 
@@ -199,10 +196,9 @@
                             <h3>Education Details</h3>
                             <div class="form-group">
                                 <label for="sel1">Education Details</label>
-                                <select class="form-control" id="sel1">
+                                <select class="form-control" id="sel1" asp-for="@Model.HigherEducationsId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
                                     <option>Select Education Details</option>
-                                    <option>B.E </option>
-                                    <option>B.Tech </option>
+                                
                                 </select>
                             </div>
                         </div>
@@ -216,30 +212,28 @@
                                 <label>Religion </label>
                                 
 
-                                <select class="form-control" id="exampleSelect1"  asp-for="ReligionMasterId" asp-items="Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
+                                <select class="form-control" id="exampleSelect1"  asp-for="@Model.ReligionMasterId" asp-items="@Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
         </select>
                             </div>
 
                           
                             <div class="form-group">
                                 <label for="sel1">MotherTongue </label>
-                                <select class="form-control" >
+                                <select asp-for="@Model.MotherTongueMasterId" asp-items="@Model.MotherTongues.Select(m=>new SelectListItem{ Text = m.MotherTongueName, Value = m.MotherTongueMasterId.ToString() })" class="form-control" >
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="sel1">Castes </label>
-                                <select class="form-control" id="sel1">
+                                <select class="form-control" id="sel1" asp-for="@Model.CasteMasterId" asp-items="@Model.Castes.Select(m=>new SelectListItem{ Text = m.CasteName, Value = m.CasteMasterId.ToString() })">
                                     <option>Select Castes</option>
-                                    <option>Vaniyar </option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="sel1">SubCastes </label>
-                                <select class="form-control" id="sel1">
+                                <select class="form-control" id="sel1" asp-for="@Model.SubCasteMasterId" asp-items="@Model.SubCastes.Select(m=>new SelectListItem{ Text = m.SubCasteName, Value = m.SubCasteMasterId.ToString() })">
                                     <option>Select SubCastes</option>
-                                    <option>Vaniyar gundar</option>
                                 </select>
                             </div>
 
@@ -282,9 +276,8 @@
                             <div class="form-group">
                                 <label for="sel1">EmployeedIn </label>
                                 <select class="form-control" id="sel1">
-                                    <option>Select EmployeedIn</option>
-                                    <option>Software Developer </option>
-                                    <option>Account </option>
+                                    <option>Select Employeed In</option>
+                                   
                                 </select>
                             </div>
 

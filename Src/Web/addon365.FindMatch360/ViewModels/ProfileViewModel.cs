@@ -34,15 +34,15 @@ namespace addon365.FindMatch360.ViewModels
 
         #region Education Details
      
-        public int ProfileEducationsId { get; set; }
-        public IEnumerable<ProfileEducations> ProfileEducations { get; set; }
+        public int HigherEducationsId { get; set; }
+        public IEnumerable<EducationMaster> Educations { get; set; }
 
         #endregion
 
         #region JobDetails
         
         public int EmployeedInMasterId { get; set; }
-        public EmployeedInMaster EmployeedIn { get; set; }
+        public IEnumerable<EmployeedInMaster> EmployeedInLst { get; set; }
         public string WorkingAddress { get; set; }
         public string MonthlyRevenue { get; set; }
         #endregion
