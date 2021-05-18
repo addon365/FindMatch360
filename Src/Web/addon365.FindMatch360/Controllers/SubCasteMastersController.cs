@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using addon365.FindMatch360.Data;
 using addon365.FindMatch360.Models.Masters;
+using addon365.FindMatch360.ViewModels;
 
 namespace addon365.FindMatch360.Controllers
 {
@@ -48,8 +49,10 @@ namespace addon365.FindMatch360.Controllers
         // GET: SubCasteMasters/Create
         public IActionResult Create()
         {
-            ViewData["CasteMasterId"] = new SelectList(_context.CasteMasters, "CasteMasterId", "CasteMasterId");
-            return View();
+            SubCasteViewModel subCasteViewModel = new SubCasteViewModel();
+            subCasteViewModel.Castes = _context.CasteMasters.ToList();
+            //ViewData["Castes"] = new SelectList(_context.CasteMasters, "CasteMasterId", "CasteMasterId");
+            return View(subCasteViewModel);
         }
 
         // POST: SubCasteMasters/Create

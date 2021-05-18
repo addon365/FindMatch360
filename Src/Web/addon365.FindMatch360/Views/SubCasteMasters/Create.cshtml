@@ -1,4 +1,4 @@
-﻿@model addon365.FindMatch360.Models.Masters.SubCasteMaster
+﻿@model SubCasteViewModel
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -25,18 +25,23 @@
                 <h1>Create</h1>
                 <h4>SubCasteMaster</h4>
                 <hr />
-                        <form asp-action="Create">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="SubCasteName" class="control-label"></label>
-                                <input asp-for="SubCasteName" class="form-control" />
-                                <span asp-validation-for="SubCasteName" class="text-danger"></span>
-                            </div>
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="SubCasteName" class="control-label"></label>
+                        <input asp-for="SubCasteName" class="form-control" />
+                        <span asp-validation-for="SubCasteName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label"> Caste </label>
+                        <select id="pastted1" asp-for="ParentCasteId" asp-items="Model.Castes.Select(m=>new SelectListItem{ Text = m.CasteName, Value = m.CasteMasterId.ToString() })" class="form-control" />
+                       <span asp-validation-for="ParentCasteId" class="text-danger"></span>
+                    </div>
 
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </div>
-                        </form>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
                 <div>
                     <a asp-action="Index">Back to List</a>
                 </div>
