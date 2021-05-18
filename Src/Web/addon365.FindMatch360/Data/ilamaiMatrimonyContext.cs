@@ -39,7 +39,10 @@ namespace addon365.FindMatch360.Data
         public DbSet<ProfileForMaster> ProfileForMasters { get; set; }
         public DbSet<ReligionMaster> ReligionMasters{ get; set; }
         public DbSet<SubCasteMaster> SubCasteMasters { get; set; }
-        #endregion
+        public DbSet<CountryMaster> CountryMasters { get; set; }
+        public DbSet<StateMaster> StateMasters { get; set; }
+        public DbSet<CityMaster> CityMasters { get; set; }
+#endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

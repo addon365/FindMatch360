@@ -68,7 +68,7 @@
 
     <div class="container">
 
-        <form>
+        <form method="post">
 
             <div class="row">
                 <div class="col-xs-12 ">
@@ -89,17 +89,19 @@
                     <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <h2>Profile View</h2>
-
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
                             <div class="form-group">
                                 <label>Name:</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                                <input asp-for="@Model.Name" type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
                             </div>
 
                             <div class="form-group">
                                 <label for="sel1">Gender</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Male</option>
-                                    <option>female</option>
+                                <select class="form-control" id="sel1" asp-for="@Model.Gender" asp-items="@Html.GetEnumSelectList<Gender>()">
+                                    <option>Select Geneder</option>
+
                                 </select>
                             </div>
 
@@ -107,40 +109,38 @@
                             <div class="form-group">
                                 <label for="birthDate" class="control-label">Date of Birth*</label>
                                 <div class="col-sm-12">
-                                    <input type="date" id="birthDate" class="form-control">
+                                    <input asp-for="@Model.DateandTimeOfBirth" type="date" id="birthDate" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="sel1">MaritalStatusMasterId</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Signle</option>
-                                    <option>Myself</option>
+                                <label for="sel1">Marital Status</label>
+                                <select class="form-control" id="sel1" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="sel1">BodyType</label>
-                                <select class="form-control" id="sel1">
-                                    <option>slim </option>
-                                    <option>Average</option>
+                                <select class="form-control" id="sel1" asp-for="@Model.BodyType" asp-items="@Html.GetEnumSelectList<BodyType>()">
+                                    <option>Select Body Type </option>
+
                                 </select>
                             </div>
 
 
                             <div class="form-group">
                                 <label>Weight:</label>
-                                <input type="number" class="form-control" id="name" placeholder="Enter Weight" name="weight">
+                                <input asp-for="@Model.Weight" type="number" class="form-control" id="name" placeholder="Enter Weight" name="weight">
                             </div>
 
                             <div class="form-group">
                                 <label>Height:</label>
-                                <input type="number" class="form-control" id="name" placeholder="Enter Height" name="height">
+                                <input asp-for="@Model.Height" type="number" class="form-control" id="name" placeholder="Enter Height" name="height">
                             </div>
 
                             <div class="form-group">
                                 <label for="sel1">SkinColor</label>
-                                <select class="form-control" id="sel1">
+                                <select asp-for="@Model.SkinColor" class="form-control" id="sel1">
                                     <option>red </option>
                                     <option>Average</option>
                                 </select>
@@ -148,15 +148,10 @@
 
                             <div class="form-group">
                                 <label for="sel1">Disability</label>
-                                <select class="form-control" id="sel1">
+                                <select asp-for="@Model.DisabilityDescription" class="form-control" id="sel1">
                                     <option>Eye </option>
                                     <option>orthopedic </option>
                                 </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="comment">DisabilityDescription:</label>
-                                <textarea class="form-control" rows="5" id="comment"></textarea>
                             </div>
 
 
@@ -212,14 +207,16 @@
                                 <label>Religion </label>
                                 
 
-                                <select class="form-control" id="exampleSelect1"  asp-for="@Model.ReligionMasterId" asp-items="@Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
-        </select>
+                                <select class="form-control" id="exampleSelect1" asp-for="@Model.ReligionMasterId" asp-items="@Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
+                                    <option>Select Religion</option>
+                                </select>
                             </div>
 
                           
                             <div class="form-group">
                                 <label for="sel1">MotherTongue </label>
-                                <select asp-for="@Model.MotherTongueMasterId" asp-items="@Model.MotherTongues.Select(m=>new SelectListItem{ Text = m.MotherTongueName, Value = m.MotherTongueMasterId.ToString() })" class="form-control" >
+                                <select asp-for="@Model.MotherTongueMasterId" asp-items="@Model.MotherTongues.Select(m=>new SelectListItem{ Text = m.MotherTongueName, Value = m.MotherTongueMasterId.ToString() })" class="form-control">
+                                    <option>Select MotherTongue</option>
                                 </select>
                             </div>
 
@@ -239,21 +236,12 @@
 
                             <div class="form-group">
                                 <label for="sel1">Gothrams </label>
-                                <select class="form-control" id="sel1">
+                                <select class="form-control" id="sel1" asp-for="@Model.GothramMasterId" asp-items="@Model.Gothrams.Select(m=>new SelectListItem{ Text = m.GothramName, Value = m.GothramMasterId.ToString() })">
                                     <option>Select Gothrams</option>
-                                    <option>respam</option>
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <label for="sel1">Gothrams </label>
-                                <select class="form-control" id="sel1">
-                                    <option>Select Gothrams</option>
-                                    <option>respam</option>
-                                </select>
-                            </div>
-
-
+                           
 
 
 
@@ -275,7 +263,7 @@
 
                             <div class="form-group">
                                 <label for="sel1">EmployeedIn </label>
-                                <select class="form-control" id="sel1">
+                                <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
                                     <option>Select Employeed In</option>
                                    
                                 </select>
@@ -283,12 +271,12 @@
 
                             <div class="form-group">
                                 <label for="comment">WorkingAddress:</label>
-                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                                <textarea asp-for="@Model.WorkingAddress" class="form-control" rows="5" id="comment"></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label>MonthlyRevenue:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MonthlyRevenue" name="MonthlyRevenue">
+                                <input asp-for="@Model.MonthlyRevenue" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MonthlyRevenue" name="MonthlyRevenue">
                             </div>
 
 
@@ -299,41 +287,34 @@
                         <div id="nav-Horoscope" class="container tab-pane fade">
                             <br>
                             <h3>Horoscope Details</h3>
-                            <div class="form-group">
-                                <label for="sel1"> Select Horoscope Details </label>
-                                <select class="form-control" id="sel1">
-                                    <option>Hindu</option>
-                                    <option>muslim  </option>
-
-                                </select>
-                            </div>
+                  
 
                             <div class="form-group">
                                 <label>Star:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
+                                <input asp-for="@Model.Star" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
                             </div>
 
                             <div class="form-group">
                                 <label>Rasi:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
+                                <input asp-for="@Model.Rasi" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
                             </div>
 
                             <div class="form-group">
                                 <label>Lagnam:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
+                                <input asp-for="@Model.Lagnam" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
                             </div>
 
 
                             <div class="form-group">
-                                <label for="birthDate" class="control-label">Date of Birth*</label>
+                                <label  class="control-label">Date of Time*</label>
                                 <div class="col-sm-12">
-                                    <input type="date" id="birthDate" class="form-control">
+                                    <input asp-for="@Model.TimeofBirth" type="date" id="birthDate" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label>PlaceOfBirth:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
+                                <input asp-for="@Model.PlaceOfBirth" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
                             </div>
 
                         </div>
@@ -346,19 +327,29 @@
                             <h3>Family Information Details</h3>
                             <div class="form-group">
                                 <label for="sel1"> Select FamilyStatus Details </label>
-                                <select class="form-control" id="sel1">
-                                    <option>Hight</option>
-                                    <option>Average  </option>
+                                <select class="form-control" id="sel1" asp-for="@Model.FamilyStatusMasterId" asp-items="@Model.FamilyStatuses.Select(m=>new SelectListItem{ Text = m.FamilStatusName, Value = m.FamilyStatusMasterId.ToString() })">
+                                    <option>Select Family Status </option>
+
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">Family Types Details </label>
+                                <select class="form-control" id="sel1" asp-for="@Model.FamilyTypeMasterId" asp-items="@Model.FamilyTypes.Select(m=>new SelectListItem{ Text = m.FamilyTypeName, Value = m.FamilyTypeMasterId.ToString() })">
+                                    <option>Select Family Values</option>
+
 
                                 </select>
                             </div>
 
 
+
                             <div class="form-group">
-                                <label for="sel1"> Select FamilyValues Details </label>
-                                <select class="form-control" id="sel1">
-                                    <option>Hight</option>
-                                    <option>Average  </option>
+                                <label for="sel1">Family Values Details </label>
+                                <select class="form-control" id="sel1" asp-for="@Model.FamilyValuesMasterId" asp-items="@Model.FamilyValues.Select(m=>new SelectListItem{ Text = m.FamilyValuesName, Value = m.FamilyValuesMasterId.ToString() })">
+                                    <option>Select Family Values</option>
+
 
                                 </select>
                             </div>
@@ -368,98 +359,95 @@
 
                             <div class="form-group">
                                 <label>FatherName:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter FatherName" name="MonthlyRevenue">
+                                <input asp-for="@Model.FatherName" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter FatherName" name="MonthlyRevenue">
                             </div>
 
                             <div class="form-group">
                                 <label>FatherQualification:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter FatherQualification" name="FatherQualification">
+                                <input asp-for="@Model.FatherQualification" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter FatherQualification" name="FatherQualification">
                             </div>
 
                             <div class="form-group">
                                 <label>FatherJob:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter FatherJob" name="FatherQualification">
+                                <input asp-for="@Model.FatherJob" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter FatherJob" name="FatherQualification">
                             </div>
 
                             <div class="form-group">
                                 <label>MotherName:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter MotherName" name="FatherQualification">
+                                <input asp-for="@Model.MotherName" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter MotherName" name="FatherQualification">
                             </div>
 
 
                             <div class="form-group">
                                 <label>MotherQualification:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter MotherQualification" name="FatherQualification">
+                                <input asp-for="@Model.MotherQualification" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter MotherQualification" name="FatherQualification">
                             </div>
 
                             <div class="form-group">
                                 <label>MotherJob:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter MotherJob" name="FatherQualification">
+                                <input asp-for="@Model.MotherQualification" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter MotherJob" name="FatherQualification">
                             </div>
 
                             <div class="form-group">
                                 <label>NativeDistrict:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter NativeDistrict" name="FatherQualification">
+                                <input asp-for="@Model.NativeDistrict" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter NativeDistrict" name="FatherQualification">
                             </div>
 
                             <div class="form-group">
                                 <label>ContactPerson:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter ContactPerson" name="FatherQualification">
+                                <input asp-for="@Model.ContactPerson" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter ContactPerson" name="FatherQualification">
                             </div>
 
                             <div class="form-group">
                                 <label for="comment">Address:</label>
-                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                                <textarea asp-for="@Model.Address" class="form-control" rows="5" id="comment"></textarea>
                             </div>
 
 
                             <div class="form-group">
                                 <label>PhoneNo:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PhoneNo" name="MonthlyRevenue">
+                                <input asp-for="@Model.PhoneNo" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PhoneNo" name="MonthlyRevenue">
                             </div>
 
                             <div class="form-group">
                                 <label>MobileNo:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                                <input asp-for="@Model.MobileNo" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
                             </div>
 
                             <div class="form-group">
                                 <label>EmailId:</label>
-                                <input type="email" class="form-control" id="MonthlyRevenue" placeholder="Enter EmailId" name="MonthlyRevenue">
+                                <input asp-for="@Model.EmailId" type="email" class="form-control" id="MonthlyRevenue" placeholder="Enter EmailId" name="MonthlyRevenue">
                             </div>
 
 
 
-                            <div class="form-group">
-                                <label>MobileNo:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
-                            </div>
+                           
 
                             <div class="form-group">
                                 <label>BirthNumberinFamily:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                                <input asp-for="@Model.BirthNumberinFamily" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
                             </div>
 
 
                             <div class="form-group">
                                 <label>Brothers:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                                <input asp-for="@Model.Brothers" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
                             </div>
 
                             <div class="form-group">
                                 <label>MarriedBrothers:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                                <input asp-for="@Model.MarriedBrothers" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
                             </div>
 
 
                             <div class="form-group">
                                 <label>Sisters:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                                <input asp-for="@Model.Sisters" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
                             </div>
 
                             <div class="form-group">
                                 <label>MarriedSisters:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
+                                <input asp-for="@Model.MarriedSisters" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
                             </div>
 
                         </div>
@@ -473,59 +461,14 @@
 
                             <div class="form-group">
                                 <label>FromAge:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter FromAge" name="MonthlyRevenue">
+                                <input asp-for="@Model.FromAge" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter FromAge" name="MonthlyRevenue">
                             </div>
 
                             <div class="form-group">
                                 <label>UptoAge:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter UptoAge" name="MonthlyRevenue">
+                                <input asp-for="@Model.UptoAge" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter UptoAge" name="MonthlyRevenue">
                             </div>
-                            <div class="form-group">
-                                <label>PreferenceReligion:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceReligion" name="MonthlyRevenue">
-                            </div>
-
-                            <div class="form-group">
-                                <label>PreferenceMotherTongue:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceMotherTongue" name="MonthlyRevenue">
-                            </div>
-
-
-                            <div class="form-group">
-                                <label> PreferenceCaste:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter  PreferenceCaste" name="MonthlyRevenue">
-                            </div>
-
-                            <div class="form-group">
-                                <label>PreferenceSubCaste:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceSubCaste" name="MonthlyRevenue">
-                            </div>
-
-
-                            <div class="form-group">
-                                <label>PreferenceStar:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceStar" name="MonthlyRevenue">
-                            </div>
-
-                            <div class="form-group">
-                                <label>PreferenceStar:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceStar" name="MonthlyRevenue">
-                            </div>
-
-                            <div class="form-group">
-                                <label>PreferenceRasis:</label>
-                                <input type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceRasi" name="MonthlyRevenue">
-                            </div>
-
-                            <div class="form-group">
-                                <label>PreferenceChavvaiDosham:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceChavvaiDosham" name="MonthlyRevenue">
-                            </div>
-
-                            <div class="form-group">
-                                <label>PreferenceQualification:</label>
-                                <input type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter PreferenceQualification" name="MonthlyRevenue">
-                            </div>
+                            
                         </div>
 
                     </div>

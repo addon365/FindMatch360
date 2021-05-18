@@ -44,6 +44,19 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         [ForeignKey("EmployeedIn")]
         public int? EmployeedInMasterId { get; set; }
         public EmployeedInMaster EmployeedIn { get; set; }
+
+        [ForeignKey("WorkingCountry")]
+        public int? WorkingCountryMasterId { get; set; }
+        public CountryMaster WorkingCountry { get; set; }
+
+        [ForeignKey("WorkingState")]
+        public int? WorkingStateMasterId { get; set; }
+        public StateMaster WorkingState { get; set; }
+
+        [ForeignKey("WorkingCity")]
+        public int? WorkingCityMasterId { get; set; }
+        public CityMaster WorkingCity { get; set; }
+
         public string WorkingAddress { get; set; }
         public string MonthlyRevenue { get; set; }
         #endregion

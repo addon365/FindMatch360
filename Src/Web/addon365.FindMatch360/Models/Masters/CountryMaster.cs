@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace addon365.FindMatch360.Models.Masters
 {
-    public class OccupationMaster
+    public class CountryMaster
     {
         [Key]
-        public int OccupationMasterId { get; set; }
-        public string OccupationName { get; set; }
+        public int CountryMasterId { get; set; }
+        public string CountryName { get; set; }
+        public ICollection<StateMaster> States { get; set; }
     }
 }

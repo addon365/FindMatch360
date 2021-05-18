@@ -14,9 +14,10 @@ namespace addon365.FindMatch360.ViewModels
 
         #region Person basic Details
         public String Name { get; set; }
+        //https://www.youtube.com/watch?v=QpJvqiHl1Fo 
         public byte Gender { get; set; }
         public DateTime DateandTimeOfBirth { get; set; }
-        public int MaritalStatusMasterId { get; set; }
+        public string MaritalStatusMasterId { get; set; }
         public IEnumerable<MaritalStatusMaster> MaritalStatusMasters { get; set; }
         public byte BodyType { get; set; }
         public string Weight { get; set; }
@@ -34,14 +35,14 @@ namespace addon365.FindMatch360.ViewModels
 
         #region Education Details
      
-        public int HigherEducationsId { get; set; }
+        public string HigherEducationsId { get; set; }
         public IEnumerable<EducationMaster> Educations { get; set; }
 
         #endregion
 
         #region JobDetails
         
-        public int EmployeedInMasterId { get; set; }
+        public string EmployeedInMasterId { get; set; }
         public IEnumerable<EmployeedInMaster> EmployeedInLst { get; set; }
         public string WorkingAddress { get; set; }
         public string MonthlyRevenue { get; set; }
@@ -49,16 +50,16 @@ namespace addon365.FindMatch360.ViewModels
 
         #region ReligionDetails
      
-        public int ReligionMasterId { get; set; }
+        public string ReligionMasterId { get; set; }
         public IEnumerable<ReligionMaster> Religions { get; set; }
 
-        public int MotherTongueMasterId { get; set; }
+        public string MotherTongueMasterId { get; set; }
         public IEnumerable<MotherTongueMaster> MotherTongues { get; set; }
-        public int CasteMasterId { get; set; }
+        public string CasteMasterId { get; set; }
         public IEnumerable<CasteMaster> Castes { get; set; }
-        public int SubCasteMasterId { get; set; }
+        public string SubCasteMasterId { get; set; }
         public IEnumerable<SubCasteMaster> SubCastes { get; set; }
-        public int GothramMasterId { get; set; }
+        public string GothramMasterId { get; set; }
         public IEnumerable<GothramMaster> Gothrams { get; set; }
         #endregion
 
@@ -72,11 +73,11 @@ namespace addon365.FindMatch360.ViewModels
 
         #region Family Information
 
-        public int FamilyStatusMasterId { get; set; }
+        public string FamilyStatusMasterId { get; set; }
         public IEnumerable<FamilyStatusMaster> FamilyStatuses { get; set; }
-        public int FamilyTypeMasterId { get; set; }
+        public string FamilyTypeMasterId { get; set; }
         public IEnumerable<FamilyTypeMaster> FamilyTypes { get; set; }
-        public int FamilyValuesMasterId { get; set; }
+        public string FamilyValuesMasterId { get; set; }
         public IEnumerable<FamilyValuesMaster> FamilyValues { get; set; }
         public string FatherName { get; set; }
         public string FatherQualification { get; set; }
@@ -102,14 +103,7 @@ namespace addon365.FindMatch360.ViewModels
         #region Preferences
         public byte FromAge { get; set; }
         public byte UptoAge { get; set; }
-        public int PreferenceReligionMasterId { get; set; }
-        public int PreferenceMotherTongueMasterId { get; set; }
-        public int PreferenceCasteMasterId { get; set; }
-        public int PreferenceSubCasteMasterId { get; set; }
-        public string PreferenceStar { get; set; }
-        public string PreferenceRasi { get; set; }
-        public string PreferenceChavvaiDosham { get; set; }
-        public string PreferenceQualification { get; set; }
+      
 
         #endregion
     }

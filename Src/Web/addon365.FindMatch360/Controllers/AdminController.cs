@@ -1,4 +1,5 @@
 ﻿using addon365.FindMatch360.Data;
+using addon365.FindMatch360.Models.MatrimonyProfileModels;
 using addon365.FindMatch360.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +33,7 @@ namespace addon365.FindMatch360.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+
         public IActionResult CreateProfile()
         {
             
@@ -57,6 +58,27 @@ namespace addon365.FindMatch360.Controllers
 
             return View(viewModel);
             
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateProfile(ProfileViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var ProfileDbModel = new Profile
+                {
+                    MatrimonyProfileId = Guid.NewGuid(),
+                    Name = model.Name,
+                    Gender = model.Gender
+                 
+            };
+                _context.Add(ProfileDbModel);
+                await _context.SaveChangesAsync();
+              
+            }
+
+
+            return View(model);
+
         }
     }
 }
