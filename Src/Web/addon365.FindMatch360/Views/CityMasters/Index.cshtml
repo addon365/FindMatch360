@@ -1,41 +1,62 @@
 ﻿@model IEnumerable<addon365.FindMatch360.Models.Masters.CityMaster>
-
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CityName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State.StateName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CityMasterId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CityMasterId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CityMasterId">Delete</a>
-            </td>
-        </tr>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-    </tbody>
-</table>
+<div class="row page-header">
+    <div class="col-lg-6 align-self-center ">
+        <h2>Dashboard</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Account" asp-action="admin">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item active">CityMasters</li>
+        </ol>
+    </div>
+    <div class="col-lg-6 align-self-center text-right">
+        <a asp-action="Create" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Create New</a>
+    </div>
+</div>
+<section class="main-content">
+    <div class="row">
+        <div class="col-md-12 card">
+            <!--
+            <p>
+                <a asp-action="Create">Create New</a>
+            </p>--->
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CityName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.State)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CityName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.State.StateName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.CityMasterId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.CityMasterId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.CityMasterId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

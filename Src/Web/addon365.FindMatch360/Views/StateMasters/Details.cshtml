@@ -3,28 +3,49 @@
 @{
     ViewData["Title"] = "Details";
 }
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
-<h1>Details</h1>
 
-<div>
-    <h4>StateMaster</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StateName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StateName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Country.CountryName)
-        </dd>
-    </dl>
+
+<div class="row page-header">
+    <div class="col-lg-6 align-self-center ">
+        <h2>Dashboard</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Account" asp-action="admin">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item active">StateMaster</li>
+            <li class="breadcrumb-item active">Details</li>
+        </ol>
+    </div>
+    <div class="col-lg-6 align-self-center text-right">
+        <a asp-action="Create" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Create New</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.StateMasterId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<section class="main-content">
+    <div class="row">
+        <div class="col-md-12 card">
+                <h4>StateMaster</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.StateName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.StateName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Country)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Country.CountryName)
+                    </dd>
+                </dl>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.StateMasterId">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</section>
