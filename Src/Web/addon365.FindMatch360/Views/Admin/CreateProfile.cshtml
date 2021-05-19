@@ -71,7 +71,13 @@
         <form method="post">
 
             <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary float-right" />
+                    </div>
+                </div>
                 <div class="col-xs-12 ">
+                   
                     <nav>
                         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile View</a>
@@ -82,16 +88,14 @@
                             <a class="nav-item nav-link" id="nav-Horoscope-tab" data-toggle="tab" href="#nav-Horoscope" role="tab" aria-controls="nav-Horoscope" aria-selected="false">Horoscope</a>
                             <a class="nav-item nav-link" id="nav-Family-tab" data-toggle="tab" href="#nav-Family" role="tab" aria-controls="nav-Family" aria-selected="false">Family</a>
                             <a class="nav-item nav-link" id="nav-Preferences-tab" data-toggle="tab" href="#nav-Preferences" role="tab" aria-controls="nav-Preferences" aria-selected="false">Preferences</a>
-                            
+
 
                         </div>
                     </nav>
                     <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <h2>Profile View</h2>
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </div>
+
                             <div class="form-group">
                                 <label>Name:</label>
                                 <input asp-for="@Model.Name" type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
@@ -193,7 +197,7 @@
                                 <label for="sel1">Education Details</label>
                                 <select class="form-control" id="sel1" asp-for="@Model.HigherEducationsId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
                                     <option>Select Education Details</option>
-                                
+
                                 </select>
                             </div>
                         </div>
@@ -205,14 +209,14 @@
 
                             <div class="form-group">
                                 <label>Religion </label>
-                                
+
 
                                 <select class="form-control" id="exampleSelect1" asp-for="@Model.ReligionMasterId" asp-items="@Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
                                     <option>Select Religion</option>
                                 </select>
                             </div>
 
-                          
+
                             <div class="form-group">
                                 <label for="sel1">MotherTongue </label>
                                 <select asp-for="@Model.MotherTongueMasterId" asp-items="@Model.MotherTongues.Select(m=>new SelectListItem{ Text = m.MotherTongueName, Value = m.MotherTongueMasterId.ToString() })" class="form-control">
@@ -241,7 +245,7 @@
                                 </select>
                             </div>
 
-                           
+
 
 
 
@@ -265,8 +269,13 @@
                                 <label for="sel1">EmployeedIn </label>
                                 <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
                                     <option>Select Employeed In</option>
-                                   
+
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>MonthlyRevenue:</label>
+                                <input asp-for="@Model.MonthlyRevenue" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MonthlyRevenue" name="MonthlyRevenue">
                             </div>
 
                             <div class="form-group">
@@ -275,9 +284,29 @@
                             </div>
 
                             <div class="form-group">
-                                <label>MonthlyRevenue:</label>
-                                <input asp-for="@Model.MonthlyRevenue" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MonthlyRevenue" name="MonthlyRevenue">
+                                <label for="sel1">Country </label>
+                                <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
+                                    <option>Select Employeed In</option>
+
+                                </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="sel1">State </label>
+                                <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
+                                    <option>Select Employeed In</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1">City </label>
+                                <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
+                                    <option>Select Employeed In</option>
+
+                                </select>
+                            </div>
+
 
 
                         </div>
@@ -287,7 +316,7 @@
                         <div id="nav-Horoscope" class="container tab-pane fade">
                             <br>
                             <h3>Horoscope Details</h3>
-                  
+
 
                             <div class="form-group">
                                 <label>Star:</label>
@@ -306,7 +335,7 @@
 
 
                             <div class="form-group">
-                                <label  class="control-label">Date of Time*</label>
+                                <label class="control-label">Date of Time*</label>
                                 <div class="col-sm-12">
                                     <input asp-for="@Model.TimeofBirth" type="date" id="birthDate" class="form-control">
                                 </div>
@@ -421,7 +450,7 @@
 
 
 
-                           
+
 
                             <div class="form-group">
                                 <label>BirthNumberinFamily:</label>
@@ -468,7 +497,7 @@
                                 <label>UptoAge:</label>
                                 <input asp-for="@Model.UptoAge" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter UptoAge" name="MonthlyRevenue">
                             </div>
-                            
+
                         </div>
 
                     </div>
