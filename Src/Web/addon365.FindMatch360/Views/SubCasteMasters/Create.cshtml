@@ -10,12 +10,11 @@
         <h2>Dashboard</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-controller="Account" asp-action="admin">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
-            <li class="breadcrumb-item active">Member Information</li>
+            <li class="breadcrumb-item active"><a asp-action="Index">subcasteMaster</a></li>
         </ol>
     </div>
     <div class="col-lg-6 align-self-center text-right">
-        <a asp-action="Create" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Create New</a>
+        <a asp-action="Index" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-arrow-left"></i> Back to List</a>
     </div>
 </div>
 <section class="main-content">
@@ -43,7 +42,7 @@
                     </div>
                 </form>
                 <div>
-                    <a asp-action="Index">Back to List</a>
+                  
                 </div>
         </div>
     </div>
