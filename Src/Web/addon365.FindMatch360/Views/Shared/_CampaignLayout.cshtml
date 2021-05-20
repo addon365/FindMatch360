@@ -1,0 +1,99 @@
+﻿@inject SignInManager<ApplicationUser> signInManager;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - addon365.FindMatch360</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="header-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="logo">
+                            <img src="~/images/logo.png" class="img-fluid" />
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+     
+
+
+    </header>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+    
+
+
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-bottom-left">
+
+                        <p>&#169;2021<a href="https://www.addon365.com/">addon365</a> software company. All Right Reserved.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="footer-bottom-right">
+                        <ul>
+                            <li>
+                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                            </li>
+
+                            <li>
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+
+                            </li>
+
+
+                            <li>
+                                <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('.input-daterange').datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+                calendarWeeks: true,
+                clearBtn: true,
+                disableTouchKeyboard: true
+            });
+
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+
+
+
+</body>
+</html>
