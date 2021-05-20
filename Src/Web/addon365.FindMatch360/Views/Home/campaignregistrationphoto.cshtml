@@ -1,0 +1,61 @@
+﻿@page
+@model addon365.FindMatch360.Views.Home.campaignregistrationphotoModel
+@{
+    Layout = "~/Views/Shared/_CampaignLayout.cshtml";
+}
+<div class="campaignregistor-form-bg">
+    <div class="container">
+        <div class="row" id="campaignregistor-wrapper">
+            <div class="col-md-4" id="campignregistration-left">
+                <div class="pt-3 pb-3  text-center">
+                    <img src="~/images/profile.png" class="img-fluid" id="img-living">
+                </div>
+            </div>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-5" id="campignregistration-right">
+                <div class="signup-form">
+                    <form method="post">
+                        <p>Add Photo Now:</p>
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="customFile" name="filename">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                        <div class="form-group">
+                            <a>
+                                <button type="submit" class="btn btn-primary btn-block btn-lg Continue-bg">Continue</button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <hr class="omb_hrOr">
+                    </div>
+                    <div class="col-md-1">
+                        <span class="omb_spanOr">or</span>
+                    </div>
+                    <div class="col-md-5">
+                        <hr class="omb_hrOr">
+                    </div>
+
+                    <div class="media social-media">
+                        <a> <i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                        <div class="media-body pl-3">
+                            <h6>WhatsApp Your Photos to +91 7824831681 <br /> and we will upload them instantly</h6>
+                        </div>
+                    </div>
+
+                    <div class="media social-media">
+                        <a> <i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <div class="media-body pl-4">
+                            <h6>Select Photos from your Facebook account <br /> ( we will never post anything on your wall)</h6>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

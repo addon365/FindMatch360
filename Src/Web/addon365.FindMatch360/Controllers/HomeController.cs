@@ -122,7 +122,11 @@ namespace addon365.FindMatch360.Controllers
 
 
 
-      
+        public IActionResult campaignregistrationphoto()
+        {
+            return View();
+        }
+
         public IActionResult Search()
         {
             return View();

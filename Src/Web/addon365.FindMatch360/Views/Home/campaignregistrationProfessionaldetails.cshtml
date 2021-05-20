@@ -4,229 +4,118 @@
 }
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@{
+    Layout = "~/Views/Shared/_CampaignLayout.cshtml";
+}
+
+<div class="campaignregistor-form-bg">
+    <div class="container">
+        <div class="row" id="campaignregistor-wrapper">
+            <div class="col-md-5" id="campignregistration-left">
+                <div class="campignregistration-title">
+                    <img src="~/images/reg-3.png" class="img-fluid" id="img-living">
+                    <div class="campignregistration-title-bg">
+
+                        <h5>
+                            Thousands of Success Stories! Yours could be next.
 
 
-    <style>
-        body {
-            color: #999;
-            background: #f5f5f5;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .form-control, .form-control:focus, .input-group-addon {
-            border-color: #e1e1e1;
-            border-radius: 0;
-        }
-
-        .signup-form {
-            width: 390px;
-            margin: 0 auto;
-            padding: 30px 0;
-        }
-
-            .signup-form h2 {
-                color: #636363;
-                margin: 0 0 15px;
-                text-align: center;
-            }
-
-            .signup-form .lead {
-                font-size: 14px;
-                margin-bottom: 30px;
-                text-align: center;
-            }
-
-            .signup-form form {
-                border-radius: 1px;
-                margin-bottom: 15px;
-                background: #fff;
-                border: 1px solid #f3f3f3;
-                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-                padding: 30px;
-            }
-
-            .signup-form .form-group {
-                margin-bottom: 20px;
-            }
-
-            .signup-form label {
-                font-weight: normal;
-                font-size: 13px;
-            }
-
-            .signup-form .form-control {
-                min-height: 38px;
-                box-shadow: none !important;
-                border-width: 0 0 1px 0;
-            }
-
-            .signup-form .input-group-addon {
-                max-width: 42px;
-                text-align: center;
-                background: none;
-                border-bottom: 1px solid #e1e1e1;
-                padding-left: 5px;
-            }
-
-            .signup-form .btn, .signup-form .btn:active {
-                font-size: 16px;
-                font-weight: bold;
-                background: #50b533 !important;
-                border-radius: 3px;
-                border: none;
-                min-width: 140px;
-            }
-
-                .signup-form .btn:hover, .signup-form .btn:focus {
-                    background: #179b81 !important;
-                }
-
-            .signup-form a {
-                color: #19aa8d;
-                text-decoration: none;
-            }
-
-                .signup-form a:hover {
-                    text-decoration: underline;
-                }
-
-            .signup-form .fa {
-                font-size: 21px;
-                position: relative;
-                top: 8px;
-            }
-
-            .signup-form .fa-paper-plane {
-                font-size: 17px;
-            }
-
-            .signup-form .fa-check {
-                color: #fff;
-                left: 9px;
-                top: 18px;
-                font-size: 7px;
-                position: absolute;
-            }
-    </style>
-</head>
-<body>
-    <div class="campaignregistor-form-bg">
-        <div class="container">
-            <div class="row" id="campaignregistor-wrapper">
-                <div class="col-md-5" id="campignregistration-left">
-                    <div class="campignregistration-title">
-                        <img src="~/images/reg-3.png" class="img-fluid" id="img-living">
-                        <div class="campignregistration-title-bg">
-                            <h5>
-                                Thousands of Success Stories! Yours could be next.
-
-
-                            </h5>
-                        </div>
+                        </h5>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-7" id="campignregistration-right">
-                    <div class="signup-form">
-                        <form method="post">
-                            <h2>Create Account</h2>
-                            <p class="lead">
-                                Personal details get you the right matches
+            <div class="col-md-7" id="campignregistration-right">
+                <div class="signup-form">
+                    <form method="post">
+                        <h5 class="float-right">Great! You have completed <span class="precentage">60%</span></h5>
+                        <h2>Create Account</h2>
+                        <p class="lead"> Not only charming and caring. Most importantly - right for you! </p>
+                        <div class="form-group">
+                            <label for="sel1">Marital Status:</label>
+                            <select class="form-control" id="sel1">
+                                <option value="0">Select</option>
+                                <option value="1">Never Married	</option>
+                                <option value="2">Widowed</option>
+                                <option value="3">Divorced</option>
+                                <option value="3">Awaiting divorce</option>
+                            </select>
+                        </div>
 
-                            </p>
-                            <div class="form-group">
-                                <label for="sel1">Marital Status:</label>
-                                <select class="form-control" id="sel1">
-                                    <option value="0">Select</option>
-                                    <option value="1">Never Married	</option>
-                                    <option value="2">Widowed</option>
-                                    <option value="3">Divorced</option>
-                                    <option value="3">Awaiting divorce</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="sel1">
+                                Height:
+                            </label>
+                            <select class="form-control" id="sel1">
+                                <option value="0">Feet / Inches  </option>
+                                <option value="1">4ft 6in / 137 cms</option>
+                                <option value="2">4ft 7in / 139 cms</option>
+                                <option value="3">4ft 8in / 142 cms</option>
+                                <option value="3">4ft 9in / 144 cms</option>
+                                <option value="3">4ft 8in / 142 cms</option>
+                                <option value="3">4ft 9in / 144 cms</option>
+                            </select>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="sel1">
-                                    Height:
-                                </label>
-                                <select class="form-control" id="sel1">
-                                    <option value="0">Feet / Inches  </option>
-                                    <option value="1">4ft 6in / 137 cms</option>
-                                    <option value="2">4ft 7in / 139 cms</option>
-                                    <option value="3">4ft 8in / 142 cms</option>
-                                    <option value="3">4ft 9in / 144 cms</option>
-                                    <option value="3">4ft 8in / 142 cms</option>
-                                    <option value="3">4ft 9in / 144 cms</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="sel1">
+                                Family Status:
+                            </label>
+                            <select class="form-control" id="sel1">
+                                <option value="0">Middle class</option>
+                                <option value="1">Upper middle class</option>
+                                <option value="2">Rich</option>
+                                <option value="3">Affluent</option>
+                                <option value="3">4ft 9in / 144 cms</option>
+                                <option value="3">4ft 8in / 142 cms</option>
+                                <option value="3">4ft 9in / 144 cms</option>
+                            </select>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="sel1">
-                                    Family Status:
-                                </label>
-                                <select class="form-control" id="sel1">
-                                    <option value="0">Middle class</option>
-                                    <option value="1">Upper middle class</option>
-                                    <option value="2">Rich</option>
-                                    <option value="3">Affluent</option>
-                                    <option value="3">4ft 9in / 144 cms</option>
-                                    <option value="3">4ft 8in / 142 cms</option>
-                                    <option value="3">4ft 9in / 144 cms</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="sel1">
-                                    Family Type:
-                                </label>
-                                <select class="form-control" id="sel1">
-                                    <option value="0">Joint</option>
-                                    <option value="1">Nuclear</option>
-                                </select>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="sel1">
-                                    Family Values:
-                                </label>
-                                <select class="form-control" id="sel1">
-                                    <option value="0">Orthodox</option>
-                                    <option value="1">Traditional</option>
-                                    <option value="0">Moderate</option>
-                                    <option value="1">Liberal</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="sel1">
+                                Family Type:
+                            </label>
+                            <select class="form-control" id="sel1">
+                                <option value="0">Joint</option>
+                                <option value="1">Nuclear</option>
+                            </select>
+                        </div>
 
 
-                            <div class="form-group">
-                                <label for="sel1">
-                                    Normal:
-                                </label>
-                                <select class="form-control" id="sel1">
-                                    <option value="0">Physically challenged</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <a asp-controller="Account" asp-action="campaignregistrationpersonaldetails">
-                                    <button type="submit" class="btn btn-primary btn-block btn-lg">Continue</button>
-                                </a>
-                            </div>
-                        </form>
+                        <div class="form-group">
+                            <label for="sel1">
+                                Family Values:
+                            </label>
+                            <select class="form-control" id="sel1">
+                                <option value="0">Orthodox</option>
+                                <option value="1">Traditional</option>
+                                <option value="0">Moderate</option>
+                                <option value="1">Liberal</option>
+                            </select>
+                        </div>
 
-                    </div>
+
+                        <div class="form-group">
+                            <label for="sel1">
+                                Any Disability:
+                            </label>
+                            <select class="form-control" id="sel1">
+                                <option value="0">Physically challenged</option>
+                                <option value="0">Normal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <a>
+                                <button type="submit" class="btn btn-primary btn-block btn-lg Continue-bg">Continue</button>
+                            </a>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
-
-</body>
-</html>
+</div>
 
 

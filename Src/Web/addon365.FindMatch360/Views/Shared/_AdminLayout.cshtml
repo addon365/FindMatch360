@@ -361,12 +361,12 @@
                         <li class="nav-item">
                             <!-- <a class="nav-link" asp-controller="Admin" asp-action="PaidList" aria-expanded="false"><i class="fa fa-codepen"></i> <span class="toggle-none">Paid List <span class="fa arrow"></span></span></a>-->
                             <!---- <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-        <li class="nav-item"><a class="nav-link" href="app-calendar.html">Calendar</a></li>
-        <li class="nav-item"><a class="nav-link" href="app-chat.html">Chat App</a></li>
-        <li class="nav-item"><a class="nav-link" href="app-ticket.html">Support Ticket</a></li>
-        <li class="nav-item"><a class="nav-link" href="app-contact.html">Contact Grid</a></li>
-        <li class="nav-item"><a class="nav-link" href="app-contact-detail.html">Contact Detail</a></li>
-    </ul>-->
+            <li class="nav-item"><a class="nav-link" href="app-calendar.html">Calendar</a></li>
+            <li class="nav-item"><a class="nav-link" href="app-chat.html">Chat App</a></li>
+            <li class="nav-item"><a class="nav-link" href="app-ticket.html">Support Ticket</a></li>
+            <li class="nav-item"><a class="nav-link" href="app-contact.html">Contact Grid</a></li>
+            <li class="nav-item"><a class="nav-link" href="app-contact-detail.html">Contact Detail</a></li>
+        </ul>-->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Admin" asp-action="paymentoptions" aria-expanded="false"><i class="fa fa-envelope-open"></i> <span class="toggle-none">premium package<span class="fa arrow"></span></span></a>
@@ -418,18 +418,30 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-bar-chart"></i>
-                            <span class="toggle-none">Master <span class="fa arrow"></span> 
-                                <span class="badge badge-pill badge-success float-right mr-2">7</span></span></a>
+                            <a class="nav-link" href="javascript: void(0);" aria-expanded="false">
+                                <i class="fa fa-bar-chart"></i>
+                                <span class="toggle-none">
+                                    Master <span class="fa arrow"></span>
+                                    <span class="badge badge-pill badge-success float-right mr-2">7</span>
+                                </span>
+                            </a>
                             <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-                                <li class="nav-item"><a class="nav-link" asp-controller="CasteMasters"asp-action="Index">caste</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="CasteMasters" asp-action="Index">caste</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="SubCasteMasters" asp-action="Index">sub caste</a></li>
-                                <li class="nav-item"><a class="nav-link" asp-controller="CountryMasters"asp-action="Index">Country</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="CountryMasters" asp-action="Index">Country</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="StateMasters" asp-action="Index">state</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="CityMasters" asp-action="Index">City</a></li>
                             </ul>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-table"></i> <span class="toggle-none">Admin <span class="fa arrow"></span></span></a>
+                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+            <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Index">User</a></li>
+            <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="ListRoles">User Role</a></li>
+          
+                            </ul>
+                        </li>
 
 
 

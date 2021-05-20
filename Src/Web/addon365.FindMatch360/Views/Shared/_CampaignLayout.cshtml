@@ -17,18 +17,19 @@
         <div class="header-bg">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-2">
-                        <div class="logo">
-                            <img src="~/images/logo.png" class="img-fluid" />
+                    <div class="col-md-6">
+                        <div class="logo-word">
+                            <ul>
+                                <li><a href="index.html"> <img src="~/images/logo.png" class="img-fluid" /> </a></li>
+                                <li><a><span class="ilamai-logo">ilamai matrimony</span></a></li>
+                            </ul>
+                          
                         </div>
                     </div>
                   
                 </div>
             </div>
         </div>
-     
-
-
     </header>
 
     <main role="main" class="pb-3">
@@ -44,7 +45,7 @@
                 <div class="col-md-6">
                     <div class="footer-bottom-left">
 
-                        <p>&#169;2021<a href="https://www.addon365.com/">addon365</a> software company. All Right Reserved.</p>
+                        <p><a href="https://www.addon365.com/">Copyright &#169;	2021. All rights reserved</a> </p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -76,21 +77,7 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-    <script>
-        $(document).ready(function () {
-
-            $('.input-daterange').datepicker({
-                format: 'dd-mm-yyyy',
-                autoclose: true,
-                calendarWeeks: true,
-                clearBtn: true,
-                disableTouchKeyboard: true
-            });
-
-        });
-    </script>
+   
     @RenderSection("Scripts", required: false)
 
 

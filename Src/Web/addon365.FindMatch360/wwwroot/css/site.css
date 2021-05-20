@@ -1190,16 +1190,72 @@ div#campignregistration-right {
 #campignregistration-left {
     background: #50b533;
 }
+.Continue-bg {
+    background-color: #50b533;
+    color:#fff !important;
+    border:1px solid #63b930;
+}
+.logo-word ul {
+    list-style-type:none;
+    margin:0px;
+    padding:0px;
+}
+    .logo-word ul li {
+        display: inline;
+        padding: 0px 3px;
+        color: #50b533 !important;
+        font-size: 17px !important;
+    }
+.signup-form h2 {
+    color: #50b533 !important;
+    font-size: 18px !important;
+}
 
-.campignregistration-title {
+.social-media .fa {
+    padding: 8px;
+    font-size: 30px;
+   
     text-align: center;
-    padding-top: 152px;
-    color:#fff;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
 }
-#campaignregistor-wrapper {
-    padding:80px 0px;
+.fa-whatsapp {
+    background: #a4c639;
+    color: white;
 }
 
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+    width:100%;
+}
+.precentage {
+    color: #50b533 !important;
+}
+.omb_login .omb_loginOr .omb_hrOr {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+.signup-form p {
+    font-size: 18px !important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.logo-word ul li a {
+    text-decoration: none;
+    color: #50b533 !important;
+    font-size: 17px !important;
+}
+        
+
+
+    .campignregistration-title {
+        text-align: center;
+        padding-top: 152px;
+        color: #fff;
+    }
 .campignregistration-title-bg {
     padding-top:30px;
 }
