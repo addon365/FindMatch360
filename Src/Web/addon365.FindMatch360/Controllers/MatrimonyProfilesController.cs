@@ -12,7 +12,7 @@ using addon365.FindMatch360.Models.MatrimonyProfileModels;
 
 namespace addon365.FindMatch360.Controllers
 {
-    [Authorize]
+    
     public class MatrimonyProfilesController : Controller
     {
         private readonly ilamaiMatrimonyContext _context;

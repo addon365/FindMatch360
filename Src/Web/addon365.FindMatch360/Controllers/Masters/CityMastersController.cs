@@ -65,7 +65,7 @@ namespace addon365.FindMatch360.Controllers.Masters
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StateMasterId"] = new SelectList(_context.StateMasters, "StateMasterId", "StateMasterId", cityMaster.StateMasterId);
+            ViewData["StateMasterId"] = new SelectList(_context.StateMasters, "StateMasterId", "StateName", cityMaster.StateMasterId);
             return View(cityMaster);
         }
 
@@ -82,7 +82,7 @@ namespace addon365.FindMatch360.Controllers.Masters
             {
                 return NotFound();
             }
-            ViewData["StateMasterId"] = new SelectList(_context.StateMasters, "StateMasterId", "StateMasterId", cityMaster.StateMasterId);
+            ViewData["StateMasterId"] = new SelectList(_context.StateMasters, "StateMasterId", "StateName", cityMaster.StateMasterId);
             return View(cityMaster);
         }
 
@@ -118,7 +118,7 @@ namespace addon365.FindMatch360.Controllers.Masters
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StateMasterId"] = new SelectList(_context.StateMasters, "StateMasterId", "StateMasterId", cityMaster.StateMasterId);
+            ViewData["StateMasterId"] = new SelectList(_context.StateMasters, "StateMasterId", "StateName", cityMaster.StateMasterId);
             return View(cityMaster);
         }
 

@@ -17,7 +17,7 @@ namespace addon365.FindMatch360.ViewModels
         //https://www.youtube.com/watch?v=QpJvqiHl1Fo 
         public byte Gender { get; set; }
         public DateTime DateandTimeOfBirth { get; set; }
-        public string MaritalStatusMasterId { get; set; }
+        public string? MaritalStatusMasterId { get; set; }
         public IEnumerable<MaritalStatusMaster> MaritalStatusMasters { get; set; }
         public byte BodyType { get; set; }
         public string Weight { get; set; }

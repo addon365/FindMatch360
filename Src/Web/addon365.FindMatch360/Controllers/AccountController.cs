@@ -1,5 +1,6 @@
 ﻿using addon365.FindMatch360.Models;
 using addon365.FindMatch360.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,12 +14,14 @@ namespace addon365.FindMatch360.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
-
+        private readonly IHttpContextAccessor _httpContextAccessor;
         public AccountController(UserManager<ApplicationUser> userManager,
-                                    SignInManager<ApplicationUser> signInManager)
+                                    SignInManager<ApplicationUser> signInManager, IHttpContextAccessor httpContextAccessor)
         {
+
             this.userManager = userManager;
             this.signInManager = signInManager;
+            _httpContextAccessor = httpContextAccessor;
         }
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -55,49 +58,6 @@ namespace addon365.FindMatch360.Controllers
             return View();
         }
 
-
-
-        public IActionResult campaignregistrationtrack()
-        {
-            return View();
-        }
-
-
-        public IActionResult campaignregistrationcaste()
-        {
-            return View();
-        }
-
-
-        public IActionResult campaignregistrationProfessionaldetails()
-        {
-            return View();
-        }
-
-
-        public IActionResult campaignregistrationpersonaldetails()
-        {
-            return View();
-        }
-
-
-        public IActionResult campaignregistrationabout()
-        {
-            return View();
-        }
-
-
-
-        public IActionResult campaignregistration()
-        {
-            return View();
-        }
-
-
-
-
-
-
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model,string returnUrl)
         {
@@ -108,6 +68,15 @@ namespace addon365.FindMatch360.Controllers
 
                 if (result.Succeeded)
                 {
+                    var user=userManager.Users.FirstOrDefault(a=>a.Email==model.Email);
+                    if(user!=null)
+                    {
+                        
+                        if(user.Profile==null)
+                        {
+                            return RedirectToAction("CampaignRegistration", "home");
+                        }
+                    }
                     if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);

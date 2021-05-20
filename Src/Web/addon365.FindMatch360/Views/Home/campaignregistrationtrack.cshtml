@@ -1,4 +1,4 @@
-﻿
+﻿@model RegisterViewModel
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -133,6 +133,7 @@
                 <div class="signup-form">
                     <form method="post">
                         <h2>Create Account</h2>
+                        <div asp-validation-summary="All" class="text-danger"></div>
                         <p class="lead">
                             Please provide us with your basic details
                         </p>
@@ -140,58 +141,52 @@
                         <div class="form-group">
                             <label for="birthDate" class="col-sm-12 control-label">Date of Birth*</label>
                             <div class="col-md-12">
-                                <input type="date" id="birthDate" class="form-control">
+                                <input asp-for="@Model.DateOfBirth" type="date" id="birthDate" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="sel1" class="col-md-12">Religion:</label>
                             <div class="col-md-12">
-                                <select class="form-control" id="sel1">
-                                    <option value="0">Select</option>
-                                    <option value="1">Hindu</option>
-                                    <option value="2">Muslim - Shia</option>
-                                    <option value="3">Muslim - Sunni</option>
+                                <select class="form-control" id="sel1" asp-for="@Model.ReligionMasterId" asp-items="ViewBag.Religions">
+                                   
                                 </select>
-                                </div>
                             </div>
+                        </div>
 
 
                         <div class="form-group">
                             <label for="sel1" class="col-md-12">Mother Tongue:</label>
                             <div class="col-md-12">
-                                <select class="form-control" id="sel1">
+                                <select class="form-control"asp-for="@Model.MotherTongueMasterId" asp-items="ViewBag.MotherTongues">
                                     <option value="0">Select</option>
-                                    <option value="1">    --Frequently used--</option>
-                                    <option value="2">Bengali</option>
-                                    <option value="3">Gujarati</option>
                                 </select>
 
                             </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="email" class="col-md-12">Email* </label>
+                            <div class="col-sm-12">
+                                <input asp-for="@Model.Email" type="email" id="email" placeholder="Email" class="form-control" name="email">
                             </div>
+                        </div>
 
 
-                            <div class="form-group">
-                                <label for="email" class="col-md-12">Email* </label>
-                                <div class="col-sm-12">
-                                    <input type="email" id="email" placeholder="Email" class="form-control" name="email">
-                                </div>
+                        <div class="form-group">
+                            <label for="password" class="col-md-12">Password*</label>
+                            <div class="col-sm-12">
+                                <input asp-for="@Model.Password" type="password" id="password" placeholder="Password" class="form-control">
                             </div>
+                        </div>
 
-
-                            <div class="form-group">
-                                <label for="password" class="col-md-12">Password*</label>
-                                <div class="col-sm-12">
-                                    <input type="password" id="password" placeholder="Password" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <a asp-controller="Account" asp-action="campaignregistrationtrack">
-                                    <button type="submit" class="btn btn-primary btn-block btn-lg">Continue</button>
-                                </a>
-                            </div>
-</form>
+                        <div class="form-group">
+                            <a asp-controller="Account" asp-action="campaignregistrationtrack">
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Continue</button>
+                            </a>
+                        </div>
+                    </form>
 
                 </div>
             </div>

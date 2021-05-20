@@ -64,20 +64,23 @@ namespace addon365.FindMatch360.Controllers
         {
             if(ModelState.IsValid)
             {
-                var ProfileDbModel = new Profile
-                {
-                    MatrimonyProfileId = Guid.NewGuid(),
-                    Name = model.Name,
-                    Gender = model.Gender
-                 
-            };
+
+                var ProfileDbModel = new Profile();
+
+
+                ProfileDbModel.MatrimonyProfileId = Guid.NewGuid();
+                ProfileDbModel.Name = model.Name;
+                ProfileDbModel.Gender = model.Gender;
+                ProfileDbModel.MaritalStatusMasterId=model.MaritalStatusMasterId == "" || model.MaritalStatusMasterId=="0" ?null : Convert.ToInt32(model.MaritalStatusMasterId);
+
+
                 _context.Add(ProfileDbModel);
                 await _context.SaveChangesAsync();
               
             }
 
 
-            return View(model);
+            return View();
 
         }
     }

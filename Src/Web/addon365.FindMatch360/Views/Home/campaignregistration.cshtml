@@ -1,4 +1,4 @@
-﻿
+﻿@model CampaignRegistrationViewModel
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,22 +139,25 @@
                             </p>
                             <div class="form-group">
                                 <label for="sel1">Caste:</label>
-                                <select class="form-control" id="sel1">
-                                    <option value="0">Select</option>
-                                    <option value="1">24 Manai Telugu Chettiar</option>
-                                    <option value="2">Aaru Nattu Vellala</option>
-                                    <option value="3">Achirapakkam Chettiar</option>
+                                <select class="form-control" id="sel1" asp-for="@Model.CasteMasterId" asp-items="@Model.Castes.Select(m=>new SelectListItem{ Text = m.CasteName, Value = m.CasteMasterId.ToString() })">
+                                    <option>Select Castes</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="Subcaste" placeholder="Enter Subcaste" required="required">
+                                    <label for="sel1">SubCastes </label>
+                                    <select class="form-control" id="sel1" asp-for="@Model.SubCasteMasterId" asp-items="@Model.SubCastes.Select(m=>new SelectListItem{ Text = m.SubCasteName, Value = m.SubCasteMasterId.ToString() })">
+                                        <option>Select SubCastes</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="Gothram" placeholder="Enter Gothram" required="required">
+                                    <label for="sel1">Gothrams </label>
+                                    <select class="form-control" id="sel1" asp-for="@Model.GothramMasterId" asp-items="@Model.Gothrams.Select(m=>new SelectListItem{ Text = m.GothramName, Value = m.GothramMasterId.ToString() })">
+                                        <option>Select Gothrams</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -178,9 +181,9 @@
                                 </div>
                             </div> <!-- /.form-group -->
                             <div class="form-group">
-                                <a asp-controller="Account" asp-action="campaignregistrationtrack">
+                               
                                     <button type="submit" class="btn btn-primary btn-block btn-lg">Continue</button>
-                                </a>
+                                
                             </div>
                         </form>
 
