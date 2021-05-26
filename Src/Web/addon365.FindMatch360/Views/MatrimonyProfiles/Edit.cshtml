@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
+<!--
 <h1>Edit</h1>
 
 <h4>MatrimonyProfile</h4>
@@ -160,6 +160,301 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
+</div>--->
+<div class="matrimoneyprofile-edit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" id="edit-profile-wrapper">
+                <div class="row" id="edit-profile-wrapper-top">
+                    <div class="col-md-2">
+                        <div class="edit-profile-login">
+                            <img src="~/images/phone.png" class="img-fluid" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="edit-profile-login-content">
+                            <h4>Like some Members?<strong>Talk to them directly</strong></h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="upgradenow">
+                            <button type="button" class="btn btn-primary Upgrade-Now-button">Upgrade Now</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--- profile-photo section start-->
+    <div class="profile-photo-wrappers">
+        <div class="container">
+           <div class="row">
+               <div class="col-md-9">
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-8">
+                           <div class="profile-img">
+                               <div class="media">
+                                   <div class="card pl-3" id="card-wrapper">
+
+                                       <img src="~/images/edit-profile-img.png" class="align-self-start">
+
+                                       <span class="add-edit-photos">Add / Edit Photos</span>
+                                   </div>
+
+                                   <div class="media-body ml-3">
+                                       <h2>venkatesan</h2>
+                                       <p>profile is created my self</p>
+                                       <p>26 yrs, 4Ft 6 In / 137 Cms</p>
+                                       <p>Hindu, Vannia kula Kshatriyar</p>
+                                       <p>Chennai, TamilNadu, India</p>
+                                       <p>B.Tech., Software Professional</p>
+                                       <p>
+                                           <i class="fa fa-mobile" aria-hidden="true" id="mobile-number"></i> +91 9791791605 <span>(<i class="fa fa-check-square-o" aria-hidden="true" id="mobile-number"> verified</i>)</span> <strong><a>Edit Mobile No</a></strong>
+                                       </p>
+                                   </div>
+                               </div>
+
+
+                           </div>
+                       </div>
+
+                       <div class="col-md-4">
+                           <div class="profile-look">
+                               <p>How your profile looks <br /> to others</p>
+                               <button type="button" class="btn  Profile-Preview">
+                                   <i class="fa fa-eye" aria-hidden="true" id="eye-color"></i>
+                                   Profile Preview
+                               </button>
+
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row" id="bg-wrapper-2">
+                       <div class="col-md-8">
+                           <div class="profile-photo-2 pt-3">
+                               <p>Photos are the first thing that prospects look at.</p>
+                               <p>Add your photo and get 10 times more responses!</p>
+                               <div class="button-wrapper">
+                                   <ul>
+                                       <li><button type="button" class="btn btn-light skip">skip</button></li>
+                                       <li>
+                                           <div class="custom-file mb-3">
+                                               <input type="file" class="custom-file-input" id="customFile" name="filename">
+                                               <label class="custom-file-label" for="customFile">Upload Photo Now</label>
+                                           </div>
+                                       </li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-4">
+                           <div class="profile-average-img pt-4 pb-4">
+                               <img src="~/images/profile-average.png" />
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-12">
+                           <div class="Personal-information-title">
+                               <h4>Personal Information</h4>
+                           </div>
+
+                       </div>
+                   </div>
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>In my own words</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+                       <div class="col-md-12 pt-3">
+                           <p>I completed my bachelo's degree and am now working as a software professional. I belong to a middle<br /> class, joint family with orthodox values, currently settled in chennai</p>
+                       </div>
+                   </div>
+
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>Basic Details</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+                       <div class="col-md-12 pt-3">
+                           <p>Get better responses by verifying your name and age</p>
+                           <button type="button" class="btn btn-primary get-identity-badge">
+                               Get Identity Badge <i class="fa fa-angle-right" aria-hidden="true"></i>
+                           </button>
+                           <hr />
+                       </div>
+                       <hr />
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Profile Create For</td>
+                                       <td> : Myself </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Body Type </td>
+                                       <td class="body-type">: Add Body Type <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>  physical Status </td>
+                                       <td>:  Normal</td>
+                                   </tr>
+                                   <tr>
+                                       <td>weight </td>
+                                       <td class="body-type">: Add weight <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>martial Status </td>
+                                       <td>:  Never Married</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Drinking Habits </td>
+                                       <td class="body-type">: Add Drinking Habits <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+
+                               </table>
+                           </div>
+                       </div>
+
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Name</td>
+                                       <td> : Ravi </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Age </td>
+                                       <td class="body-type">: 26 years <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>  Height </td>
+                                       <td>:  4 Ft in/137 Cms</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Mother Tongue </td>
+                                       <td>: Tamil</td>
+                                   </tr>
+
+                                   <tr>
+                                       <td>Eating Habits </td>
+                                       <td class="body-type">: Add Eating Habits <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>Smoking Habits </td>
+                                       <td class="body-type">: Add Smoking Habits <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+
+                               </table>
+                           </div>
+                       </div>
+
+
+                   </div>
+
+
+               </div>
+
+             <div class="col-md-3 pt-5">
+                 <div class="profile-photo-wrapper pt-5 mt-5">
+                     <div class="media">
+                         <img src="~/images/profile-right.png" class="align-self-start">
+                         <div class="media-body ml-3">
+                             <h5>Add Horoscope</h5>
+                             <p>It is simple and absolutely</p>
+                             <h6>FREE!</h6>
+                         </div>
+                     </div>
+                     <div class="box-bottom-wrappers">
+                         <a href="#">
+                             Add HoroScope <i class="fa fa-step-forward" aria-hidden="true" id="eye-color"></i>
+                         </a>
+                     </div>
+                 </div>
+
+                 <div class="profile-photo-wrapper pt-3">
+                     <div class="media">
+                         <img src="~/images/edit-profile-bottom.png" class="align-self-start">
+                         <div class="media-body ml-3">
+                             <h5>Add Photos</h5>
+                             <p>Photos are the first <br /> things members look for <br /> in a profile</p>
+                             <h6>FREE!</h6>
+                         </div>
+                     </div>
+                     <div class="box-bottom-wrappers">
+                         <a href="#">
+                             Add Photos Now <i class="fa fa-step-forward" aria-hidden="true" id="eye-color"></i>
+                         </a>
+                     </div>
+                 </div>
+
+                 <div class="profile-photo-wrapper">
+                     <div class="view-more-right">
+                         <button type="button" class="btn btn-light view-more">View More <i class="fa fa-step-forward" aria-hidden="true" id="eye-color"></i></button>
+                     </div>
+                 </div>
+
+                 <div class="profile-photo-wrapper pt-3">
+                     <div class="media">
+
+                         <div class="media-body text-center">
+
+                             <p>What matters to you <br />the most in a</p>
+
+                         </div>
+                     </div>
+                     <div class="box-bottom-wrappers">
+                         <a href="#">
+                             Add Now 
+                         </a>
+                     </div>
+                 </div>
+
+                 <div class="profile-photo-wrapper pt-3">
+                     <div class="media">
+
+                         <div class="media-body text-center">
+
+                             <p>Your View on an <br />equal relationship</p>
+
+                         </div>
+                     </div>
+                     <div class="box-bottom-wrappers">
+                         <a href="#">
+                             Add Opinion 
+                         </a>
+                     </div>
+                 </div>
+
+
+             </div>
+           </div>
+        </div>
+
+    </div>
+    <!--- profile-photo section end-->
 </div>
 
 @section Scripts {

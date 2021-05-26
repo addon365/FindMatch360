@@ -96,8 +96,150 @@ body {
     float: right;
     padding-top: 50px;
 }
+
+.matrimoneyprofile-edit {
+    background-color: #f2f2f2;
+    padding:10px 10px;
+}
+#edit-profile-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #dadada !important;
+}
+button.btn.btn-primary.Upgrade-Now-button {
+    background-color: #e13d3e !important;
+    color: #fff;
+    border: 1px solid #e13d3e !important;
+    padding: 10px 28px !important;
+  
+    float:right;
+}
+.edit-profile-login-content {
+    padding-top: 12px;
+    text-align:center;
+}
+.edit-profile-login{
+    padding-top:6px;
 }
 
+#profile-photo-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #dadada !important;
+    padding: 10px 0px;
+    margin-top: 10px;
+    border-bottom: 5px solid #dadada;
+}
+.button-wrapper {
+    display:inline;
+}
+.button-wrapper ul li {
+       float:left;
+       padding:5px 4px;
+       
+  }
+.skip {
+    background-color: #567cbd;
+    border: 1px solid #4063a1;
+    border-radius:10px;
+    color:#fff;
+    padding:5px 20px;
+}
+input#customFile {
+    background-color: #f58320 !important;
+    border:1px solid #fff !important;
+}
+label.custom-file-label {
+    background-color: #f58320 !important;
+    color:#fff;
+}
+.view-more {
+    text-align: center;
+    color: #0274ce;
+    margin:3px 0px;
+}
+.view-more-right {
+    text-align:center;
+    margin:10 auto;
+   
+}
+.button-wrapper ul li {
+    text-decoration: none;
+}
+    .button-wrapper ul {
+        list-style-type:none;
+    }
+    #bg-wrapper-2 {
+        background-color: #567cbd;
+        color: #fff;
+        margin-top: 30px;
+    }
+.profile-photo-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #dadada !important;
+    margin-top: 10px;
+}
+.Personal-information-title h4 {
+    color: #44a54d;
+    padding-top:15px;
+}
+.body-type {
+    color: #3a90d2;
+}
+.basic-details table tr .title {
+    color: #fff;
+    padding: 5px;
+    width: 200px;
+}
+.get-identity-badge {
+    background-color: #ff7805;
+    color:#fff;
+    border:1px solid #ff7e00;
+}
+#card-wrapper {
+    border: none !important;
+}
+.add-edit-photos {
+    background-color: #f1f1f1;
+    text-align: center;
+    color: #0274cb !important;
+    padding:5px 0px;
+}
+#mobile-number {
+    color: #80a56e;
+}
+.profile-look {
+    margin-top:30px;
+}
+#eye-color {
+    color: #2068b3;
+}
+.Profile-Preview {
+    color: #2068b3;
+    border: 2px solid #cccccc;
+    border-radius:10px;
+}
+.box-bottom-wrappers {
+    background-color: #f1f1f1;
+    color: #0274cb;
+    text-align: center;
+    padding: 5px 0px;
+    border-bottom: 5px solid #dadada;
+}
+grid-dl dt {
+    border-top: 2px solid #ccc;
+    padding: 0.5em 0 0.5em 0;
+    font-weight: 600;
+}
+
+.grid-dl dd {
+    margin: 0;
+    padding: 0.5em 0 0.5em 0;
+}
+
+
+#edit-profile-wrapper-top {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 .login {
     background: #50b533;
     width: 130px;
