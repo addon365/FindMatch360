@@ -2,6 +2,7 @@ using addon365.FindMatch360.Data;
 using addon365.FindMatch360.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,7 +36,8 @@ namespace addon365.FindMatch360
                 options.Password.RequireNonAlphanumeric = false;
             })
                 .AddEntityFrameworkStores<ilamaiMatrimonyContext>();
-
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

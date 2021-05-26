@@ -433,92 +433,94 @@
                                 <li class="nav-item"><a class="nav-link" asp-controller="CityMasters" asp-action="Index">City</a></li>
                             </ul>
                         </li>
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-table"></i> <span class="toggle-none">Admin <span class="fa arrow"></span></span></a>
+                                <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+                                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="ListUsers">User</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="ListRoles">User Role</a></li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-table"></i> <span class="toggle-none">Admin <span class="fa arrow"></span></span></a>
-                            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-            <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Index">User</a></li>
-            <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="ListRoles">User Role</a></li>
-          
-                            </ul>
-                        </li>
-
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-table"></i> <span class="toggle-none">Inactive <span class="fa arrow"></span></span></a>
-                            <!--<ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-            <li class="nav-item"><a class="nav-link" href="table-basic.html">Basic Tables</a></li>
-            <li class="nav-item"><a class="nav-link" href="table-data.html">Data Tables</a></li>
-            <li class="nav-item"><a class="nav-link" href="table-js-grid.html">JsGrid Tables</a></li>
-            <li class="nav-item"><a class="nav-link" href="table-foo.html">Foo Tables</a></li>
-        </ul>--->
-                        </li>
-
-                        <!--<li class="nav-item">
-        <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-map-marker"></i> <span class="toggle-none">Maps <span class="fa arrow"></span></span></a>
-        <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-            <li class="nav-item"><a class="nav-link" href="map-vector.html">Vector map</a></li>
-            <li class="nav-item"><a class="nav-link" href="map-google.html">Google map</a></li>
-        </ul>
-    </li>-->
-                        <!--<li class="nav-heading"><span>EXAMPLES</span></li>-->
-                        <!--<li class="nav-item">
-        <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-shopping-cart"></i> <span class="toggle-none">E-Commerce <span class="fa arrow"></span></span></a>
-        <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-            <li class="nav-item"><a class="nav-link" href="ecommerce-add.html">Add Product</a></li>
-            <li class="nav-item"><a class="nav-link" href="ecommerce-products.html">All Products</a></li>
-            <li class="nav-item"><a class="nav-link" href="ecommerce-orders.html">Orders</a></li>
-        </ul>
-    </li>	---->
-                        <!---<li class="nav-item">
-        <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-briefcase"></i> <span class="toggle-none">Corporate <span class="fa arrow"></span></span></a>
-        <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-            <li class="nav-item"><a class="nav-link" href="corporate-add.html">Add Pages</a></li>
-            <li class="nav-item"><a class="nav-link" href="corporate-pages.html">All Pages</a></li>
-        </ul>
-    </li>-->
-                        <!--<li class="nav-item">
-        <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-fire"></i> <span class="toggle-none">Ajax & Php<span class="fa arrow"></span></span></a>
-        <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-            <li class="nav-item"><a class="nav-link" href="examples-add-and-update.html">Add and Update With Php</a></li>
-            <li class="nav-item"><a class="nav-link" href="examples-delete.html">Delete With Php</a></li>
-        </ul>
-    </li>--->
-                        <!---- <li class="nav-heading"><span>OTHERS</span></li>--->
-                        <!--<li class="nav-item">
-        <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-folder"></i> <span class="toggle-none">Sample Pages <span class="fa arrow"></span></span></a>
-        <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
-            <li class="nav-item"><a class="nav-link" href="page-blank.html">Blank Page</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-login.html">Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-register.html">Register</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-forget-password.html">Forget Password</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-lockscreen.html">Lock-screen</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-404.html">404</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-gallery.html">Gallery</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-timeline.html">Timeline</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-invoice.html">Invoice</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-profile.html">Profile</a></li>
-
-            <li class="nav-item"><a class="nav-link" href="page-faqs.html">Faqs</a></li>
-            <li class="nav-item"><a class="nav-link" href="page-pricing.html">Pricing</a></li>
-        </ul>
-    </li>--->
-                        <!--<li class="nav-item">
-        <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-folder-open"></i> <span class="toggle-none">Multi Level<span class="fa arrow "></span></span></a>
-        <ul class="nav-second-level nav flex-column" aria-expanded="false">
-            <li class="nav-item"><a class="nav-link" href="javascript: void(0);">Level 1</a></li>
-            <li class="nav-item"><a class="nav-link"href="javascript: void(0);" aria-expanded="false">Level 2 <span class="fa arrow"></span></a>
-                <ul class="nav-third-level nav flex-column sub-menu" aria-expanded="false">
-                    <li class="nav-item"><a class="nav-link" href="javascript: void(0);">Level 2</a></li>
-                    <li class="nav-item"><a class="nav-link" href="javascript: void(0);">Level 2</a></li>
-                </ul>
-            </li>
-        </ul>
-    </li>--->
+                                </ul>
+                            </li>
+                        }
 
 
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-table"></i> <span class="toggle-none">Inactive <span class="fa arrow"></span></span></a>
+                                <!--<ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" href="table-basic.html">Basic Tables</a></li>
+                <li class="nav-item"><a class="nav-link" href="table-data.html">Data Tables</a></li>
+                <li class="nav-item"><a class="nav-link" href="table-js-grid.html">JsGrid Tables</a></li>
+                <li class="nav-item"><a class="nav-link" href="table-foo.html">Foo Tables</a></li>
+            </ul>--->
+                            </li>
+
+                            <!--<li class="nav-item">
+            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-map-marker"></i> <span class="toggle-none">Maps <span class="fa arrow"></span></span></a>
+            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" href="map-vector.html">Vector map</a></li>
+                <li class="nav-item"><a class="nav-link" href="map-google.html">Google map</a></li>
+            </ul>
+        </li>-->
+                            <!--<li class="nav-heading"><span>EXAMPLES</span></li>-->
+                            <!--<li class="nav-item">
+            <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-shopping-cart"></i> <span class="toggle-none">E-Commerce <span class="fa arrow"></span></span></a>
+            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" href="ecommerce-add.html">Add Product</a></li>
+                <li class="nav-item"><a class="nav-link" href="ecommerce-products.html">All Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="ecommerce-orders.html">Orders</a></li>
+            </ul>
+        </li>	---->
+                            <!---<li class="nav-item">
+            <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-briefcase"></i> <span class="toggle-none">Corporate <span class="fa arrow"></span></span></a>
+            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" href="corporate-add.html">Add Pages</a></li>
+                <li class="nav-item"><a class="nav-link" href="corporate-pages.html">All Pages</a></li>
+            </ul>
+        </li>-->
+                            <!--<li class="nav-item">
+            <a class="nav-link"  href="javascript: void(0);" aria-expanded="false"><i class="fa fa-fire"></i> <span class="toggle-none">Ajax & Php<span class="fa arrow"></span></span></a>
+            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" href="examples-add-and-update.html">Add and Update With Php</a></li>
+                <li class="nav-item"><a class="nav-link" href="examples-delete.html">Delete With Php</a></li>
+            </ul>
+        </li>--->
+                            <!---- <li class="nav-heading"><span>OTHERS</span></li>--->
+                            <!--<li class="nav-item">
+            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-folder"></i> <span class="toggle-none">Sample Pages <span class="fa arrow"></span></span></a>
+            <ul class="nav-second-level nav flex-column sub-menu" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" href="page-blank.html">Blank Page</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-login.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-register.html">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-forget-password.html">Forget Password</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-lockscreen.html">Lock-screen</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-404.html">404</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-timeline.html">Timeline</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-invoice.html">Invoice</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-profile.html">Profile</a></li>
+
+                <li class="nav-item"><a class="nav-link" href="page-faqs.html">Faqs</a></li>
+                <li class="nav-item"><a class="nav-link" href="page-pricing.html">Pricing</a></li>
+            </ul>
+        </li>--->
+                            <!--<li class="nav-item">
+            <a class="nav-link" href="javascript: void(0);" aria-expanded="false"><i class="fa fa-folder-open"></i> <span class="toggle-none">Multi Level<span class="fa arrow "></span></span></a>
+            <ul class="nav-second-level nav flex-column" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" href="javascript: void(0);">Level 1</a></li>
+                <li class="nav-item"><a class="nav-link"href="javascript: void(0);" aria-expanded="false">Level 2 <span class="fa arrow"></span></a>
+                    <ul class="nav-third-level nav flex-column sub-menu" aria-expanded="false">
+                        <li class="nav-item"><a class="nav-link" href="javascript: void(0);">Level 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="javascript: void(0);">Level 2</a></li>
                     </ul>
+                </li>
+            </ul>
+        </li>--->
+
+
+                        </ul>
                 </div>
             </div>
         </div>

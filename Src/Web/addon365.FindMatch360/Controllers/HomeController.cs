@@ -1,6 +1,9 @@
 ﻿using addon365.FindMatch360.Data;
+using addon365.FindMatch360.Helpers.Enums;
 using addon365.FindMatch360.Models;
+using addon365.FindMatch360.Models.MatrimonyProfileModels;
 using addon365.FindMatch360.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -21,11 +24,14 @@ namespace addon365.FindMatch360.Controllers
         private ProfileViewModel _profileViewModel;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         public HomeController(ILogger<HomeController> logger, ilamaiMatrimonyContext context, UserManager<ApplicationUser> userManager,
-                                    SignInManager<ApplicationUser> signInManager)
+                                    SignInManager<ApplicationUser> signInManager, IHttpContextAccessor httpContextAccessor)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
+            this._httpContextAccessor = httpContextAccessor;
             _logger = logger;
             _context = context;
         }
@@ -47,7 +53,7 @@ namespace addon365.FindMatch360.Controllers
             }
             return View(model);
         }
-        public IActionResult CampaignRegistrationTrack(PreRegisterViewModel model)
+        public IActionResult UserRegistrationBasic(PreRegisterViewModel model)
         {
             RegisterViewModel registerModel = new RegisterViewModel();
 
@@ -60,17 +66,36 @@ namespace addon365.FindMatch360.Controllers
             return View(registerModel);
         }
         [HttpPost]
-        public async Task<IActionResult> CampaignRegistrationTrack(RegisterViewModel model)
+        public async Task<IActionResult> UserRegistrationBasic(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var profile = new Profile();
+                if (model.ProfileFor != "")
+                    profile.ProfileForId = Convert.ToInt32(model.ProfileFor);
+                profile.Name = model.FullName;
+                profile.MobileNo = model.MobileNo;
+                if (model.Gender == Gender.Male.ToString())
+                {
+                    profile.Gender = (byte)Gender.Male;
+                }
+
+
+
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "MatrimonyUser");
+                    profile.UserId = user.Id;
+                    _context.Add(profile);
+                    _context.SaveChanges();
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    
+
+
+
                     return RedirectToAction("campaignregistration");
                 }
                 foreach (var error in result.Errors)
@@ -83,7 +108,7 @@ namespace addon365.FindMatch360.Controllers
             return View(model);
         }
 
-        public IActionResult CampaignRegistration()
+        public IActionResult UserRegistrationReligionDetails()
         {
             CampaignRegistrationViewModel viewModel = new CampaignRegistrationViewModel();
             viewModel.Castes = _context.CasteMasters.ToList();
@@ -92,27 +117,66 @@ namespace addon365.FindMatch360.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult CampaignRegistration(CampaignRegistrationViewModel model)
+        public async Task<IActionResult> UserRegistrationReligionDetails(CampaignRegistrationViewModel model)
         {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            currentUser = _httpContextAccessor.HttpContext.User;
+
+
+            var data = _context.MatrimonyProfiles.Where(a => a.UserId == _userManager.GetUserId(currentUser));
+            Profile profile = null;
+
+            if (data.Any())
+            {
+                if (data.Count() == 1)
+                {
+                    profile = data.FirstOrDefault();
+                    var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
+                    if (model.CasteMasterId != "" && model.CasteMasterId != "0")
+                    {
+                        matrimonyProfile.CasteMasterId = Convert.ToInt32(model.CasteMasterId);
+                    }
+                    if (model.SubCasteMasterId != "" && model.SubCasteMasterId != "0")
+                    {
+                        matrimonyProfile.SubCasteMasterId = Convert.ToInt32(model.SubCasteMasterId);
+                    }
+                    if (model.GothramMasterId != "" && model.GothramMasterId != "0")
+                    {
+                        matrimonyProfile.GothramMasterId = Convert.ToInt32(model.GothramMasterId);
+                    }
+
+                    _context.Update(matrimonyProfile);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("campaignregistrationpersonaldetails");
+                }
+            }
+
+
             return View();
         }
 
+        public IActionResult UserRegistrationPersonalDetails()
+        {
+            return View();
+        }
+        public IActionResult UserRegistrationProfessionalDetails()
+        {
+            return View();
+        }
+        public IActionResult UserRegistrationPhoto()
+        {
+            return View();
+        }
         public IActionResult CampaignRegistrationCaste()
         {
             return View();
         }
 
 
-        public IActionResult CampaignRegistrationProfessionalDetails()
-        {
-            return View();
-        }
+        
 
 
-        public IActionResult campaignregistrationpersonaldetails()
-        {
-            return View();
-        }
+        
 
 
         public IActionResult campaignregistrationabout()
@@ -122,10 +186,7 @@ namespace addon365.FindMatch360.Controllers
 
 
 
-        public IActionResult campaignregistrationphoto()
-        {
-            return View();
-        }
+        
 
         public IActionResult Search()
         {
@@ -202,8 +263,8 @@ namespace addon365.FindMatch360.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-       
-       
+
+
 
     }
 }

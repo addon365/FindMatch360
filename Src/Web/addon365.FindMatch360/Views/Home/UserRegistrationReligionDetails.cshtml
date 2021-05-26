@@ -31,7 +31,7 @@
                             <div class="col-sm-12">
                                 <label for="sel1">Caste:</label>
                                 <select class="form-control" id="sel1" asp-for="@Model.CasteMasterId" asp-items="@Model.Castes.Select(m=>new SelectListItem{ Text = m.CasteName, Value = m.CasteMasterId.ToString() })">
-                                    <option>Select Castes</option>
+                                    <option value="0">Select Castes</option>
                                 </select>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
 
                                 <label for="sel1">SubCastes </label>
                                 <select class="form-control" id="sel1" asp-for="@Model.SubCasteMasterId" asp-items="@Model.SubCastes.Select(m=>new SelectListItem{ Text = m.SubCasteName, Value = m.SubCasteMasterId.ToString() })">
-                                    <option>Select SubCastes</option>
+                                    <option value="0">Select SubCastes</option>
                                 </select>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                             <div class="col-sm-12">
                                 <label for="sel1">Gothrams </label>
                                 <select class="form-control" id="sel1" asp-for="@Model.GothramMasterId" asp-items="@Model.Gothrams.Select(m=>new SelectListItem{ Text = m.GothramName, Value = m.GothramMasterId.ToString() })">
-                                    <option>Select Gothrams</option>
+                                    <option value="0">Select Gothrams</option>
                                 </select>
                             </div>
                         </div>
@@ -58,10 +58,8 @@
                             <div class="col-sm-12">
                                 <label for="sel1">Dosham </label>
                                 <select class="form-control" id="sel1">
-                                    <option>Select Dosham</option>
-                                    <option>yes</option>
-                                    <option>No</option>
-                                    <option>Don't know</option>
+                                    <option value="0">Select Dosham</option>
+                                    
                                 </select>
                             </div>
                         </div>

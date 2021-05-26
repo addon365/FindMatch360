@@ -10,6 +10,9 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
     {
         [Key]
         public Guid MatrimonyProfileId { get; set; }
+        [ForeignKey("ProfileFor")]
+        public int? ProfileForId { get; set; }
+        public ProfileForMaster ProfileFor { get; set; }
 
         #region Person basic Details
         public String Name { get; set; }
@@ -127,8 +130,7 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         public short MarriedSisters { get; set; }
         #endregion
         
-
-
+ 
         #region Preferences
         public byte FromAge { get; set; }
         public byte UptoAge { get; set; }
@@ -142,6 +144,7 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         public string PreferenceQualification { get; set; }
 
         #endregion
+        public string UserId { get; set; }
 
     }
 }

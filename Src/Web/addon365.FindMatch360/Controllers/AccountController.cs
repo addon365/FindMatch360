@@ -1,5 +1,7 @@
-﻿using addon365.FindMatch360.Models;
+﻿using addon365.FindMatch360.Data;
+using addon365.FindMatch360.Models;
 using addon365.FindMatch360.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,21 +14,26 @@ namespace addon365.FindMatch360.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ilamaiMatrimonyContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         public AccountController(UserManager<ApplicationUser> userManager,
-                                    SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
+                                    SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, ilamaiMatrimonyContext context, IHttpContextAccessor httpContextAccessor)
         {
 
-            this.userManager = userManager;
-            this.signInManager = signInManager;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
             this._roleManager = roleManager;
+            this._context = context;
+            this._httpContextAccessor = httpContextAccessor;
         }
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            await signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync();
             return RedirectToAction("index", "home");
         }
         public IActionResult Register()
@@ -39,11 +46,11 @@ namespace addon365.FindMatch360.Controllers
             if(ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName=model.Email,Email=model.Email };
-                var result=await userManager.CreateAsync(user, model.Password);
+                var result=await _userManager.CreateAsync(user, model.Password);
 
                 if(result.Succeeded)
                 {
-                    await signInManager.SignInAsync(user, isPersistent: false);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("campaignregistration", "User");
                 }
                 foreach (var error in result.Errors)
@@ -64,18 +71,18 @@ namespace addon365.FindMatch360.Controllers
             if (ModelState.IsValid)
             {
 
-                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
                 if (result.Succeeded)
                 {
-                    var user=userManager.Users.FirstOrDefault(a=>a.Email==model.Email);
+                    var user=_userManager.Users.FirstOrDefault(a=>a.Email==model.Email);
                     if(user!=null)
                     {
-                        
-                        if(user.Profile==null)
+                        if(!_context.MatrimonyProfiles.Where(a=>a.UserId==user.Id).Any())
                         {
                             return RedirectToAction("CampaignRegistration", "home");
                         }
+                       
                     }
                     if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     {
@@ -94,7 +101,7 @@ namespace addon365.FindMatch360.Controllers
         [AcceptVerbs("GET", "POST")]
         public async Task<IActionResult> VerifyEmail(string email)
         {
-            var user = await userManager.FindByEmailAsync(email);
+            var user = await _userManager.FindByEmailAsync(email);
 
             if (user!=null)
             {
@@ -125,7 +132,7 @@ namespace addon365.FindMatch360.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("ListRoles");
                 }
 
                 foreach (IdentityError error in result.Errors)
@@ -162,12 +169,12 @@ namespace addon365.FindMatch360.Controllers
             };
 
             // Retrieve all the Users
-            foreach (var user in userManager.Users)
+            foreach (var user in _userManager.Users)
             {
                 // If the user is in this role, add the username to
                 // Users property of EditRoleViewModel. This model
                 // object is then passed to the view for display
-                if (await userManager.IsInRoleAsync(user, role.Name))
+                if (await _userManager.IsInRoleAsync(user, role.Name))
                 {
                     model.Users.Add(user.UserName);
                 }
@@ -222,7 +229,7 @@ namespace addon365.FindMatch360.Controllers
 
             var model = new List<UserRoleViewModel>();
 
-            foreach (var user in userManager.Users)
+            foreach (var user in _userManager.Users)
             {
                 var userRoleViewModel = new UserRoleViewModel
                 {
@@ -230,7 +237,7 @@ namespace addon365.FindMatch360.Controllers
                     UserName = user.UserName
                 };
 
-                if (await userManager.IsInRoleAsync(user, role.Name))
+                if (await _userManager.IsInRoleAsync(user, role.Name))
                 {
                     userRoleViewModel.IsSelected = true;
                 }
@@ -257,17 +264,17 @@ namespace addon365.FindMatch360.Controllers
 
             for (int i = 0; i < model.Count; i++)
             {
-                var user = await userManager.FindByIdAsync(model[i].UserId);
+                var user = await _userManager.FindByIdAsync(model[i].UserId);
 
                 IdentityResult result = null;
 
-                if (model[i].IsSelected && !(await userManager.IsInRoleAsync(user, role.Name)))
+                if (model[i].IsSelected && !(await _userManager.IsInRoleAsync(user, role.Name)))
                 {
-                    result = await userManager.AddToRoleAsync(user, role.Name);
+                    result = await _userManager.AddToRoleAsync(user, role.Name);
                 }
-                else if (!model[i].IsSelected && await userManager.IsInRoleAsync(user, role.Name))
+                else if (!model[i].IsSelected && await _userManager.IsInRoleAsync(user, role.Name))
                 {
-                    result = await userManager.RemoveFromRoleAsync(user, role.Name);
+                    result = await _userManager.RemoveFromRoleAsync(user, role.Name);
                 }
                 else
                 {
@@ -284,6 +291,102 @@ namespace addon365.FindMatch360.Controllers
             }
 
             return RedirectToAction("EditRole", new { Id = roleId });
+        }
+        [HttpGet]
+        public IActionResult ListUsers()
+        {
+            var users = _userManager.Users;
+            return View(users);
+        }
+        [HttpGet]
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+
+            // GetClaimsAsync retunrs the list of user Claims
+            var userClaims = await _userManager.GetClaimsAsync(user);
+            // GetRolesAsync returns the list of user Roles
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            var model = new EditUserViewModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+                Claims = userClaims.Select(c => c.Value).ToList(),
+                Roles = userRoles
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUser(EditUserViewModel model)
+        {
+            var user = await _userManager.FindByIdAsync(model.Id);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with Id = {model.Id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                user.Email = model.Email;
+                user.UserName = model.UserName;
+
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View(model);
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = await _userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View("ListUsers");
+            }
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
 
     }

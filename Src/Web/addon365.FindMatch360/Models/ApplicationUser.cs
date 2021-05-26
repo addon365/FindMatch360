@@ -10,7 +10,7 @@ namespace addon365.FindMatch360.Models
 {
     public class ApplicationUser:IdentityUser
     {
-        public ProfileForMaster ProfileFor { get; set; }
-        public Profile Profile { get; set; }
+       
+       
     }
 }

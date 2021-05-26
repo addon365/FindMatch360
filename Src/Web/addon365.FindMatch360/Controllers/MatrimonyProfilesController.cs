@@ -1,30 +1,77 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using addon365.FindMatch360.Data;
+﻿using addon365.FindMatch360.Data;
 using addon365.FindMatch360.Models;
-using Microsoft.AspNetCore.Authorization;
 using addon365.FindMatch360.Models.MatrimonyProfileModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace addon365.FindMatch360.Controllers
 {
-    
+    [Authorize(Roles ="Administrator,MatrimonyUser")]
     public class MatrimonyProfilesController : Controller
     {
         private readonly ilamaiMatrimonyContext _context;
-
-        public MatrimonyProfilesController(ilamaiMatrimonyContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private bool IsProfileUser,IsCompleteProfile;
+        private Profile profile;
+        public MatrimonyProfilesController(ilamaiMatrimonyContext context, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
-        }
+            this._userManager = userManager;
+            this._httpContextAccessor = httpContextAccessor;
+            
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            currentUser = _httpContextAccessor.HttpContext.User;
 
+            IsProfileUser = currentUser.IsInRole("MatrimonyUser");
+            
+            if(IsProfileUser)
+            {
+               var data=_context.MatrimonyProfiles.Where(a => a.UserId == _userManager.GetUserId(currentUser));
+                profile = null;
+               if(data.Any())
+                {
+                    if(data.Count()==1)
+                    {
+                        profile = data.FirstOrDefault();
+                      
+                    }
+                }
+            }
+
+        }
+        private void ValidateProfile()
+        {
+            
+            IsCompleteProfile = true;
+            if(IsProfileUser)
+            {
+               if(profile==null)
+                {
+                    IsCompleteProfile = false;
+                    return;
+                }
+                if(profile.Religion == null)
+                {
+                    IsCompleteProfile = false;
+                }
+            }
+        }
         // GET: MatrimonyProfiles
         public async Task<IActionResult> Index()
         {
+            ValidateProfile();
+            if (!IsCompleteProfile)
+            {
+                return RedirectToAction("CampaignRegistration", "home");
+            }
             return View(await _context.MatrimonyProfiles.ToListAsync());
         }
 
