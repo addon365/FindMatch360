@@ -184,15 +184,49 @@ label.custom-file-label {
 .body-type {
     color: #3a90d2;
 }
+.matrimoneyprofile-verify {
+    color: #ff7805;
+}
 .basic-details table tr .title {
     color: #fff;
-    padding: 5px;
+    padding:10px 0px !important;
     width: 200px;
+}
+.write {
+    float:right;
+}
+.basic-details table tr .title {
+    color: #fff;
+    padding: 10px 0px !important;
+    width: 200px;
+}
+.fa-check-square-o {
+   color:#50b533;
+}
+.basic-details-1 table tr .title {
+    color: #fff;
+    padding: 10px 0px !important;
+    width: 2000px;
+}
+
+.basic-details-1 table td .title {
+    color: #fff;
+    padding: 10px 0px !important;
+    width: 2000px;
+}
+}
+
+.basic-details table td {
+    padding: 10px 0px !important;
+}
+.partner-preference-title h4 {
+    color:#50b533;
+    padding:10px 0px;
 }
 .get-identity-badge {
     background-color: #ff7805;
-    color:#fff;
-    border:1px solid #ff7e00;
+    color: #fff;
+    border: 1px solid #ff7e00;
 }
 #card-wrapper {
     border: none !important;

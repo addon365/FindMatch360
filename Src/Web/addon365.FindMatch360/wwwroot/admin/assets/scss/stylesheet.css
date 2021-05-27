@@ -1,0 +1,12 @@
+.navbar {
+    padding: 11px 10px !important;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
+}
+.navbar-toggler {
+  
+    background-color: #fff !important;
+}
