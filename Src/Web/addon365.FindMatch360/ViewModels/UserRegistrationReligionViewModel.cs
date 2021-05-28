@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace addon365.FindMatch360.ViewModels
 {
-    public class CampaignRegistrationViewModel
+    public class UserRegistrationReligionViewModel
     {
         public string CasteMasterId { get; set; }
         public IEnumerable<CasteMaster> Castes { get; set; }

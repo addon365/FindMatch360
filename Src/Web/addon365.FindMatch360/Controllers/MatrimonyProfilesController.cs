@@ -58,7 +58,7 @@ namespace addon365.FindMatch360.Controllers
                     IsCompleteProfile = false;
                     return;
                 }
-                if(profile.Religion == null)
+                if(profile.Name == "")
                 {
                     IsCompleteProfile = false;
                 }
@@ -70,7 +70,7 @@ namespace addon365.FindMatch360.Controllers
             ValidateProfile();
             if (!IsCompleteProfile)
             {
-                return RedirectToAction("CampaignRegistration", "home");
+                return RedirectToAction("UserRegistrationReligionDetails", "home");
             }
             return View(await _context.MatrimonyProfiles.ToListAsync());
         }

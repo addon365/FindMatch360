@@ -1,5 +1,7 @@
-﻿using addon365.FindMatch360.Models.Masters;
+﻿using addon365.FindMatch360.Models;
+using addon365.FindMatch360.Models.Masters;
 using addon365.FindMatch360.Models.MatrimonyProfileModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,10 @@ namespace addon365.FindMatch360.Data
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Name="Administrator",NormalizedName= "Administrator".ToUpper()},
+                new IdentityRole { Name= "MatrimonyUser",NormalizedName= "MatrimonyUser".ToUpper()}
+                );
             modelBuilder.Entity<ProfileForMaster>().HasData(
                new ProfileForMaster { ProfileForId = 1, ProfileFor = "Myself" },
                new ProfileForMaster { ProfileForId = 2, ProfileFor = "Daughter" },
@@ -20,44 +26,50 @@ namespace addon365.FindMatch360.Data
                new ProfileForMaster { ProfileForId = 5, ProfileFor = "Brother" },
                new ProfileForMaster { ProfileForId = 6, ProfileFor = "Relative" },
                new ProfileForMaster { ProfileForId = 7, ProfileFor = "Friend" }
-              
+
 
            );
             modelBuilder.Entity<DoshamMaster>().HasData(
-                new DoshamMaster{DoshamMasterId=1,DoshamName="Test"},
+                new DoshamMaster { DoshamMasterId = 1, DoshamName = "Test" },
                 new DoshamMaster { DoshamMasterId = 2, DoshamName = "Test2" }
 
             );
             modelBuilder.Entity<MaritalStatusMaster>().HasData(
-                new MaritalStatusMaster { MaritalStatusMasterId=1,MaritalStatusName="Never Married"},
+                new MaritalStatusMaster { MaritalStatusMasterId = 1, MaritalStatusName = "Never Married" },
                 new MaritalStatusMaster { MaritalStatusMasterId = 2, MaritalStatusName = "Widowed" },
                 new MaritalStatusMaster { MaritalStatusMasterId = 3, MaritalStatusName = "Divorced" },
                 new MaritalStatusMaster { MaritalStatusMasterId = 4, MaritalStatusName = "Awaiting divorce" }
                 );
             modelBuilder.Entity<FamilyStatusMaster>().HasData(
-                new FamilyStatusMaster { FamilyStatusMasterId=1,FamilStatusName="Middle class"},
+                new FamilyStatusMaster { FamilyStatusMasterId = 1, FamilStatusName = "Middle class" },
                 new FamilyStatusMaster { FamilyStatusMasterId = 2, FamilStatusName = "Upper middle class" },
                 new FamilyStatusMaster { FamilyStatusMasterId = 3, FamilStatusName = "Rich" },
                 new FamilyStatusMaster { FamilyStatusMasterId = 4, FamilStatusName = "Affluent" }
                 );
             modelBuilder.Entity<FamilyTypeMaster>().HasData(
-                new FamilyTypeMaster { FamilyTypeMasterId=1,FamilyTypeName="Join"},
+                new FamilyTypeMaster { FamilyTypeMasterId = 1, FamilyTypeName = "Join" },
                 new FamilyTypeMaster { FamilyTypeMasterId = 2, FamilyTypeName = "Nuclear" }
                 );
             modelBuilder.Entity<FamilyValuesMaster>().HasData(
-                new FamilyValuesMaster { FamilyValuesMasterId=1,FamilyValuesName="Orthodox"},
+                new FamilyValuesMaster { FamilyValuesMasterId = 1, FamilyValuesName = "Orthodox" },
                 new FamilyValuesMaster { FamilyValuesMasterId = 2, FamilyValuesName = "Traditional" },
                 new FamilyValuesMaster { FamilyValuesMasterId = 3, FamilyValuesName = "Moderate" },
                 new FamilyValuesMaster { FamilyValuesMasterId = 4, FamilyValuesName = "Liberal" }
                 );
             modelBuilder.Entity<EmployeedInMaster>().HasData(
-                new EmployeedInMaster { EmployeedInMasterId=1,EmployeedInName="Goverment/PSU"},
+                new EmployeedInMaster { EmployeedInMasterId = 1, EmployeedInName = "Goverment/PSU" },
                 new EmployeedInMaster { EmployeedInMasterId = 2, EmployeedInName = "Private" },
                 new EmployeedInMaster { EmployeedInMasterId = 3, EmployeedInName = "Business" },
                 new EmployeedInMaster { EmployeedInMasterId = 4, EmployeedInName = "Defence" },
                 new EmployeedInMaster { EmployeedInMasterId = 5, EmployeedInName = "Self Employed" },
                 new EmployeedInMaster { EmployeedInMasterId = 6, EmployeedInName = "Not Working" }
                 );
+            modelBuilder.Entity<EducationCategoryMaster>().HasData(
+            new EducationCategoryMaster { EducationCategoryMasterId = 1, EducationCategoryName = "Post Graduate" }
+            );
+            modelBuilder.Entity<EducationMaster>().HasData(
+             new EducationMaster { EducationMasterId = 1, EducationName = "MCA",EducationCategoryId=1 }
+             );
             modelBuilder.Entity<OccupationMaster>().HasData(
                 new OccupationMaster { OccupationMasterId = 1, OccupationName = "Business Owner/Entrepreneur" },
                 new OccupationMaster { OccupationMasterId = 2, OccupationName = "Executive" },
@@ -70,7 +82,7 @@ namespace addon365.FindMatch360.Data
                 new OccupationMaster { OccupationMasterId = 9, OccupationName = "Marketing Professional" }
                 );
             modelBuilder.Entity<CountryMaster>().HasData(
-                new CountryMaster { CountryMasterId=1,CountryName="India"},
+                new CountryMaster { CountryMasterId = 1, CountryName = "India" },
                 new CountryMaster { CountryMasterId = 2, CountryName = "United States of America" },
                 new CountryMaster { CountryMasterId = 3, CountryName = "United Arab Emirates" },
                 new CountryMaster { CountryMasterId = 4, CountryName = "United kingdom" },
@@ -95,10 +107,10 @@ namespace addon365.FindMatch360.Data
                 new CountryMaster { CountryMasterId = 23, CountryName = "Pakistan" },
                 new CountryMaster { CountryMasterId = 24, CountryName = "Bangladesh" },
                 new CountryMaster { CountryMasterId = 25, CountryName = "Afghanistan" }
-                
+
                 );
             modelBuilder.Entity<StateMaster>().HasData(
-                new StateMaster { StateMasterId=1,StateName="Andaman & Nicobar", CountryMasterId=1},
+                new StateMaster { StateMasterId = 1, StateName = "Andaman & Nicobar", CountryMasterId = 1 },
                 new StateMaster { StateMasterId = 2, StateName = "Andhra Pradesh", CountryMasterId = 1 },
                 new StateMaster { StateMasterId = 3, StateName = "Arunachal Pradesh", CountryMasterId = 1 },
                 new StateMaster { StateMasterId = 4, StateName = "Assam", CountryMasterId = 1 },
@@ -137,10 +149,10 @@ namespace addon365.FindMatch360.Data
 
                 );
             modelBuilder.Entity<CityMaster>().HasData(
-                new CityMaster { CityMasterId=1,CityName="Chennai",StateMasterId=31}
+                new CityMaster { CityMasterId = 1, CityName = "Chennai", StateMasterId = 31 }
                  );
             modelBuilder.Entity<ReligionMaster>().HasData(
-                new ReligionMaster { ReligionMasterId=1,ReligionName="Not Selected"},
+                new ReligionMaster { ReligionMasterId = 1, ReligionName = "Not Selected" },
                 new ReligionMaster { ReligionMasterId = 2, ReligionName = "Hindu" },
                 new ReligionMaster { ReligionMasterId = 3, ReligionName = "Muslim - Shia" },
                 new ReligionMaster { ReligionMasterId = 4, ReligionName = "Muslim - Sunni" },
@@ -155,9 +167,25 @@ namespace addon365.FindMatch360.Data
                 new ReligionMaster { ReligionMasterId = 13, ReligionName = "Inter-Religion" }
 
                 );
+            modelBuilder.Entity<CasteMaster>().HasData(
+                new CasteMaster { CasteMasterId = 1, CasteName = "Gounder" },
+                new CasteMaster { CasteMasterId = 2, CasteName = "Agamudayar/Arcot/Thuluva Vellala" },
+                new CasteMaster { CasteMasterId = 3, CasteName = "Adi Dravidar" },
+                new CasteMaster { CasteMasterId = 4, CasteName = "Aaru Nattu Vellala" },
+                new CasteMaster { CasteMasterId = 5, CasteName = "Achirapakkam Chettiar" }
+                );
+            modelBuilder.Entity<SubCasteMaster>().HasData(
+                new SubCasteMaster { SubCasteMasterId = 1, SubCasteName = "Gounder-Kongu Vellala Gounder", CasteMasterId = 1 },
+                new SubCasteMaster { SubCasteMasterId = 2, SubCasteName = "Gounder-Urali Gounder", CasteMasterId = 1 },
+                new SubCasteMaster { SubCasteMasterId = 3, SubCasteName = "Gounder-Vanniya Kula Kshatriyar", CasteMasterId = 1 },
+                new SubCasteMaster { SubCasteMasterId = 4, SubCasteName = "Gounder-Vettuva Gounder", CasteMasterId = 1 },
+                new SubCasteMaster { SubCasteMasterId = 5, SubCasteName = "Nattu Gounder", CasteMasterId = 1 },
+                new SubCasteMaster { SubCasteMasterId = 6, SubCasteName = "Others", CasteMasterId = 1 }
+                
+                    );
 
             modelBuilder.Entity<MotherTongueMaster>().HasData(
-                new MotherTongueMaster { MotherTongueMasterId = 1,MotherTongueName="Not Selected"},
+                new MotherTongueMaster { MotherTongueMasterId = 1, MotherTongueName = "Not Selected" },
                 new MotherTongueMaster { MotherTongueMasterId = 2, MotherTongueName = "Tamil" },
                 new MotherTongueMaster { MotherTongueMasterId = 3, MotherTongueName = "Telugu" },
                 new MotherTongueMaster { MotherTongueMasterId = 4, MotherTongueName = "Hindi" },
@@ -171,6 +199,10 @@ namespace addon365.FindMatch360.Data
                 new MotherTongueMaster { MotherTongueMasterId = 12, MotherTongueName = "Urdu" },
                 new MotherTongueMaster { MotherTongueMasterId = 13, MotherTongueName = "Oriya" }
                 );
+
+         
         }
+   
     }
+   
 }

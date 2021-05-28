@@ -1,5 +1,5 @@
-﻿@page
-@model addon365.FindMatch360.Views.Account.campaignregistrationpersonaldetailsModel
+﻿
+@model UserRegistrationProfessionalViewModel
 
 @{
     Layout = "~/Views/Shared/_CampaignLayout.cshtml";
@@ -26,11 +26,9 @@
                         </p>
                         <div class="form-group">
                             <label for="sel1">Highest Education:</label>
-                            <select class="form-control" id="sel1">
-                                <option value="0"> -- Any Bachelors in Engineering / Computers --</option>
-                                <option value="1">BE</option>
-                                <option value="2">B.Tech</option>
-                                <option value="3">BCA</option>
+                            <select class="form-control" asp-for="@Model.HigherEducationsId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
+                                <option value="0">Select Education</option>
+                               
                             </select>
                         </div>
 
@@ -44,13 +42,9 @@
                             <label for="sel1">
                                 Employed in:
                             </label>
-                            <select class="form-control" id="sel1">
-                                <option value="0">Government/PSU</option>
-                                <option value="1">Private</option>
-                                <option value="2">Business</option>
-                                <option value="3">Defence</option>
-                                <option value="3">Self Employed</option>
-                                <option value="3">Not working</option>
+                            <select class="form-control" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
+                                <option value="0">Select Employeed</option>
+                                
                             </select>
                         </div>
 
@@ -58,12 +52,9 @@
                             <label for="sel1">
                                 Occupation
                             </label>
-                            <select class="form-control" id="sel1">
+                            <select class="form-control" asp-for="@Model.OccupationMasterId" asp-items="@Model.Occupations.Select(m=>new SelectListItem{ Text = m.OccupationName, Value = m.OccupationMasterId.ToString() })">
                                 <option value="0"> - Select Occupation - </option>
-                                <option value="1">FREQUENTLY USED</option>
-                                <option value="2">Software Professional</option>
-                                <option value="3">Teaching / Academician</option>
-                                <option value="3">Executive</option>
+                                
                             </select>
                         </div>
 
@@ -75,9 +66,7 @@
                             <select class="form-control" id="sel1">
                                 <option value="0"> -  Select  - </option>
                                 <option value="1">0 - 1 Lakh</option>
-                                <option value="2">Software Professional</option>
-                                <option value="3">Teaching / Academician</option>
-                                <option value="3">Executive</option>
+                            
                             </select>
                         </div>
                         <div class="form-group">
