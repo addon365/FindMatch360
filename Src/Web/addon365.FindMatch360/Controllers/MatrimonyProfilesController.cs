@@ -116,19 +116,22 @@ namespace addon365.FindMatch360.Controllers
         }
 
         // GET: MatrimonyProfiles/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        [AllowAnonymous]
+        //public async Task<IActionResult> Edit(Guid? id)
+        public async Task<IActionResult> Edit()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(id);
-            if (matrimonyProfile == null)
-            {
-                return NotFound();
-            }
-            return View(matrimonyProfile);
+            //var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(id);
+            //if (matrimonyProfile == null)
+            //{
+            //    return NotFound();
+            //}
+            // return View(matrimonyProfile);
+            return View(new Profile());
         }
 
         // POST: MatrimonyProfiles/Edit/5

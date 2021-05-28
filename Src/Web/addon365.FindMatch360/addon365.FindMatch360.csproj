@@ -117,6 +117,13 @@
     <None Include="wwwroot\admin\assets\lib\vectormap\jquery-jvectormap-world-mill-en.js" />
     <None Include="wwwroot\admin\assets\lib\wysihtml5\bootstrap-wysihtml5.js" />
     <None Include="wwwroot\admin\assets\lib\wysihtml5\wysihtml5-0.3.0.js" />
+    <None Include="wwwroot\profile\assets\demo\chart-area-demo.js" />
+    <None Include="wwwroot\profile\assets\demo\chart-bar-demo.js" />
+    <None Include="wwwroot\profile\assets\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\profile\assets\demo\datatables-demo.js" />
+    <None Include="wwwroot\profile\assets\img\error-404-monochrome.svg" />
+    <None Include="wwwroot\profile\js\datatables-simple-demo.js" />
+    <None Include="wwwroot\profile\js\scripts.js" />
   </ItemGroup>
 
   <ItemGroup>
