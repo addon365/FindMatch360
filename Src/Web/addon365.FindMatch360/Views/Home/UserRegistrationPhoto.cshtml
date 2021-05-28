@@ -1,5 +1,4 @@
-﻿@page
-@model addon365.FindMatch360.Views.Home.campaignregistrationphotoModel
+﻿@model UserRegistrationPhotoViewModel
 @{
     Layout = "~/Views/Shared/_CampaignLayout.cshtml";
 }
@@ -16,11 +15,11 @@
             </div>
             <div class="col-md-5" id="campignregistration-right">
                 <div class="signup-form">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <p>Add Photo Now:</p>
                         <div class="custom-file mb-3">
-                            <input type="file" class="custom-file-input" id="customFile" name="filename">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <input asp-for="ImageFile" accept="image/*">
+                            @*<label class="custom-file-label" for="customFile">Choose file</label>*@
                         </div>
                         <div class="form-group">
                             <a>

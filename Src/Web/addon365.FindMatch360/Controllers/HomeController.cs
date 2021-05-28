@@ -2,7 +2,9 @@
 using addon365.FindMatch360.Helpers.Enums;
 using addon365.FindMatch360.Models;
 using addon365.FindMatch360.Models.MatrimonyProfileModels;
+using addon365.FindMatch360.Services;
 using addon365.FindMatch360.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,18 +23,25 @@ namespace addon365.FindMatch360.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ilamaiMatrimonyContext _context;
-        private PreRegisterViewModel _preRegisterViewModel;
+        private UserRegisterIntilizeViewModel _preRegisterViewModel;
         private ProfileViewModel _profileViewModel;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ProfileService _profileService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, ilamaiMatrimonyContext context, UserManager<ApplicationUser> userManager,
-                                    SignInManager<ApplicationUser> signInManager, IHttpContextAccessor httpContextAccessor)
+        public HomeController(ILogger<HomeController> logger, 
+            ilamaiMatrimonyContext context, UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager, IHttpContextAccessor httpContextAccessor,
+            ProfileService profileService,IWebHostEnvironment webHostEnvironment
+            )
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._httpContextAccessor = httpContextAccessor;
+            this._profileService = profileService;
+            this._webHostEnvironment = webHostEnvironment;
             _logger = logger;
             _context = context;
         }
@@ -39,23 +49,23 @@ namespace addon365.FindMatch360.Controllers
         public IActionResult Index()
         {
             var ProfileForList = _context.ProfileForMasters.ToList();
-            PreRegisterViewModel preRegisterViewModel = new PreRegisterViewModel();
+            UserRegisterIntilizeViewModel preRegisterViewModel = new UserRegisterIntilizeViewModel();
             preRegisterViewModel.ProfileForList = ProfileForList;
             return View(preRegisterViewModel);
         }
         [HttpPost]
-        public IActionResult Index(PreRegisterViewModel model)
+        public IActionResult Index(UserRegisterIntilizeViewModel model)
         {
             if (ModelState.IsValid)
             {
                 _preRegisterViewModel = model;
-                return RedirectToAction("CampaignRegistrationTrack", model);
+                return RedirectToAction("UserRegistrationBasic", model);
             }
             return View(model);
         }
-        public IActionResult UserRegistrationBasic(PreRegisterViewModel model)
+        public IActionResult UserRegistrationBasic(UserRegisterIntilizeViewModel model)
         {
-            RegisterViewModel registerModel = new RegisterViewModel();
+            UserRegistrationBasicViewModel registerModel = new UserRegistrationBasicViewModel();
 
             registerModel.FullName = model.FullName;
             registerModel.ProfileFor = model.ProfileFor;
@@ -66,7 +76,7 @@ namespace addon365.FindMatch360.Controllers
             return View(registerModel);
         }
         [HttpPost]
-        public async Task<IActionResult> UserRegistrationBasic(RegisterViewModel model)
+        public async Task<IActionResult> UserRegistrationBasic(UserRegistrationBasicViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +106,7 @@ namespace addon365.FindMatch360.Controllers
 
 
 
-                    return RedirectToAction("campaignregistration");
+                    return RedirectToAction("UserRegistrationReligionDetails");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -110,76 +120,178 @@ namespace addon365.FindMatch360.Controllers
 
         public IActionResult UserRegistrationReligionDetails()
         {
-            CampaignRegistrationViewModel viewModel = new CampaignRegistrationViewModel();
+            UserRegistrationReligionViewModel viewModel = new UserRegistrationReligionViewModel();
             viewModel.Castes = _context.CasteMasters.ToList();
             viewModel.SubCastes = _context.SubCasteMasters.ToList();
             viewModel.Gothrams = _context.GothramMasters.ToList();
             return View(viewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> UserRegistrationReligionDetails(CampaignRegistrationViewModel model)
+        public async Task<IActionResult> UserRegistrationReligionDetails(UserRegistrationReligionViewModel model)
         {
-            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
-            currentUser = _httpContextAccessor.HttpContext.User;
+            //System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            //currentUser = _httpContextAccessor.HttpContext.User;
 
 
-            var data = _context.MatrimonyProfiles.Where(a => a.UserId == _userManager.GetUserId(currentUser));
-            Profile profile = null;
+            //var data = _context.MatrimonyProfiles.Where(a => a.UserId == _userManager.GetUserId(currentUser));
+            //Profile profile = null;
 
-            if (data.Any())
-            {
-                if (data.Count() == 1)
+            //if (data.Any())
+            //{
+            //    if (data.Count() == 1)
+            //    {
+            //        profile = data.FirstOrDefault();
+            //        var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
+            //        if (model.CasteMasterId != "" && model.CasteMasterId != "0")
+            //        {
+            //            matrimonyProfile.CasteMasterId = Convert.ToInt32(model.CasteMasterId);
+            //        }
+            //        if (model.SubCasteMasterId != "" && model.SubCasteMasterId != "0")
+            //        {
+            //            matrimonyProfile.SubCasteMasterId = Convert.ToInt32(model.SubCasteMasterId);
+            //        }
+            //        if (model.GothramMasterId != "" && model.GothramMasterId != "0")
+            //        {
+            //            matrimonyProfile.GothramMasterId = Convert.ToInt32(model.GothramMasterId);
+            //        }
+
+            //        _context.Update(matrimonyProfile);
+            //        await _context.SaveChangesAsync();
+            //        return RedirectToAction("UserRegistrationPersonalDetails"); 
+            //    }
+            //}
+            Profile profile = _profileService.GetProfile();
+            if (profile!=null)
+            { 
+                var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
+                if (model.CasteMasterId != "" && model.CasteMasterId != "0")
                 {
-                    profile = data.FirstOrDefault();
-                    var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
-                    if (model.CasteMasterId != "" && model.CasteMasterId != "0")
-                    {
-                        matrimonyProfile.CasteMasterId = Convert.ToInt32(model.CasteMasterId);
-                    }
-                    if (model.SubCasteMasterId != "" && model.SubCasteMasterId != "0")
-                    {
-                        matrimonyProfile.SubCasteMasterId = Convert.ToInt32(model.SubCasteMasterId);
-                    }
-                    if (model.GothramMasterId != "" && model.GothramMasterId != "0")
-                    {
-                        matrimonyProfile.GothramMasterId = Convert.ToInt32(model.GothramMasterId);
-                    }
-
-                    _context.Update(matrimonyProfile);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("campaignregistrationpersonaldetails");
+                    matrimonyProfile.CasteMasterId = Convert.ToInt32(model.CasteMasterId);
                 }
-            }
+                if (model.SubCasteMasterId != "" && model.SubCasteMasterId != "0")
+                {
+                    matrimonyProfile.SubCasteMasterId = Convert.ToInt32(model.SubCasteMasterId);
+                }
+                if (model.GothramMasterId != "" && model.GothramMasterId != "0")
+                {
+                    matrimonyProfile.GothramMasterId = Convert.ToInt32(model.GothramMasterId);
+                }
 
+                _context.Update(matrimonyProfile);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("UserRegistrationPersonalDetails");
+            }
 
             return View();
         }
 
         public IActionResult UserRegistrationPersonalDetails()
         {
+            UserRegistrationPersonalViewModel userRegistrationPersonalViewModel = new UserRegistrationPersonalViewModel();
+            userRegistrationPersonalViewModel.MaritalStatusMasters = _context.MaritalStatusMasters;
+            userRegistrationPersonalViewModel.FamilyStatuses = _context.FamilyStatusMasters;
+            userRegistrationPersonalViewModel.FamilyTypes = _context.FamilyTypeMasters;
+            userRegistrationPersonalViewModel.FamilyValues = _context.FamilyValuesMasters;
+            return View(userRegistrationPersonalViewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> UserRegistrationPersonalDetails(UserRegistrationPersonalViewModel model)
+        {
+            Profile profile = _profileService.GetProfile();
+            if (profile != null)
+            {
+                var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
+                if (model.MaritalStatusMasterId != "" && model.MaritalStatusMasterId != "0")
+                {
+                    matrimonyProfile.MaritalStatusMasterId = Convert.ToInt32(model.MaritalStatusMasterId);
+                }
+                if (model.FamilyStatusMasterId != "" && model.FamilyStatusMasterId != "0")
+                {
+                    matrimonyProfile.FamilyStatusMasterId = Convert.ToInt32(model.FamilyStatusMasterId);
+                }
+                if (model.FamilyTypeMasterId != "" && model.FamilyTypeMasterId != "0")
+                {
+                    matrimonyProfile.FamilyTypeMasterId = Convert.ToInt32(model.FamilyTypeMasterId);
+                }
+
+                _context.Update(matrimonyProfile);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("UserRegistrationProfessionalDetails");
+            }
+
             return View();
         }
+
         public IActionResult UserRegistrationProfessionalDetails()
         {
+            UserRegistrationProfessionalViewModel model = new UserRegistrationProfessionalViewModel();
+            model.Educations = _context.EducationMasters;
+            model.EmployeedInLst = _context.EmployeedInMasters;
+            model.Occupations = _context.OccupationMasters;
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> UserRegistrationProfessionalDetails(UserRegistrationProfessionalViewModel model)
+        {
+            Profile profile = _profileService.GetProfile();
+            if (profile != null)
+            {
+                var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
+                if (model.HigherEducationsId != "" && model.HigherEducationsId != "0")
+                {
+                    
+                }
+                if (model.EmployeedInMasterId != "" && model.EmployeedInMasterId != "0")
+                {
+                    matrimonyProfile.EmployeedInMasterId = Convert.ToInt32(model.EmployeedInMasterId);
+                }
+              
+
+                _context.Update(matrimonyProfile);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("UserRegistrationPhoto");
+            }
+
             return View();
         }
         public IActionResult UserRegistrationPhoto()
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> UserRegistrationPhoto(UserRegistrationPhotoViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                Profile profile = _profileService.GetProfile();
+                if (profile != null)
+                {
+                    var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
+
+                    string wwwRooPath = _webHostEnvironment.WebRootPath;
+                    string fileName = "Pri_";
+                    string extension = Path.GetExtension(model.ImageFile.FileName);
+                    model.ImageName = fileName = fileName + matrimonyProfile.MatrimonyProfileId + extension;
+                    string path = Path.Combine(wwwRooPath + "/ProfilePhotos/", fileName);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await model.ImageFile.CopyToAsync(fileStream);
+                    }
+                    matrimonyProfile.PhotoName = model.ImageName;
+                    _context.Update(matrimonyProfile);
+                    await _context.SaveChangesAsync();
+                }
+
+            }
+            return View();
+        }
+
         public IActionResult CampaignRegistrationCaste()
         {
             return View();
         }
 
-
-        
-
-
-        
-
-
-        public IActionResult campaignregistrationabout()
+        public IActionResult UserRegistrationAbout()
         {
             return View();
         }

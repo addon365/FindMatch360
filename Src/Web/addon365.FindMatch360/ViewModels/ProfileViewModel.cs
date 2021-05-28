@@ -44,6 +44,9 @@ namespace addon365.FindMatch360.ViewModels
         
         public string EmployeedInMasterId { get; set; }
         public IEnumerable<EmployeedInMaster> EmployeedInLst { get; set; }
+
+        public string OccupationMasterId { get; set; }
+        public IEnumerable<OccupationMaster> Occupations { get; set; }
         public string WorkingAddress { get; set; }
         public string MonthlyRevenue { get; set; }
         #endregion

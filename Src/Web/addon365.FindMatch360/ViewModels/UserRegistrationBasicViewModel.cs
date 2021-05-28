@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace addon365.FindMatch360.ViewModels
 {
-    public class RegisterViewModel
+    public class UserRegistrationBasicViewModel
     {
 
         public string ProfileFor { get; set; }

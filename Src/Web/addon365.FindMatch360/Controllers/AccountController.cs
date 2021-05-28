@@ -41,7 +41,7 @@ namespace addon365.FindMatch360.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(UserRegistrationBasicViewModel model)
         {
             if(ModelState.IsValid)
             {

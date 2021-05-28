@@ -16,8 +16,7 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
 
         #region Person basic Details
         public String Name { get; set; }
-       
-        public ICollection<ProfilePhotos> ProfilePhotos { get; set; }
+        public string PhotoName { get; set; }
         public byte Gender { get; set; }
         public DateTime DateandTimeOfBirth { get; set; }
 

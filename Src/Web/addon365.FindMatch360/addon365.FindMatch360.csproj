@@ -125,6 +125,10 @@
     <None Include="wwwroot\profile\js\datatables-simple-demo.js" />
     <None Include="wwwroot\profile\js\scripts.js" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\ProfilePhotos\" />
+  </ItemGroup>
 	
 
 </Project>
