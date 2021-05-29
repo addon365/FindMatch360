@@ -34,7 +34,7 @@ namespace addon365.FindMatch360.Controllers
             
             if(IsProfileUser)
             {
-               var data=_context.MatrimonyProfiles.Where(a => a.UserId == _userManager.GetUserId(currentUser));
+               var data=_context.Profiles.Where(a => a.UserId == _userManager.GetUserId(currentUser));
                 profile = null;
                if(data.Any())
                 {
@@ -72,7 +72,7 @@ namespace addon365.FindMatch360.Controllers
             {
                 return RedirectToAction("UserRegistrationReligionDetails", "home");
             }
-            return View(await _context.MatrimonyProfiles.ToListAsync());
+            return View(await _context.Profiles.Include(s=>s.ProfileEducation).Include(s=>s.EmployeedIn).Include(s=>s.Occupation).ToListAsync());
         }
 
         // GET: MatrimonyProfiles/Details/5
@@ -83,8 +83,8 @@ namespace addon365.FindMatch360.Controllers
                 return NotFound();
             }
 
-            var matrimonyProfile = await _context.MatrimonyProfiles
-                .FirstOrDefaultAsync(m => m.MatrimonyProfileId == id);
+            var matrimonyProfile = await _context.Profiles
+                .FirstOrDefaultAsync(m => m.ProfileMasterId == id);
             if (matrimonyProfile == null)
             {
                 return NotFound();
@@ -141,7 +141,7 @@ namespace addon365.FindMatch360.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("MatrimonyProfileId,Name,DateandTimeOfBirth,Place,Color,Height,Nakshatra,Rasi,Lagnam,ChevvaiDosham,BirthNumberinFamily,Brothers,MarriedBrothers,Sisters,MarriedSisters,JobPosition,CompanyAddress,MonthlyRevenue,FatherName,FatherQualification,FatherJob,MotherName,MotherQualification,MotherJob,NativeDistrict,ContactPerson,Address,PhoneNo,MobileNo,EmailId,ExpectedQualification")]Profile matrimonyProfile)
         {
-            if (id != matrimonyProfile.MatrimonyProfileId)
+            if (id != matrimonyProfile.ProfileMasterId)
             {
                 return NotFound();
             }
@@ -155,7 +155,7 @@ namespace addon365.FindMatch360.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MatrimonyProfileExists(matrimonyProfile.MatrimonyProfileId))
+                    if (!MatrimonyProfileExists(matrimonyProfile.ProfileMasterId))
                     {
                         return NotFound();
                     }
@@ -177,8 +177,8 @@ namespace addon365.FindMatch360.Controllers
                 return NotFound();
             }
 
-            var matrimonyProfile = await _context.MatrimonyProfiles
-                .FirstOrDefaultAsync(m => m.MatrimonyProfileId == id);
+            var matrimonyProfile = await _context.Profiles
+                .FirstOrDefaultAsync(m => m.ProfileMasterId == id);
             if (matrimonyProfile == null)
             {
                 return NotFound();
@@ -192,15 +192,15 @@ namespace addon365.FindMatch360.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(id);
-            _context.MatrimonyProfiles.Remove(matrimonyProfile);
+            var matrimonyProfile = await _context.Profiles.FindAsync(id);
+            _context.Profiles.Remove(matrimonyProfile);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool MatrimonyProfileExists(Guid id)
         {
-            return _context.MatrimonyProfiles.Any(e => e.MatrimonyProfileId == id);
+            return _context.Profiles.Any(e => e.ProfileMasterId == id);
         }
     }
 }

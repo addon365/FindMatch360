@@ -88,7 +88,7 @@
                                         </div>
                                         <div class="col-md-3 col-sm-3">
                                             <div class="matrimonyprofile-img">
-                                                <img src="~/images/editprofile.png" class="img-fluid" id="img-living">
+                                                <img src=@("ProfilePhotos/Pri_"+item.ProfileMasterId+".jpg") class="img-fluid" id="img-living">
                                             </div>
                                         </div>
                                         <div class="col-md-9 col-sm-9">
@@ -100,6 +100,7 @@
                                                     <table>
                                                         <tr>
                                                             <td class="title">    @Html.DisplayNameFor(model => model.Name) </td>
+                                                          
                                                             <td class="text">  :@Html.DisplayFor(modelItem => item.Name)</td>
                                                         </tr>
                                                         <tr>
@@ -107,13 +108,14 @@
                                                             <td class="text">  :@Html.DisplayFor(modelItem => item.DateandTimeOfBirth)</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="title">  @Html.DisplayNameFor(model => model.Star) </td>
-                                                            <td class="text">:  @Html.DisplayFor(modelItem => item.Star)</td>
+                                                            <td class="title">  @Html.DisplayNameFor(model => model.ProfileEducation.EducationName) </td>
+                                                            <td class="text">:  @Html.DisplayFor(modelItem => item.ProfileEducation.EducationName)</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="title">    @Html.DisplayNameFor(model => model.PreferenceQualification)</td>
-                                                            <td class="text">:   @Html.DisplayFor(modelItem => item.PreferenceQualification)</td>
+                                                            <td class="title">    @Html.DisplayNameFor(model => model.EmployeedIn.EmployeedInName)</td>
+                                                            <td class="text">:   @Html.DisplayFor(modelItem => item.EmployeedIn.EmployeedInName)</td>
                                                         </tr>
+                                                        
 
                                                        
 
@@ -124,6 +126,11 @@
                                                                 @Html.DisplayNameFor(model => model.WorkingAddress)
                                                             </td>
                                                             <td class="text">:  @Html.DisplayFor(modelItem => item.WorkingAddress) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <a asp-action="Details" asp-route-id="@item.ProfileMasterId">Check Full Details</a>
+                                                            </td>
                                                         </tr>
                                                     </table>
                                                 </div>

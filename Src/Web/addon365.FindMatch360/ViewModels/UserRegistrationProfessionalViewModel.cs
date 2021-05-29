@@ -8,9 +8,10 @@ namespace addon365.FindMatch360.ViewModels
 {
     public class UserRegistrationProfessionalViewModel
     {
-        public string HigherEducationsId { get; set; }
+        public string EducationMasterId { get; set; }
         public IEnumerable<EducationMaster> Educations { get; set; }
 
+        public string EducationDetail { get; set; }
         public string EmployeedInMasterId { get; set; }
         public IEnumerable<EmployeedInMaster> EmployeedInLst { get; set; }
 

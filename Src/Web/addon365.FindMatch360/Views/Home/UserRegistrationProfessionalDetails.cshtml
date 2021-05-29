@@ -26,7 +26,7 @@
                         </p>
                         <div class="form-group">
                             <label for="sel1">Highest Education:</label>
-                            <select class="form-control" asp-for="@Model.HigherEducationsId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
+                            <select class="form-control" asp-for="@Model.EducationMasterId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
                                 <option value="0">Select Education</option>
                                
                             </select>
@@ -34,7 +34,7 @@
 
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="Subcaste" placeholder="Enter Education in Detail" required="required">
+                                <input type="text" class="form-control" asp-for="@Model.EducationDetail"  placeholder="Enter Education in Detail" >
                             </div>
                         </div>
 

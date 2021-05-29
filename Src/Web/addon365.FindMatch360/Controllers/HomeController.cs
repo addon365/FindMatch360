@@ -86,10 +86,16 @@ namespace addon365.FindMatch360.Controllers
                     profile.ProfileForId = Convert.ToInt32(model.ProfileFor);
                 profile.Name = model.FullName;
                 profile.MobileNo = model.MobileNo;
-                if (model.Gender == Gender.Male.ToString())
-                {
-                    profile.Gender = (byte)Gender.Male;
-                }
+                
+                if(model.DateOfBirth!="")
+                    profile.DateandTimeOfBirth = Convert.ToDateTime(model.DateOfBirth);
+               
+                if(model.Gender!="0" && model.Gender!="")
+                    profile.Gender = (byte)Convert.ToByte(model.Gender);
+
+                profile.ReligionMasterId = ConvertIntandIfvalid(model.ReligionMasterId);
+                profile.MotherTongueMasterId = ConvertIntandIfvalid(model.MotherTongueMasterId);
+            
 
 
 
@@ -163,7 +169,7 @@ namespace addon365.FindMatch360.Controllers
             Profile profile = _profileService.GetProfile();
             if (profile!=null)
             { 
-                var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
+                var matrimonyProfile = await _context.Profiles.FindAsync(profile.ProfileMasterId);
                 if (model.CasteMasterId != "" && model.CasteMasterId != "0")
                 {
                     matrimonyProfile.CasteMasterId = Convert.ToInt32(model.CasteMasterId);
@@ -200,7 +206,7 @@ namespace addon365.FindMatch360.Controllers
             Profile profile = _profileService.GetProfile();
             if (profile != null)
             {
-                var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
+                var matrimonyProfile = await _context.Profiles.FindAsync(profile.ProfileMasterId);
                 if (model.MaritalStatusMasterId != "" && model.MaritalStatusMasterId != "0")
                 {
                     matrimonyProfile.MaritalStatusMasterId = Convert.ToInt32(model.MaritalStatusMasterId);
@@ -236,16 +242,21 @@ namespace addon365.FindMatch360.Controllers
             Profile profile = _profileService.GetProfile();
             if (profile != null)
             {
-                var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
-                if (model.HigherEducationsId != "" && model.HigherEducationsId != "0")
+                var matrimonyProfile = await _context.Profiles.FindAsync(profile.ProfileMasterId);
+                if (model.EducationMasterId != "" && model.EducationMasterId != "0")
                 {
-                    
+                    matrimonyProfile.ProfileEducationMasterId = Convert.ToInt32(model.EducationMasterId);
+                    matrimonyProfile.ProfileEducationDetail = model.EducationDetail;
                 }
                 if (model.EmployeedInMasterId != "" && model.EmployeedInMasterId != "0")
                 {
                     matrimonyProfile.EmployeedInMasterId = Convert.ToInt32(model.EmployeedInMasterId);
                 }
-              
+                if (model.OccupationMasterId != "" && model.OccupationMasterId != "0")
+                {
+                    matrimonyProfile.OccupationMasterId = Convert.ToInt32(model.OccupationMasterId);
+                }
+
 
                 _context.Update(matrimonyProfile);
                 await _context.SaveChangesAsync();
@@ -266,12 +277,12 @@ namespace addon365.FindMatch360.Controllers
                 Profile profile = _profileService.GetProfile();
                 if (profile != null)
                 {
-                    var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(profile.MatrimonyProfileId);
+                    var matrimonyProfile = await _context.Profiles.FindAsync(profile.ProfileMasterId);
 
                     string wwwRooPath = _webHostEnvironment.WebRootPath;
                     string fileName = "Pri_";
                     string extension = Path.GetExtension(model.ImageFile.FileName);
-                    model.ImageName = fileName = fileName + matrimonyProfile.MatrimonyProfileId + extension;
+                    model.ImageName = fileName = fileName + matrimonyProfile.ProfileMasterId + extension;
                     string path = Path.Combine(wwwRooPath + "/ProfilePhotos/", fileName);
                     using (var fileStream = new FileStream(path, FileMode.Create))
                     {
@@ -280,6 +291,7 @@ namespace addon365.FindMatch360.Controllers
                     matrimonyProfile.PhotoName = model.ImageName;
                     _context.Update(matrimonyProfile);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction("index", "MatrimonyProfiles");
                 }
 
             }
@@ -376,7 +388,17 @@ namespace addon365.FindMatch360.Controllers
         }
 
 
-
-
+        private int? ConvertIntandIfvalid(string value)
+        {
+            if (value != "" && value != "0")
+            {
+                return Convert.ToInt32(value);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
+    
 }

@@ -55,7 +55,7 @@ namespace addon365.FindMatch360.Services
         {
 
             System.Security.Claims.ClaimsPrincipal currentUser = _httpContextAccessor.HttpContext.User;
-            var data = _context.MatrimonyProfiles.Where(a => a.UserId == _userManager.GetUserId(currentUser));
+            var data = _context.Profiles.Where(a => a.UserId == _userManager.GetUserId(currentUser));
             Profile profile = null;
 
             if (data.Any())

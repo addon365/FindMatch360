@@ -12,10 +12,9 @@ namespace addon365.FindMatch360.Data
         {
 
         }
-#region MatrimonyProfile Tables
-        public DbSet<Profile> MatrimonyProfiles { get; set; }
-        public DbSet<ProfileDoshams> ProfileDoshams { get; set; }
-        public DbSet<ProfileEducations> ProfileEducations { get; set; }
+#region Profile Tables
+        public DbSet<Profile> Profiles { get; set; }
+     
         public DbSet<ProfilePreferenceCaste> ProfilePreferenceCastes { get; set; }
         public DbSet<ProfilePreferenceEducations> ProfilePreferenceEducations { get; set; }
         public DbSet<ProfilePreferenceReligion> ProfilePreferenceReligions { get; set; }

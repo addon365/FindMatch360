@@ -9,7 +9,7 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
     public class Profile
     {
         [Key]
-        public Guid MatrimonyProfileId { get; set; }
+        public Guid ProfileMasterId { get; set; }
         [ForeignKey("ProfileFor")]
         public int? ProfileForId { get; set; }
         public ProfileForMaster ProfileFor { get; set; }
@@ -38,14 +38,21 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         #endregion
 
         #region Education Details
-        public ICollection<ProfileEducations> ProfileEducations { get; set; }
 
+        [ForeignKey("ProfileEducation")]
+        public int? ProfileEducationMasterId { get; set; }
+        public EducationMaster ProfileEducation { get; set; }
+        public string ProfileEducationDetail { get; set; }
         #endregion
 
         #region JobDetails
         [ForeignKey("EmployeedIn")]
         public int? EmployeedInMasterId { get; set; }
         public EmployeedInMaster EmployeedIn { get; set; }
+
+        [ForeignKey("Occupation")]
+        public int? OccupationMasterId { get; set; }
+        public OccupationMaster Occupation { get; set; }
 
         [ForeignKey("WorkingCountry")]
         public int? WorkingCountryMasterId { get; set; }
@@ -85,7 +92,6 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         public int? GothramMasterId { get; set; }
         public GothramMaster Gothram { get; set; }
 
-        public ICollection<ProfileDoshams> ProfileDoshams { get; set; }
         #endregion
 
         #region Horoscope Details

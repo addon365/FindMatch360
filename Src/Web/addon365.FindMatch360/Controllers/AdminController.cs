@@ -69,7 +69,7 @@ namespace addon365.FindMatch360.Controllers
                 var ProfileDbModel = new Profile();
 
 
-                ProfileDbModel.MatrimonyProfileId = Guid.NewGuid();
+                ProfileDbModel.ProfileMasterId = Guid.NewGuid();
                 ProfileDbModel.Name = model.Name;
                 ProfileDbModel.Gender = model.Gender;
                 ProfileDbModel.MaritalStatusMasterId=model.MaritalStatusMasterId == "" || model.MaritalStatusMasterId=="0" ?null : Convert.ToInt32(model.MaritalStatusMasterId);

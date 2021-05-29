@@ -75,22 +75,39 @@ namespace addon365.FindMatch360.Controllers
 
                 if (result.Succeeded)
                 {
-                    var user=_userManager.Users.FirstOrDefault(a=>a.Email==model.Email);
-                    if(user!=null)
+                    System.Security.Claims.ClaimsPrincipal currentUser = _httpContextAccessor.HttpContext.User;
+
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    var roles = await _userManager.GetRolesAsync(user);
+                    if(roles.Contains("Administrator"))
                     {
-                        if(!_context.MatrimonyProfiles.Where(a=>a.UserId==user.Id).Any())
-                        {
-                            return RedirectToAction("CampaignRegistration", "home");
-                        }
-                       
-                    }
-                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    {
-                        return Redirect(returnUrl);
+                        return Redirect("~/Admin");
                     }
                     else
                     {
-                        return RedirectToAction("index", "home");
+
+                        //var user = _userManager.Users.FirstOrDefault(a => a.Email == model.Email);
+
+                        if (user != null)
+                        {
+                            if (_context.Profiles.Where(a => a.UserId == user.Id).Any())
+                            {
+                                return RedirectToAction("index","MatrimonyProfiles");
+                            }
+                            else
+                            {
+
+                            }
+
+                        }
+                        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("index", "home");
+                        }
                     }
                 }
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
