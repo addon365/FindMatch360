@@ -1,0 +1,66 @@
+﻿@model addon365.FindMatch360.ViewModels.ProfileRenewalCreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row page-header">
+    <div class="col-lg-6 align-self-center ">
+        <h2>Dashboard</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Account" asp-action="admin">Home</a></li>
+            <li class="breadcrumb-item active">Renewal</li>
+
+        </ol>
+    </div>
+    <div class="col-lg-6 align-self-center text-right">
+        <a asp-action="Index" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-arrow-left"></i> Back to List</a>
+    </div>
+</div>
+<section class="main-content">
+    <div class="row">
+        <div class="col-md-12 card">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ProfileRenewalSpecialId" class="control-label"></label>
+                    <input asp-for="ProfileRenewalSpecialId" class="form-control" />
+                    <span asp-validation-for="ProfileRenewalSpecialId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RenewalDate" class="control-label"></label>
+                    <input asp-for="RenewalDate" class="form-control" />
+                    <span asp-validation-for="RenewalDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProfileId" class="control-label"></label>
+                    <select asp-for="ProfileId" class="form-control" asp-items="ViewBag.Profiles"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Amount" class="control-label"></label>
+                    <input asp-for="Amount" class="form-control" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <input asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+   
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

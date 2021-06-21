@@ -274,26 +274,29 @@ namespace addon365.FindMatch360.Controllers
         {
             if(ModelState.IsValid)
             {
-                Profile profile = _profileService.GetProfile();
-                if (profile != null)
+                if (model.ImageFile != null)
                 {
-                    var matrimonyProfile = await _context.Profiles.FindAsync(profile.ProfileMasterId);
-
-                    string wwwRooPath = _webHostEnvironment.WebRootPath;
-                    string fileName = "Pri_";
-                    string extension = Path.GetExtension(model.ImageFile.FileName);
-                    model.ImageName = fileName = fileName + matrimonyProfile.ProfileMasterId + extension;
-                    string path = Path.Combine(wwwRooPath + "/ProfilePhotos/", fileName);
-                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    Profile profile = _profileService.GetProfile();
+                    if (profile != null)
                     {
-                        await model.ImageFile.CopyToAsync(fileStream);
-                    }
-                    matrimonyProfile.PhotoName = model.ImageName;
-                    _context.Update(matrimonyProfile);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("index", "MatrimonyProfiles");
-                }
+                        var matrimonyProfile = await _context.Profiles.FindAsync(profile.ProfileMasterId);
 
+                        string wwwRooPath = _webHostEnvironment.WebRootPath;
+                        string fileName = "Pri_";
+                        string extension = Path.GetExtension(model.ImageFile.FileName);
+                        model.ImageName = fileName = fileName + matrimonyProfile.ProfileMasterId + extension;
+                        string path = Path.Combine(wwwRooPath + "/ProfilePhotos/", fileName);
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await model.ImageFile.CopyToAsync(fileStream);
+                        }
+                        matrimonyProfile.PhotoName = model.ImageName;
+                        _context.Update(matrimonyProfile);
+                        await _context.SaveChangesAsync();
+                      
+                    }
+                }
+                return RedirectToAction("index", "MatrimonyProfiles");
             }
             return View();
         }

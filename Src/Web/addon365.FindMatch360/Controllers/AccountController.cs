@@ -30,7 +30,7 @@ namespace addon365.FindMatch360.Controllers
             this._context = context;
             this._httpContextAccessor = httpContextAccessor;
         }
-        [HttpPost]
+       
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -45,7 +45,7 @@ namespace addon365.FindMatch360.Controllers
         {
             if(ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName=model.Email,Email=model.Email };
+                var user = new ApplicationUser {ProfileName=model.FullName, UserName=model.Email,Email=model.Email };
                 var result=await _userManager.CreateAsync(user, model.Password);
 
                 if(result.Succeeded)

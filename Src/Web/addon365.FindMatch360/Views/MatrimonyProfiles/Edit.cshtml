@@ -1,8 +1,9 @@
-﻿@model Profile
+﻿@model ProfileUserEditViewModel
 
 @{
-    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+   
     ViewData["Title"] = "Edit";
+
 }
 <!--
 <h1>Edit</h1>
@@ -204,12 +205,12 @@
                                    </div>
 
                                    <div class="media-body ml-3">
-                                       <h2>venkatesan</h2>
-                                       <p>profile is created my self</p>
-                                       <p>26 yrs, 4Ft 6 In / 137 Cms</p>
-                                       <p>Hindu, Vannia kula Kshatriyar</p>
-                                       <p>Chennai, TamilNadu, India</p>
-                                       <p>B.Tech., Software Professional</p>
+                                       <h2>@Model.Name</h2>
+                                       <p>profile is created MySelf</p>
+                                       <p>@Model.DateandTimeOfBirth</p>
+                                       <p>@Model.CasteName , @Model.SubCasteName</p>
+                                       <p>@Model.Address</p>
+                                       <p>@Model.EducationName,@Model.OccupationName</p>
                                        <p>
                                            <i class="fa fa-mobile" aria-hidden="true" id="mobile-number"></i> +91 9791791605 <span>(<i class="fa fa-check-square-o" aria-hidden="true" id="mobile-number"> verified</i>)</span> <strong><a>Edit Mobile No</a></strong>
                                        </p>

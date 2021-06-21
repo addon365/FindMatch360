@@ -169,7 +169,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4">
                                 <div class="matrimonyprofile-img">
-                                    <img src="~/images/editprofile.png" class="img-fluid" id="img-living">
+                                    <img src=@("ProfilePhotos/Pri_"+Model.ProfileMasterId+".jpg") class="img-fluid" id="img-living">
                                 </div>
                             </div>
 
@@ -190,8 +190,8 @@
                                                     <td class="text"> @Html.DisplayFor(model => model.DateandTimeOfBirth)</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="title">  @Html.DisplayNameFor(model => model.PreferenceQualification) </td>
-                                                    <td class="text">:  @Html.DisplayFor(model => model.PreferenceQualification)</td>
+                                                    <td class="title">  @Html.DisplayNameFor(model => model.EmployeedIn.EmployeedInName) </td>
+                                                    <td class="text">:  @Html.DisplayFor(model => model.EmployeedIn.EmployeedInName)</td>
                                                 </tr>
                                               
 

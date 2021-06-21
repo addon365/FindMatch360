@@ -1,32 +1,34 @@
 ﻿@inject SignInManager<ApplicationUser> signInManager;
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
-        <!-- Common Plugins -->
-        <link href="~/admin/assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Vector Map Css-->
-        <link href="~/admin/assets/lib/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-        <!-- Chart C3 -->
-        <link href="~/admin/assets/lib/chart-c3/c3.min.css" rel="stylesheet">
-        <link href="~/admin/assets/lib/chartjs/chartjs-sass-default.css" rel="stylesheet">
-        <!-- DataTables -->
-        <link href="~/admin/assets/lib/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-        <link href="~/admin/assets/lib/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="~/admin/assets/lib/toast/jquery.toast.min.css" rel="stylesheet">
 
-        <!-- Custom Css-->
-        <link href="~/admin/assets/scss/style.css" rel="stylesheet">
-        <link href="~/admin/assets/scss/stylesheet.css" rel="stylesheet">
-        <link rel="stylesheet" href="~/css/site.css" />
-    </head>
-    <body>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin </title>
+    <!-- Common Plugins -->
+    <link href="~/admin/assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Vector Map Css-->
+    <link href="~/admin/assets/lib/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- Chart C3 -->
+    <link href="~/admin/assets/lib/chart-c3/c3.min.css" rel="stylesheet">
+    <link href="~/admin/assets/lib/chartjs/chartjs-sass-default.css" rel="stylesheet">
+    <!-- DataTables -->
+    <link href="~/admin/assets/lib/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="~/admin/assets/lib/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/admin/assets/lib/toast/jquery.toast.min.css" rel="stylesheet">
+
+    <!-- Custom Css-->
+    <link href="~/admin/assets/scss/style.css" rel="stylesheet">
+    <link href="~/admin/assets/scss/stylesheet.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
         <div class="top-bar primary-top-bar">
             <div class="container-fluid">
                 <div class="row">
@@ -72,21 +74,24 @@
                                     <li class="dropdown avtar-dropdown  pull-right" id="menu-right">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                             <img alt="" class="rounded-circle" src="../admin/assets/img/avtar-2.png" width="30">
-                                            John Doe
+                                            @User.Identity.Name
                                         </a>
                                         <ul class="dropdown-menu top-dropdown">
                                             <li>
                                                 <a class="dropdown-item" href="javascript:%20void(0);"><i class="icon-bell"></i> Activities</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="javascript:%20void(0);"><i class="icon-user"></i> Profile</a>
+                                              
+
+                                                    <a class="dropdown-item" asp-action="Edit" asp-controller="MatrimonyProfiles" ><i class="icon-user"></i> Profile </a>
+                                                
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="javascript:%20void(0);"><i class="icon-settings"></i> Settings</a>
                                             </li>
                                             <li class="dropdown-divider"></li>
                                             <li>
-                                                <a class="dropdown-item" href="javascript:%20void(0);"><i class="icon-logout"></i> Logout</a>
+                                                <a class="dropdown-item" asp-action="logout" asp-controller="account"><i class="icon-logout"></i> Logout</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -286,7 +291,7 @@
                 </div>
             </div>
         </div>
-      
+
         @RenderSection("Scripts", required: false)
 
         <!-- ============================================================== -->
@@ -321,5 +326,5 @@
         <script src="~/admin/assets/lib/toast/jquery.toast.min.js"></script>
         <script src="~/admin/assets/js/dashboard.js"></script>
 
-    </body>
-    </html>
+</body>
+</html>

@@ -8,11 +8,18 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
 {
     public class Profile
     {
+        public Profile()
+        {
+            RegisteredDate = DateTime.Now;
+            CreatedDate = DateTime.Now;
+        }
         [Key]
         public Guid ProfileMasterId { get; set; }
         [ForeignKey("ProfileFor")]
         public int? ProfileForId { get; set; }
         public ProfileForMaster ProfileFor { get; set; }
+        public DateTime RegisteredDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         #region Person basic Details
         public String Name { get; set; }
@@ -149,6 +156,7 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         public string PreferenceQualification { get; set; }
 
         #endregion
+        public ICollection<ProfileRenewal> ProfileRenewals { get; set; }
         public string UserId { get; set; }
 
     }

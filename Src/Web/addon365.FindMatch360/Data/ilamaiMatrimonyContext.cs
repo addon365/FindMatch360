@@ -12,6 +12,8 @@ namespace addon365.FindMatch360.Data
         {
 
         }
+        public DbSet<ProfileRenewal> ProfileRenewals { get; set; }
+
 #region Profile Tables
         public DbSet<Profile> Profiles { get; set; }
      

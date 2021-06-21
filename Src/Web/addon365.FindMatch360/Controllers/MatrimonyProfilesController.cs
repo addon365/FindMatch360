@@ -1,6 +1,7 @@
 ﻿using addon365.FindMatch360.Data;
 using addon365.FindMatch360.Models;
 using addon365.FindMatch360.Models.MatrimonyProfileModels;
+using addon365.FindMatch360.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -27,8 +28,7 @@ namespace addon365.FindMatch360.Controllers
             this._userManager = userManager;
             this._httpContextAccessor = httpContextAccessor;
             
-            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
-            currentUser = _httpContextAccessor.HttpContext.User;
+            System.Security.Claims.ClaimsPrincipal currentUser = _httpContextAccessor.HttpContext.User;
 
             IsProfileUser = currentUser.IsInRole("MatrimonyUser");
             
@@ -72,7 +72,10 @@ namespace addon365.FindMatch360.Controllers
             {
                 return RedirectToAction("UserRegistrationReligionDetails", "home");
             }
-            return View(await _context.Profiles.Include(s=>s.ProfileEducation).Include(s=>s.EmployeedIn).Include(s=>s.Occupation).ToListAsync());
+            System.Security.Claims.ClaimsPrincipal currentUser = _httpContextAccessor.HttpContext.User;
+
+
+            return View(await _context.Profiles.Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).Where(x => x.UserId != _userManager.GetUserId(currentUser)).ToListAsync());
         }
 
         // GET: MatrimonyProfiles/Details/5
@@ -112,26 +115,41 @@ namespace addon365.FindMatch360.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(matrimonyProfile);
         }
 
         // GET: MatrimonyProfiles/Edit/5
         [AllowAnonymous]
-        //public async Task<IActionResult> Edit(Guid? id)
         public async Task<IActionResult> Edit()
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
+            if (profile==null)
+            {
+                return NotFound();
+            }
 
-            //var matrimonyProfile = await _context.MatrimonyProfiles.FindAsync(id);
-            //if (matrimonyProfile == null)
-            //{
-            //    return NotFound();
-            //}
-            // return View(matrimonyProfile);
-            return View(new Profile());
+            var prof = _context.Profiles.Include(i=>i.Caste).Include(i=>i.SubCaste).Include(i=>i.ProfileEducation).Include(i=>i.Occupation).FirstOrDefault(x=>x.ProfileMasterId== profile.ProfileMasterId);
+            if (prof == null)
+            {
+                return NotFound();
+            }
+            ProfileUserEditViewModel vm = new ProfileUserEditViewModel();
+            vm.Name = prof.Name;
+            
+            if(prof.Caste!=null)
+                vm.CasteName = prof.Caste.CasteName;
+
+            if(prof.SubCaste!=null)
+                vm.SubCasteName = prof.SubCaste.SubCasteName;
+
+            if(prof.ProfileEducation!=null)
+                vm.EducationName = prof.ProfileEducation.EducationName;
+            
+            if(prof.Occupation!=null)
+                vm.OccupationName = prof.Occupation.OccupationName;
+
+            return View(vm);
+          
         }
 
         // POST: MatrimonyProfiles/Edit/5
