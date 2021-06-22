@@ -4,7 +4,9 @@ using addon365.FindMatch360.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +21,16 @@ namespace addon365.FindMatch360.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ilamaiMatrimonyContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ILogger<AccountController> _logger;
+        private readonly IEmailSender _emailSender;
 
         public AccountController(UserManager<ApplicationUser> userManager,
-                                    SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, ilamaiMatrimonyContext context, IHttpContextAccessor httpContextAccessor)
+                                    SignInManager<ApplicationUser> signInManager, 
+                                    RoleManager<IdentityRole> roleManager, 
+                                    ilamaiMatrimonyContext context, 
+                                    IHttpContextAccessor httpContextAccessor,
+                                    ILogger<AccountController> logger,
+                                    IEmailSender emailSender)
         {
 
             this._userManager = userManager;
@@ -29,6 +38,8 @@ namespace addon365.FindMatch360.Controllers
             this._roleManager = roleManager;
             this._context = context;
             this._httpContextAccessor = httpContextAccessor;
+            this._logger = logger;
+            this._emailSender = emailSender;
         }
        
         public async Task<IActionResult> Logout()
@@ -50,8 +61,19 @@ namespace addon365.FindMatch360.Controllers
 
                 if(result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("campaignregistration", "User");
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var confirmationLink = Url.Action("ConfirmEmail", "Account",
+    new { userId = user.Id, token = token }, Request.Scheme);
+
+                    _logger.Log(LogLevel.Warning, confirmationLink);
+
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
+                    //return RedirectToAction("campaignregistration", "User");
+
+                    ViewBag.ErrorTitle = "Registration successful";
+                    ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
+                            "email, by clicking on the confirmation link we have emailed you";
+                    return View("Error");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -60,6 +82,31 @@ namespace addon365.FindMatch360.Controllers
             }
             return View(model);
         }
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token == null)
+            {
+                return RedirectToAction("index", "home");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"The User ID {userId} is invalid";
+                return View("NotFound");
+            }
+
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            if (result.Succeeded)
+            {
+                return View();
+            }
+
+            ViewBag.ErrorTitle = "Email cannot be confirmed";
+            return View("Error");
+        }
+
         public IActionResult Login()
         {
             return View();
@@ -113,6 +160,123 @@ namespace addon365.FindMatch360.Controllers
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
             return View(model);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Find the user by email
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                // If the user is found AND Email is confirmed
+                
+                if (user != null)
+                {
+                    if (await _userManager.IsEmailConfirmedAsync(user))
+                    { 
+                        // Generate the reset password token
+                        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                    // Build the password reset link
+                    var passwordResetLink = Url.Action("ResetPassword", "Account",
+                            new { email = model.Email, token = token }, Request.Scheme);
+
+                    //// Log the password reset link
+                    _logger.Log(LogLevel.Warning, passwordResetLink);
+                    await _emailSender.SendEmailAsync(model.Email, "addon reset password check", passwordResetLink);
+
+                    // Send the user to Forgot Password Confirmation view
+                    return View("ForgotPasswordConfirmation");
+                    }
+                    else
+                    {
+                        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        var confirmationLink = Url.Action("ConfirmEmail", "Account",
+        new { userId = user.Id, token = token }, Request.Scheme);
+
+                        _logger.Log(LogLevel.Warning, confirmationLink);
+                        await _emailSender.SendEmailAsync(model.Email, "addon confirmation email check", confirmationLink);
+                        //await _signInManager.SignInAsync(user, isPersistent: false);
+                        //return RedirectToAction("campaignregistration", "User");
+
+                        ViewBag.ErrorTitle = "Registration successful";
+                        ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
+                                "email, by clicking on the confirmation link we have emailed you";
+                        return View("/Error");
+                    }
+                }
+
+                // To avoid account enumeration and brute force attacks, don't
+                // reveal that the user does not exist or is not confirmed
+                return View("ForgotPasswordConfirmation");
+            }
+
+            return View(model);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string token, string email)
+        {
+            // If password reset token or email is null, most likely the
+            // user tried to tamper the password reset link
+            if (token == null || email == null)
+            {
+                ModelState.AddModelError("", "Invalid password reset token");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Find the user by email
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user != null)
+                {
+                    // reset the user password
+                    var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+                    if (result.Succeeded)
+                    {
+                        return View("ResetPasswordConfirmation");
+                    }
+                    // Display validation errors. For example, password reset token already
+                    // used to change the password or password complexity rules not met
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
+                }
+
+                // To avoid account enumeration and brute force attacks, don't
+                // reveal that the user does not exist
+                return View("ResetPasswordConfirmation");
+            }
+            // Display validation errors if model state is not valid
+            return View(model);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
         }
 
         [AcceptVerbs("GET", "POST")]

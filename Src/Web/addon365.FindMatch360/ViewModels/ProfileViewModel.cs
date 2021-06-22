@@ -106,8 +106,12 @@ namespace addon365.FindMatch360.ViewModels
         #region Preferences
         public byte FromAge { get; set; }
         public byte UptoAge { get; set; }
-      
 
+
+        #endregion
+
+        #region Login
+        public string LoginEMailId { get; set; }
         #endregion
     }
 }

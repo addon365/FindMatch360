@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,9 +37,10 @@ namespace addon365.FindMatch360
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
             })
-                .AddEntityFrameworkStores<ilamaiMatrimonyContext>();
+                .AddEntityFrameworkStores<ilamaiMatrimonyContext>()
+                .AddDefaultTokenProviders(); ;
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddHttpContextAccessor();
             services.AddScoped<ProfileService, ProfileService>();
         }
@@ -52,7 +54,9 @@ namespace addon365.FindMatch360
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                //app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             app.UseStaticFiles();
 
@@ -68,5 +72,6 @@ namespace addon365.FindMatch360
                 
             });
         }
+        //Data Source = SQL5097.site4now.net; Initial Catalog = db_a696cb_illamaimatrimony; User Id = db_a696cb_illamaimatrimony_admin; Password=@dd0n123;MultipleActiveResultSets=true;App=EntityFramework
     }
 }
