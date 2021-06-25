@@ -1,0 +1,1079 @@
+﻿@model ProfileUserEditViewModel
+
+@{
+   
+    ViewData["Title"] = "Edit";
+
+}
+<!--
+<h1>Edit</h1>
+
+<h4>MatrimonyProfile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MatrimonyProfileId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateandTimeOfBirth" class="control-label"></label>
+                <input asp-for="DateandTimeOfBirth" class="form-control" />
+                <span asp-validation-for="DateandTimeOfBirth" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="SkinColor" class="control-label"></label>
+                <input asp-for="SkinColor" class="form-control" />
+                <span asp-validation-for="SkinColor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Star" class="control-label"></label>
+                <input asp-for="Star" class="form-control" />
+                <span asp-validation-for="Star" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rasi" class="control-label"></label>
+                <input asp-for="Rasi" class="form-control" />
+                <span asp-validation-for="Rasi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lagnam" class="control-label"></label>
+                <input asp-for="Lagnam" class="form-control" />
+                <span asp-validation-for="Lagnam" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="BirthNumberinFamily" class="control-label"></label>
+                <input asp-for="BirthNumberinFamily" class="form-control" />
+                <span asp-validation-for="BirthNumberinFamily" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brothers" class="control-label"></label>
+                <input asp-for="Brothers" class="form-control" />
+                <span asp-validation-for="Brothers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MarriedBrothers" class="control-label"></label>
+                <input asp-for="MarriedBrothers" class="form-control" />
+                <span asp-validation-for="MarriedBrothers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sisters" class="control-label"></label>
+                <input asp-for="Sisters" class="form-control" />
+                <span asp-validation-for="Sisters" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MarriedSisters" class="control-label"></label>
+                <input asp-for="MarriedSisters" class="form-control" />
+                <span asp-validation-for="MarriedSisters" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="WorkingAddress" class="control-label"></label>
+                <input asp-for="WorkingAddress" class="form-control" />
+                <span asp-validation-for="WorkingAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonthlyRevenue" class="control-label"></label>
+                <input asp-for="MonthlyRevenue" class="form-control" />
+                <span asp-validation-for="MonthlyRevenue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FatherName" class="control-label"></label>
+                <input asp-for="FatherName" class="form-control" />
+                <span asp-validation-for="FatherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FatherQualification" class="control-label"></label>
+                <input asp-for="FatherQualification" class="form-control" />
+                <span asp-validation-for="FatherQualification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FatherJob" class="control-label"></label>
+                <input asp-for="FatherJob" class="form-control" />
+                <span asp-validation-for="FatherJob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MotherName" class="control-label"></label>
+                <input asp-for="MotherName" class="form-control" />
+                <span asp-validation-for="MotherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MotherQualification" class="control-label"></label>
+                <input asp-for="MotherQualification" class="form-control" />
+                <span asp-validation-for="MotherQualification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MotherJob" class="control-label"></label>
+                <input asp-for="MotherJob" class="form-control" />
+                <span asp-validation-for="MotherJob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NativeDistrict" class="control-label"></label>
+                <input asp-for="NativeDistrict" class="form-control" />
+                <span asp-validation-for="NativeDistrict" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactPerson" class="control-label"></label>
+                <input asp-for="ContactPerson" class="form-control" />
+                <span asp-validation-for="ContactPerson" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNo" class="control-label"></label>
+                <input asp-for="PhoneNo" class="form-control" />
+                <span asp-validation-for="PhoneNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MobileNo" class="control-label"></label>
+                <input asp-for="MobileNo" class="form-control" />
+                <span asp-validation-for="MobileNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailId" class="control-label"></label>
+                <input asp-for="EmailId" class="form-control" />
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PreferenceQualification" class="control-label"></label>
+                <input asp-for="PreferenceQualification" class="form-control" />
+                <span asp-validation-for="PreferenceQualification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>--->
+<div class="matrimoneyprofile-edit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" id="edit-profile-wrapper">
+                <div class="row" id="edit-profile-wrapper-top">
+                    <div class="col-md-2">
+                        <div class="edit-profile-login">
+                            <img src="~/images/phone.png" class="img-fluid" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="edit-profile-login-content">
+                            <h4>Like some Members?<strong>Talk to them directly</strong></h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="upgradenow">
+                            <button type="button" class="btn btn-primary Upgrade-Now-button">Upgrade Now</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--- profile-photo section start-->
+    <div class="profile-photo-wrappers">
+        <div class="container">
+           <div class="row">
+               <div class="col-md-9">
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-8">
+                           <div class="profile-img">
+                               <div class="media">
+                                   <div class="card pl-3" id="card-wrapper">
+
+                                       <img src="~/images/edit-profile-img.png" class="align-self-start">
+
+                                       <span class="add-edit-photos">Add / Edit Photos</span>
+                                   </div>
+
+                                   <div class="media-body ml-3">
+                                       <h2>@Model.Name</h2>
+                                       <p>profile is created MySelf</p>
+                                       <p>@Model.DateandTimeOfBirth</p>
+                                       <p>@Model.CasteName , @Model.SubCasteName</p>
+                                       <p>@Model.Address</p>
+                                       <p>@Model.EducationName,@Model.OccupationName</p>
+                                       <p>
+                                           <i class="fa fa-mobile" aria-hidden="true" id="mobile-number"></i> +91 9791791605 <span>(<i class="fa fa-check-square-o" aria-hidden="true" id="mobile-number"> verified</i>)</span> <strong><a>Edit Mobile No</a></strong>
+                                       </p>
+                                   </div>
+                               </div>
+
+
+                           </div>
+                       </div>
+
+                       <div class="col-md-4">
+                           <div class="profile-look">
+                               <p>How your profile looks <br /> to others</p>
+                               <button type="button" class="btn  Profile-Preview">
+                                   <i class="fa fa-eye" aria-hidden="true" id="eye-color"></i>
+                                   Profile Preview
+                               </button>
+
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row" id="bg-wrapper-2">
+                       <div class="col-md-8">
+                           <div class="profile-photo-2 pt-3">
+                               <p>Photos are the first thing that prospects look at.</p>
+                               <p>Add your photo and get 10 times more responses!</p>
+                               <div class="button-wrapper">
+                                   <ul>
+                                       <li><button type="button" class="btn btn-light skip">skip</button></li>
+                                       <li>
+                                           <div class="custom-file mb-3">
+                                               <input type="file" class="custom-file-input" id="customFile" name="filename">
+                                               <label class="custom-file-label" for="customFile">Upload Photo Now</label>
+                                           </div>
+                                       </li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-4">
+                           <div class="profile-average-img pt-4 pb-4">
+                               <img src="~/images/profile-average.png" />
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-12">
+                           <div class="Personal-information-title">
+                               <h4>Personal Information</h4>
+                           </div>
+
+                       </div>
+                   </div>
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>In my own words</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+                       <div class="col-md-12 pt-3">
+                           <p>I completed my bachelo's degree and am now working as a software professional. I belong to a middle<br /> class, joint family with orthodox values, currently settled in chennai</p>
+                       </div>
+                   </div>
+
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>Basic Details</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+                       <div class="col-md-12 pt-3">
+                           <p>Get better responses by verifying your name and age</p>
+                           <button type="button" class="btn btn-primary get-identity-badge">
+                               Get Identity Badge <i class="fa fa-angle-right" aria-hidden="true"></i>
+                           </button>
+                           <hr />
+                       </div>
+                       <hr />
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Profile Create For</td>
+                                       <td> : Myself </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Body Type </td>
+                                       <td class="body-type">: Add Body Type <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>  physical Status </td>
+                                       <td>:  Normal</td>
+                                   </tr>
+                                   <tr>
+                                       <td>weight </td>
+                                       <td class="body-type">: Add weight <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>martial Status </td>
+                                       <td>:  Never Married</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Drinking Habits </td>
+                                       <td class="body-type">: Add Drinking Habits <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+
+                               </table>
+                           </div>
+                       </div>
+
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Name</td>
+                                       <td> : Ravi </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Age </td>
+                                       <td class="body-type">
+                                           : 26 years <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                           <span class="matrimoneyprofile-verify">- Verify</span>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>  Height </td>
+                                       <td>:  4 Ft in/137 Cms</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Mother Tongue </td>
+                                       <td>: Tamil</td>
+                                   </tr>
+
+                                   <tr>
+                                       <td>Eating Habits </td>
+                                       <td class="body-type">: Add Eating Habits <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>Smoking Habits </td>
+                                       <td class="body-type">: Add Smoking Habits <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>Religion Information</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+
+                       <hr />
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Religion</td>
+                                       <td> : Hindu </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Caste / Sub Caste </td>
+                                       <td>: vannia kula kshatriyar - Vanniyar</td>
+                                   </tr>
+                                   <tr>
+                                       <td> Gathram </td>
+                                       <td>:  -</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Star / Raasi </td>
+                                       <td class="body-type">: Add Star / Raasi<i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>Dosharm </td>
+                                       <td>:  No</td>
+                                   </tr>
+
+
+                               </table>
+                           </div>
+                       </div>
+
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+
+                                   <tr>
+                                       <td>Time of Brith </td>
+                                       <td class="body-type">: Add  Time<i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>Place of Brith </td>
+                                       <td class="body-type">: Add Place <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>Groom's Location</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+
+                       <hr />
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Country</td>
+                                       <td> : India </td>
+                                   </tr>
+                                   <tr>
+                                       <td>State </td>
+                                       <td>: TamilNadu</td>
+                                   </tr>
+                                   <tr>
+                                       <td> Ancestral Origion </td>
+                                       <td>:  Not Specified</td>
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>City </td>
+                                       <td>: Chennai</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Citizenship </td>
+                                       <td>: India</td>
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>Professional Information</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+
+                       <hr />
+                       <div class="col-md-12 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Education</td>
+                                       <td> : B.Tech </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Education in Details </td>
+                                       <td>: Not Specified</td>
+                                   </tr>
+                                   <tr>
+                                       <td> College / Insititution </td>
+                                       <td>:  Not Specified</td>
+                                   </tr>
+                                   <tr>
+                                       <td> Employeed in </td>
+                                       <td>:  Private Sector</td>
+                                   </tr>
+                                   <tr>
+                                       <td> Occupation </td>
+                                       <td>:  Software Professional</td>
+                                   </tr>
+                                   <tr>
+                                       <td> Occupation in Details </td>
+                                       <td>:  Not Specified</td>
+                                   </tr>
+                                   <tr>
+                                       <td> Organization </td>
+                                       <td>:  Not Specified</td>
+                                   </tr>
+                                   <tr>
+                                       <td> Annual Income </td>
+                                       <td>:  Rs 4 - 5 Lakhs</td>
+                                   </tr>
+
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>Family Details</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+
+                       <hr />
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Family Values</td>
+                                       <td> : Orthodox </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Family Type </td>
+                                       <td>: Joint</td>
+                                   </tr>
+                                   <tr>
+                                       <td> Family Status </td>
+                                       <td>: Middle Class</td>
+                                   </tr>
+                                   <tr>
+                                       <td> No of Sister(s) </td>
+                                       <td class="body-type">: Add  No of Sister(s) <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+
+                       <div class="col-md-6 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Father's Occupation</td>
+                                       <td> : Not Specified </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Mother's Occupation </td>
+                                       <td>: Joint</td>
+                                   </tr>
+
+                                   <tr>
+                                       <td> No of Brother(s) </td>
+                                       <td class="body-type">: Add  No of Brother(s) <i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                   </tr>
+                                   <tr>
+                                       <td>Family Location </td>
+                                       <td>: Not Specified</td>
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>About My Family</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+                       <hr />
+                       <div class="col-md-12 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Not Specified</td>
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-10">
+                           <div class="profiler-content-title">
+                               <h5>LifeStyle</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+                       <hr />
+                       <div class="col-md-12 pt-3">
+                           <div class="basic-details">
+                               <table>
+                                   <tr>
+                                       <td>Not Specified</td>
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row">
+                       <div class="col-md-12">
+                           <div class="partner-preference-title">
+                               <h4>Partner Preference</h4>
+                               <p>
+                                   <b>Note :</b> Currently you will receive matches based on the following
+                                   prefernces: Age, Height, Marital Status, Eating Habits, Religion,
+                                   Mother Tongue, Caste, Gathra(m), country,State, Citizenship, Education, Dosham and Physical Status. You can
+                                   use "Strict Filters" to control the types of matches you receive
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-6">
+                           <div class="profiler-content-title">
+                               <h5>Basic & Religion Preference</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+
+                       <div class="col-md-4">
+                           <div class="edit-button">
+                               <p>
+                                   <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                   <span class="body-type">Manage Strick Filter</span>
+                               </p>
+
+                           </div>
+                       </div>
+                       <div class="col-md-12">
+                           <div class="Manage-content">
+                               <p>The below Partner preference has been set by based on your profile information. please edit your partner preference.</p>
+                           </div>
+                       </div>
+
+                       <hr />
+                       <div class="col-md-12 pt-3">
+                           <div class="basic-details-1">
+                               <table>
+                                   <tr>
+                                       <td>Bride's Age</td>
+                                       <td> : 19 - 26 years </td>
+
+
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Height</td>
+                                       <td> : 4 Ft 6 In/ 137 Cms </td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>marital Status</td>
+                                       <td> : Never Married </td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Physical Status</td>
+                                       <td> : Normal </td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Eating Habits</td>
+                                       <td> : Any </td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Smoking Habits</td>
+                                       <td> : Doesn't Matter </td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Drinking Habits</td>
+                                       <td> : Doesn't Matter </td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Religion Habits</td>
+                                       <td> : Hindu </td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Mother Tongue</td>
+                                       <td> : Tamil </td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Caste</td>
+                                       <td> : Vannia Kula Kshatriyar, Gounder - Vanniya Kula Kshatriyar Naicker - Vanniya Kula Kshatriyar, Thigala, Gounder</td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+
+                                   <tr>
+                                       <td>Sub Caste</td>
+                                       <td> : <b>Vannia Kula Kshatriyar.</b> All Subcaste | <b>Gounder.</b> Gounder <br /> - Vanniya Kula Kshatriyar</td>
+                                       <td>
+                                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Star</td>
+                                       <td> :  Any Star</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Dosham</td>
+                                       <td> :  Not Specified</td>
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-6">
+                           <div class="profiler-content-title">
+                               <h5>Professional Preference</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+
+                       <div class="col-md-4">
+                           <div class="edit-button">
+                               <p>
+                                   <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                   <span class="body-type">Manage Strick Filter</span>
+                               </p>
+
+                           </div>
+                       </div>
+                       <div class="col-md-12">
+                           <div class="Manage-content">
+                               <p>The below Partner preference has been set by based on your profile information. please edit your partner preference.</p>
+                           </div>
+                       </div>
+
+                       <hr />
+                       <div class="col-md-12 pt-3">
+                           <div class="basic-details-1">
+                               <table>
+                                   <tr>
+                                       <td>Education</td>
+                                       <td>
+                                           : Any Master in Engineering / Computers, Any Bachelors in Medicine in Gerneral / Dental / Surgeon, Any Master in
+                                           Medicine - General / Dental / Surgeon, Any Masters in Arts /
+                                           Science / commerce, Any Bachelors in Legal, Any Master in managemet.
+                                           Any Bachelors in Engineering
+                                           / Computer / Any Bachelors in Arts / Science / commerce,  Any Bachelors in Legal, Any Master
+                                           in management, Any Bachelors in Engineering / Computers. Any Bachelors in Arts / Science
+                                           / commerce
+                                       </td>
+                                   </tr>
+
+                                   <tr>
+
+                                       <td>EmployedIn</td>
+                                       <td>: Any</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Occupaion</td>
+                                       <td>
+                                           : Any Occupaion
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Annual Income</td>
+                                       <td>
+                                           : Any Income
+                                       </td>
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-6">
+                           <div class="profiler-content-title">
+                               <h5>Location Preference</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+
+                       <div class="col-md-4">
+                           <div class="edit-button">
+                               <p>
+                                   <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                   <span class="body-type">Manage Strick Filter</span>
+                               </p>
+
+                           </div>
+                       </div>
+                       <div class="col-md-12">
+                           <div class="Manage-content">
+                               <p>The below Partner preference has been set by based on your profile information. please edit your partner preference.</p>
+                           </div>
+                       </div>
+
+                       <hr />
+                       <div class="col-md-12 pt-3">
+                           <div class="basic-details-1">
+                               <table>
+                                   <tr>
+                                       <td>Country</td>
+                                       <td>
+                                           : Any
+                                       </td>
+                                   </tr>
+
+                                   <tr>
+
+                                       <td>Residing State</td>
+                                       <td>: Any State</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Citizenship</td>
+                                       <td>
+                                           : Any
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Residing District</td>
+                                       <td>
+                                           : Any District
+                                       </td>
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row" id="profile-photo-wrapper">
+                       <div class="col-md-6">
+                           <div class="profiler-content-title">
+                               <h5>What I am looking for</h5>
+                           </div>
+                       </div>
+                       <div class="col-md-2">
+                           <div class="edit-button">
+                               <button type="button" class="btn btn-primary">
+                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                   Edit
+                               </button>
+
+                           </div>
+                       </div>
+
+                       <div class="col-md-4">
+                           <div class="edit-button">
+                               <p>
+                                   <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                   <span class="body-type">Manage Strick Filter</span>
+                               </p>
+
+                           </div>
+                       </div>
+                       <hr />
+                       <div class="col-md-12 pt-3">
+                           <div class="basic-details-1">
+                               <table>
+                                   <tr>
+                                       <td>Not Specified</td>
+ 
+                                   </tr>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+
+
+
+               </div>
+
+             <div class="col-md-3 pt-5">
+                 <div class="profile-photo-wrapper pt-5 mt-5">
+                     <div class="media">
+                         <img src="~/images/profile-right.png" class="align-self-start">
+                         <div class="media-body ml-3">
+                             <h5>Add Horoscope</h5>
+                             <p>It is simple and absolutely</p>
+                             <h6>FREE!</h6>
+                         </div>
+                     </div>
+                     <div class="box-bottom-wrappers">
+                         <a href="#">
+                             Add HoroScope <i class="fa fa-step-forward" aria-hidden="true" id="eye-color"></i>
+                         </a>
+                     </div>
+                 </div>
+
+                 <div class="profile-photo-wrapper pt-3">
+                     <div class="media">
+                         <img src="~/images/edit-profile-bottom.png" class="align-self-start">
+                         <div class="media-body ml-3">
+                             <h5>Add Photos</h5>
+                             <p>Photos are the first <br /> things members look for <br /> in a profile</p>
+                             <h6>FREE!</h6>
+                         </div>
+                     </div>
+                     <div class="box-bottom-wrappers">
+                         <a href="#">
+                             Add Photos Now <i class="fa fa-step-forward" aria-hidden="true" id="eye-color"></i>
+                         </a>
+                     </div>
+                 </div>
+
+                 <div class="profile-photo-wrapper">
+                     <div class="view-more-right">
+                         <button type="button" class="btn btn-light view-more">View More <i class="fa fa-step-forward" aria-hidden="true" id="eye-color"></i></button>
+                     </div>
+                 </div>
+
+                 <div class="profile-photo-wrapper pt-3">
+                     <div class="media">
+
+                         <div class="media-body text-center">
+
+                             <p>What matters to you <br />the most in a</p>
+
+                         </div>
+                     </div>
+                     <div class="box-bottom-wrappers">
+                         <a href="#">
+                             Add Now 
+                         </a>
+                     </div>
+                 </div>
+
+                 <div class="profile-photo-wrapper pt-3">
+                     <div class="media">
+
+                         <div class="media-body text-center">
+
+                             <p>Your View on an <br />equal relationship</p>
+
+                         </div>
+                     </div>
+                     <div class="box-bottom-wrappers">
+                         <a href="#">
+                             Add Opinion 
+                         </a>
+                     </div>
+                 </div>
+
+
+             </div>
+           </div>
+        </div>
+
+    </div>
+    <!--- profile-photo section end-->
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

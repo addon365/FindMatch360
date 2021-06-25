@@ -1,0 +1,330 @@
+﻿@inject SignInManager<ApplicationUser> signInManager;
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin </title>
+    <!-- Common Plugins -->
+    <link href="~/admin/assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Vector Map Css-->
+    <link href="~/admin/assets/lib/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- Chart C3 -->
+    <link href="~/admin/assets/lib/chart-c3/c3.min.css" rel="stylesheet">
+    <link href="~/admin/assets/lib/chartjs/chartjs-sass-default.css" rel="stylesheet">
+    <!-- DataTables -->
+    <link href="~/admin/assets/lib/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="~/admin/assets/lib/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/admin/assets/lib/toast/jquery.toast.min.css" rel="stylesheet">
+
+    <!-- Custom Css-->
+    <link href="~/admin/assets/scss/style.css" rel="stylesheet">
+    <link href="~/admin/assets/scss/stylesheet.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <div class="top-bar primary-top-bar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a class="admin-logo" href="index.html">
+                            <h1>
+                                <img alt="" src="../admin/assets/img/icon.png" class="logo-icon margin-r-10">
+                                <img alt="" src="../admin/assets/img/logo-dark.png" class="toggle-none hidden-xs">
+                            </h1>
+                        </a>
+                    </div>
+                    <div class="col-lg-9">
+                        <nav class="navbar navbar-expand-md bg-success">
+                            <!-- Brand -->
+                            <a class="navbar-brand" href="#">Dashboard</a>
+
+                            <!-- Toggler/collapsibe Button -->
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                                <span class="navbar-toggler-icon">
+                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                                </span>
+                            </button>
+
+                            <!-- Navbar links -->
+                            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Search</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Matches</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Visitors</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Favourites</a>
+                                    </li>
+
+
+
+
+                                    <li class="dropdown avtar-dropdown  pull-right" id="menu-right">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <img alt="" class="rounded-circle" src="../admin/assets/img/avtar-2.png" width="30">
+                                            @User.Identity.Name
+                                        </a>
+                                        <ul class="dropdown-menu top-dropdown">
+                                            <li>
+                                                <a class="dropdown-item" href="javascript:%20void(0);"><i class="icon-bell"></i> Activities</a>
+                                            </li>
+                                            <li>
+                                              
+
+                                                    <a class="dropdown-item" asp-action="Edit" asp-controller="MatrimonyProfiles" ><i class="icon-user"></i> Profile </a>
+                                                
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="javascript:%20void(0);"><i class="icon-settings"></i> Settings</a>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item" asp-action="logout" asp-controller="account"><i class="icon-logout"></i> Logout</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ============================================================== -->
+        <!--                        Topbar End                              -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!--                        Right Side Start                        -->
+        <!-- ============================================================== -->
+        <nav class="toggle-sidebar" id="right-sidebar-toggle">
+            <div class="nano">
+                <div class="nano-content">
+                    <div>
+                        <ul class="list-inline nav-tab-card clearfix" role="tablist">
+
+                            <li class="active" role="presentation">
+                                <a aria-controls="friends" data-toggle="tab" href="#friends" role="tab">Friends</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="friends" role="tabcard">
+                                <ul class="list-unstyled sidebar-contact-list">
+                                    <li class="clearfix">
+                                        <a class="media-box" href="#">
+                                            <span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+                                                <img alt="user" class="media-box-object rounded-circle" src="../admin/assets/img/avtar-2.png" width="50">
+                                            </span>
+                                            <span class="media-box-body">
+                                                <span class="media-box-heading">
+                                                    <strong>John Doe</strong><br>
+                                                    <small class="text-muted">Designer</small>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="media-box" href="#">
+                                            <span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+                                                <img alt="user" class="media-box-object rounded-circle" src="../admin/assets/img/avtar-1.png" width="50">
+                                            </span>
+                                            <span class="media-box-body">
+                                                <span class="media-box-heading">
+                                                    <strong>Govinda Doe</strong><br>
+                                                    <small class="text-muted">Designer</small>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="media-box" href="#">
+                                            <span class="float-right"><span class="circle circle-danger circle-lg"></span></span> <span class="float-left">
+                                                <img alt="user" class="media-box-object rounded-circle" src="../admin/assets/img/avtar-3.png" width="50">
+                                            </span>
+                                            <span class="media-box-body">
+                                                <span class="media-box-heading">
+                                                    <strong>Megan Doe</strong><br>
+                                                    <small class="text-muted">Designer</small>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="media-box" href="#">
+                                            <span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+                                                <img alt="user" class="media-box-object rounded-circle" src="../admin/assets/img/avtar-4.png" width="50">
+                                            </span>
+                                            <span class="media-box-body">
+                                                <span class="media-box-heading">
+                                                    <strong>Hritik Doe</strong><br>
+                                                    <small class="text-muted">Designer</small>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="media-box" href="#">
+                                            <span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+                                                <img alt="user" class="media-box-object rounded-circle" src="../admin/assets/img/avtar-5.png" width="50">
+                                            </span>
+                                            <span class="media-box-body">
+                                                <span class="media-box-heading">
+                                                    <strong>Bianca Doe</strong><br>
+                                                    <small class="text-muted">Designer</small>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="media-box" href="#">
+                                            <span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+                                                <img alt="user" class="media-box-object rounded-circle" src="../admin/assets/img/avtar-6.png" width="50">
+                                            </span>
+                                            <span class="media-box-body">
+                                                <span class="media-box-heading">
+                                                    <strong>John Doe</strong><br>
+                                                    <small class="text-muted">Designer</small>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="media-box" href="#">
+                                            <span class="float-right"><span class="circle circle-success circle-lg"></span></span> <span class="float-left">
+                                                <img alt="user" class="media-box-object rounded-circle" src="../admin/assets/img/avtar-1.png" width="50">
+                                            </span>
+                                            <span class="media-box-body">
+                                                <span class="media-box-heading">
+                                                    <strong>Govinda Doe</strong><br>
+                                                    <small class="text-muted">Designer</small>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="media-box" href="#">
+                                            <span class="float-right"><span class="circle circle-danger circle-lg"></span></span> <span class="float-left">
+                                                <img alt="user" class="media-box-object rounded-circle" src="../assets/img/avtar-2.png" width="50">
+                                            </span>
+                                            <span class="media-box-body">
+                                                <span class="media-box-heading">
+                                                    <strong>Megan Doe</strong><br>
+                                                    <small class="text-muted">Designer</small>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class=" text-center">
+                                            <a class="btn btn-teal" href="javascript:void(0);" title="See more contacts">Load more..</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- ============================================================== -->
+        <!--                        Right Side End                          -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- 						Navigation Start 						-->
+        <!-- ============================================================== -->
+
+
+
+
+
+
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-bottom-left">
+
+                            <p><a href="https://www.addon365.com/">Copyright &copy; 2021 addon365 software company. All Right Reserved.</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-bottom-right">
+                            <ul>
+                                <li>
+                                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+
+                                </li>
+
+
+                                <li>
+                                    <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @RenderSection("Scripts", required: false)
+
+        <!-- ============================================================== -->
+        <!-- 						Content End		 						-->
+        <!-- ============================================================== -->
+        <!-- Common Plugins -->
+        <script src="~/admin/assets/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/admin/assets/lib/bootstrap/js/popper.min.js"></script>
+        <script src="~/admin/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/admin/assets/lib/pace/pace.min.js"></script>
+        <script src="~/admin/assets/lib/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+        <script src="~/admin/assets/lib/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="~/admin/assets/lib/nano-scroll/jquery.nanoscroller.min.js"></script>
+        <script src="~/admin/assets/lib/metisMenu/metisMenu.min.js"></script>
+        <script src="~/admin/assets/js/custom.js"></script>
+
+        <!--Chart Script-->
+        <script src="~/admin/assets/lib/chartjs/chart.min.js"></script>
+        <script src="~/admin/assets/lib/chartjs/chartjs-sass.js"></script>
+
+        <!--Vetor Map Script-->
+        <script src="~/admin/assets/lib/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="~/admin/assets/lib/vectormap/jquery-jvectormap-us-aea-en.js"></script>
+
+        <!-- Chart C3 -->
+        <script src="~/admin/assets/lib/chart-c3/d3.min.js"></script>
+        <script src="~/admin/assets/lib/chart-c3/c3.min.js"></script>
+
+        <!-- Datatables-->
+        <script src="~/admin/assets/lib/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/admin/assets/lib/datatables/dataTables.responsive.min.js"></script>
+        <script src="~/admin/assets/lib/toast/jquery.toast.min.js"></script>
+        <script src="~/admin/assets/js/dashboard.js"></script>
+
+</body>
+</html>

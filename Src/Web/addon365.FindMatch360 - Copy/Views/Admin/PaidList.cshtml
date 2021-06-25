@@ -1,0 +1,60 @@
+﻿@model PaidMembersViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row page-header">
+    <div class="col-lg-6 align-self-center">
+        <h2>Dashboard</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Account" asp-action="admin">Home</a></li>
+            <li class="breadcrumb-item active">PaidList</li>
+            <!---- <li class="breadcrumb-item active">Member Information</li>  -->
+        </ol>
+    </div>
+    <div class="col-lg-6 align-self-center text-right">
+        <a href="#" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-plus"></i> Create New</a>
+    </div>
+</div>
+
+<section class="main-content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <table class="table table-bordered">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>S.No</th>
+                            <th>Reg.No</th>
+                            <th>Reg.Date</th>
+                            <th>Name</th>
+                            <th>Caste</th>
+                            <th>Job</th>
+                            <th>Qualification</th>
+                            <th>Place</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.PaidMembers)
+                        {
+                            <tr>
+                                <td> @Html.DisplayFor(modelItem => item.SNo)</td>
+                                <td> @Html.DisplayFor(modelItem => item.RegNo)</td>
+                                <td> @Html.DisplayFor(modelItem => item.RegDate)</td>
+                                <td> @Html.DisplayFor(modelItem => item.Name)</td>
+                                <td> @Html.DisplayFor(modelItem => item.Caste)</td>
+                                <td> @Html.DisplayFor(modelItem => item.Job)</td>
+                                <td> @Html.DisplayFor(modelItem => item.Qualification)</td>
+                                <td> @Html.DisplayFor(modelItem => item.Place)</td>
+                                <td> @Html.DisplayFor(modelItem => item.Salary)</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

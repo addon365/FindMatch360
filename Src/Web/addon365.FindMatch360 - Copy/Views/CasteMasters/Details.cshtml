@@ -1,0 +1,43 @@
+﻿@model addon365.FindMatch360.Models.Masters.CasteMaster
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Details";
+}
+
+<div class="row page-header">
+    <div class="col-lg-6 align-self-center ">
+        <h2>Dashboard</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Account" asp-action="admin">Home</a></li>
+            <li class="breadcrumb-item active"><a asp-action="Index">Caste Master</a></li>
+        </ol>
+    </div>
+    <div class="col-lg-6 align-self-center text-right">
+        <a asp-action="Index" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-arrow-left"></i> Back to List</a>
+    </div>
+</div>
+<section class="main-content">
+
+    <div class="row">
+        <div class="col-md-12 card">
+            <!--- <h1>Details</h1>
+     <div>
+         <h4>CasteMaster</h4>
+         <hr />-->
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CasteName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CasteName)
+                </dd>
+            </dl>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.CasteMasterId">Edit</a> |
+
+            </div>
+        </div>  
+        </div>
+   
+</section>
