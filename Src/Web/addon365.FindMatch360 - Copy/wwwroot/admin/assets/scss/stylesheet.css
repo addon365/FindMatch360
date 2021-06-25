@@ -1,0 +1,34 @@
+.navbar {
+    padding: 11px 10px !important;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
+}
+.navbar-toggler {
+  
+    background-color: #fff !important;
+}
+.top-bar.primary-top-bar {
+    background-image: linear-gradient(to right, #7bcb4d, #7bcb4d);
+}
+
+#menu-right {
+    float: right;
+    position: absolute;
+    right: 0px;
+    left: :0px;
+    margin: 0 auto;
+    bottom: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+
+    nav.navbar.navbar-expand-md.bg-success {
+        position: absolute;
+        left: 62px;
+        top: -60px;
+        width: 78%;
+    }
+}

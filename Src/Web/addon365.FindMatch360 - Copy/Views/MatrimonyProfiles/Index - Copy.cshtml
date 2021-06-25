@@ -1,0 +1,197 @@
+﻿@model IEnumerable<Profile>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateandTimeOfBirth)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.SkinColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Star)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rasi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lagnam)
+            </th>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.BirthNumberinFamily)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brothers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarriedBrothers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sisters)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarriedSisters)
+            </th>
+        
+            <th>
+                @Html.DisplayNameFor(model => model.WorkingAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonthlyRevenue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FatherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FatherQualification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FatherJob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotherQualification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotherJob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NativeDistrict)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactPerson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreferenceQualification)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateandTimeOfBirth)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.SkinColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Star)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rasi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lagnam)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthNumberinFamily)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brothers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarriedBrothers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sisters)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarriedSisters)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkingAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthlyRevenue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherQualification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherJob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotherQualification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotherJob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NativeDistrict)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactPerson)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreferenceQualification)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProfileMasterId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProfileMasterId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProfileMasterId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

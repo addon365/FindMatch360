@@ -1,0 +1,98 @@
+﻿@model UserRegistrationReligionViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_CampaignLayout.cshtml";
+}
+
+<div class="campaignregistor-form-bg">
+    <div class="container">
+        <div class="row" id="campaignregistor-wrapper">
+            <div class="col-md-5" id="campignregistration-left">
+                <div class="campignregistration-title">
+                    <img src="~/images/reg-2.png" class="img-fluid" id="img-living">
+                    <div class="campignregistration-title-bg">
+                        <h5>
+                            Last year 10000 men found love on ilamai Matrimony..
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7" id="campignregistration-right">
+                <div class="signup-form">
+                    <form method="post">
+                        <h5 class="float-right">Great! You have completed <span class="precentage">40%</span></h5>
+                        <h2>Create Account</h2>
+                        <p class="lead">
+                            Religion details can help us find the right match
+                        </p>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="sel1">Caste:</label>
+                                <select class="form-control" id="sel1" asp-for="@Model.CasteMasterId" asp-items="@Model.Castes.Select(m=>new SelectListItem{ Text = m.CasteName, Value = m.CasteMasterId.ToString() })">
+                                    <option value="0">Select Castes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+
+                                <label for="sel1">SubCastes </label>
+                                <select class="form-control" id="sel1" asp-for="@Model.SubCasteMasterId" asp-items="@Model.SubCastes.Select(m=>new SelectListItem{ Text = m.SubCasteName, Value = m.SubCasteMasterId.ToString() })">
+                                    <option value="0">Select SubCastes</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="sel1">Gothrams </label>
+                                <select class="form-control" id="sel1" asp-for="@Model.GothramMasterId" asp-items="@Model.Gothrams.Select(m=>new SelectListItem{ Text = m.GothramName, Value = m.GothramMasterId.ToString() })">
+                                    <option value="0">Select Gothrams</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="sel1">Dosham </label>
+                                <select class="form-control" id="sel1">
+                                    <option value="0">Select Dosham</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <!--<div class="form-group">
+        <label class="control-label col-sm-3">Dosham</label>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="radio-inline">
+                        yes
+                        <input type="radio" id="femaleRadio" value="Female">
+                    </label>
+                </div>
+                <div class="col-sm-6">
+                    <label class="radio-inline">
+                        No
+                        <input type="radio" id="maleRadio" value="Male">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div> --->
+                        <div class="form-group">
+
+                            <button type="submit" class="btn btn-primary btn-block btn-lg Continue-bg">Continue</button>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+﻿@model UserRegistrationPersonalViewModel
+
+
+@{
+   
+    Layout = "~/Views/Shared/_CampaignLayout.cshtml";
+}
+
+<div class="campaignregistor-form-bg">
+    <div class="container">
+        <div class="row" id="campaignregistor-wrapper">
+            <div class="col-md-5" id="campignregistration-left">
+                <div class="campignregistration-title">
+                    <img src="~/images/reg-3.png" class="img-fluid" id="img-living">
+                    <div class="campignregistration-title-bg">
+
+                        <h5>
+                            Thousands of Success Stories! Yours could be next.
+
+
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7" id="campignregistration-right">
+                <div class="signup-form">
+                    <form method="post">
+                        <h5 class="float-right">Great! You have completed <span class="precentage">60%</span></h5>
+                        <h2>Create Account</h2>
+                        <p class="lead"> Not only charming and caring. Most importantly - right for you! </p>
+                        <div class="form-group">
+                            <label for="sel1">Marital Status:</label>
+                            <select class="form-control" id="sel1" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
+                                <option value="0">Select Marital Status</option>
+                             
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1">
+                                Height:
+                            </label>
+                            <select class="form-control" id="sel1">
+                                <option value="0">Select Height</option>
+                                
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1">
+                                Family Status:
+                            </label>
+                            <select class="form-control" asp-for="@Model.FamilyStatusMasterId" asp-items="@Model.FamilyStatuses.Select(m=>new SelectListItem{ Text = m.FamilStatusName, Value = m.FamilyStatusMasterId.ToString() })">
+                                <option value="0">Select Family Status</option>
+                                
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1">
+                                Family Type:
+                            </label>
+                            <select class="form-control"  asp-for="@Model.FamilyTypeMasterId" asp-items="@Model.FamilyTypes.Select(m=>new SelectListItem{ Text = m.FamilyTypeName, Value = m.FamilyTypeMasterId.ToString() })">
+                                <option value="0">Select Family type</option>
+                                
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="sel1">
+                                Family Values:
+                            </label>
+                            <select class="form-control" asp-for="@Model.FamilyValuesMasterId" asp-items="@Model.FamilyValues.Select(m=>new SelectListItem{ Text = m.FamilyValuesName, Value = m.FamilyValuesMasterId.ToString() })">
+                                <option value="0">Select Family Values</option>
+                               
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="sel1">
+                                Any Disability:
+                            </label>
+                            <select class="form-control" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
+                                <option value="0">Select Disability</option>
+                                
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <a>
+                                <button type="submit" class="btn btn-primary btn-block btn-lg Continue-bg">Continue</button>
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

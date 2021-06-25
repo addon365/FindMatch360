@@ -1,0 +1,84 @@
+﻿
+@model UserRegistrationProfessionalViewModel
+
+@{
+    Layout = "~/Views/Shared/_CampaignLayout.cshtml";
+}
+<div class="campaignregistor-form-bg">
+    <div class="container">
+        <div class="row" id="campaignregistor-wrapper">
+            <div class="col-md-5" id="campignregistration-left">
+                <div class="campignregistration-title">
+                    <img src="~/images/reg-4.png" class="img-fluid" id="img-living">
+                    <div class="campignregistration-title-bg">
+                        <h5>Create memories with her that last</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7" id="campignregistration-right">
+                <div class="signup-form">
+                    <form method="post">
+                        <h5 class="float-right">Great! You have completed <span class="precentage">80%</span></h5>
+                        <h2>Create Account</h2>
+                        <p class="lead">
+                            Professional details help us to find the best companion
+                        </p>
+                        <div class="form-group">
+                            <label for="sel1">Highest Education:</label>
+                            <select class="form-control" asp-for="@Model.EducationMasterId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
+                                <option value="0">Select Education</option>
+                               
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" asp-for="@Model.EducationDetail"  placeholder="Enter Education in Detail" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1">
+                                Employed in:
+                            </label>
+                            <select class="form-control" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
+                                <option value="0">Select Employeed</option>
+                                
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1">
+                                Occupation
+                            </label>
+                            <select class="form-control" asp-for="@Model.OccupationMasterId" asp-items="@Model.Occupations.Select(m=>new SelectListItem{ Text = m.OccupationName, Value = m.OccupationMasterId.ToString() })">
+                                <option value="0"> - Select Occupation - </option>
+                                
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1">
+                                Annual Income
+
+                            </label>
+                            <select class="form-control" id="sel1">
+                                <option value="0"> -  Select  - </option>
+                                <option value="1">0 - 1 Lakh</option>
+                            
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <a>
+                                <button type="submit" class="btn btn-primary btn-block btn-lg Continue-bg Continue-bg">Continue</button>
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

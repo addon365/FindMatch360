@@ -1,0 +1,56 @@
+﻿@model IEnumerable<addon365.FindMatch360.Models.Masters.CountryMaster>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row page-header">
+    <div class="col-lg-6 align-self-center ">
+        <h2>Dashboard</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Account" asp-action="admin">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item active">Member Information</li>
+            <li class="breadcrumb-item active">Index</li>
+        </ol>
+    </div>
+    <div class="col-lg-6 align-self-center text-right">
+        <a asp-action="Create" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-arrow-left"></i> Create New</a>
+    </div>
+</div>
+<section class="main-content">
+    <div class="row">
+        <div class="col-md-12 card">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CountryName)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CountryName)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.CountryMasterId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.CountryMasterId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.CountryMasterId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</section>

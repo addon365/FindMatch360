@@ -1,0 +1,60 @@
+﻿@model LoginViewModel
+
+<div class="login-bg-slider">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6">
+
+            </div>
+
+            <div class="col-md-6 col-12">
+                <div class="register-bg-slider-form">
+                    <form class="form-horizontal" role="form" method="post">
+                        <div class="register-title">
+                            <h5>LOG <span class="free">IN</span></h5>
+                        </div>
+                        <div class="register-bg-border">
+                            <div asp-validation-summary="All" class="text-danger"> </div>
+                            <div class="form-group">
+                                <label for="firstName" class="control-label"></label>
+                                <div class="col-sm-12">
+                                    <input asp-for="Email" type="text" placeholder="Enter your Email ID or Matri ID" class="form-control" autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="control-label"></label>
+                                <div class="col-sm-12">
+                                    <input asp-for="Password" type="password" placeholder="Enter Password" class="form-control" autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label asp-for="RememberMe">
+
+                                        <input asp-for="RememberMe" />
+                                        @Html.DisplayNameFor(m=>m.RememberMe)
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-check" id="rightwrapper">
+                                <label class="form-check-label">
+
+                                    <span class="terms-conditions text-right"> <a asp-action="ForgotPassword" class="link">Forgot Password ?</a></span>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block register-button">Login</button>
+
+                        </div>
+                        <div class="member-bottom">
+                            <span>New Member? <a href="#" class="link">Register Free </a></span>
+                        </div>
+                    </form> <!-- /form -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
