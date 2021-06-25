@@ -11,7 +11,9 @@ namespace addon365.FindMatch360.ViewModels
     }
     public class TotalMember
     {
+        public Guid ProfileMasterId { get; set; }
         public int SNo { get; set; }
+        public Guid MatrimonyProfileId { get; set; }
         public int RegNo { get; set; }
         public DateTime RegDate { get; set; }
         public string Name { get; set; }

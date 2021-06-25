@@ -3,6 +3,7 @@ using addon365.FindMatch360.Models.MatrimonyProfileModels;
 using addon365.FindMatch360.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -57,20 +58,36 @@ namespace addon365.FindMatch360.Controllers
             return View(viewModel);
         }
 
-        public IActionResult AllMembers()
+        public async Task<IActionResult> AllMembers()
         {
+            var List = await _context.Profiles.Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).ToListAsync();
             AdminAllMemberViewModel viewModel = new AdminAllMemberViewModel();
             List<TotalMember> totalMembers = new List<TotalMember>();
-            totalMembers.Add(new TotalMember { SNo = 1, RegNo = 10048, RegDate = DateTime.Now, Name = "Santhosh", Caste = "Vanniyar", Job = "Software", Qualification = "BE", Place = "Thiruvanamalai", Salary = 13000 });
-            totalMembers.Add(new TotalMember { SNo = 2, RegNo = 10049, RegDate = DateTime.Now, Name = "Ramesh", Caste = "Vanniyar", Job = "Software", Qualification = "BE", Place = "Thiruvanamalai", Salary = 13000 });
-            totalMembers.Add(new TotalMember { SNo = 3, RegNo = 10050, RegDate = DateTime.Now, Name = "Sarath", Caste = "Vanniyar", Job = "Software", Qualification = "BE", Place = "Thiruvanamalai", Salary = 13000 });
-            totalMembers.Add(new TotalMember { SNo = 4, RegNo = 10051, RegDate = DateTime.Now, Name = "Lakshmi", Caste = "Vanniyar", Job = "Software", Qualification = "BE", Place = "Thiruvanamalai", Salary = 13000 });
-            totalMembers.Add(new TotalMember { SNo = 5, RegNo = 10052, RegDate = DateTime.Now, Name = "Saravanan", Caste = "Vanniyar", Job = "Software", Qualification = "BE", Place = "Thiruvanamalai", Salary = 13000 });
-
+            int SNo = 1;
+            foreach(var profile in List)
+            {
+                TotalMember totalMember = ConvertProfileToAllMember(profile);
+                totalMember.SNo = SNo;
+                totalMembers.Add(totalMember);
+                SNo = SNo + 1;
+            }
             viewModel.TotalMembers = totalMembers;
+
             return View(viewModel);
         }
-
+        private TotalMember ConvertProfileToAllMember(Profile profile)
+        {
+            TotalMember totalMember = new TotalMember();
+            totalMember.ProfileMasterId = profile.ProfileMasterId;
+            totalMember.RegDate = profile.RegisteredDate;
+            totalMember.Name = profile.Name;
+            totalMember.Caste = profile.CasteMasterId.ToString();
+            totalMember.Job = "Vanniyar";
+            totalMember.Qualification = "BE";
+            totalMember.Place = "Thiruvanamalai";
+            totalMember.Salary = 13000;
+            return totalMember;
+        }
 
         public IActionResult CreateProfile()
         {
@@ -200,6 +217,7 @@ namespace addon365.FindMatch360.Controllers
         private ProfileViewModel ProfileModelToViewModel(Profile model)
         {
             var ProfileVM = new ProfileViewModel();
+            ProfileVM.MatrimonyProfileId = model.ProfileMasterId;
             ProfileVM.Name = model.Name;
             ProfileVM.Gender = model.Gender;
             ProfileVM.DateandTimeOfBirth = model.DateandTimeOfBirth;
@@ -255,6 +273,15 @@ namespace addon365.FindMatch360.Controllers
             ProfileVM.FromAge = model.FromAge;
             ProfileVM.UptoAge = model.UptoAge;
 
+            if(model.User!=null)
+            { 
+                ProfileVM.LoginEMailId = model.User.UserName;
+                ProfileVM.HavingLogin = true;
+            }
+            else
+            {
+                ProfileVM.HavingLogin = false; 
+            }
             return ProfileVM;
 
         }
@@ -270,7 +297,9 @@ namespace addon365.FindMatch360.Controllers
             {
                 return NotFound();
             }
+            _context.Entry(profile).Reference("User").Load();
             ProfileViewModel viewModel = new ProfileViewModel();
+
             viewModel = ProfileModelToViewModel(profile);
             #region LoadComboxbox
             viewModel.MaritalStatusMasters = _context.MaritalStatusMasters.ToList();
@@ -293,7 +322,7 @@ namespace addon365.FindMatch360.Controllers
 
 
 
-            return View(viewModel);
+            return View("CreateProfile",viewModel);
         }
 
         // POST: CasteMasters/Edit/5
@@ -332,9 +361,9 @@ namespace addon365.FindMatch360.Controllers
             }
             return View(model);
         }
-        public async Task<IActionResult> SendUserName(ProfileViewModel model)
+        public async Task<IActionResult> SendUserName(ProfileViewModel model, [FromServices] IEmailSender emailSender)
         {
-
+            await emailSender.SendEmailAsync(model.LoginEMailId, "addon confirmation email check", GenerateRandomPassword());
             return View(model);
         }
             public static string GenerateRandomPassword(PasswordOptions opts = null)

@@ -37,17 +37,22 @@
                     <tbody>
                         @foreach (var item in Model.TotalMembers)
                         {
-                            <tr>
-                                <td> @Html.DisplayFor(modelItem => item.SNo)</td>
-                                <td> @Html.DisplayFor(modelItem => item.RegNo)</td>
-                                <td> @Html.DisplayFor(modelItem => item.RegDate)</td>
-                                <td> @Html.DisplayFor(modelItem => item.Name)</td>
-                                <td> @Html.DisplayFor(modelItem => item.Caste)</td>
-                                <td> @Html.DisplayFor(modelItem => item.Job)</td>
-                                <td> @Html.DisplayFor(modelItem => item.Qualification)</td>
-                                <td> @Html.DisplayFor(modelItem => item.Place)</td>
-                                <td> @Html.DisplayFor(modelItem => item.Salary)</td>
-                            </tr>
+                        <tr>
+                            <td> @Html.DisplayFor(modelItem => item.SNo)</td>
+                            <td> @Html.DisplayFor(modelItem => item.RegNo)</td>
+                            <td> @Html.DisplayFor(modelItem => item.RegDate)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Name)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Caste)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Job)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Qualification)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Place)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Salary)</td>
+                            <td>
+                                <a asp-action="EditProfile" asp-route-id="@item.ProfileMasterId">Edit</a> @*|
+                                <a asp-action="Details" asp-route-id="@item.MatrimonyProfileId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.MatrimonyProfileId">Delete</a>*@
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>

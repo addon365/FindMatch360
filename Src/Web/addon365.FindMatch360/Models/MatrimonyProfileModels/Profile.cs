@@ -157,7 +157,10 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
 
         #endregion
         public ICollection<ProfileRenewal> ProfileRenewals { get; set; }
-        public string UserId { get; set; }
+       
 
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

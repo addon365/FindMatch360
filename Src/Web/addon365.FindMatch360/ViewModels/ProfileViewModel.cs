@@ -112,6 +112,7 @@ namespace addon365.FindMatch360.ViewModels
 
         #region Login
         public string LoginEMailId { get; set; }
+        public bool HavingLogin { get; set; }
         #endregion
     }
 }
