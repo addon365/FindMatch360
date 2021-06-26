@@ -6,46 +6,62 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<div class="row page-header">
-    <div class="col-lg-6 align-self-center ">
-        <h2>Dashboard</h2>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a asp-controller="Account" asp-action="admin">Home</a></li>
-            <li class="breadcrumb-item active"><a asp-action="Index">StateMaster</a></li>
-        </ol>
+
+
+<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+    <div class="breadcrumb-title pr-3">Dashboard</div>
+    <div class="pl-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item">
+                    <a href="javascript:;"><i class='bx bx-home-alt'></i> </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"><a asp-action="Index">StateMaster </a></li>
+            </ol>
+        </nav>
     </div>
-    <div class="col-lg-6 align-self-center text-right">
-        <a asp-action="Index" class="btn btn-success box-shadow btn-icon btn-rounded"><i class="fa fa-arrow-left"></i> Back to List</a>
-    </div>
-</div>
-<section class="main-content">
-    <div class="row">
-        <div class="col-md-12 card">
-            <!--<h4>StateMaster</h4>
-            <hr />--->
-            <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="StateMasterId" />
-                <div class="form-group">
-                    <label asp-for="StateName" class="control-label"></label>
-                    <input asp-for="StateName" class="form-control" />
-                    <span asp-validation-for="StateName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CountryMasterId" class="control-label"></label>
-                    <select asp-for="CountryMasterId" class="form-control" asp-items="ViewBag.CountryMasters"></select>
-                    <span asp-validation-for="CountryMasterId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
-            <!--<div>
-                <a asp-action="Index">Back to List</a>
-            </div>--->
+    <div class="ml-auto">
+        <div class="btn-group">
+            <a asp-controller="admin" asp-action="CreateProfile">
+                <button type="button" class="btn btn-primary" asp-action="Index"> Back to List</button>
+            </a>
         </div>
     </div>
-</section>
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <!--end breadcrumb-->
+                <div class="col-md-12">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="StateMasterId" />
+                        <div class="form-group">
+                            <label asp-for="StateName" class="control-label"></label>
+                            <input asp-for="StateName" class="form-control" />
+                            <span asp-validation-for="StateName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CountryMasterId" class="control-label"></label>
+                            <select asp-for="CountryMasterId" class="form-control" asp-items="ViewBag.CountryMasters"></select>
+                            <span asp-validation-for="CountryMasterId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    <!--<div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>--->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

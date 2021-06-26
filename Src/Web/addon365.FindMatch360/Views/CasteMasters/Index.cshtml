@@ -10,10 +10,7 @@
 }
 
 <!--page-wrapper-->
-<div class="page-wrapper">
-    <!--page-content-wrapper-->
-    <div class="page-content-wrapper">
-        <div class="page-content">
+
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
                 <div class="breadcrumb-title pr-3">Dashboard</div>
@@ -31,35 +28,40 @@
             </div>
             <!--end breadcrumb-->
 
-
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CasteName)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CasteName)
-                            </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.CasteMasterId">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.CasteMasterId">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.CasteMasterId">Delete</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!--end page-content-wrapper-->
-</div>
-<!--end page-wrapper-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!--end breadcrumb-->
+                            <div class="col-md-12">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.CasteName)
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CasteName)
+                                                </td>
+                                                <td>
+                                                    <a asp-action="Edit" asp-route-id="@item.CasteMasterId">Edit</a> |
+                                                    <a asp-action="Details" asp-route-id="@item.CasteMasterId">Details</a> |
+                                                    <a asp-action="Delete" asp-route-id="@item.CasteMasterId">Delete</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            <!--end page-wrapper-->
 

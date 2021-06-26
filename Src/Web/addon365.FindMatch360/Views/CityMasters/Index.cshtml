@@ -7,115 +7,93 @@
 }
 
 <!--page-wrapper-->
-<div class="page-wrapper">
-    <!--page-content-wrapper-->
-    <div class="page-content-wrapper">
-        <div class="page-content">
-            <!--breadcrumb-->
-            <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-                <div class="breadcrumb-title pr-3">Dashboard</div>
-                <div class="pl-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item">
-                                <a href="javascript:;"><i class='bx bx-home-alt'></i></a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Create Profile</li>
-                        </ol>
-                    </nav>
-                </div>
-
-            </div>
-            <!--end breadcrumb-->
-
-            <form asp-action="Index" method="get">
-                <div class="form-actions no-color">
-                    <p>
-                        Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-                        <input type="submit" value="Search" class="btn btn-default" /> |
-                        <a asp-action="Index">Back to Full List</a>
-                    </p>
-                </div>
-            </form>
-
-
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">City Name</a>
-
-                        </th>
-                        <th>
-                            <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">State Name</a>
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CityName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.State.StateName)
-                            </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.CityMasterId">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.CityMasterId">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.CityMasterId">Delete</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            @{
-                var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-            }
-
-            <a asp-action="Index"
-               asp-route-sortOrder="@ViewData["CurrentSort"]"
-               asp-route-pageNumber="@(Model.PageIndex - 1)"
-               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-               class="btn btn-default @prevDisabled">
-                Previous
-            </a>
-            <a asp-action="Index"
-               asp-route-sortOrder="@ViewData["CurrentSort"]"
-               asp-route-pageNumber="@(Model.PageIndex + 1)"
-               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-               class="btn btn-default @nextDisabled">
-                Next
-            </a>
-        </div>
+<!--breadcrumb-->
+<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+    <div class="breadcrumb-title pr-3">Dashboard</div>
+    <div class="pl-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item">
+                    <a href="javascript:;"><i class='bx bx-home-alt'></i></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Create Profile</li>
+            </ol>
+        </nav>
     </div>
-    <!--end page-content-wrapper-->
+
 </div>
-<!--end page-wrapper-->
-<!-- JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="~/adminuser/assets/js/jquery.min.js"></script>
-<script src="~/adminuser/assets/js/popper.min.js"></script>
-<script src="~/adminuser/assets/js/bootstrap.min.js"></script>
-<!--plugins-->
-<script src="~/adminuser/assets/plugins/simplebar/js/simplebar.min.js"></script>
-<script src="~/adminuser/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-<script src="~/adminuser/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-<!-- Vector map JavaScript -->
-<script src="~/adminuser/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="~/adminuser/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="~/adminuser/assets/plugins/vectormap/jquery-jvectormap-in-mill.js"></script>
-<script src="~/adminuser/assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
-<script src="~/adminuser/assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js"></script>
-<script src="~/adminuser/assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
-<script src="~/adminuser/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-<script src="~/adminuser/assets/js/index.js"></script>
-<!-- App JS -->
-<script src="~/adminuser/assets/js/app.js"></script>
-<script>
-            new PerfectScrollbar('.dashboard-social-list');
-            new PerfectScrollbar('.dashboard-top-countries');
-</script>
+<!--end breadcrumb-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <!--end breadcrumb-->
+                <div class="col-md-12">
+                    <dl class="row">
+                        <form asp-action="Index" method="get">
+                            <div class="form-actions no-color">
+                                <p>
+                                    Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                                    <input type="submit" value="Search" class="btn btn-default" /> |
+                                    <a asp-action="Index">Back to Full List</a>
+                                </p>
+                            </div>
+                        </form>
+
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">City Name</a>
+
+                                    </th>
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">State Name</a>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CityName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.State.StateName)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.CityMasterId">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.CityMasterId">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.CityMasterId">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        @{
+                            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                        }
+
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="@(Model.PageIndex - 1)"
+                           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                           class="btn btn-default @prevDisabled">
+                            Previous
+                        </a>
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="@(Model.PageIndex + 1)"
+                           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                           class="btn btn-default @nextDisabled">
+                            Next
+                        </a>
+                        </div>
+                     </div>
+                    </div>
+                  </div>
+                 </div>

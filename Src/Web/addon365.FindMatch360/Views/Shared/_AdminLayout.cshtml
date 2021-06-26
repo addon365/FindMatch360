@@ -54,7 +54,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Analytics</a>
+                            <a asp-controller="Admin" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Analytics</a>
                         </li>
                         <li>
                             <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Sales</a>
@@ -63,7 +63,7 @@
                 </li>
                 <li class="menu-label">Web Apps</li>
                 <li>
-                    <a href="emailbox.html">
+                    <a asp-controller="Admin" asp-action="CreateProfile">
                         <div class="parent-icon icon-color-2">
                             <i class="bx bx-envelope"></i>
                         </div>
@@ -869,7 +869,7 @@
             <div class="page-content-wrapper">
                 <div class="page-content">
                     <!--breadcrumb-->
-                    <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+                    <!--<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
                         <div class="breadcrumb-title pr-3">Contatcs</div>
                         <div class="pl-3">
                             <nav aria-label="breadcrumb">
@@ -895,7 +895,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <!--end breadcrumb-->
                     <!--<div class="row">-->
                     @*<div class="col-lg-3">
@@ -919,11 +919,11 @@
 
                     <!--</div>-->
 
-                    <div class="row">
+                   
                         <main role="main" class="pb-3">
                             @RenderBody()
                         </main>
-                    </div>
+                    
 
 
                     <!--end row-->
@@ -941,14 +941,14 @@
         <!--footer -->
         <div class="footer">
             <p class="mb-0">
-                Syndash | Developed By : <a href="https://themeforest.net/user/codervent" target="_blank">codervent</a>
+                <span>Copyright &copy; 2021addon365 software company. All Right Reserved.</span>
             </p>
         </div>
         <!-- end footer -->
     </div>
     <!-- end wrapper -->
     <!--start switcher-->
-    <div class="switcher-wrapper">
+    <!--<div class="switcher-wrapper">
         <div class="switcher-btn">
             <i class='bx bx-cog bx-spin'></i>
         </div>
@@ -979,6 +979,7 @@
             </div>
         </div>
     </div>
+    --->
     <!--end switcher-->
     <!-- JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -8,10 +8,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <!--page-wrapper-->
-<div class="page-wrapper">
-    <!--page-content-wrapper-->
-    <div class="page-content-wrapper">
-        <div class="page-content">
+
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
                 <div class="breadcrumb-title pr-3">Dashboard</div>
@@ -32,32 +29,37 @@
                         </a>
                     </div>
                 </div>
-
             </div>
-            <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="CityMasterId" />
-                <div class="form-group">
-                    <label asp-for="CityName" class="control-label"></label>
-                    <input asp-for="CityName" class="form-control" />
-                    <span asp-validation-for="CityName" class="text-danger"></span>
+           
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!--end breadcrumb-->
+                            <div class="col-md-12">
+                                <form asp-action="Edit">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="CityMasterId" />
+                                    <div class="form-group">
+                                        <label asp-for="CityName" class="control-label"></label>
+                                        <input asp-for="CityName" class="form-control" />
+                                        <span asp-validation-for="CityName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="StateMasterId" class="control-label"></label>
+                                        <select asp-for="StateMasterId" class="form-control" asp-items="ViewBag.StateMasterId"></select>
+                                        <span asp-validation-for="StateMasterId" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label asp-for="StateMasterId" class="control-label"></label>
-                    <select asp-for="StateMasterId" class="form-control" asp-items="ViewBag.StateMasterId"></select>
-                    <span asp-validation-for="StateMasterId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
+            </div>
 
-        </div>
-    </div>
-    <!--end page-content-wrapper-->
-</div>
-<!--end page-wrapper-->
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+                                @section Scripts {
+                                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                                }
