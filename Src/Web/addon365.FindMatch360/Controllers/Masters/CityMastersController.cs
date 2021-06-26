@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using addon365.FindMatch360.Data;
 using addon365.FindMatch360.Models.Masters;
+using addon365.FindMatch360.Helpers;
 
 namespace addon365.FindMatch360.Controllers.Masters
 {
@@ -20,12 +21,59 @@ namespace addon365.FindMatch360.Controllers.Masters
         }
 
         // GET: CityMasters
-        public async Task<IActionResult> Index()
-        {
-            var ilamaiMatrimonyContext = _context.CityMasters.Include(c => c.State);
-            return View(await ilamaiMatrimonyContext.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
 
+        //    var ilamaiMatrimonyContext = _context.CityMasters.Include(c => c.State);
+        //    return View(await ilamaiMatrimonyContext.ToListAsync());
+        //}
+        public async Task<IActionResult> Index(
+    string sortOrder,
+    string currentFilter,
+    string searchString,
+    int? pageNumber)
+        {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var cities = from s in _context.CityMasters.Include(c => c.State)
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                cities = cities.Where(s => s.CityName.Contains(searchString)
+                                       || s.State.StateName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    cities = cities.OrderByDescending(s => s.CityName);
+                    break;
+                //case "Date":
+                //    students = students.OrderBy(s => s.EnrollmentDate);
+                //    break;
+                //case "date_desc":
+                //    students = students.OrderByDescending(s => s.EnrollmentDate);
+                //    break;
+                default:
+                    cities = cities.OrderBy(s => s.CityName);
+                    break;
+            }
+
+            int pageSize = 3;
+            return View(await PaginatedList<CityMaster>.CreateAsync(cities.AsNoTracking(), pageNumber ?? 1, pageSize));
+        }
         // GET: CityMasters/Details/5
         public async Task<IActionResult> Details(int? id)
         {

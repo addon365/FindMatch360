@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace addon365.FindMatch360.Controllers
 {
-    [Authorize(Roles ="Administrator,MatrimonyUser")]
+    //[Authorize(Roles ="Administrator,MatrimonyUser")]
     public class MatrimonyProfilesController : Controller
     {
         private readonly ilamaiMatrimonyContext _context;
