@@ -11,14 +11,14 @@
 
 
 <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-    <div class="breadcrumb-title pr-3">User Profile</div>
+    <div class="breadcrumb-title pr-3">Profile</div>
     <div class="pl-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item">
                     <a href="javascript:;"><i class='bx bx-home-alt'></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                <li class="breadcrumb-item active" aria-current="page">Profile</li>
             </ol>
         </nav>
     </div>
@@ -42,12 +42,11 @@
     <div class="card radius-15">
         <div class="card-body">
             <form>
-
                 <div class="row">
                     <div class="col-12 col-lg-7 border-right">
                         <div class="d-md-flex align-items-center">
                             <div class="text-center">
-                                <img src="assets/images/avatars/avatar-1.png" class="rounded-circle shadow" width="130" height="130" alt="" />
+                                <img src="~/adminuser/assets/images/avatars/avatar-1.png" class="rounded-circle shadow" width="130" height="130" alt="" />
                                 <button type="button" class="btn btn-primary mt-2">Connect</button><br />
                                 <button type="button" class="btn btn-outline-secondary mt-2">Resume</button>
                             </div>
@@ -60,7 +59,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-transparent"><i class='bx bx-user'></i></span>
                                                 </div>
-                                                <input type="text" class="form-control border-left-0" placeholder="Last Name">
+                                                <input type="text" asp-for="@Model.Name" class="form-control border-left-0" placeholder="First Name">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
@@ -91,42 +90,102 @@
                                             <input type="text" class="form-control border-left-0" placeholder="Email Address">
                                         </div>
                                     </div>
-                                    </div>
-                                    
-                             </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-5">
-                        <table class="table table-sm table-borderless mt-md-0 mt-3">
-                            <tbody>
-                                <tr>
-                                    <th>Availability:</th>
-                                    <td>
-                                        Full-time (40hr/wk) <span class="badge badge-success">available</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Age:</th>
-                                    <td>27</td>
-                                </tr>
-                                <tr>
-                                    <th>Location:</th>
-                                    <td>Sankt, Petersburg, Russia</td>
-                                </tr>
-                                <tr>
-                                    <th>Years experience:</th>
-                                    <td>6</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="mb-3 mb-lg-0">
-                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-github'></i></a>
-                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-twitter'></i></a>
-                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-facebook'></i></a>
-                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-linkedin'></i></a>
-                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-dribbble'></i></a>
-                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-stack-overflow'></i></a>
+
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-6">
+                              
+                                <label>Gender</label>
+                                <select class="form-control" asp-for="@Model.Gender" asp-items="@Html.GetEnumSelectList<Gender>()">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Language</label>
+                                <select class="form-control">
+                                    <option>English</option>
+                                    <option>German</option>
+                                    <option>French</option>
+                                </select>
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <p class="mb-0">Date of Birth</p>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <select class="form-control">
+                                    <option>January</option>
+                                    <option>February</option>
+                                    <option selected>March</option>
+                                    <option>April</option>
+                                    <option>May</option>
+                                    <option>June</option>
+                                    <option>July</option>
+                                    <option>August</option>
+                                    <option>September</option>
+                                    <option>October</option>
+                                    <option>November</option>
+                                    <option>December</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <select class="form-control">
+                                    <option>01</option>
+                                    <option>02</option>
+                                    <option>03</option>
+                                    <option>04</option>
+                                    <option>05</option>
+                                    <option>06</option>
+                                    <option>07</option>
+                                    <option>08</option>
+                                    <option>09</option>
+                                    <option selected>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                    <option>16</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>19</option>
+                                    <option>20</option>
+                                    <option>21</option>
+                                    <option>22</option>
+                                    <option>23</option>
+                                    <option>24</option>
+                                    <option>25</option>
+                                    <option>26</option>
+                                    <option>27</option>
+                                    <option>28</option>
+                                    <option>29</option>
+                                    <option>30</option>
+                                    <option>31</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <select class="form-control">
+                                    <option>1990</option>
+                                    <option>1991</option>
+                                    <option>1992</option>
+                                    <option selected>1993</option>
+                                    <option>1994</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary mt-2">Save</button>
+                        <button type="button" class="btn btn-outline-secondary mt-2">Reset</button>
+
                     </div>
                 </div>
                 <!--end row-->
@@ -155,43 +214,23 @@
                 </ul>
 
                 @*<nav>
-            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile View</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Life Style</a>
-                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Education Details</a>
-                <a class="nav-item nav-link" id="nav-Religion-tab" data-toggle="tab" href="#nav-Religion" role="tab" aria-controls="nav-Religion" aria-selected="false">Religion</a>
-                <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Job Details</a>
-                <a class="nav-item nav-link" id="nav-Horoscope-tab" data-toggle="tab" href="#nav-Horoscope" role="tab" aria-controls="nav-Horoscope" aria-selected="false">Horoscope</a>
-                <a class="nav-item nav-link" id="nav-Family-tab" data-toggle="tab" href="#nav-family" role="tab" aria-controls="nav-Family" aria-selected="false">Family</a>
-                <a class="nav-item nav-link" id="nav-Preferences-tab" data-toggle="tab" href="#nav-preferences" role="tab" aria-controls="nav-Preferences" aria-selected="false">Preferences</a>
-            </div>
-        </nav>*@
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile View</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Life Style</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Education Details</a>
+                            <a class="nav-item nav-link" id="nav-Religion-tab" data-toggle="tab" href="#nav-Religion" role="tab" aria-controls="nav-Religion" aria-selected="false">Religion</a>
+                            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Job Details</a>
+                            <a class="nav-item nav-link" id="nav-Horoscope-tab" data-toggle="tab" href="#nav-Horoscope" role="tab" aria-controls="nav-Horoscope" aria-selected="false">Horoscope</a>
+                            <a class="nav-item nav-link" id="nav-Family-tab" data-toggle="tab" href="#nav-family" role="tab" aria-controls="nav-Family" aria-selected="false">Family</a>
+                            <a class="nav-item nav-link" id="nav-Preferences-tab" data-toggle="tab" href="#nav-preferences" role="tab" aria-controls="nav-Preferences" aria-selected="false">Preferences</a>
+                        </div>
+                    </nav>*@
 
                 <div class="tab-content mt-3">
                     <div class="tab-pane fade show active" id="nav-profile">
                         <div class="card shadow-none border mb-0 radius-15">
                             <div class="card-body">
                                 <h2>Profile View</h2>
-
-                                <div class="form-group">
-                                    <label>Name:</label>
-                                    <input asp-for="@Model.Name" type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="sel1">Gender</label>
-                                    <select class="form-control" id="sel1" asp-for="@Model.Gender" asp-items="@Html.GetEnumSelectList<Gender>()">
-                                        <option>Select Geneder</option>
-
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="birthDate" class="control-label">Date of Birth*</label>
-                                    <div class="col-sm-12">
-                                        <input asp-for="@Model.DateandTimeOfBirth" type="date" id="birthDate" class="form-control">
-                                    </div>
-                                </div>
-
                                 <div class="form-group">
                                     <label for="sel1">Marital Status</label>
                                     <select class="form-control" id="sel1" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
@@ -231,9 +270,6 @@
                                         <option>orthopedic </option>
                                     </select>
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
@@ -636,3 +672,29 @@
     </div>
 </div>
 
+<script>
+    $('.datepicker').pickadate({
+        selectMonths: true,
+        selectYears: true
+    }),
+        $('.timepicker').pickatime()</script>
+<script>
+    $(function () {
+        $('#date-time').bootstrapMaterialDatePicker({
+            format: 'YYYY-MM-DD HH:mm'
+        });
+        $('#date').bootstrapMaterialDatePicker({
+            time: false
+        });
+        $('#time').bootstrapMaterialDatePicker({
+            date: false,
+            format: 'HH:mm'
+        });
+    });</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+</script>
