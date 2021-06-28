@@ -63,7 +63,7 @@ namespace addon365.FindMatch360.Controllers
 
         public async Task<IActionResult> AllMembers()
         {
-            var List = await _context.Profiles.Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).ToListAsync();
+            var List = await _context.Profiles.Include(s=>s.Caste).Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).ToListAsync();
             AdminAllMemberViewModel viewModel = new AdminAllMemberViewModel();
             List<TotalMember> totalMembers = new List<TotalMember>();
             int SNo = 1;
@@ -84,11 +84,16 @@ namespace addon365.FindMatch360.Controllers
             totalMember.ProfileMasterId = profile.ProfileMasterId;
             totalMember.RegDate = profile.RegisteredDate;
             totalMember.Name = profile.Name;
-            totalMember.Caste = profile.CasteMasterId.ToString();
-            totalMember.Job = "Vanniyar";
-            totalMember.Qualification = "BE";
+            if (profile.Caste != null)
+            {
+                totalMember.Caste = profile.Caste.CasteName;
+            }
+                
+            if(profile.ProfileEducation!=null)
+                totalMember.Qualification = profile.ProfileEducation.EducationName;
+
             totalMember.Place = "Thiruvanamalai";
-            totalMember.Salary = 13000;
+            totalMember.MonthlyRevenue = profile.MonthlyRevenue.Value;
             return totalMember;
         }
 
@@ -122,6 +127,7 @@ namespace addon365.FindMatch360.Controllers
                 await _context.SaveChangesAsync();
               
             }
+           
             PopulateProfileViewModel(model);
 
             return View(model);
@@ -253,7 +259,7 @@ namespace addon365.FindMatch360.Controllers
             ProfileVM.GothramMasterId = model.GothramMasterId.ToString();
 
             ProfileVM.EmployeedInMasterId = model.EmployeedInMasterId.ToString();
-            ProfileVM.MonthlyRevenue = model.MonthlyRevenue;
+            ProfileVM.MonthlyRevenue = model.MonthlyRevenue.Value;
             ProfileVM.WorkingAddress = model.WorkingAddress;
 
             ProfileVM.Star = model.Star;

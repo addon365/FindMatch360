@@ -21,6 +21,6 @@ namespace addon365.FindMatch360.ViewModels
         public string Job { get; set; }
         public string Qualification { get; set; }
         public string Place { get; set; }
-        public decimal Salary { get; set; }
+        public decimal MonthlyRevenue { get; set; }
     }
 }

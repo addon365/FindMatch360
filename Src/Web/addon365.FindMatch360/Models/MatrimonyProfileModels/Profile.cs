@@ -74,7 +74,7 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         public CityMaster WorkingCity { get; set; }
 
         public string WorkingAddress { get; set; }
-        public string MonthlyRevenue { get; set; }
+        public decimal? MonthlyRevenue { get; set; }
         #endregion
 
         #region ReligionDetails

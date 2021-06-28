@@ -3,6 +3,7 @@ using addon365.FindMatch360.Models.MatrimonyProfileModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,11 +30,11 @@ namespace addon365.FindMatch360.ViewModels
         public string SkinColor { get; set; }
         public Boolean AnyDisability { get; set; }
         public string DisabilityDescription { get; set; }
-        public int CountryId { get; set; }
+        public string CountryId { get; set; }
         public List<SelectListItem> Countries { get;set;}
-        public int StateId { get; set; }
+        public string StateId { get; set; }
         public List<SelectListItem> States { get; set; }
-        public int CityId { get; set; }
+        public string CityId { get; set; }
         public List<SelectListItem> Cities { get; set; }
         #endregion
 
@@ -58,7 +59,7 @@ namespace addon365.FindMatch360.ViewModels
         public string OccupationMasterId { get; set; }
         public IEnumerable<OccupationMaster> Occupations { get; set; }
         public string WorkingAddress { get; set; }
-        public string MonthlyRevenue { get; set; }
+        public decimal MonthlyRevenue { get; set; }
         #endregion
 
         #region ReligionDetails
@@ -102,7 +103,10 @@ namespace addon365.FindMatch360.ViewModels
         public string ContactPerson { get; set; }
         public string Address { get; set; }
         public string PhoneNo { get; set; }
+        [Required]
         public string MobileNo { get; set; }
+        [Required]
+        [EmailAddress]
         public string EmailId { get; set; }
         public short BirthNumberinFamily { get; set; }
         public short Brothers { get; set; }

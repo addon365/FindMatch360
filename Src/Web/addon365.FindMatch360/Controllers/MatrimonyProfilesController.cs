@@ -128,7 +128,7 @@ namespace addon365.FindMatch360.Controllers
                 return NotFound();
             }
 
-            var prof = _context.Profiles.Include(i=>i.Caste).Include(i=>i.SubCaste).Include(i=>i.ProfileEducation).Include(i=>i.Occupation).FirstOrDefault(x=>x.ProfileMasterId== profile.ProfileMasterId);
+            var prof = _context.Profiles.Include(i=>i.MaritalStatus).Include(i=>i.Caste).Include(i=>i.SubCaste).Include(i=>i.ProfileEducation).Include(i=>i.Occupation).FirstOrDefault(x=>x.ProfileMasterId== profile.ProfileMasterId);
             if (prof == null)
             {
                 return NotFound();
