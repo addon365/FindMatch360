@@ -41,71 +41,75 @@
 <div class="user-profile-page">
     <div class="card radius-15">
         <div class="card-body">
-            <form>
+            <form  asp-controller="Admin"  asp-action="CreateProfile" >
                 <div class="row">
                     <div class="col-12 col-lg-7 border-right">
                         <div class="d-md-flex align-items-center">
                             <div class="text-center">
-                                <img src="~/adminuser/assets/images/avatars/avatar-1.png" class="rounded-circle shadow" width="130" height="130" alt="" />
-                                <button type="button" class="btn btn-primary mt-2">Connect</button><br />
-                                <button type="button" class="btn btn-outline-secondary mt-2">Resume</button>
-                            </div>
-                            <div class="ml-md-4 flex-grow-1">
-                                <div class="form-body">
+                                <div class="form-row">
+                                    <img src="~/adminuser/assets/images/avatars/avatar-1.png" class="rounded-circle shadow" width="130" height="130" alt="" />
+                                    </div> 
+
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>First Name</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class='bx bx-user'></i></span>
-                                                </div>
-                                                <input type="text" asp-for="@Model.Name" class="form-control border-left-0" placeholder="First Name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Last Name</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-transparent"><i class='bx bx-user'></i></span>
-                                                </div>
-                                                <input type="text" class="form-control border-left-0" placeholder="Last Name">
-                                            </div>
-                                        </div>
+                                        <button type="button" class="btn btn-primary btn-block mt-2">Upload</button>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Phone No.</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text bg-transparent"><i class='bx bx-phone'></i></span>
-                                            </div>
-                                            <input type="text" class="form-control border-left-0" placeholder="Phone No">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Address</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text bg-transparent"><i class='bx bx-envelope'></i></span>
-                                            </div>
-                                            <input type="text" class="form-control border-left-0" placeholder="Email Address">
-                                        </div>
+                                    <div class="form-row">
+                                        <button type="button" class="btn btn-outline-secondary btn-block mt-2">Clear</button>
                                     </div>
                                 </div>
+                                <div class="ml-md-4 flex-grow-1">
+                                    <div class="form-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>First Name</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text bg-transparent"><i class='bx bx-user'></i></span>
+                                                    </div>
+                                                    <input type="text" asp-for="@Model.Name" class="form-control border-left-0" placeholder="First Name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Last Name</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text bg-transparent"><i class='bx bx-user'></i></span>
+                                                    </div>
+                                                    <input type="text" class="form-control border-left-0" placeholder="Last Name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mobile No.</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-transparent"><i class='bx bx-phone'></i></span>
+                                                </div>
+                                                <input asp-for="@Model.MobileNo" type="text" class="form-control border-left-0" placeholder="Phone No">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email Address</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-transparent"><i class='bx bx-envelope'></i></span>
+                                                </div>
+                                                <input asp-for="@Model.EmailId" type="text" class="form-control border-left-0" placeholder="Email Address">
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <div class="col-12 col-lg-5">
 
                         <div class="form-row">
-                            
+
                             <div class="form-group col-md-6">
-                              
+
                                 <label>Gender</label>
                                 <select class="form-control" asp-for="@Model.Gender" asp-items="@Html.GetEnumSelectList<Gender>()">
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                    <option>Other</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
@@ -182,22 +186,32 @@
                                 </select>
                             </div>
                         </div>
-
-                        <button type="button" class="btn btn-primary mt-2">Save</button>
-                        <button type="button" class="btn btn-outline-secondary mt-2">Reset</button>
-
+                        @*<div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary mt-2" />
+        </div>*@
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block mt-2">Save</button>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="button" class="btn btn-outline-secondary btn-block mt-2">Reset</button>
+                        </div>
+                        </div>
                     </div>
-                </div>
+                    </div>
                 <!--end row-->
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#nav-profile"><span class="p-tab-name">Profile</span><i class='bx bx-donate-blood font-24 d-sm-none'></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#nav-contact"><span class="p-tab-name">Contact</span><i class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#nav-lifestyle"><span class="p-tab-name">Life Style</span><i class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#nav-religion"><span class="p-tab-name">Religion</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
+                        <a class="nav-link" data-toggle="tab" href="#nav-education"><span class="p-tab-name">Education</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#nav-job"><span class="p-tab-name">Job</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#nav-about"><span class="p-tab-name">about</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
@@ -211,20 +225,23 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#nav-preferences"><span class="p-tab-name">Preferences</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#nav-login"><span class="p-tab-name">Login</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
+                    </li>
                 </ul>
 
                 @*<nav>
-                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile View</a>
-                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Life Style</a>
-                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Education Details</a>
-                            <a class="nav-item nav-link" id="nav-Religion-tab" data-toggle="tab" href="#nav-Religion" role="tab" aria-controls="nav-Religion" aria-selected="false">Religion</a>
-                            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Job Details</a>
-                            <a class="nav-item nav-link" id="nav-Horoscope-tab" data-toggle="tab" href="#nav-Horoscope" role="tab" aria-controls="nav-Horoscope" aria-selected="false">Horoscope</a>
-                            <a class="nav-item nav-link" id="nav-Family-tab" data-toggle="tab" href="#nav-family" role="tab" aria-controls="nav-Family" aria-selected="false">Family</a>
-                            <a class="nav-item nav-link" id="nav-Preferences-tab" data-toggle="tab" href="#nav-preferences" role="tab" aria-controls="nav-Preferences" aria-selected="false">Preferences</a>
-                        </div>
-                    </nav>*@
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile View</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Life Style</a>
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Education Details</a>
+                <a class="nav-item nav-link" id="nav-Religion-tab" data-toggle="tab" href="#nav-Religion" role="tab" aria-controls="nav-Religion" aria-selected="false">Religion</a>
+                <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Job Details</a>
+                <a class="nav-item nav-link" id="nav-Horoscope-tab" data-toggle="tab" href="#nav-Horoscope" role="tab" aria-controls="nav-Horoscope" aria-selected="false">Horoscope</a>
+                <a class="nav-item nav-link" id="nav-Family-tab" data-toggle="tab" href="#nav-family" role="tab" aria-controls="nav-Family" aria-selected="false">Family</a>
+                <a class="nav-item nav-link" id="nav-Preferences-tab" data-toggle="tab" href="#nav-preferences" role="tab" aria-controls="nav-Preferences" aria-selected="false">Preferences</a>
+            </div>
+        </nav>*@
 
                 <div class="tab-content mt-3">
                     <div class="tab-pane fade show active" id="nav-profile">
@@ -244,6 +261,31 @@
                                         <option>Select Body Type </option>
 
                                     </select>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel1">Country</label>
+                                    @*Html.DropDownListFor(m => m.CountryId, Model.Countries, "Please select", new { onchange = "document.forms[0].submit();" })*@
+                                    <select class="form-control" id="CountryViewId" asp-for="@Model.CountryId" asp-items="@Model.Countries">
+                                        <option>Please Select</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel1">State</label>
+                                    <select class="form-control" id="StateViewId" asp-for="@Model.StateId" asp-items="@Model.States">
+                                        <option>Please Select</option>
+
+                                    </select>
+
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel1">City</label>
+                                    <select class="form-control" id="CityViewId" asp-for="@Model.CityId" asp-items="@Model.Cities">
+                                        <option value="">Select Cities</option>
+                                    </select>
+
                                 </div>
                                 <div class="form-group">
                                     <label>Weight:</label>
@@ -273,7 +315,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-contact">
+                    <div class="tab-pane fade" id="nav-lifestyle">
                         <div class="card shadow-none border mb-0 radius-15">
                             <div class="card-body">
                                 <div class="form-body">
@@ -305,7 +347,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-religion">
+                    <div class="tab-pane fade" id="nav-education">
                         <div class="card shadow-none border mb-0 radius-15">
                             <div class="card-body">
                                 <div class="form-body">
@@ -325,55 +367,12 @@
                         </div>
                     </div>
 
-
-                    <div class="tab-pane fade" id="nav-about">
+                    <div class="tab-pane fade" id="nav-job">
                         <div class="card shadow-none border mb-0 radius-15">
                             <div class="card-body">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12 col-lg-12 border-right">
-
-                                            <div class="form-group">
-                                                <label>Religion </label>
-
-
-                                                <select class="form-control" id="exampleSelect1" asp-for="@Model.ReligionMasterId" asp-items="@Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
-                                                    <option>Select Religion</option>
-                                                </select>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="sel1">MotherTongue </label>
-                                                <select asp-for="@Model.MotherTongueMasterId" asp-items="@Model.MotherTongues.Select(m=>new SelectListItem{ Text = m.MotherTongueName, Value = m.MotherTongueMasterId.ToString() })" class="form-control">
-                                                    <option>Select MotherTongue</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="sel1">Castes </label>
-                                                <select class="form-control" id="sel1" asp-for="@Model.CasteMasterId" asp-items="@Model.Castes.Select(m=>new SelectListItem{ Text = m.CasteName, Value = m.CasteMasterId.ToString() })">
-                                                    <option>Select Castes</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="sel1">SubCastes </label>
-                                                <select class="form-control" id="sel1" asp-for="@Model.SubCasteMasterId" asp-items="@Model.SubCastes.Select(m=>new SelectListItem{ Text = m.SubCasteName, Value = m.SubCasteMasterId.ToString() })">
-                                                    <option>Select SubCastes</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="sel1">Gothrams </label>
-                                                <select class="form-control" id="sel1" asp-for="@Model.GothramMasterId" asp-items="@Model.Gothrams.Select(m=>new SelectListItem{ Text = m.GothramName, Value = m.GothramMasterId.ToString() })">
-                                                    <option>Select Gothrams</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div id="nav-about" class="container tab-pane fade">
-                                            <br>
-                                            <h3>JobDetails</h3>
                                             <div class="form-group">
                                                 <label>EmployeedInMasterId:</label>
                                                 <input type="number" class="form-control" id="name" placeholder="Enter EmployeedInMasterIds" name="weight">
@@ -422,6 +421,59 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-about">
+                        <div class="card shadow-none border mb-0 radius-15">
+                            <div class="card-body">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 border-right">
+
+                                            <div class="form-group">
+                                                <label>Religion </label>
+
+
+                                                <select class="form-control" id="exampleSelect1" asp-for="@Model.ReligionMasterId" asp-items="@Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
+                                                    <option>Select Religion</option>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="sel1">MotherTongue </label>
+                                                <select asp-for="@Model.MotherTongueMasterId" asp-items="@Model.MotherTongues.Select(m=>new SelectListItem{ Text = m.MotherTongueName, Value = m.MotherTongueMasterId.ToString() })" class="form-control">
+                                                    <option>Select MotherTongue</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="sel1">Castes </label>
+                                                <select class="form-control" id="sel1" asp-for="@Model.CasteMasterId" asp-items="@Model.Castes.Select(m=>new SelectListItem{ Text = m.CasteName, Value = m.CasteMasterId.ToString() })">
+                                                    <option>Select Castes</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="sel1">SubCastes </label>
+                                                <select class="form-control" id="sel1" asp-for="@Model.SubCasteMasterId" asp-items="@Model.SubCastes.Select(m=>new SelectListItem{ Text = m.SubCasteName, Value = m.SubCasteMasterId.ToString() })">
+                                                    <option>Select SubCastes</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="sel1">Gothrams </label>
+                                                <select class="form-control" id="sel1" asp-for="@Model.GothramMasterId" asp-items="@Model.Gothrams.Select(m=>new SelectListItem{ Text = m.GothramName, Value = m.GothramMasterId.ToString() })">
+                                                    <option>Select Gothrams</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -561,7 +613,7 @@
                                                 <input asp-for="@Model.PhoneNo" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter PhoneNo" name="MonthlyRevenue">
                                             </div>
 
-                                            <div class="form-group">
+                                            @*<div class="form-group">
                                                 <label>MobileNo:</label>
                                                 <input asp-for="@Model.MobileNo" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
                                             </div>
@@ -569,7 +621,7 @@
                                             <div class="form-group">
                                                 <label>EmailId:</label>
                                                 <input asp-for="@Model.EmailId" type="email" class="form-control" id="MonthlyRevenue" placeholder="Enter EmailId" name="MonthlyRevenue">
-                                            </div>
+                                            </div>*@
 
 
 
@@ -617,42 +669,16 @@
                                     <div class="row">
                                         <div class="col-12 col-lg-12 border-right">
 
+                                            <div class="form-group">
+                                                <label>From Age :</label>
+                                                <input asp-for="@Model.FromAge" type="text" class="form-control">
 
-                                            <div id="nav-Login" class="container tab-pane fade">
-                                                <br>
-                                                <h3> Login Details</h3>
-
-                                                <div class="form-group">
-                                                    <label>UptoAge:</label>
-                                                    <input asp-for="@Model.UptoAge" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter UptoAge" name="MonthlyRevenue">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>Login Email Id :</label>
-                                                    <input asp-for="@Model.LoginEMailId" type="text" class="form-control">
-
-                                                </div>
-
-                                                <div id="nav-Preferences" class="container tab-pane fade">
-                                                    <br>
-                                                    <h3> Login Details</h3>
-                                                    <div class="form-group">
-                                                        <label>Login Email Id :</label>
-                                                        <input asp-for="@Model.LoginEMailId" type="number" class="form-control" id="MonthlyRevenue" placeholder="User Name">
-                                                    </div>
-
-                                                    <a class="btn btn-primary" style="width:auto"
-                                                       formaction="/Admin/SendUserName">
-                                                        Generate Password and Send Mail
-                                                    </a>
-                                                    <button formaction="/Admin/SendUserName">Click Me</button>
-                                                </div>
-
-                                                <a class="btn btn-primary" style="width:auto"
-                                                   asp-action="SendUserName">
-                                                    Generate Password and Send Mail
-                                                </a>
                                             </div>
+                                            <div class="form-group">
+                                                <label>UptoAge:</label>
+                                                <input asp-for="@Model.UptoAge" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter UptoAge" name="MonthlyRevenue">
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -660,25 +686,53 @@
                         </div>
                     </div>
 
+                    <div class="tab-pane fade" id="nav-login">
+                        <div class="card shadow-none border mb-0 radius-15">
+                            <div class="card-body">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 border-right">
+
+                                         
 
 
+                                       
 
+                                           
+                                                <div class="form-group">
+                                                    <label>Login Email Id :</label>
+                                                    <input asp-for="@Model.LoginEMailId"  class="form-control" id="UserEmailId" placeholder="User Name">
+                                                </div>
 
+                                        
+                                        <button formaction="/Admin/SendUserName" class="btn btn-primary mt-2"> Generate Password and Send Mail</button>
+                                            
 
-                </div>
+                                         
+                                        </div>
 
-            </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+</div>
+
+        </form>
         </div>
     </div>
 </div>
-
 <script>
+ 
+
+
     $('.datepicker').pickadate({
         selectMonths: true,
         selectYears: true
     }),
-        $('.timepicker').pickatime()</script>
-<script>
+        $('.timepicker').pickatime()
+
     $(function () {
         $('#date-time').bootstrapMaterialDatePicker({
             format: 'YYYY-MM-DD HH:mm'

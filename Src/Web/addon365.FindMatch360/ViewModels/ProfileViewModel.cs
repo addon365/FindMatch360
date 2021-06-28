@@ -1,5 +1,6 @@
 ﻿using addon365.FindMatch360.Models.Masters;
 using addon365.FindMatch360.Models.MatrimonyProfileModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace addon365.FindMatch360.ViewModels
 {
     public class ProfileViewModel
     {
-       
+
         public Guid MatrimonyProfileId { get; set; }
 
         #region Person basic Details
@@ -28,6 +29,12 @@ namespace addon365.FindMatch360.ViewModels
         public string SkinColor { get; set; }
         public Boolean AnyDisability { get; set; }
         public string DisabilityDescription { get; set; }
+        public int CountryId { get; set; }
+        public List<SelectListItem> Countries { get;set;}
+        public int StateId { get; set; }
+        public List<SelectListItem> States { get; set; }
+        public int CityId { get; set; }
+        public List<SelectListItem> Cities { get; set; }
         #endregion
 
         #region Life style

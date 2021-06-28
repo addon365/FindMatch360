@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace addon365.FindMatch360.Controllers
     public class AdminController : Controller
     {
         private readonly ilamaiMatrimonyContext _context;
+        private static int _catId;
+        private static int _subId;
         public AdminController(ilamaiMatrimonyContext context)
         {
             _context = context;
@@ -94,26 +97,14 @@ namespace addon365.FindMatch360.Controllers
             
             ProfileViewModel viewModel = new ProfileViewModel();
 
-            viewModel.MaritalStatusMasters = _context.MaritalStatusMasters.ToList();
-            viewModel.Educations = _context.EducationMasters.ToList();
-            viewModel.EmployeedInLst = _context.EmployeedInMasters.ToList();
-
-            //Religion Details
-            viewModel.Religions = _context.ReligionMasters.ToList();
-            viewModel.MotherTongues = _context.MotherTongueMasters.ToList();
-            viewModel.Castes = _context.CasteMasters.ToList();
-            viewModel.SubCastes = _context.SubCasteMasters.ToList();
-            viewModel.Gothrams = _context.GothramMasters.ToList();
-
-            //Family Information
-            viewModel.FamilyStatuses = _context.FamilyStatusMasters.ToList();
-            viewModel.FamilyTypes = _context.FamilyTypeMasters.ToList();
-            viewModel.FamilyValues = _context.FamilyValuesMasters.ToList();
-
+            PopulateProfileViewModel(viewModel);
 
             return View(viewModel);
-            
+
+
         }
+
+
         [HttpPost]
         public async Task<IActionResult> CreateProfile(ProfileViewModel model)
         {
@@ -131,27 +122,48 @@ namespace addon365.FindMatch360.Controllers
                 await _context.SaveChangesAsync();
               
             }
-            model.MaritalStatusMasters = _context.MaritalStatusMasters.ToList();
-            model.Educations = _context.EducationMasters.ToList();
-            model.EmployeedInLst = _context.EmployeedInMasters.ToList();
-
-            //Religion Details
-            model.Religions = _context.ReligionMasters.ToList();
-            model.MotherTongues = _context.MotherTongueMasters.ToList();
-            model.Castes = _context.CasteMasters.ToList();
-            model.SubCastes = _context.SubCasteMasters.ToList();
-            model.Gothrams = _context.GothramMasters.ToList();
-
-            //Family Information
-            model.FamilyStatuses = _context.FamilyStatusMasters.ToList();
-            model.FamilyTypes = _context.FamilyTypeMasters.ToList();
-            model.FamilyValues = _context.FamilyValuesMasters.ToList();
-
-            //login
-
+            PopulateProfileViewModel(model);
 
             return View(model);
 
+        }
+        private void PopulateProfileViewModel(ProfileViewModel viewModel)
+        {
+            viewModel.MaritalStatusMasters = _context.MaritalStatusMasters.ToList();
+            viewModel.Educations = _context.EducationMasters.ToList();
+            viewModel.EmployeedInLst = _context.EmployeedInMasters.ToList();
+
+            //Religion Details
+            viewModel.Religions = _context.ReligionMasters.ToList();
+            viewModel.MotherTongues = _context.MotherTongueMasters.ToList();
+            viewModel.Castes = _context.CasteMasters.ToList();
+            viewModel.SubCastes = _context.SubCasteMasters.ToList();
+            viewModel.Gothrams = _context.GothramMasters.ToList();
+
+            //Family Information
+            viewModel.FamilyStatuses = _context.FamilyStatusMasters.ToList();
+            viewModel.FamilyTypes = _context.FamilyTypeMasters.ToList();
+            viewModel.FamilyValues = _context.FamilyValuesMasters.ToList();
+
+            viewModel.Countries = new List<SelectListItem>();
+            foreach (var country in _context.CountryMasters)
+            {
+                viewModel.Countries.Add(new SelectListItem { Text = country.CountryName, Value = country.CountryMasterId.ToString() });
+            }
+
+
+            viewModel.States = new List<SelectListItem>();
+            foreach (var item in _context.StateMasters)
+            {
+                viewModel.States.Add(new SelectListItem { Text = item.StateName, Value = item.StateMasterId.ToString() });
+            }
+
+
+            viewModel.Cities = new List<SelectListItem>();
+            foreach (var item in _context.CityMasters)
+            {
+                viewModel.Cities.Add(new SelectListItem { Text = item.CityName, Value = item.CityMasterId.ToString() });
+            }
         }
         private Profile ProfileViewModelToModel(ProfileViewModel model)
         {
@@ -364,7 +376,8 @@ namespace addon365.FindMatch360.Controllers
         public async Task<IActionResult> SendUserName(ProfileViewModel model, [FromServices] IEmailSender emailSender)
         {
             await emailSender.SendEmailAsync(model.LoginEMailId, "addon confirmation email check", GenerateRandomPassword());
-            return View(model);
+            PopulateProfileViewModel(model);
+            return View("CreateProfile", model);
         }
             public static string GenerateRandomPassword(PasswordOptions opts = null)
         {
