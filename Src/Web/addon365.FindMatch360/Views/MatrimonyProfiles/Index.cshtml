@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Profile>
+﻿@model MatrimonyProfilesIndexViewModel
 
 @{
 
@@ -72,7 +72,7 @@
                         <div class="col-md-12" id="matrimoneyprofile-bg-wrapper">
                             <div class="row" id="bg_matrimoneyprofile">
 
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.Profiles)
                                 {
                                     <div class="col-md-12" id="bg-box-border">
                                         <div class="row">
@@ -90,7 +90,7 @@
                                             </div>
                                             <div class="col-md-3 col-sm-3">
                                                 <div class="matrimonyprofile-img">
-                                                    <img src=@("ProfilePhotos/Pri_"+item.ProfileMasterId+".jpg") asp-append-version="true" class="img-fluid" id="img-living">
+                                                    <img src=@(item.PhotoUrl) asp-append-version="true" class="img-fluid" id="img-living">
                                                 </div>
                                             </div>
                                             <div class="col-md-9 col-sm-9">
@@ -105,7 +105,7 @@
 
                                                                 <td class="wishlist">
                                                                     <a asp-action="Details" asp-route-id="@item.ProfileMasterId">
-                                                                        @Html.DisplayFor(modelItem => item.Name)
+                                                                        @Html.DisplayFor(modelItem => item.ProfileName)
                                                                     </a>
                                                                 </td>
                                                             </tr>
@@ -113,7 +113,7 @@
                                                                 <td class="title">
                                                                     வயது
                                                                 </td>
-                                                                <td class="text">  :@Html.DisplayFor(modelItem => item.DateandTimeOfBirth)</td>
+                                                                <td class="text">@Html.DisplayFor(modelItem => item.Age)</td>
                                                             </tr>
 
                                                             <tr>
@@ -133,7 +133,7 @@
                                                                 </td>
                                                                 <td class="text">
                                                                    
-                                                                    @Html.DisplayFor(modelItem => item.ProfileEducation.EducationName)
+                                                                    @Html.DisplayFor(modelItem => item.EducationQualification)
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -142,14 +142,14 @@
                                                                     பணிவிவரம்
 
                                                                 </td>
-                                                                <td class="text">   @Html.DisplayFor(modelItem => item.EmployeedIn.EmployeedInName)</td>
+                                                                <td class="text">   @Html.DisplayFor(modelItem => item.JobDetail)</td>
                                                             </tr>
 
                                                             <tr>
                                                                 <td class="title">
                                                                     முகவரி
                                                                 </td>
-                                                                <td class="text">  @Html.DisplayFor(modelItem => item.WorkingAddress) </td>
+                                                                <td class="text">  @Html.DisplayFor(modelItem => item.Address) </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
@@ -162,7 +162,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="wishlist">
+                                                <div class="wishlist mb-4">
 
                                                     <h6>Do you like to add in wish list?</h6>
                                                     <ul>

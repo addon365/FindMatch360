@@ -3,15 +3,18 @@ using addon365.FindMatch360.Models;
 using addon365.FindMatch360.Models.MatrimonyProfileModels;
 using addon365.FindMatch360.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-
+using System.Web;
 namespace addon365.FindMatch360.Controllers
 {
     //[Authorize(Roles ="Administrator,MatrimonyUser")]
@@ -20,13 +23,15 @@ namespace addon365.FindMatch360.Controllers
         private readonly ilamaiMatrimonyContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private bool IsProfileUser,IsCompleteProfile;
         private Profile profile;
-        public MatrimonyProfilesController(ilamaiMatrimonyContext context, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor)
+        public MatrimonyProfilesController(ilamaiMatrimonyContext context, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             this._userManager = userManager;
             this._httpContextAccessor = httpContextAccessor;
+            this._webHostEnvironment = webHostEnvironment;
             
             System.Security.Claims.ClaimsPrincipal currentUser = _httpContextAccessor.HttpContext.User;
 
@@ -67,6 +72,8 @@ namespace addon365.FindMatch360.Controllers
         // GET: MatrimonyProfiles
         public async Task<IActionResult> Index()
         {
+             string webRootPath = _webHostEnvironment.WebRootPath;
+            string contentRootPath = _webHostEnvironment.ContentRootPath;
             ValidateProfile();
             if (!IsCompleteProfile)
             {
@@ -74,8 +81,38 @@ namespace addon365.FindMatch360.Controllers
             }
             System.Security.Claims.ClaimsPrincipal currentUser = _httpContextAccessor.HttpContext.User;
 
-
-            return View(await _context.Profiles.Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).Where(x => x.UserId != _userManager.GetUserId(currentUser)).ToListAsync());
+            var data = await _context.Profiles.Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).Where(x => x.UserId != _userManager.GetUserId(currentUser)).ToListAsync();
+            MatrimonyProfilesIndexViewModel viewModel = new MatrimonyProfilesIndexViewModel();
+            List<ProfileIndexViewModel> profiles = new List<ProfileIndexViewModel>();
+            foreach(var item in data)
+            {
+                ProfileIndexViewModel dd = new ProfileIndexViewModel();
+                dd.ProfileMasterId = item.ProfileMasterId;
+                
+                if (System.IO.File.Exists(Path.Combine(webRootPath,"ProfilePhotos/Pri_" + item.ProfileMasterId + ".jpg")))
+                {
+                    dd.PhotoUrl = "~/ProfilePhotos/Pri_" + item.ProfileMasterId + ".jpg";
+                }
+                else
+                {
+                    dd.PhotoUrl = "~/images/profile_pic.png";
+                }
+                dd.ProfileName = item.Name;
+                dd.Star = item.Star;
+                if (item.ProfileEducation!=null)
+                {
+                    dd.EducationQualification = item.ProfileEducation.EducationName;
+                }
+                if(item.EmployeedIn!=null)
+                {
+                    dd.JobDetail = item.EmployeedIn.EmployeedInName;
+                }
+                
+                dd.Address = item.Address;
+                profiles.Add(dd);
+            }
+            viewModel.Profiles = profiles;
+            return View(viewModel);
         }
 
         // GET: MatrimonyProfiles/Details/5
