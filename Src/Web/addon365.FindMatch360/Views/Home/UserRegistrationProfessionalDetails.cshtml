@@ -60,14 +60,13 @@
 
                         <div class="form-group">
                             <label for="sel1">
-                                Annual Income
+                                Monthly Income
 
                             </label>
-                            <select class="form-control" id="sel1">
-                                <option value="0"> -  Select  - </option>
-                                <option value="1">0 - 1 Lakh</option>
-                            
-                            </select>
+                            <div class="input-group">
+                                <input type="text" class="form-control" asp-for="@Model.MonthlyRevenue" placeholder="Enter Education in Detail">
+                            </div>
+
                         </div>
                         <div class="form-group">
                             <a>

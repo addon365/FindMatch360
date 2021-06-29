@@ -8,6 +8,7 @@ namespace addon365.FindMatch360.ViewModels
 {
     public class UserRegistrationPersonalViewModel
     {
+        public Double Height { get; set; }
         public string? MaritalStatusMasterId { get; set; }
         public IEnumerable<MaritalStatusMaster> MaritalStatusMasters { get; set; }
         public string FamilyStatusMasterId { get; set; }
