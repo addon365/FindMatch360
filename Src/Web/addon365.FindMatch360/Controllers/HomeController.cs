@@ -24,7 +24,7 @@ namespace addon365.FindMatch360.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ilamaiMatrimonyContext _context;
         private UserRegisterIntilizeViewModel _preRegisterViewModel;
-        private ProfileViewModel _profileViewModel;
+        private AdminProfileCreateViewModel _profileViewModel;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IHttpContextAccessor _httpContextAccessor;

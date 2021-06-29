@@ -74,6 +74,7 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         public CityMaster WorkingCity { get; set; }
 
         public string WorkingAddress { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal? MonthlyRevenue { get; set; }
         #endregion
 

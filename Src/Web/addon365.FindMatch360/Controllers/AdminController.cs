@@ -1,4 +1,5 @@
 ﻿using addon365.FindMatch360.Data;
+using addon365.FindMatch360.Helpers;
 using addon365.FindMatch360.Models;
 using addon365.FindMatch360.Models.MatrimonyProfileModels;
 using addon365.FindMatch360.ViewModels;
@@ -62,46 +63,98 @@ namespace addon365.FindMatch360.Controllers
             return View(viewModel);
         }
 
-        public async Task<IActionResult> AllMembers()
+        public async Task<IActionResult> AllMembers(string sortOrder,
+    string currentFilter,
+    string searchString,
+    int? pageNumber)
         {
-            var List = await _context.Profiles.Include(s=>s.Caste).Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).ToListAsync();
-            AdminAllMemberViewModel viewModel = new AdminAllMemberViewModel();
-            List<TotalMember> totalMembers = new List<TotalMember>();
-            int SNo = 1;
-            foreach(var profile in List)
-            {
-                TotalMember totalMember = ConvertProfileToAllMember(profile);
-                totalMember.SNo = SNo;
-                totalMembers.Add(totalMember);
-                SNo = SNo + 1;
-            }
-            viewModel.TotalMembers = totalMembers;
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
 
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            //Func<Profile, TotalMember> func = ConvertProfileToAllMember;
+            // var profiles = _context.Profiles.Include(s => s.Caste).Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).Select(s=> func(s));
+
+            var profiles = _context.Profiles.Include(s => s.Caste).Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).Select(s => new TotalMember()
+            {
+                ProfileMasterId = s.ProfileMasterId,
+                RegDate = s.RegisteredDate,
+                ProfileName = s.Name,
+                Caste=s.Caste!=null?s.Caste.CasteName:string.Empty,
+                Qualification = s.ProfileEducation != null ? s.ProfileEducation.EducationName : string.Empty,
+                Place = s.PlaceOfBirth,
+                MonthlyRevenue = s.MonthlyRevenue.Value
+            });
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                profiles = profiles.Where(s => s.ProfileName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    profiles = profiles.OrderByDescending(s => s.ProfileName);
+                    break;
+                //case "Date":
+                //    students = students.OrderBy(s => s.EnrollmentDate);
+                //    break;
+                //case "date_desc":
+                //    students = students.OrderByDescending(s => s.EnrollmentDate);
+                //    break;
+                default:
+                    profiles = profiles.OrderBy(s => s.ProfileName);
+                    break;
+            }
+            AdminAllMemberViewModel viewModel = new AdminAllMemberViewModel();
+            //List<TotalMember> totalMembers = new List<TotalMember>();
+            //int SNo = 1;
+
+            //foreach(var profile in profiles)
+            //{
+            //    TotalMember totalMember = ConvertProfileToAllMember(profile);
+            //    totalMember.SNo = SNo;
+            //    totalMembers.Add(totalMember);
+            //    SNo = SNo + 1;
+            //}
+            //viewModel.TotalMembers = totalMembers;
+            int pageSize = 3;
+            viewModel.TotalMembers = await PaginatedList<TotalMember>.CreateAsync(profiles.AsNoTracking(), pageNumber ?? 1, pageSize);
             return View(viewModel);
         }
+        
         private TotalMember ConvertProfileToAllMember(Profile profile)
         {
             TotalMember totalMember = new TotalMember();
             totalMember.ProfileMasterId = profile.ProfileMasterId;
             totalMember.RegDate = profile.RegisteredDate;
-            totalMember.Name = profile.Name;
-            if (profile.Caste != null)
-            {
-                totalMember.Caste = profile.Caste.CasteName;
-            }
+            totalMember.ProfileName = profile.Name;
+            //if (profile.Caste != null)
+            //{
+            //    totalMember.Caste = profile.Caste.CasteName;
+            //}
                 
-            if(profile.ProfileEducation!=null)
-                totalMember.Qualification = profile.ProfileEducation.EducationName;
+            //if(profile.ProfileEducation!=null)
+            //    totalMember.Qualification = profile.ProfileEducation.EducationName;
 
-            totalMember.Place = "Thiruvanamalai";
-            totalMember.MonthlyRevenue = profile.MonthlyRevenue.Value;
+            //totalMember.Place = "Thiruvanamalai";
+            //totalMember.MonthlyRevenue = profile.MonthlyRevenue.Value;
             return totalMember;
         }
 
         public IActionResult CreateProfile()
         {
             
-            ProfileViewModel viewModel = new ProfileViewModel();
+            AdminProfileCreateViewModel viewModel = new AdminProfileCreateViewModel();
 
             PopulateProfileViewModel(viewModel);
 
@@ -112,14 +165,14 @@ namespace addon365.FindMatch360.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateProfile(ProfileViewModel model)
+        public async Task<IActionResult> CreateProfile(AdminProfileCreateViewModel model)
         {
             if(ModelState.IsValid)
             {
 
 
 
-                Profile ProfileDbModel = ProfileViewModelToModel(model);
+                Profile ProfileDbModel = ProfileCreateViewModelToModel(model);
                 
                 ProfileDbModel.ProfileMasterId = Guid.NewGuid();
                 
@@ -134,7 +187,7 @@ namespace addon365.FindMatch360.Controllers
             return View(model);
 
         }
-        private void PopulateProfileViewModel(ProfileViewModel viewModel)
+        private void PopulateProfileViewModel(AdminProfileCreateViewModel viewModel)
         {
             viewModel.MaritalStatusMasters = _context.MaritalStatusMasters.ToList();
             viewModel.Educations = _context.EducationMasters.ToList();
@@ -172,7 +225,7 @@ namespace addon365.FindMatch360.Controllers
                 viewModel.Cities.Add(new SelectListItem { Text = item.CityName, Value = item.CityMasterId.ToString() });
             }
         }
-        private Profile ProfileViewModelToModel(ProfileViewModel model)
+        private Profile ProfileCreateViewModelToModel(AdminProfileCreateViewModel model)
         {
             var ProfileDbModel = new Profile();
             ProfileDbModel.Name = model.Name;
@@ -233,9 +286,70 @@ namespace addon365.FindMatch360.Controllers
             return ProfileDbModel;
 
         }
-        private ProfileViewModel ProfileModelToViewModel(Profile model)
+        private Profile ProfileEditViewModelToModel(AdminProfileEditViewModel model)
         {
-            var ProfileVM = new ProfileViewModel();
+            var ProfileDbModel = new Profile();
+            ProfileDbModel.Name = model.Name;
+            ProfileDbModel.Gender = model.Gender;
+            ProfileDbModel.DateandTimeOfBirth = model.DateandTimeOfBirth;
+            ProfileDbModel.MaritalStatusMasterId = model.MaritalStatusMasterId == "" || model.MaritalStatusMasterId == "0" ? null : Convert.ToInt32(model.MaritalStatusMasterId);
+            ProfileDbModel.BodyType = model.BodyType;
+            ProfileDbModel.Weight = model.Weight;
+            ProfileDbModel.Height = model.Height;
+            ProfileDbModel.SkinColor = model.SkinColor;
+            ProfileDbModel.DisabilityDescription = model.DisabilityDescription;
+
+            ProfileDbModel.EatingHabit = model.EatingHabit;
+            ProfileDbModel.Drinking = model.Drinking;
+            ProfileDbModel.Smoking = model.Smoking;
+
+            ProfileDbModel.ProfileEducationMasterId = ConvertToId(model.HigherEducationsId);
+
+            ProfileDbModel.ReligionMasterId = ConvertToId(model.ReligionMasterId);
+            ProfileDbModel.MotherTongueMasterId = ConvertToId(model.MotherTongueMasterId);
+            ProfileDbModel.CasteMasterId = ConvertToId(model.CasteMasterId);
+            ProfileDbModel.SubCasteMasterId = ConvertToId(model.SubCasteMasterId);
+            ProfileDbModel.GothramMasterId = ConvertToId(model.GothramMasterId);
+
+            ProfileDbModel.EmployeedInMasterId = ConvertToId(model.EmployeedInMasterId);
+            ProfileDbModel.MonthlyRevenue = model.MonthlyRevenue;
+            ProfileDbModel.WorkingAddress = model.WorkingAddress;
+
+            ProfileDbModel.Star = model.Star;
+            ProfileDbModel.Rasi = model.Rasi;
+            ProfileDbModel.Lagnam = model.Lagnam;
+            ProfileDbModel.TimeofBirth = model.TimeofBirth;
+            ProfileDbModel.PlaceOfBirth = model.PlaceOfBirth;
+
+            ProfileDbModel.FamilyStatusMasterId = ConvertToId(model.FamilyStatusMasterId);
+            ProfileDbModel.FamilyTypeMasterId = ConvertToId(model.FamilyTypeMasterId);
+            ProfileDbModel.FamilyValuesMasterId = ConvertToId(model.FamilyValuesMasterId);
+            ProfileDbModel.FatherName = model.FatherName;
+            ProfileDbModel.FatherQualification = model.FatherQualification;
+            ProfileDbModel.FatherJob = model.FatherJob;
+            ProfileDbModel.MotherName = model.MotherName;
+            ProfileDbModel.MotherQualification = model.MotherQualification;
+            ProfileDbModel.MotherJob = model.MotherJob;
+            ProfileDbModel.NativeDistrict = model.NativeDistrict;
+            ProfileDbModel.ContactPerson = model.ContactPerson;
+            ProfileDbModel.PhoneNo = model.PhoneNo;
+            ProfileDbModel.MobileNo = model.MobileNo;
+            ProfileDbModel.EmailId = model.EmailId;
+            ProfileDbModel.BirthNumberinFamily = model.BirthNumberinFamily;
+            ProfileDbModel.Brothers = model.Brothers;
+            ProfileDbModel.MarriedBrothers = model.MarriedBrothers;
+            ProfileDbModel.Sisters = model.Sisters;
+            ProfileDbModel.MarriedSisters = model.MarriedSisters;
+
+            ProfileDbModel.FromAge = model.FromAge;
+            ProfileDbModel.UptoAge = model.UptoAge;
+
+            return ProfileDbModel;
+
+        }
+        private AdminProfileCreateViewModel ProfileModelToCreateViewModel(Profile model)
+        {
+            var ProfileVM = new AdminProfileCreateViewModel();
             ProfileVM.MatrimonyProfileId = model.ProfileMasterId;
             ProfileVM.Name = model.Name;
             ProfileVM.Gender = model.Gender;
@@ -304,6 +418,77 @@ namespace addon365.FindMatch360.Controllers
             return ProfileVM;
 
         }
+        private AdminProfileEditViewModel ProfileModelToEditViewModel(Profile model)
+        {
+            var ProfileVM = new AdminProfileEditViewModel();
+            ProfileVM.MatrimonyProfileId = model.ProfileMasterId;
+            ProfileVM.Name = model.Name;
+            ProfileVM.Gender = model.Gender;
+            ProfileVM.DateandTimeOfBirth = model.DateandTimeOfBirth;
+            ProfileVM.MaritalStatusMasterId = model.MaritalStatusMasterId.ToString();
+            ProfileVM.BodyType = model.BodyType;
+            ProfileVM.Weight = model.Weight;
+            ProfileVM.Height = model.Height;
+            ProfileVM.SkinColor = model.SkinColor;
+            ProfileVM.DisabilityDescription = model.DisabilityDescription;
+
+            ProfileVM.EatingHabit = model.EatingHabit;
+            ProfileVM.Drinking = model.Drinking;
+            ProfileVM.Smoking = model.Smoking;
+
+            ProfileVM.HigherEducationsId = model.ProfileEducationMasterId.ToString();
+
+            ProfileVM.ReligionMasterId = model.ReligionMasterId.ToString();
+            ProfileVM.MotherTongueMasterId = model.MotherTongueMasterId.ToString();
+            ProfileVM.CasteMasterId = model.CasteMasterId.ToString();
+            ProfileVM.SubCasteMasterId = model.SubCasteMasterId.ToString();
+            ProfileVM.GothramMasterId = model.GothramMasterId.ToString();
+
+            ProfileVM.EmployeedInMasterId = model.EmployeedInMasterId.ToString();
+            ProfileVM.MonthlyRevenue = model.MonthlyRevenue.Value;
+            ProfileVM.WorkingAddress = model.WorkingAddress;
+
+            ProfileVM.Star = model.Star;
+            ProfileVM.Rasi = model.Rasi;
+            ProfileVM.Lagnam = model.Lagnam;
+            ProfileVM.TimeofBirth = model.TimeofBirth;
+            ProfileVM.PlaceOfBirth = model.PlaceOfBirth;
+
+            ProfileVM.FamilyStatusMasterId = model.FamilyStatusMasterId.ToString();
+            ProfileVM.FamilyTypeMasterId = model.FamilyTypeMasterId.ToString();
+            ProfileVM.FamilyValuesMasterId = model.FamilyValuesMasterId.ToString();
+            ProfileVM.FatherName = model.FatherName;
+            ProfileVM.FatherQualification = model.FatherQualification;
+            ProfileVM.FatherJob = model.FatherJob;
+            ProfileVM.MotherName = model.MotherName;
+            ProfileVM.MotherQualification = model.MotherQualification;
+            ProfileVM.MotherJob = model.MotherJob;
+            ProfileVM.NativeDistrict = model.NativeDistrict;
+            ProfileVM.ContactPerson = model.ContactPerson;
+            ProfileVM.PhoneNo = model.PhoneNo;
+            ProfileVM.MobileNo = model.MobileNo;
+            ProfileVM.EmailId = model.EmailId;
+            ProfileVM.BirthNumberinFamily = model.BirthNumberinFamily;
+            ProfileVM.Brothers = model.Brothers;
+            ProfileVM.MarriedBrothers = model.MarriedBrothers;
+            ProfileVM.Sisters = model.Sisters;
+            ProfileVM.MarriedSisters = model.MarriedSisters;
+
+            ProfileVM.FromAge = model.FromAge;
+            ProfileVM.UptoAge = model.UptoAge;
+
+            if (model.User != null)
+            {
+                ProfileVM.LoginEMailId = model.User.UserName;
+                ProfileVM.HavingLogin = true;
+            }
+            else
+            {
+                ProfileVM.HavingLogin = false;
+            }
+            return ProfileVM;
+
+        }
         public async Task<IActionResult> EditProfile(Guid? id)
         {
             if (id == null)
@@ -317,9 +502,9 @@ namespace addon365.FindMatch360.Controllers
                 return NotFound();
             }
             _context.Entry(profile).Reference("User").Load();
-            ProfileViewModel viewModel = new ProfileViewModel();
-
-            viewModel = ProfileModelToViewModel(profile);
+            AdminProfileEditViewModel viewModel = new AdminProfileEditViewModel();
+            viewModel.MatrimonyProfileId = profile.ProfileMasterId;
+            viewModel = ProfileModelToEditViewModel(profile);
             #region LoadComboxbox
             viewModel.MaritalStatusMasters = _context.MaritalStatusMasters.ToList();
             viewModel.Educations = _context.EducationMasters.ToList();
@@ -341,7 +526,7 @@ namespace addon365.FindMatch360.Controllers
 
 
 
-            return View("CreateProfile",viewModel);
+            return View(viewModel);
         }
 
         // POST: CasteMasters/Edit/5
@@ -349,7 +534,7 @@ namespace addon365.FindMatch360.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProfile(Guid id,ProfileViewModel model)
+        public async Task<IActionResult> EditProfile(Guid id, AdminProfileEditViewModel model)
         {
             if (id != model.MatrimonyProfileId)
             {
@@ -360,7 +545,7 @@ namespace addon365.FindMatch360.Controllers
             {
                 try
                 {
-                    Profile dbModel = ProfileViewModelToModel(model);
+                    Profile dbModel = ProfileEditViewModelToModel(model);
 
                     _context.Update(dbModel);
                     await _context.SaveChangesAsync();
@@ -380,7 +565,7 @@ namespace addon365.FindMatch360.Controllers
             }
             return View(model);
         }
-        public async Task<IActionResult> SendUserName(ProfileViewModel model, [FromServices] IEmailSender emailSender,[FromServices] UserManager<ApplicationUser> userManager)
+        public async Task<IActionResult> SendUserName(AdminProfileCreateViewModel model, [FromServices] IEmailSender emailSender,[FromServices] UserManager<ApplicationUser> userManager)
         {
             var profile = _context.Profiles.FirstOrDefault(x => x.ProfileMasterId == model.MatrimonyProfileId);
             if (profile != null)
@@ -396,12 +581,12 @@ namespace addon365.FindMatch360.Controllers
                     _context.Update(profile);
                     await _context.SaveChangesAsync();
 
-                    await emailSender.SendEmailAsync(model.LoginEMailId, "addon confirmation email check", GenerateRandomPassword());
+                    await emailSender.SendEmailAsync(model.LoginEMailId, "addon confirmation email check", password);
                 }
             }
 
             PopulateProfileViewModel(model);
-            return View("CreateProfile", model);
+            return View("EditProfile", model);
         }
             public static string GenerateRandomPassword(PasswordOptions opts = null)
         {

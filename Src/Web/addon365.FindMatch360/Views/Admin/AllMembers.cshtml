@@ -60,7 +60,7 @@
                                                         <td class="sorting_1">@Html.DisplayFor(modelItem => item.SNo)</td>
                                                         <td> @Html.DisplayFor(modelItem => item.RegNo)</td>
                                                         <td>@Html.DisplayFor(modelItem => item.RegDate)</td>
-                                                        <td> @Html.DisplayFor(modelItem => item.Name)</td>
+                                                        <td> @Html.DisplayFor(modelItem => item.ProfileName)</td>
                                                         <td> @Html.DisplayFor(modelItem => item.Caste)</td>
                                                         <td>@Html.DisplayFor(modelItem => item.Job)</td>
                                                         <td>@Html.DisplayFor(modelItem => item.Qualification)</td>
@@ -92,23 +92,60 @@
                                                 </tfoot>
                                             </table>
                                         </div>
-                                    </div><div class="row">
+                                    </div>
+                                    <div class="row">
+                                          @{
+                                              var prevDisabled = !Model.TotalMembers.HasPreviousPage ? "disabled" : "";
+                                              var nextDisabled = !Model.TotalMembers.HasNextPage ? "disabled" : "";
+                        }
                                         <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                                            <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing @(Model.TotalMembers.PageStartRecordNumber+1) to @Model.TotalMembers.PageEndRecordNumber of @Model.TotalMembers.TotalRecords entries</div>
                                         </div>
                                        <div class="col-sm-12 col-md-7">
                                     <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                                           <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled" id="example2_previous">
-                                               <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Prev</a>
-                                         </li>
-                                        <li class="paginate_button page-item active">
-                                               <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                                           
+                                        <ul class="pagination">
+                                            <li class="paginate_button page-item previous disabled" id="example2_previous">
+                                                <a asp-action="AllMembers"
+                                                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                                                   asp-route-pageNumber="@(Model.TotalMembers.PageIndex - 1)"
+                                                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                                   class="btn btn-default @prevDisabled">
+                                                    Previous
+                                                </a>
                                             </li>
-                                        <li class="paginate_button page-item ">
-                                               <a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                        </li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div>
+
+                                            @*<li class="paginate_button page-item active">
+               <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+        </li>*@
+                                            @for (int i = 1; i <= Model.TotalMembers.TotalPages; i++)
+                                            {
+                                                
+                                                    var IsActivePage = Model.TotalMembers.PageIndex==i ? "active" : "";
+                                                
+                                                    <li class="paginate_button page-item @IsActivePage">
+                                                        <a asp-action="AllMembers"
+                                                       asp-route-sortOrder="@ViewData["CurrentSort"]"
+                                                       asp-route-pageNumber="@i"
+                                                       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                                        aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">@i</a>
+                                                    </li>
+                                            }
+                                                @*
+            <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+            <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+            <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+            <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>*@
+                                                <li class="paginate_button page-item next" id="example2_next">
+                                                    <a asp-action="AllMembers"
+                                                       asp-route-sortOrder="@ViewData["CurrentSort"]"
+                                                       asp-route-pageNumber="@(Model.TotalMembers.PageIndex + 1)"
+                                                       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                                       class="btn btn-default @nextDisabled">
+                                                        Next
+                                                    </a>
+                                                </li>
+                                            </ul></div></div>
                                     </div>
                                 </div>
                             </div>

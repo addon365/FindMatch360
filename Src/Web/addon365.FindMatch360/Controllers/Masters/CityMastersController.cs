@@ -48,8 +48,8 @@ namespace addon365.FindMatch360.Controllers.Masters
 
             ViewData["CurrentFilter"] = searchString;
 
-            var cities = from s in _context.CityMasters.Include(c => c.State)
-                           select s;
+            var cities = _context.CityMasters.Include(c => c.State).Select(s=>s);
+                           
             if (!String.IsNullOrEmpty(searchString))
             {
                 cities = cities.Where(s => s.CityName.Contains(searchString)
@@ -71,7 +71,7 @@ namespace addon365.FindMatch360.Controllers.Masters
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 4;
             return View(await PaginatedList<CityMaster>.CreateAsync(cities.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         // GET: CityMasters/Details/5

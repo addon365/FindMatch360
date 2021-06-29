@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace addon365.FindMatch360.ViewModels
 {
-    public class ProfileViewModel
+    public class AdminProfileEditViewModel
     {
 
         public Guid MatrimonyProfileId { get; set; }

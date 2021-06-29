@@ -10,10 +10,17 @@ namespace addon365.FindMatch360.Helpers
     {
         public int PageIndex { get; private set; }
         public int TotalPages { get; private set; }
-
+        public int PageSize { get; private set; }
+        public int TotalRecords { get; private set; }
+        public int PageStartRecordNumber { get; private set; }
+        public int PageEndRecordNumber { get; private set; }
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
             PageIndex = pageIndex;
+            TotalRecords = count;
+            PageSize = pageSize;
+            PageStartRecordNumber = (pageIndex - 1) * pageSize;
+            PageEndRecordNumber = (PageStartRecordNumber + PageSize)<count? (PageStartRecordNumber + PageSize):count;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
 
             this.AddRange(items);
@@ -42,4 +49,6 @@ namespace addon365.FindMatch360.Helpers
             return new PaginatedList<T>(items, count, pageIndex, pageSize);
         }
     }
+
+ 
 }
