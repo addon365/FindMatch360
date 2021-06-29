@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Profile>
+﻿@model MatrimonyProfilesIndexViewModel
 
 @{
 
@@ -36,7 +36,7 @@
         <div class="matrimonyprofile">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-9">
 
                         <div class="row" id="matrimonyprofile_box_top_left">
                             <div class="col-md-3" id="matrimonyprofile_box_top">
@@ -72,14 +72,14 @@
                         <div class="col-md-12" id="matrimoneyprofile-bg-wrapper">
                             <div class="row" id="bg_matrimoneyprofile">
 
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.Profiles)
                                 {
                                     <div class="col-md-12" id="bg-box-border">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="matrimoneyprofile-bg-menubar">
                                                     <ul>
-                                                        <li>
+                                                        <li class="wishlist">
                                                             ID : 14514
                                                         </li>
                                                         <li>
@@ -90,7 +90,7 @@
                                             </div>
                                             <div class="col-md-3 col-sm-3">
                                                 <div class="matrimonyprofile-img">
-                                                    <img src=@("ProfilePhotos/Pri_"+item.ProfileMasterId+".jpg") asp-append-version="true" class="img-fluid" id="img-living">
+                                                    <img src=@(item.PhotoUrl) asp-append-version="true" class="img-fluid" id="img-living">
                                                 </div>
                                             </div>
                                             <div class="col-md-9 col-sm-9">
@@ -101,49 +101,73 @@
                                                     <div class="image_wrapper">
                                                         <table>
                                                             <tr>
-                                                                <td class="title">    @Html.DisplayNameFor(model => model.Name) </td>
 
-                                                                <td class="text">  :@Html.DisplayFor(modelItem => item.Name)</td>
+
+                                                                <td class="wishlist">
+                                                                    <a asp-action="Details" asp-route-id="@item.ProfileMasterId">
+                                                                        @Html.DisplayFor(modelItem => item.ProfileName)
+                                                                    </a>
+                                                                </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="title"> @Html.DisplayNameFor(model => model.DateandTimeOfBirth) </td>
-                                                                <td class="text">  :@Html.DisplayFor(modelItem => item.DateandTimeOfBirth)</td>
+                                                                <td class="title">
+                                                                    வயது
+                                                                </td>
+                                                                <td class="text">@Html.DisplayFor(modelItem => item.Age)</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td class="title">  @Html.DisplayNameFor(model => model.ProfileEducation.EducationName) </td>
-                                                                <td class="text">:  @Html.DisplayFor(modelItem => item.ProfileEducation.EducationName)</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="title">    @Html.DisplayNameFor(model => model.EmployeedIn.EmployeedInName)</td>
-                                                                <td class="text">:   @Html.DisplayFor(modelItem => item.EmployeedIn.EmployeedInName)</td>
-                                                            </tr>
-
-
-
-
-
 
                                                             <tr>
                                                                 <td class="title">
-                                                                    @Html.DisplayNameFor(model => model.WorkingAddress)
+                                                                    நச்சத்திரம்
+
                                                                 </td>
-                                                                <td class="text">:  @Html.DisplayFor(modelItem => item.WorkingAddress) </td>
+                                                                <td class="text">
+                                                                 
+
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="title">
+                                                                    கல்வித்தகுதி
+
+                                                                </td>
+                                                                <td class="text">
+                                                                   
+                                                                    @Html.DisplayFor(modelItem => item.EducationQualification)
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="title">
+
+                                                                    பணிவிவரம்
+
+                                                                </td>
+                                                                <td class="text">   @Html.DisplayFor(modelItem => item.JobDetail)</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="title">
+                                                                    முகவரி
+                                                                </td>
+                                                                <td class="text">  @Html.DisplayFor(modelItem => item.Address) </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <a asp-action="Details" asp-route-id="@item.ProfileMasterId">Check Full Details</a>
+                                                                </td>
+                                                                <td>
+                                                                    <a asp-action="Details" asp-route-id="@item.ProfileMasterId"> Details</a>
                                                                 </td>
                                                             </tr>
                                                         </table>
                                                     </div>
                                                 </div>
 
-                                                <div class="wishlist">
+                                                <div class="wishlist mb-4">
 
                                                     <h6>Do you like to add in wish list?</h6>
                                                     <ul>
-                                                        <li><a> Yes</a></li>
-                                                        <li><a> no</a></li>
+                                                        <li class="mb-4"><a> Yes</a></li>
+                                                        <li class="mb-4"><a> no</a></li>
                                                     </ul>
 
                                                 </div>
@@ -157,110 +181,122 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3" id="Profile">
                         <div class="alert alert-dark">
                             <div id="textbox" class="box-matrimonyprofile">
                                 <p class="alignleft">Similar Profile</p>
                                 <p class="alignright"> (37)</p>
                             </div>
                         </div>
-                        <div class="Similar-Profile" id="parents">
-                            <div class="media">
-                                <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
-                                <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Similar-Profile" id="parents">
-                            <div class="media">
-                                <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
-                                <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="Similar-Profile" id="parents">
-                            <div class="media">
+                            <div class="media mt-3">
                                 <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
                                 <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Similar-Profile" id="parents">
-                            <div class="media">
-                                <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
-                                <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Similar-Profile" id="parents">
-                            <div class="media">
-                                <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
-                                <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
+                                 <div class="profile-right-menubar">
+                                     <ul>
+                                         <li><a>Name:venkatesan</a></li>
+                                         <li><a>Date of brith:venkatesan</a></li>
+                                     </ul>
+                                 </div>
+                                  
                                 </div>
                             </div>
                         </div>
 
 
+
                         <div class="Similar-Profile" id="parents">
-                            <div class="media">
+                            <div class="media mt-3">
                                 <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
                                 <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
+
+                                    <div class="profile-right-menubar">
+                                        <ul>
+                                            <li><a>Name:venkatesan</a></li>
+                                            <li><a>Date of brith:venkatesan</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="Similar-Profile" id="parents">
-                            <div class="media">
+                            <div class="media mt-3">
                                 <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
                                 <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
+                                    <div class="profile-right-menubar">
+                                        <ul>
+                                            <li><a>Name:venkatesan</a></li>
+                                            <li><a>Date of brith:venkatesan</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="Similar-Profile" id="parents">
-                            <div class="media">
-                                <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
-                                <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="Similar-Profile" id="parents">
-                            <div class="media">
-                                <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
-                                <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="Similar-Profile" id="parents">
-                            <div class="media">
-                                <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
-                                <div class="media-body">
-                                    <p>Name:venkatesan</p>
-                                    <p>Date of brith:venkatesan</p>
-                                </div>
-                            </div>
-                        </div>
+                        <!--<div class="Similar-Profile" id="parents">
+        <div class="media">
+            <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
+            <div class="media-body">
+                <p>Name:venkatesan</p>
+                <p>Date of brith:venkatesan</p>
+            </div>
+        </div>
+    </div>-->
+                        <!--<div class="Similar-Profile" id="parents">
+        <div class="media">
+            <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
+            <div class="media-body">
+                <p>Name:venkatesan</p>
+                <p>Date of brith:venkatesan</p>
+            </div>
+        </div>
+    </div>-->
+                        <!--<div class="Similar-Profile" id="parents">
+        <div class="media">
+            <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
+            <div class="media-body">
+                <p>Name:venkatesan</p>
+                <p>Date of brith:venkatesan</p>
+            </div>
+        </div>
+    </div>-->
+                        <!--<div class="Similar-Profile" id="parents">
+        <div class="media">
+            <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
+            <div class="media-body">
+                <p>Name:venkatesan</p>
+                <p>Date of brith:venkatesan</p>
+            </div>
+        </div>
+    </div>--->
+                        <!--<div class="Similar-Profile" id="parents">
+        <div class="media">
+            <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
+            <div class="media-body">
+                <p>Name:venkatesan</p>
+                <p>Date of brith:venkatesan</p>
+            </div>
+        </div>
+    </div>-->
+                        <!--<div class="Similar-Profile" id="parents">
+        <div class="media">
+            <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
+            <div class="media-body">
+                <p>Name:venkatesan</p>
+                <p>Date of brith:venkatesan</p>
+            </div>
+        </div>
+    </div>--->
+                        <!--<div class="Similar-Profile" id="parents">
+        <div class="media">
+            <img src="~/images/profile_pic.png" class="align-self-start mr-3" style="width:60px">
+            <div class="media-body">
+                <p>Name:venkatesan</p>
+                <p>Date of brith:venkatesan</p>
+            </div>
+        </div>
+    </div>--->
                     </div>
 
 

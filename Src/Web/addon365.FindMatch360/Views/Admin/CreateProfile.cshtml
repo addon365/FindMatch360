@@ -1,6 +1,4 @@
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 @{
 
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -406,19 +404,19 @@
                                             </div>
 
                                             <!--<div class="form-group">
-        <label for="sel1">Country </label>
-        <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
-            <option>Select Employeed In</option>
+                                                <label for="sel1">Country </label>
+                                                <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
+                                                    <option>Select Employeed In</option>
 
-        </select>
-    </div>--->
+                                                </select>
+                                            </div>--->
                                             <!--<div class="form-group">
-        <label for="sel1">State </label>
-        <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
-            <option>Select Employeed In</option>
+                                                        <label for="sel1">State </label>
+                                                        <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
+                                                            <option>Select Employeed In</option>
 
-        </select>
-    </div>--->
+                                                        </select>
+                                                    </div>--->
 
                                             <div class="form-group">
                                                 <label asp-for="@Model.EmployeedInMasterId">City </label>
@@ -444,8 +442,6 @@
 
                                             <div class="form-group">
                                                 <label  asp-for="@Model.ReligionMasterId">Religion </label>
-
-
                                                 <select class="form-control"  asp-for="@Model.ReligionMasterId" asp-items="@Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
                                                     <option>Select Religion</option>
                                                 </select>
@@ -480,8 +476,7 @@
                                                     <option>Select Gothrams</option>
                                                 </select>
                                             </div>
-
-                                        </div>
+                                           </div>
                                         </div>
                                     </div>
                             </div>
@@ -495,8 +490,6 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12 col-lg-6 border-right">
-
-
                                             <div class="form-group">
                                                 <label asp-for="@Model.Star">Star:</label>
                                                 <input asp-for="@Model.Star" type="text" class="form-control"  placeholder="Enter Star" >
@@ -523,7 +516,7 @@
 
                                             <div class="form-group">
                                                 <label asp-for="@Model.PlaceOfBirth">Place Of Birth</label>
-                                                <input asp-for="@Model.PlaceOfBirth" type="text" class="form-control" id="MonthlyRevenue" placeholder="Enter Star" name="MonthlyRevenue">
+                                                <input asp-for="@Model.PlaceOfBirth" type="text" class="form-control"  placeholder="Place Of Birth">
                                             </div>
                                         </div>
                                     </div>
@@ -568,7 +561,7 @@
 
                                             <div class="form-group">
                                                 <label asp-for="@Model.FatherQualification">Father Qualification</label>
-                                                <input asp-for="@Model.FatherQualification" type="text" class="form-control" placeholder="Enter FatherQualification" >
+                                                <input asp-for="@Model.FatherQualification" type="text" class="form-control" placeholder="Enter FatherQualification">
                                             </div>
 
                                             <div class="form-group">
@@ -580,7 +573,6 @@
                                                 <label asp-for="@Model.MotherName">Mother Name</label>
                                                 <input asp-for="@Model.MotherName" type="text" class="form-control"  placeholder="Enter MotherName">
                                             </div>
-
 
                                             <div class="form-group">
                                                 <label asp-for="@Model.MotherQualification">Mother Qualification</label>
@@ -604,25 +596,14 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label asp-for="@Model.Address">Address:</label>
+                                                    <label asp-for="@Model.Address">Address</label>
                                                     <textarea asp-for="@Model.Address" class="form-control" rows="5" id="comment"></textarea>
                                                 </div>
-
 
                                                 <div class="form-group">
                                                     <label asp-for="@Model.PhoneNo">PhoneNo:</label>
                                                     <input asp-for="@Model.PhoneNo" type="number" class="form-control"  placeholder="Enter PhoneNo">
                                                 </div>
-
-                                            @*<div class="form-group">
-            <label>MobileNo:</label>
-            <input asp-for="@Model.MobileNo" type="number" class="form-control" id="MonthlyRevenue" placeholder="Enter MobileNo" name="MonthlyRevenue">
-        </div>
-
-        <div class="form-group">
-            <label>EmailId:</label>
-            <input asp-for="@Model.EmailId" type="email" class="form-control" id="MonthlyRevenue" placeholder="Enter EmailId" name="MonthlyRevenue">
-        </div>*@
 
                                             <div class="form-group">
                                                 <label asp-for="@Model.BirthNumberinFamily">Birth Number in Family</label>
@@ -639,7 +620,6 @@
                                                 <label asp-for="@Model.MarriedBrothers">Married Brothers</label>
                                                 <input asp-for="@Model.MarriedBrothers" type="number" class="form-control"  placeholder="Enter MobileNo" >
                                             </div>
-
 
                                             <div class="form-group">
                                                 <label asp-for="@Model.Sisters">Sisters:</label>
@@ -674,7 +654,6 @@
                                                 <label asp-for="@Model.UptoAge">UptoAge:</label>
                                                 <input asp-for="@Model.UptoAge" type="number" class="form-control" placeholder="Enter UptoAge">
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -694,7 +673,6 @@
                                             </div>
                                             <button formaction="/Admin/SendUserName" class="btn btn-primary mt-2"> Generate Password and Send Mail</button>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -707,33 +685,3 @@
         </div>
     </div>
 </div>
-
-<script>
- 
-
-
-    $('.datepicker').pickadate({
-        selectMonths: true,
-        selectYears: true
-    }),
-        $('.timepicker').pickatime()
-
-    $(function () {
-        $('#date-time').bootstrapMaterialDatePicker({
-            format: 'YYYY-MM-DD HH:mm'
-        });
-        $('#date').bootstrapMaterialDatePicker({
-            time: false
-        });
-        $('#time').bootstrapMaterialDatePicker({
-            date: false,
-            format: 'HH:mm'
-        });
-    });</script>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-    }
-</script>

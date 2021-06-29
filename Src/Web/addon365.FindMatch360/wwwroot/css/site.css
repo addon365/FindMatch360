@@ -13,9 +13,23 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.matrimonyprofile-img {
+    max-width: 100%;
+    min-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+   
+}
+    .matrimonyprofile-img img {
+        max-width: 150px;
+        min-width: 150px;
+        height: 150px;
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
@@ -190,7 +204,7 @@ label.custom-file-label {
 .basic-details table tr .title {
     color: #fff;
     padding:10px 0px !important;
-    width: 200px;
+    width: 150px;
 }
 .write {
     float:right;
@@ -198,7 +212,7 @@ label.custom-file-label {
 .basic-details table tr .title {
     color: #fff;
     padding: 10px 0px !important;
-    width: 200px;
+    width: 150px;
 }
 .fa-check-square-o {
    color:#50b533;
@@ -509,6 +523,11 @@ figure img {
 .item-box-blog-text {
     max-height: 100px;
    
+}
+table tr .title {
+    color: #fff;
+    padding: 5px;
+    width: 150px !important;
 }
 
 .mt-10 {
@@ -1293,10 +1312,6 @@ div#blog-right {
     }
 }
 
-
-
-
-
 label.home-to {
     padding: 10px 5px !important;
 }
@@ -1425,9 +1440,7 @@ div#campignregistration-right {
     font-size: 17px !important;
 }
         
-
-
-    .campignregistration-title {
+.campignregistration-title {
         text-align: center;
         padding-top: 152px;
         color: #fff;
@@ -1517,11 +1530,27 @@ div#bg_matrimoneyprofiles {
     margin-top: 10px;
     margin-bottom: 31px;
 }
+#Profile {
+    position: fixed;
+    right: 11px;
+    top: 83px;
+}
+.wishlist {
+    color: #e11022;
+    font-size: 24px;
+}
 /*
  * Off Canvas sidebar at medium breakpoint
  * --------------------------------------------------
  */
 @media screen and (max-width: 992px) {
+
+
+    #Profile {
+        position: unset !important;
+        right: 0px !important;
+        top: 0px !important;
+    }
     .row-offcanvas {
             position: relative;
             -webkit-transition: all 0.25s ease-out;
@@ -1600,17 +1629,24 @@ div#bg_matrimoneyprofiles {
     width: 45%;
 }
 
+.profile-right-menubar ul {
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+.profile-right-menubar ul li {
+    float:left;
+    padding:10px 10px;
+}
+.profile-right-menubar ul li a {
+    text-decoration:none;
 }
 
-.card {
-   
-}
-
-.card-body .rotate {
-    z-index: 8;
-    float: right;
-    height: 100%;
-}
+    .card-body .rotate {
+        z-index: 8;
+        float: right;
+        height: 100%;
+    }
 
     .card-body .rotate i {
         color: rgba(20, 20, 20, 0.15);

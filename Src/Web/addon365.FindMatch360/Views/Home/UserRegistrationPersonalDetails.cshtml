@@ -30,22 +30,23 @@
                         <h2>Create Account</h2>
                         <p class="lead"> Not only charming and caring. Most importantly - right for you! </p>
                         <div class="form-group">
-                            <label for="sel1">Marital Status:</label>
-                            <select class="form-control" id="sel1" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
-                                <option value="0">Select Marital Status</option>
-                             
-                            </select>
-                        </div>
-
-                        <div class="form-group">
                             <label for="sel1">
                                 Height:
                             </label>
-                            <select class="form-control" id="sel1">
-                                <option value="0">Select Height</option>
-                                
+                            <div class="input-group">
+                                <input type="text" class="form-control" asp-for="@Model.Height" placeholder="Enter Education in Detail">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="sel1">Marital Status:</label>
+                            <select class="form-control" id="sel1" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
+                                <option value="0">Select Marital Status</option>
+
                             </select>
                         </div>
+
+
 
                         <div class="form-group">
                             <label for="sel1">
@@ -53,7 +54,7 @@
                             </label>
                             <select class="form-control" asp-for="@Model.FamilyStatusMasterId" asp-items="@Model.FamilyStatuses.Select(m=>new SelectListItem{ Text = m.FamilStatusName, Value = m.FamilyStatusMasterId.ToString() })">
                                 <option value="0">Select Family Status</option>
-                                
+
                             </select>
                         </div>
 
@@ -61,9 +62,9 @@
                             <label for="sel1">
                                 Family Type:
                             </label>
-                            <select class="form-control"  asp-for="@Model.FamilyTypeMasterId" asp-items="@Model.FamilyTypes.Select(m=>new SelectListItem{ Text = m.FamilyTypeName, Value = m.FamilyTypeMasterId.ToString() })">
+                            <select class="form-control" asp-for="@Model.FamilyTypeMasterId" asp-items="@Model.FamilyTypes.Select(m=>new SelectListItem{ Text = m.FamilyTypeName, Value = m.FamilyTypeMasterId.ToString() })">
                                 <option value="0">Select Family type</option>
-                                
+
                             </select>
                         </div>
 
@@ -74,7 +75,7 @@
                             </label>
                             <select class="form-control" asp-for="@Model.FamilyValuesMasterId" asp-items="@Model.FamilyValues.Select(m=>new SelectListItem{ Text = m.FamilyValuesName, Value = m.FamilyValuesMasterId.ToString() })">
                                 <option value="0">Select Family Values</option>
-                               
+
                             </select>
                         </div>
 
@@ -85,7 +86,7 @@
                             </label>
                             <select class="form-control" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
                                 <option value="0">Select Disability</option>
-                                
+
                             </select>
                         </div>
                         <div class="form-group">
