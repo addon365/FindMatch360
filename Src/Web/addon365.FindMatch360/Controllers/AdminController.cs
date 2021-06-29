@@ -1,4 +1,5 @@
 ﻿using addon365.FindMatch360.Data;
+using addon365.FindMatch360.Models;
 using addon365.FindMatch360.Models.MatrimonyProfileModels;
 using addon365.FindMatch360.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -379,9 +380,26 @@ namespace addon365.FindMatch360.Controllers
             }
             return View(model);
         }
-        public async Task<IActionResult> SendUserName(ProfileViewModel model, [FromServices] IEmailSender emailSender)
+        public async Task<IActionResult> SendUserName(ProfileViewModel model, [FromServices] IEmailSender emailSender,[FromServices] UserManager<ApplicationUser> userManager)
         {
-            await emailSender.SendEmailAsync(model.LoginEMailId, "addon confirmation email check", GenerateRandomPassword());
+            var profile = _context.Profiles.FirstOrDefault(x => x.ProfileMasterId == model.MatrimonyProfileId);
+            if (profile != null)
+            {
+                var user = new ApplicationUser { UserName = model.LoginEMailId, Email = model.LoginEMailId };
+                string password = GenerateRandomPassword();
+                var result = await userManager.CreateAsync(user, password);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "MatrimonyUser");
+
+                    profile.UserId = user.Id;
+                    _context.Update(profile);
+                    await _context.SaveChangesAsync();
+
+                    await emailSender.SendEmailAsync(model.LoginEMailId, "addon confirmation email check", GenerateRandomPassword());
+                }
+            }
+
             PopulateProfileViewModel(model);
             return View("CreateProfile", model);
         }
