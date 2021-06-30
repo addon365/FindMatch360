@@ -94,6 +94,7 @@ namespace addon365.FindMatch360.Controllers
                 Caste=s.Caste!=null?s.Caste.CasteName:string.Empty,
                 Qualification = s.ProfileEducation != null ? s.ProfileEducation.EducationName : string.Empty,
                 Place = s.PlaceOfBirth,
+                Job = s.EmployeedIn != null ? s.EmployeedIn.EmployeedInName : string.Empty,
                 MonthlyRevenue = s.MonthlyRevenue.Value
             });
             if (!String.IsNullOrEmpty(searchString))
@@ -181,7 +182,9 @@ namespace addon365.FindMatch360.Controllers
 
                 _context.Add(ProfileDbModel);
                 await _context.SaveChangesAsync();
-              
+
+                return RedirectToAction(nameof(AllMembers));
+
             }
            
             PopulateProfileViewModel(model);
@@ -292,6 +295,7 @@ namespace addon365.FindMatch360.Controllers
         private Profile ProfileEditViewModelToModel(AdminProfileEditViewModel model)
         {
             var ProfileDbModel = new Profile();
+            ProfileDbModel.ProfileMasterId = model.MatrimonyProfileId;
             ProfileDbModel.Name = model.Name;
             ProfileDbModel.Gender = model.Gender;
             ProfileDbModel.DateandTimeOfBirth = model.DateOfBirth;
@@ -565,7 +569,7 @@ namespace addon365.FindMatch360.Controllers
                     //    throw;
                     //}
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(AllMembers));
             }
             return View(model);
         }
