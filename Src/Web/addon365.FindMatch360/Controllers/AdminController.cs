@@ -91,12 +91,12 @@ namespace addon365.FindMatch360.Controllers
                 ProfileMasterId = s.ProfileMasterId,
                 RegDate = s.RegisteredDate,
                 ProfileName = s.Name,
-                Caste=s.Caste!=null?s.Caste.CasteName:string.Empty,
+                Caste = s.Caste != null ? s.Caste.CasteName : string.Empty,
                 Qualification = s.ProfileEducation != null ? s.ProfileEducation.EducationName : string.Empty,
                 Place = s.PlaceOfBirth,
                 Job = s.EmployeedIn != null ? s.EmployeedIn.EmployeedInName : string.Empty,
-                MonthlyRevenue = s.MonthlyRevenue.Value
-            });
+                MonthlyRevenue = s.MonthlyRevenue != null ? s.MonthlyRevenue.Value:0
+            }) ;
             if (!String.IsNullOrEmpty(searchString))
             {
                 profiles = profiles.Where(s => s.ProfileName.Contains(searchString));

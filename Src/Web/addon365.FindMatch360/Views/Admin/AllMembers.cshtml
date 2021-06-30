@@ -1,7 +1,7 @@
 ﻿@model AdminAllMemberViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    int SNo = 1;
+    int SNo = (Model.TotalMembers.PageStartRecordNumber + 1);
 }
 
 
