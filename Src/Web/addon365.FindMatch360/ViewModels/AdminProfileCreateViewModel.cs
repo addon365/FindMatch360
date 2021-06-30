@@ -16,9 +16,10 @@ namespace addon365.FindMatch360.ViewModels
 
         #region Person basic Details
         public String Name { get; set; }
+        public String LastName { get; set; }
         //https://www.youtube.com/watch?v=QpJvqiHl1Fo 
         public byte Gender { get; set; }
-        public DateTime DateandTimeOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public int Day { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }

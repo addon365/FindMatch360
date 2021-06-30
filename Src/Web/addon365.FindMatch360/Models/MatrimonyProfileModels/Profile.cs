@@ -15,6 +15,8 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         }
         [Key]
         public Guid ProfileMasterId { get; set; }
+        public String RegistrationNo { get; set; }
+
         [ForeignKey("ProfileFor")]
         public int? ProfileForId { get; set; }
         public ProfileForMaster ProfileFor { get; set; }
@@ -23,6 +25,7 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
 
         #region Person basic Details
         public String Name { get; set; }
+        public String LastName { get; set; }
         public string PhotoName { get; set; }
         public byte Gender { get; set; }
         public DateTime DateandTimeOfBirth { get; set; }

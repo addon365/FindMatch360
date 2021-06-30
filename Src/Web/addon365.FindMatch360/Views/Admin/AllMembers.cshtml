@@ -1,6 +1,7 @@
 ﻿@model AdminAllMemberViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int SNo = 1;
 }
 
 
@@ -54,11 +55,12 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                 
                                                     @foreach (var item in Model.TotalMembers)
                                                     {
                                                     <tr role="row" class="odd">
-                                                        <td class="sorting_1">@Html.DisplayFor(modelItem => item.SNo)</td>
-                                                        <td> @Html.DisplayFor(modelItem => item.RegNo)</td>
+                                                        <td class="sorting_1">@SNo</td>
+                                                        <td> Reg-@SNo</td>
                                                         <td>@Html.DisplayFor(modelItem => item.RegDate)</td>
                                                         <td> @Html.DisplayFor(modelItem => item.ProfileName)</td>
                                                         <td> @Html.DisplayFor(modelItem => item.Caste)</td>
@@ -72,8 +74,9 @@
             <a asp-action="Delete" asp-route-id="@item.MatrimonyProfileId">Delete</a>*@
                                                         </td>
                                                     </tr>
-
+                                                    SNo=SNo+1;
                                                     }
+                                                    
 
 
                                                 </tbody>

@@ -175,7 +175,9 @@ namespace addon365.FindMatch360.Controllers
                 Profile ProfileDbModel = ProfileCreateViewModelToModel(model);
                 
                 ProfileDbModel.ProfileMasterId = Guid.NewGuid();
-                
+                ProfileDbModel.RegistrationNo = "1";
+
+
 
                 _context.Add(ProfileDbModel);
                 await _context.SaveChangesAsync();
@@ -229,8 +231,9 @@ namespace addon365.FindMatch360.Controllers
         {
             var ProfileDbModel = new Profile();
             ProfileDbModel.Name = model.Name;
+            ProfileDbModel.LastName = model.LastName;
             ProfileDbModel.Gender = model.Gender;
-            ProfileDbModel.DateandTimeOfBirth = model.DateandTimeOfBirth;
+            ProfileDbModel.DateandTimeOfBirth = model.DateOfBirth;
             ProfileDbModel.MaritalStatusMasterId = model.MaritalStatusMasterId == "" || model.MaritalStatusMasterId == "0" ? null : Convert.ToInt32(model.MaritalStatusMasterId);
             ProfileDbModel.BodyType = model.BodyType;
             ProfileDbModel.Weight = model.Weight;
@@ -291,7 +294,7 @@ namespace addon365.FindMatch360.Controllers
             var ProfileDbModel = new Profile();
             ProfileDbModel.Name = model.Name;
             ProfileDbModel.Gender = model.Gender;
-            ProfileDbModel.DateandTimeOfBirth = model.DateandTimeOfBirth;
+            ProfileDbModel.DateandTimeOfBirth = model.DateOfBirth;
             ProfileDbModel.MaritalStatusMasterId = model.MaritalStatusMasterId == "" || model.MaritalStatusMasterId == "0" ? null : Convert.ToInt32(model.MaritalStatusMasterId);
             ProfileDbModel.BodyType = model.BodyType;
             ProfileDbModel.Weight = model.Weight;
@@ -347,84 +350,85 @@ namespace addon365.FindMatch360.Controllers
             return ProfileDbModel;
 
         }
-        private AdminProfileCreateViewModel ProfileModelToCreateViewModel(Profile model)
-        {
-            var ProfileVM = new AdminProfileCreateViewModel();
-            ProfileVM.MatrimonyProfileId = model.ProfileMasterId;
-            ProfileVM.Name = model.Name;
-            ProfileVM.Gender = model.Gender;
-            ProfileVM.DateandTimeOfBirth = model.DateandTimeOfBirth;
-            ProfileVM.MaritalStatusMasterId = model.MaritalStatusMasterId.ToString();
-            ProfileVM.BodyType = model.BodyType;
-            ProfileVM.Weight = model.Weight;
-            ProfileVM.Height = model.Height;
-            ProfileVM.SkinColor = model.SkinColor;
-            ProfileVM.DisabilityDescription = model.DisabilityDescription;
+        //private AdminProfileCreateViewModel ProfileModelToCreateViewModel(Profile model)
+        //{
+        //    var ProfileVM = new AdminProfileCreateViewModel();
+        //    ProfileVM.MatrimonyProfileId = model.ProfileMasterId;
+        //    ProfileVM.Name = model.Name;
+        //    ProfileVM.Gender = model.Gender;
+        //    ProfileVM.DateandTimeOfBirth = model.DateandTimeOfBirth;
+        //    ProfileVM.MaritalStatusMasterId = model.MaritalStatusMasterId.ToString();
+        //    ProfileVM.BodyType = model.BodyType;
+        //    ProfileVM.Weight = model.Weight;
+        //    ProfileVM.Height = model.Height;
+        //    ProfileVM.SkinColor = model.SkinColor;
+        //    ProfileVM.DisabilityDescription = model.DisabilityDescription;
 
-            ProfileVM.EatingHabit = model.EatingHabit;
-            ProfileVM.Drinking = model.Drinking;
-            ProfileVM.Smoking = model.Smoking;
+        //    ProfileVM.EatingHabit = model.EatingHabit;
+        //    ProfileVM.Drinking = model.Drinking;
+        //    ProfileVM.Smoking = model.Smoking;
 
-            ProfileVM.HigherEducationsId = model.ProfileEducationMasterId.ToString();
+        //    ProfileVM.HigherEducationsId = model.ProfileEducationMasterId.ToString();
 
-            ProfileVM.ReligionMasterId = model.ReligionMasterId.ToString();
-            ProfileVM.MotherTongueMasterId = model.MotherTongueMasterId.ToString();
-            ProfileVM.CasteMasterId = model.CasteMasterId.ToString();
-            ProfileVM.SubCasteMasterId = model.SubCasteMasterId.ToString();
-            ProfileVM.GothramMasterId = model.GothramMasterId.ToString();
+        //    ProfileVM.ReligionMasterId = model.ReligionMasterId.ToString();
+        //    ProfileVM.MotherTongueMasterId = model.MotherTongueMasterId.ToString();
+        //    ProfileVM.CasteMasterId = model.CasteMasterId.ToString();
+        //    ProfileVM.SubCasteMasterId = model.SubCasteMasterId.ToString();
+        //    ProfileVM.GothramMasterId = model.GothramMasterId.ToString();
 
-            ProfileVM.EmployeedInMasterId = model.EmployeedInMasterId.ToString();
-            ProfileVM.MonthlyRevenue = model.MonthlyRevenue.Value;
-            ProfileVM.WorkingAddress = model.WorkingAddress;
+        //    ProfileVM.EmployeedInMasterId = model.EmployeedInMasterId.ToString();
+        //    ProfileVM.MonthlyRevenue = model.MonthlyRevenue.Value;
+        //    ProfileVM.WorkingAddress = model.WorkingAddress;
 
-            ProfileVM.Star = model.Star;
-            ProfileVM.Rasi = model.Rasi;
-            ProfileVM.Lagnam = model.Lagnam;
-            ProfileVM.TimeofBirth = model.TimeofBirth;
-            ProfileVM.PlaceOfBirth = model.PlaceOfBirth;
+        //    ProfileVM.Star = model.Star;
+        //    ProfileVM.Rasi = model.Rasi;
+        //    ProfileVM.Lagnam = model.Lagnam;
+        //    ProfileVM.TimeofBirth = model.TimeofBirth;
+        //    ProfileVM.PlaceOfBirth = model.PlaceOfBirth;
 
-            ProfileVM.FamilyStatusMasterId = model.FamilyStatusMasterId.ToString();
-            ProfileVM.FamilyTypeMasterId = model.FamilyTypeMasterId.ToString();
-            ProfileVM.FamilyValuesMasterId = model.FamilyValuesMasterId.ToString();
-            ProfileVM.FatherName = model.FatherName;
-            ProfileVM.FatherQualification = model.FatherQualification;
-            ProfileVM.FatherJob = model.FatherJob;
-            ProfileVM.MotherName = model.MotherName;
-            ProfileVM.MotherQualification = model.MotherQualification;
-            ProfileVM.MotherJob = model.MotherJob;
-            ProfileVM.NativeDistrict = model.NativeDistrict;
-            ProfileVM.ContactPerson = model.ContactPerson;
-            ProfileVM.PhoneNo = model.PhoneNo;
-            ProfileVM.MobileNo = model.MobileNo;
-            ProfileVM.EmailId = model.EmailId;
-            ProfileVM.BirthNumberinFamily = model.BirthNumberinFamily;
-            ProfileVM.Brothers = model.Brothers;
-            ProfileVM.MarriedBrothers = model.MarriedBrothers;
-            ProfileVM.Sisters = model.Sisters;
-            ProfileVM.MarriedSisters = model.MarriedSisters;
+        //    ProfileVM.FamilyStatusMasterId = model.FamilyStatusMasterId.ToString();
+        //    ProfileVM.FamilyTypeMasterId = model.FamilyTypeMasterId.ToString();
+        //    ProfileVM.FamilyValuesMasterId = model.FamilyValuesMasterId.ToString();
+        //    ProfileVM.FatherName = model.FatherName;
+        //    ProfileVM.FatherQualification = model.FatherQualification;
+        //    ProfileVM.FatherJob = model.FatherJob;
+        //    ProfileVM.MotherName = model.MotherName;
+        //    ProfileVM.MotherQualification = model.MotherQualification;
+        //    ProfileVM.MotherJob = model.MotherJob;
+        //    ProfileVM.NativeDistrict = model.NativeDistrict;
+        //    ProfileVM.ContactPerson = model.ContactPerson;
+        //    ProfileVM.PhoneNo = model.PhoneNo;
+        //    ProfileVM.MobileNo = model.MobileNo;
+        //    ProfileVM.EmailId = model.EmailId;
+        //    ProfileVM.BirthNumberinFamily = model.BirthNumberinFamily;
+        //    ProfileVM.Brothers = model.Brothers;
+        //    ProfileVM.MarriedBrothers = model.MarriedBrothers;
+        //    ProfileVM.Sisters = model.Sisters;
+        //    ProfileVM.MarriedSisters = model.MarriedSisters;
 
-            ProfileVM.FromAge = model.FromAge;
-            ProfileVM.UptoAge = model.UptoAge;
+        //    ProfileVM.FromAge = model.FromAge;
+        //    ProfileVM.UptoAge = model.UptoAge;
 
-            if(model.User!=null)
-            { 
-                ProfileVM.LoginEMailId = model.User.UserName;
-                ProfileVM.HavingLogin = true;
-            }
-            else
-            {
-                ProfileVM.HavingLogin = false; 
-            }
-            return ProfileVM;
+        //    if(model.User!=null)
+        //    { 
+        //        ProfileVM.LoginEMailId = model.User.UserName;
+        //        ProfileVM.HavingLogin = true;
+        //    }
+        //    else
+        //    {
+        //        ProfileVM.HavingLogin = false; 
+        //    }
+        //    return ProfileVM;
 
-        }
+        //}
         private AdminProfileEditViewModel ProfileModelToEditViewModel(Profile model)
         {
             var ProfileVM = new AdminProfileEditViewModel();
             ProfileVM.MatrimonyProfileId = model.ProfileMasterId;
             ProfileVM.Name = model.Name;
+            ProfileVM.LastName = model.LastName;
             ProfileVM.Gender = model.Gender;
-            ProfileVM.DateandTimeOfBirth = model.DateandTimeOfBirth;
+            ProfileVM.DateOfBirth = model.DateandTimeOfBirth;
             ProfileVM.MaritalStatusMasterId = model.MaritalStatusMasterId.ToString();
             ProfileVM.BodyType = model.BodyType;
             ProfileVM.Weight = model.Weight;
