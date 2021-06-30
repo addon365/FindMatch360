@@ -330,7 +330,7 @@
 
 
                                             <div class="form-group">
-                                                <label asp-for="@Model.EatingHabit">EatingHabit</label>
+                                                <label asp-for="@Model.EatingHabit">Eating Habit</label>
                                                 <select class="form-control" asp-for="@Model.EatingHabit" asp-items="@Html.GetEnumSelectList<EatingHabit>()">
                                                     <option>Select Eating Habit</option>
                                                 </select>
@@ -386,10 +386,10 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12 col-lg-6 border-right">
-                                            <div class="form-group">
-                                                <label asp-for="@Model.EmployeedInMasterId">Employeed In MasterId</label>
-                                                <input type="number" asp-for="@Model.EmployeedInMasterId" class="form-control" id="name" placeholder="Enter EmployeedInMasterIds" name="weight">
-                                            </div>
+                                            @*<div class="form-group">
+            <label asp-for="@Model.EmployeedInMasterId">Employeed In MasterId</label>
+            <input type="number" asp-for="@Model.EmployeedInMasterId" class="form-control"  placeholder="Enter EmployeedInMasterIds" >
+        </div>*@
 
 
                                             <div class="form-group">
@@ -399,37 +399,38 @@
 
                                                 </select>
                                             </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.MonthlyRevenue">MonthlyRevenue:</label>
-                                                <input asp-for="@Model.MonthlyRevenue" type="number" class="form-control"  placeholder="Enter MonthlyRevenue">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
                                             <div class="form-group">
                                                 <label asp-for="@Model.WorkingAddress">Working Address</label>
                                                 <textarea asp-for="@Model.WorkingAddress" class="form-control" rows="5"></textarea>
                                             </div>
+                                            <div class="form-group">
+                                                <label asp-for="@Model.MonthlyRevenue">Monthly Revenue</label>
+                                                <input asp-for="@Model.MonthlyRevenue" type="number" class="form-control" placeholder="Enter MonthlyRevenue">
+                                            </div>
+                                          
 
-                                            <!--<div class="form-group">
-                                                <label for="sel1">Country </label>
-                                                <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
-                                                    <option>Select Employeed In</option>
-
-                                                </select>
-                                            </div>--->
-                                            <!--<div class="form-group">
-                                                        <label for="sel1">State </label>
-                                                        <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
-                                                            <option>Select Employeed In</option>
-
-                                                        </select>
-                                                    </div>--->
+                                        </div>
+                                        <div class="col-12 col-lg-6">
 
                                             <div class="form-group">
-                                                <label asp-for="@Model.EmployeedInMasterId">City </label>
-                                                <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
-                                                    <option>Select Employeed In</option>
+                                                <label for="sel1">Working Country </label>
+                                                <select class="form-control" id="sel1" asp-for="@Model.CountryId" asp-items="@Model.Countries">
+                                                    <option>Select Country</option>
+
+                                                </select>
+                                            </div> <div class="form-group">
+                                                <label for="sel1">Working State </label>
+                                                <select class="form-control" id="sel1" asp-for="@Model.StateId" asp-items="@Model.States">
+                                                    <option>Select State</option>
+
+                                                </select>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label asp-for="@Model.CityId"> Working City </label>
+                                                <select class="form-control" id="sel1" asp-for="@Model.CityId" asp-items="@Model.Cities">
+                                                    <option>Select City</option>
 
                                                 </select>
                                             </div>
@@ -599,7 +600,7 @@
                                         </div>
                                             <div class="col-12 col-lg-6">
                                                 <div class="form-group">
-                                                    <label asp-for="@Model.ContactPerson">ContactPerson:</label>
+                                                    <label asp-for="@Model.ContactPerson">Contact Person</label>
                                                     <input asp-for="@Model.ContactPerson" type="text" class="form-control"  placeholder="Enter ContactPerson" >
                                                 </div>
 
@@ -609,7 +610,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label asp-for="@Model.PhoneNo">PhoneNo:</label>
+                                                    <label asp-for="@Model.PhoneNo">Phone No</label>
                                                     <input asp-for="@Model.PhoneNo" type="number" class="form-control"  placeholder="Enter PhoneNo">
                                                 </div>
 
@@ -620,7 +621,7 @@
 
 
                                             <div class="form-group">
-                                                <label asp-for="@Model.Brothers">Brothers:</label>
+                                                <label asp-for="@Model.Brothers">Total Brothers</label>
                                                 <input asp-for="@Model.Brothers" type="number" class="form-control"  placeholder="Enter MobileNo" >
                                             </div>
 
@@ -630,7 +631,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label asp-for="@Model.Sisters">Sisters:</label>
+                                                <label asp-for="@Model.Sisters">Total Sisters</label>
                                                 <input asp-for="@Model.Sisters" type="number" class="form-control"  placeholder="Enter MobileNo">
                                             </div>
 
