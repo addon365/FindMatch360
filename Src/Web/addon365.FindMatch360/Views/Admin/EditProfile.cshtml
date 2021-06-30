@@ -252,64 +252,121 @@
             </div>
         </nav>*@
 
-                <div class="tab-content mt-3">
-                    <div class="tab-pane fade show active" id="nav-profile">
-                        <div class="card shadow-none border mb-0 radius-15">
-                            <div class="card-body">
+            <div class="tab-content mt-3">
+                <div class="tab-pane fade show active" id="nav-profile">
+                    <div class="card shadow-none border mb-0 radius-15">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 border-right">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.MaritalStatusMasterId">Marital Status</label>
+                                        <select class="form-control" id="sel1" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
+                                        </select>
+                                        <span asp-validation-for="@Model.MaritalStatusMasterId" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="@Model.BodyType">BodyType</label>
+                                        <select class="form-control" asp-for="@Model.BodyType" asp-items="@Html.GetEnumSelectList<BodyType>()">
+                                            <option>Select Body Type </option>
+
+                                        </select>
+                                        <span asp-validation-for="@Model.BodyType" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@Model.CountryId">Country</label>
+                                        @*Html.DropDownListFor(m => m.CountryId, Model.Countries, "Please select", new { onchange = "document.forms[0].submit();" })*@
+                                        <select class="form-control" id="CountryViewId" asp-for="@Model.CountryId" asp-items="@Model.Countries">
+                                            <option>Please Select</option>
+
+                                        </select>
+                                        <span asp-validation-for="@Model.CountryId" class="text-danger"></span>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label asp-for="@Model.Weight">Weight:</label>
+                                        <input asp-for="@Model.Weight" type="number" class="form-control" id="name" placeholder="Enter Weight" name="weight">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.Height">Height:</label>
+                                        <input asp-for="@Model.Height" type="number" class="form-control" id="name" placeholder="Enter Height" name="height">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label asp-for="@Model.SkinColor">SkinColor</label>
+                                        <select asp-for="@Model.SkinColor" class="form-control">
+                                            <option>red </option>
+                                            <option>Average</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="@Model.DisabilityDescription">Disability</label>
+                                        <select asp-for="@Model.DisabilityDescription" class="form-control" id="sel1">
+                                            <option>Eye </option>
+                                            <option>orthopedic </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-lifestyle">
+                    <div class="card shadow-none border mb-0 radius-15">
+                        <div class="card-body">
+                            <div class="form-body">
                                 <div class="row">
                                     <div class="col-md-6 border-right">
+
+
                                         <div class="form-group">
-                                            <label asp-for="@Model.MaritalStatusMasterId">Marital Status</label>
-                                            <select class="form-control" id="sel1" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
+                                            <label asp-for="@Model.EatingHabit">EatingHabit</label>
+                                            <select class="form-control" asp-for="@Model.EatingHabit" asp-items="@Html.GetEnumSelectList<EatingHabit>()">
+                                                <option>Select Eating Habit</option>
                                             </select>
-                                            <span asp-validation-for="@Model.MaritalStatusMasterId" class="text-danger"></span>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label asp-for="@Model.BodyType">BodyType</label>
-                                            <select class="form-control" asp-for="@Model.BodyType" asp-items="@Html.GetEnumSelectList<BodyType>()">
-                                                <option>Select Body Type </option>
 
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Drinking">Drinking</label>
+                                            <select class="form-control" asp-for="@Model.Drinking" asp-items="@Html.GetEnumSelectList<DrinkingHabit>()">
+                                                <option>Select Drinking Habit</option>
                                             </select>
-                                            <span asp-validation-for="@Model.BodyType" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="@Model.CountryId">Country</label>
-                                            @*Html.DropDownListFor(m => m.CountryId, Model.Countries, "Please select", new { onchange = "document.forms[0].submit();" })*@
-                                            <select class="form-control" id="CountryViewId" asp-for="@Model.CountryId" asp-items="@Model.Countries">
-                                                <option>Please Select</option>
-
-                                            </select>
-                                            <span asp-validation-for="@Model.CountryId" class="text-danger"></span>
                                         </div>
 
-
-
-                                        <div class="form-group">
-                                            <label asp-for="@Model.Weight">Weight:</label>
-                                            <input asp-for="@Model.Weight" type="number" class="form-control" id="name" placeholder="Enter Weight" name="weight">
-                                        </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label asp-for="@Model.Height">Height:</label>
-                                            <input asp-for="@Model.Height" type="number" class="form-control" id="name" placeholder="Enter Height" name="height">
-                                        </div>
-
 
                                         <div class="form-group">
-                                            <label asp-for="@Model.SkinColor">SkinColor</label>
-                                            <select asp-for="@Model.SkinColor" class="form-control">
-                                                <option>red </option>
-                                                <option>Average</option>
+                                            <label for="sel1">Smoking</label>
+                                            <select class="form-control" asp-for="@Model.Smoking" asp-items="@Html.GetEnumSelectList<SmokingHabit>()">
+                                                <option>Select Smoking Habit</option>
                                             </select>
                                         </div>
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-education">
+                    <div class="card shadow-none border mb-0 radius-15">
+                        <div class="card-body">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12 col-lg-12 border-right">
                                         <div class="form-group">
-                                            <label asp-for="@Model.DisabilityDescription">Disability</label>
-                                            <select asp-for="@Model.DisabilityDescription" class="form-control" id="sel1">
-                                                <option>Eye </option>
-                                                <option>orthopedic </option>
+                                            <label asp-for="@Model.HigherEducationsId">Education Details</label>
+                                            <select class="form-control" asp-for="@Model.HigherEducationsId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
+                                                <option>Select Education Details</option>
+
                                             </select>
                                         </div>
                                     </div>
@@ -317,373 +374,317 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-lifestyle">
-                        <div class="card shadow-none border mb-0 radius-15">
-                            <div class="card-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-6 border-right">
+                </div>
+
+                <div class="tab-pane fade" id="nav-job">
+                    <div class="card shadow-none border mb-0 radius-15">
+                        <div class="card-body">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 border-right">
+                                        @*<div class="form-group">
+                                    <label asp-for="@Model.EmployeedInMasterId">Employeed In MasterId</label>
+                                    <input type="number" asp-for="@Model.EmployeedInMasterId" class="form-control"  placeholder="Enter EmployeedInMasterIds" >
+                                </div>*@
 
 
-                                            <div class="form-group">
-                                                <label asp-for="@Model.EatingHabit">EatingHabit</label>
-                                                <select class="form-control" asp-for="@Model.EatingHabit" asp-items="@Html.GetEnumSelectList<EatingHabit>()">
-                                                    <option>Select Eating Habit</option>
-                                                </select>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.Drinking">Drinking</label>
-                                                <select class="form-control" asp-for="@Model.Drinking" asp-items="@Html.GetEnumSelectList<DrinkingHabit>()">
-                                                    <option>Select Drinking Habit</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                <label for="sel1">Smoking</label>
-                                                <select class="form-control" asp-for="@Model.Smoking" asp-items="@Html.GetEnumSelectList<SmokingHabit>()">
-                                                    <option>Select Smoking Habit</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-education">
-                        <div class="card shadow-none border mb-0 radius-15">
-                            <div class="card-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-12 border-right">
-                                            <div class="form-group">
-                                                <label asp-for="@Model.HigherEducationsId">Education Details</label>
-                                                <select class="form-control" asp-for="@Model.HigherEducationsId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
-                                                    <option>Select Education Details</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="nav-job">
-                        <div class="card shadow-none border mb-0 radius-15">
-                            <div class="card-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6 border-right">
-                                            <div class="form-group">
-                                                <label asp-for="@Model.EmployeedInMasterId">Employeed In MasterId</label>
-                                                <input type="number" asp-for="@Model.EmployeedInMasterId" class="form-control" id="name" placeholder="Enter EmployeedInMasterIds" name="weight">
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.EmployeedInMasterId">Employeed In </label>
-                                                <select class="form-control" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
-                                                    <option>Select Employeed In</option>
-
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.MonthlyRevenue">MonthlyRevenue:</label>
-                                                <input asp-for="@Model.MonthlyRevenue" type="number" class="form-control" placeholder="Enter MonthlyRevenue">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <div class="form-group">
-                                                <label asp-for="@Model.WorkingAddress">Working Address</label>
-                                                <textarea asp-for="@Model.WorkingAddress" class="form-control" rows="5"></textarea>
-                                            </div>
-
-                                            <!--<div class="form-group">
-                                    <label for="sel1">Country </label>
-                                    <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
-                                        <option>Select Employeed In</option>
-
-                                    </select>
-                                </div>--->
-                                            <!--<div class="form-group">
-                                            <label for="sel1">State </label>
-                                            <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
+                                        <div class="form-group">
+                                            <label asp-for="@Model.EmployeedInMasterId">Employeed In </label>
+                                            <select class="form-control" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
                                                 <option>Select Employeed In</option>
 
                                             </select>
-                                        </div>--->
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.EmployeedInMasterId">City </label>
-                                                <select class="form-control" id="sel1" asp-for="@Model.EmployeedInMasterId" asp-items="@Model.EmployeedInLst.Select(m=>new SelectListItem{ Text = m.EmployeedInName, Value = m.EmployeedInMasterId.ToString() })">
-                                                    <option>Select Employeed In</option>
-
-                                                </select>
-                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@Model.WorkingAddress">Working Address</label>
+                                            <textarea asp-for="@Model.WorkingAddress" class="form-control" rows="5"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@Model.MonthlyRevenue">Monthly Revenue</label>
+                                            <input asp-for="@Model.MonthlyRevenue" type="number" class="form-control" placeholder="Enter MonthlyRevenue">
                                         </div>
 
+
                                     </div>
+                                    <div class="col-12 col-lg-6">
+
+                                        <div class="form-group">
+                                            <label for="sel1">Working Country </label>
+                                            <select class="form-control" id="sel1" asp-for="@Model.CountryId" asp-items="@Model.Countries">
+                                                <option>Select Country</option>
+
+                                            </select>
+                                        </div> <div class="form-group">
+                                            <label for="sel1">Working State </label>
+                                            <select class="form-control" id="sel1" asp-for="@Model.StateId" asp-items="@Model.States">
+                                                <option>Select State</option>
+
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.CityId"> Working City </label>
+                                            <select class="form-control" id="sel1" asp-for="@Model.CityId" asp-items="@Model.Cities">
+                                                <option>Select City</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="tab-pane fade" id="nav-about">
-                        <div class="card shadow-none border mb-0 radius-15">
-                            <div class="card-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6 border-right">
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.ReligionMasterId">Religion </label>
-                                                <select class="form-control" asp-for="@Model.ReligionMasterId" asp-items="@Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
-                                                    <option>Select Religion</option>
-                                                </select>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.MotherTongueMasterId">MotherTongue </label>
-                                                <select asp-for="@Model.MotherTongueMasterId" asp-items="@Model.MotherTongues.Select(m=>new SelectListItem{ Text = m.MotherTongueName, Value = m.MotherTongueMasterId.ToString() })" class="form-control">
-                                                    <option>Select MotherTongue</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.CasteMasterId">Castes </label>
-                                                <select class="form-control" asp-for="@Model.CasteMasterId" asp-items="@Model.Castes.Select(m=>new SelectListItem{ Text = m.CasteName, Value = m.CasteMasterId.ToString() })">
-                                                    <option>Select Castes</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <div class="form-group">
-                                                <label asp-for="@Model.SubCasteMasterId">SubCastes </label>
-                                                <select class="form-control" asp-for="@Model.SubCasteMasterId" asp-items="@Model.SubCastes.Select(m=>new SelectListItem{ Text = m.SubCasteName, Value = m.SubCasteMasterId.ToString() })">
-                                                    <option>Select SubCastes</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.GothramMasterId">Gothrams </label>
-                                                <select class="form-control" asp-for="@Model.GothramMasterId" asp-items="@Model.Gothrams.Select(m=>new SelectListItem{ Text = m.GothramName, Value = m.GothramMasterId.ToString() })">
-                                                    <option>Select Gothrams</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="tab-pane fade" id="nav-Horoscope">
-                        <div class="card shadow-none border mb-0 radius-15">
-                            <div class="card-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6 border-right">
-                                            <div class="form-group">
-                                                <label asp-for="@Model.Star">Star:</label>
-                                                <input asp-for="@Model.Star" type="text" class="form-control" placeholder="Enter Star">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.Rasi">Rasi:</label>
-                                                <input asp-for="@Model.Rasi" type="text" class="form-control" placeholder="Enter Rasi">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.Lagnam">Lagnam</label>
-                                                <input asp-for="@Model.Lagnam" type="text" class="form-control" placeholder="Enter Lagnam">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-
-                                            <div class="form-group">
-                                                <label class="control-label" asp-for="@Model.TimeofBirth">Date of Time*</label>
-                                                <div class="col-sm-12">
-                                                    <input asp-for="@Model.TimeofBirth" type="date" id="birthDate" class="form-control">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.PlaceOfBirth">Place Of Birth</label>
-                                                <input asp-for="@Model.PlaceOfBirth" type="text" class="form-control" placeholder="Place Of Birth">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="tab-pane fade" id="nav-family">
-                        <div class="card shadow-none border mb-0 radius-15">
-                            <div class="card-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6 border-right">
-                                            <div class="form-group">
-                                                <label asp-for="@Model.FamilyStatusMasterId"> Select FamilyStatus Details </label>
-                                                <select class="form-control" asp-for="@Model.FamilyStatusMasterId" asp-items="@Model.FamilyStatuses.Select(m=>new SelectListItem{ Text = m.FamilStatusName, Value = m.FamilyStatusMasterId.ToString() })">
-                                                    <option>Select Family Status </option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.FamilyTypeMasterId">Family Types Details </label>
-                                                <select class="form-control" asp-for="@Model.FamilyTypeMasterId" asp-items="@Model.FamilyTypes.Select(m=>new SelectListItem{ Text = m.FamilyTypeName, Value = m.FamilyTypeMasterId.ToString() })">
-                                                    <option>Select Family Values</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="@Model.FamilyValuesMasterId">Family Values Details </label>
-                                                <select class="form-control" asp-for="@Model.FamilyValuesMasterId" asp-items="@Model.FamilyValues.Select(m=>new SelectListItem{ Text = m.FamilyValuesName, Value = m.FamilyValuesMasterId.ToString() })">
-                                                    <option>Select Family Values</option>
-
-
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="@Model.FatherName">Father Name</label>
-                                                <input asp-for="@Model.FatherName" type="text" class="form-control" placeholder="Enter FatherName">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.FatherQualification">Father Qualification</label>
-                                                <input asp-for="@Model.FatherQualification" type="text" class="form-control" placeholder="Enter FatherQualification">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.FatherJob">Father Job </label>
-                                                <input asp-for="@Model.FatherJob" type="text" class="form-control" placeholder="Enter FatherJob">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.MotherName">Mother Name</label>
-                                                <input asp-for="@Model.MotherName" type="text" class="form-control" placeholder="Enter MotherName">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.MotherQualification">Mother Qualification</label>
-                                                <input asp-for="@Model.MotherQualification" type="text" class="form-control" placeholder="Enter MotherQualification">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.MotherJob">Mother Job</label>
-                                                <input asp-for="@Model.MotherJob" type="text" class="form-control" placeholder="Enter MotherJob">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.NativeDistrict">Native District</label>
-                                                <input asp-for="@Model.NativeDistrict" type="text" class="form-control" placeholder="Enter NativeDistrict">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <div class="form-group">
-                                                <label asp-for="@Model.ContactPerson">ContactPerson:</label>
-                                                <input asp-for="@Model.ContactPerson" type="text" class="form-control" placeholder="Enter ContactPerson">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.Address">Address</label>
-                                                <textarea asp-for="@Model.Address" class="form-control" rows="5" id="comment"></textarea>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.PhoneNo">PhoneNo:</label>
-                                                <input asp-for="@Model.PhoneNo" type="number" class="form-control" placeholder="Enter PhoneNo">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.BirthNumberinFamily">Birth Number in Family</label>
-                                                <input asp-for="@Model.BirthNumberinFamily" type="number" class="form-control" placeholder="Enter MobileNo">
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.Brothers">Brothers:</label>
-                                                <input asp-for="@Model.Brothers" type="number" class="form-control" placeholder="Enter MobileNo">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.MarriedBrothers">Married Brothers</label>
-                                                <input asp-for="@Model.MarriedBrothers" type="number" class="form-control" placeholder="Enter MobileNo">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.Sisters">Sisters:</label>
-                                                <input asp-for="@Model.Sisters" type="number" class="form-control" placeholder="Enter MobileNo">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.MarriedSisters">Married Sisters</label>
-                                                <input asp-for="@Model.MarriedSisters" type="number" class="form-control" placeholder="Enter MobileNo">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="nav-preferences">
-                        <div class="card shadow-none border mb-0 radius-15">
-                            <div class="card-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-5 border-right">
-
-                                            <div class="form-group">
-                                                <label asp-for="@Model.FromAge">From Age :</label>
-                                                <input asp-for="@Model.FromAge" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <div class="form-group">
-                                                <label asp-for="@Model.UptoAge">UptoAge:</label>
-                                                <input asp-for="@Model.UptoAge" type="number" class="form-control" placeholder="Enter UptoAge">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="nav-login">
-                        <div class="card shadow-none border mb-0 radius-15">
-                            <div class="card-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-12 border-right">
-                                            <div class="form-group">
-                                                <label>Login Email Id :</label>
-                                                <input asp-for="@Model.LoginEMailId" class="form-control" placeholder="User Name">
-                                            </div>
-                                            <button formaction="/Admin/SendUserName" class="btn btn-primary mt-2"> Generate Password and Send Mail</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
+                <div class="tab-pane fade" id="nav-about">
+                    <div class="card shadow-none border mb-0 radius-15">
+                        <div class="card-body">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 border-right">
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.ReligionMasterId">Religion </label>
+                                            <select class="form-control" asp-for="@Model.ReligionMasterId" asp-items="@Model.Religions.Select(m=>new SelectListItem{ Text = m.ReligionName, Value = m.ReligionMasterId.ToString() })">
+                                                <option>Select Religion</option>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.MotherTongueMasterId">MotherTongue </label>
+                                            <select asp-for="@Model.MotherTongueMasterId" asp-items="@Model.MotherTongues.Select(m=>new SelectListItem{ Text = m.MotherTongueName, Value = m.MotherTongueMasterId.ToString() })" class="form-control">
+                                                <option>Select MotherTongue</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.CasteMasterId">Castes </label>
+                                            <select class="form-control" asp-for="@Model.CasteMasterId" asp-items="@Model.Castes.Select(m=>new SelectListItem{ Text = m.CasteName, Value = m.CasteMasterId.ToString() })">
+                                                <option>Select Castes</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="@Model.SubCasteMasterId">SubCastes </label>
+                                            <select class="form-control" asp-for="@Model.SubCasteMasterId" asp-items="@Model.SubCastes.Select(m=>new SelectListItem{ Text = m.SubCasteName, Value = m.SubCasteMasterId.ToString() })">
+                                                <option>Select SubCastes</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.GothramMasterId">Gothrams </label>
+                                            <select class="form-control" asp-for="@Model.GothramMasterId" asp-items="@Model.Gothrams.Select(m=>new SelectListItem{ Text = m.GothramName, Value = m.GothramMasterId.ToString() })">
+                                                <option>Select Gothrams</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane fade" id="nav-Horoscope">
+                    <div class="card shadow-none border mb-0 radius-15">
+                        <div class="card-body">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 border-right">
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Star">Star:</label>
+                                            <input asp-for="@Model.Star" type="text" class="form-control" placeholder="Enter Star">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Rasi">Rasi:</label>
+                                            <input asp-for="@Model.Rasi" type="text" class="form-control" placeholder="Enter Rasi">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Lagnam">Lagnam</label>
+                                            <input asp-for="@Model.Lagnam" type="text" class="form-control" placeholder="Enter Lagnam">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+
+                                        <div class="form-group">
+                                            <label class="control-label" asp-for="@Model.TimeofBirth">Date of Time*</label>
+                                            <div class="col-sm-12">
+                                                <input asp-for="@Model.TimeofBirth" type="date" id="birthDate" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.PlaceOfBirth">Place Of Birth</label>
+                                            <input asp-for="@Model.PlaceOfBirth" type="text" class="form-control" placeholder="Place Of Birth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="tab-pane fade" id="nav-family">
+                    <div class="card shadow-none border mb-0 radius-15">
+                        <div class="card-body">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 border-right">
+                                        <div class="form-group">
+                                            <label asp-for="@Model.FamilyStatusMasterId"> Select FamilyStatus Details </label>
+                                            <select class="form-control" asp-for="@Model.FamilyStatusMasterId" asp-items="@Model.FamilyStatuses.Select(m=>new SelectListItem{ Text = m.FamilStatusName, Value = m.FamilyStatusMasterId.ToString() })">
+                                                <option>Select Family Status </option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.FamilyTypeMasterId">Family Types Details </label>
+                                            <select class="form-control" asp-for="@Model.FamilyTypeMasterId" asp-items="@Model.FamilyTypes.Select(m=>new SelectListItem{ Text = m.FamilyTypeName, Value = m.FamilyTypeMasterId.ToString() })">
+                                                <option>Select Family Values</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@Model.FamilyValuesMasterId">Family Values Details </label>
+                                            <select class="form-control" asp-for="@Model.FamilyValuesMasterId" asp-items="@Model.FamilyValues.Select(m=>new SelectListItem{ Text = m.FamilyValuesName, Value = m.FamilyValuesMasterId.ToString() })">
+                                                <option>Select Family Values</option>
+
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@Model.FatherName">Father Name</label>
+                                            <input asp-for="@Model.FatherName" type="text" class="form-control" placeholder="Enter FatherName">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.FatherQualification">Father Qualification</label>
+                                            <input asp-for="@Model.FatherQualification" type="text" class="form-control" placeholder="Enter FatherQualification">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.FatherJob">Father Job </label>
+                                            <input asp-for="@Model.FatherJob" type="text" class="form-control" placeholder="Enter FatherJob">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.MotherName">Mother Name</label>
+                                            <input asp-for="@Model.MotherName" type="text" class="form-control" placeholder="Enter MotherName">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.MotherQualification">Mother Qualification</label>
+                                            <input asp-for="@Model.MotherQualification" type="text" class="form-control" placeholder="Enter MotherQualification">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.MotherJob">Mother Job</label>
+                                            <input asp-for="@Model.MotherJob" type="text" class="form-control" placeholder="Enter MotherJob">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.NativeDistrict">Native District</label>
+                                            <input asp-for="@Model.NativeDistrict" type="text" class="form-control" placeholder="Enter NativeDistrict">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="@Model.ContactPerson">ContactPerson:</label>
+                                            <input asp-for="@Model.ContactPerson" type="text" class="form-control" placeholder="Enter ContactPerson">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Address">Address</label>
+                                            <textarea asp-for="@Model.Address" class="form-control" rows="5" id="comment"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.PhoneNo">PhoneNo:</label>
+                                            <input asp-for="@Model.PhoneNo" type="number" class="form-control" placeholder="Enter PhoneNo">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.BirthNumberinFamily">Birth Number in Family</label>
+                                            <input asp-for="@Model.BirthNumberinFamily" type="number" class="form-control" placeholder="Enter MobileNo">
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Brothers">Brothers:</label>
+                                            <input asp-for="@Model.Brothers" type="number" class="form-control" placeholder="Enter MobileNo">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.MarriedBrothers">Married Brothers</label>
+                                            <input asp-for="@Model.MarriedBrothers" type="number" class="form-control" placeholder="Enter MobileNo">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Sisters">Sisters:</label>
+                                            <input asp-for="@Model.Sisters" type="number" class="form-control" placeholder="Enter MobileNo">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.MarriedSisters">Married Sisters</label>
+                                            <input asp-for="@Model.MarriedSisters" type="number" class="form-control" placeholder="Enter MobileNo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="nav-preferences">
+                    <div class="card shadow-none border mb-0 radius-15">
+                        <div class="card-body">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12 col-lg-5 border-right">
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.FromAge">From Age :</label>
+                                            <input asp-for="@Model.FromAge" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="@Model.UptoAge">UptoAge:</label>
+                                            <input asp-for="@Model.UptoAge" type="number" class="form-control" placeholder="Enter UptoAge">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="nav-login">
+                    <div class="card shadow-none border mb-0 radius-15">
+                        <div class="card-body">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12 col-lg-12 border-right">
+                                        <div class="form-group">
+                                            <label>Login Email Id :</label>
+                                            <input asp-for="@Model.LoginEMailId" class="form-control" placeholder="User Name">
+                                        </div>
+                                        <button formaction="/Admin/SendUserName" class="btn btn-primary mt-2"> Generate Password and Send Mail</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
             </form>
         </div>
