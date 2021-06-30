@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>ilamaimatrimony Details</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -119,12 +119,11 @@
 	color: #ccc;
 }
  </style>
+   
     <style>
         .td_new td {
             width: 50px;
         }
-    </style>
-    <style>
         table {
             margin-bottom: 50px;
         }
@@ -175,28 +174,32 @@
 
                             <div class="col-md-8">
                                 <div class="row">
-
-
-
                                     <div class="col-md-12">
                                         <div class="image_wrapper">
                                             <table>
                                                 <tr>
-                                                    <td class="title"> @Html.DisplayNameFor(model => model.Name) </td>
+                                                    <td class="title"> பெயர்</td>
                                                     <td class="text">: @Html.DisplayFor(model => model.Name)</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="title">@Html.DisplayNameFor(model => model.DateandTimeOfBirth) </td>
+                                                    <td class="title">
+                                                        பிறந்த தேதி மற்றும் நேரம்
+
+                                                    </td>
                                                     <td class="text"> @Html.DisplayFor(model => model.DateandTimeOfBirth)</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="title">  @Html.DisplayNameFor(model => model.EmployeedIn.EmployeedInName) </td>
+                                                    <td class="title">
+                                                        பணியாளர் பெயர்
+                                                    </td>
                                                     <td class="text">:  @Html.DisplayFor(model => model.EmployeedIn.EmployeedInName)</td>
                                                 </tr>
                                               
 
                                                 <tr>
-                                                    <td class="title">  @Html.DisplayNameFor(model => model.Address)</td>
+                                                    <td class="title">
+                                                        முகவரி
+                                                    </td>
                                                     <td class="text">: @Html.DisplayFor(model => model.Address) </td>
                                                 </tr>
                                             </table>
@@ -229,42 +232,40 @@
 
                             <div class="col-md-6 mt-2">
                                 <div class="marriage_profile_left">
-
-
                                     <table>
                                         <tr>
-                                            <td class="title"> @Html.DisplayNameFor(model => model.Name) </td>
+                                            <td class="title">பெயர் </td>
                                             <td class="text">: @Html.DisplayFor(model => model.Name)</td>
                                         </tr>
-
-                                       
                                         <tr>
-                                            <td class="title">  @Html.DisplayNameFor(model => model.SkinColor)</td>
+                                            <td class="title">நிறம்</td>
                                             <td class="text">: @Html.DisplayFor(model => model.SkinColor)</td>
                                         </tr>
 
                                         <tr>
-                                            <td class="title"> @Html.DisplayNameFor(model => model.Star) </td>
+                                            <td class="title">  நட்சத்திரம்</td>
                                             <td class="text">@Html.DisplayFor(model => model.Star)</td>
                                         </tr>
 
 
 
                                         <tr>
-                                            <td class="title">   @Html.DisplayNameFor(model => model.Lagnam) </td>
+                                            <td class="title">  லக்னம் </td>
                                             <td class="text">  @Html.DisplayFor(model => model.Lagnam)</td>
                                         </tr>
 
 
-                                        <tr>
+                                        @*<tr>
                                             <td class="title">   @Html.DisplayNameFor(model => model.Lagnam) </td>
                                             <td class="text">  @Html.DisplayFor(model => model.Lagnam)</td>
-                                        </tr>
+                                        </tr>*@
 
 
 
                                         <tr>
-                                            <td class="title">    @Html.DisplayNameFor(model => model.BirthNumberinFamily) </td>
+                                            <td class="title">
+                                                குடும்பத்தில் பிறப்பு எண்
+                                            </td>
                                             <td class="text">   @Html.DisplayFor(model => model.BirthNumberinFamily)</td>
                                         </tr>
 
@@ -280,15 +281,15 @@
 
                                     <table>
                                         <tr>
-                                            <td class="title">  @Html.DisplayNameFor(model => model.DateandTimeOfBirth) </td>
+                                            <td class="title"> பிறந்த தேதி மற்றும் நேரம் </td>
                                             <td class="text">: @Html.DisplayFor(model => model.DateandTimeOfBirth)</td>
                                         </tr>
 
 
-                                        <tr>
+                                        @*<tr>
                                             <td class="title">  @Html.DisplayNameFor(model => model.DateandTimeOfBirth) </td>
                                             <td class="text">: @Html.DisplayFor(model => model.DateandTimeOfBirth)</td>
-                                        </tr>
+                                        </tr>*@
 
                                         <tr>
                                             <td class="title">வயது </td>
@@ -296,7 +297,7 @@
                                         </tr>
 
                                         <tr>
-                                            <td class="title">@Html.DisplayNameFor(model => model.Height) </td>
+                                            <td class="title">உயரம் </td>
                                             <td class="text"> @Html.DisplayFor(model => model.Height)</td>
                                         </tr>
 
@@ -304,15 +305,15 @@
 
 
                                         <tr>
-                                            <td class="title"> @Html.DisplayNameFor(model => model.BirthNumberinFamily) </td>
+                                            <td class="title"> குடும்பத்தில் பிறப்பு எண் </td>
                                             <td class="text">  @Html.DisplayFor(model => model.BirthNumberinFamily)</td>
                                         </tr>
 
 
-                                        <tr>
+                                        @*<tr>
                                             <td class="title"> @Html.DisplayNameFor(model => model.BirthNumberinFamily) </td>
                                             <td class="text">  @Html.DisplayFor(model => model.BirthNumberinFamily)</td>
-                                        </tr>
+                                        </tr>*@
 
                                     </table>
                                 </div>
@@ -366,37 +367,56 @@
 
                                     <table>
                                         <tr>
-                                            <td class="title">    @Html.DisplayNameFor(model => model.FatherName) </td>
+                                            <td class="title">
+                                                தந்தையின் பெயர்
+                                            </td>
                                             <td class="text">:      @Html.DisplayFor(model => model.FatherName)</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">   @Html.DisplayNameFor(model => model.FatherJob) </td>
+                                            <td class="title">
+                                                தந்தை வேலை
+                                            </td>
                                             <td class="text">:   @Html.DisplayFor(model => model.FatherJob)</td>
                                         </tr>
 
 
                                         <tr>
-                                            <td class="title">     @Html.DisplayNameFor(model => model.MotherQualification) </td>
+                                            <td class="title">
+                                                தாய் தகுதி
+                                            </td>
                                             <td class="text">:    @Html.DisplayFor(model => model.MotherQualification)</td>
                                         </tr>
 
 
 
                                         <tr>
-                                            <td class="title">     @Html.DisplayNameFor(model => model.NativeDistrict) </td>
+                                            <td class="title">
+                                                பூர்வீக மாவட்டம்
+                                            </td>
                                             <td class="text">:    @Html.DisplayFor(model => model.NativeDistrict)</td>
                                         </tr>
 
 
                                         <tr>
-                                            <td class="title">  @Html.DisplayFor(model => model.Address) </td>
+                                            <td class="title">
+                                                முகவரி
+                                            </td>
                                             <td class="text">:  @Html.DisplayFor(model => model.Address)</td>
                                         </tr>
 
 
                                         <tr>
-                                            <td class="title">  @Html.DisplayNameFor(model => model.MobileNo) </td>
+                                            <td class="title">
+                                                அலைபேசி எண்
+                                            </td>
                                             <td class="text">:   @Html.DisplayFor(model => model.MobileNo)</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="title">
+                                                மின்னஞ்சல் முகவரி
+                                            </td>
+                                            <td class="text">:    @Html.DisplayFor(model => model.EmailId) </td>
                                         </tr>
 
                                     </table>
@@ -404,7 +424,7 @@
                             </div>
 
 
-                            <div class="col-md-6 mt-2">
+                            @*<div class="col-md-6 mt-2">
                                 <div class="marriage_profile_right">
 
                                     <table>
@@ -421,13 +441,10 @@
                                             <td class="text">:   @Html.DisplayFor(model => model.PhoneNo) </td>
                                         </tr>
 
-                                        <tr>
-                                            <td class="title">  @Html.DisplayNameFor(model => model.EmailId) </td>
-                                            <td class="text">:    @Html.DisplayFor(model => model.EmailId) </td>
-                                        </tr>
+                                      
                                     </table>
                                 </div>
-                            </div>
+                            </div>*@
 
                             <div class="col-md-12 mt-5">
 
@@ -442,7 +459,9 @@
                                 <div class="marriage_profile_right">
                                     <table>
                                         <tr>
-                                            <td class="title">       @Html.DisplayNameFor(model => model.PreferenceQualification)</td>
+                                            <td class="title">
+                                                முன்னுரிமை தகுதி
+                                            </td>
                                             <td class="text">:   @Html.DisplayFor(model => model.PreferenceQualification)</td>
                                         </tr>
                                         <tr>
@@ -458,7 +477,9 @@
                                 <div class="marriage_profile_right">
                                     <table>
                                         <tr>
-                                            <td class="title">       @Html.DisplayNameFor(model => model.PreferenceQualification)</td>
+                                            <td class="title">
+                                                முன்னுரிமை தகுதி
+                                            </td>
                                             <td class="text">:   @Html.DisplayFor(model => model.PreferenceQualification)</td>
                                         </tr>
                                         <tr>
