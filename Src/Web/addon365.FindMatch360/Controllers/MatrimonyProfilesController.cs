@@ -98,6 +98,9 @@ namespace addon365.FindMatch360.Controllers
                     dd.PhotoUrl = "~/images/profile_pic.png";
                 }
                 dd.ProfileName = item.Name;
+                dd.RegistrationNo = item.RegistrationNo;
+                dd.RegisteredDate = item.RegisteredDate;
+                dd.DateofBirth = item.DateandTimeOfBirth;
                 dd.Star = item.Star;
                 if (item.ProfileEducation!=null)
                 {

@@ -8,19 +8,25 @@ namespace addon365.FindMatch360.ViewModels
     public class ProfileIndexViewModel
     {
         public Guid ProfileMasterId { get; set; }
+        public String RegistrationNo { get; set; }
+        public DateTime RegisteredDate { get; set; }
         public string PhotoUrl { get; set; }
         public string ProfileName { get; set; }
-        public DateTime DateofBirth { get; set; }
+        public DateTime? DateofBirth { get; set; }
         public string Age { get
             {
+                if(DateofBirth==null)
+                {
+                    return "";
+                }
                 // Save today's date.
                 var today = DateTime.Today;
 
                 // Calculate the age.
-                var age = today.Year - DateofBirth.Year;
+                var age = today.Year - DateofBirth.Value.Year;
 
                 // Go back to the year in which the person was born in case of a leap year
-                if (DateofBirth.Date > today.AddYears(-age)) age--;
+                if (DateofBirth.Value.Date > today.AddYears(-age)) age--;
 
                 return age.ToString();
             }
