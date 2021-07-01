@@ -41,32 +41,21 @@
                 <div class="col-md-12">
                     <div class="col-md-12">
                         <div class="admin-title">
-                            <form>
+                            <form  asp-action="Create">
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label>Name</label>
-                                        <input id="Full Name" name="Name" placeholder="Name" class="form-control" type="text">
+                                        <input asp-for="@Model.Name"   placeholder="Name" class="form-control" type="text">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label>Email Id</label>
-                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                        <input type="email" asp-for="LoginEmailId" class="form-control"  placeholder="Email">
                                     </div>
 
-                                    <div class="form-group col-md-12">
-                                        <label>Password</label>
-                                        <input id="Full Name" name="password" placeholder="password" class="form-control" type="password">
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label>confirm password</label>
-                                        <input id="Full Name" name="password" placeholder="password" class="form-control" type="password">
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label>comment</label>
-                                        <textarea id="comment" name="comment" cols="40" rows="5" class="form-control"></textarea>
-                                    </div>
+                                  
                                 </div>
                                 <div class="form-row">
-                                    <button type="button" class="btn btn-danger">Submit</button>
+                                    <button type="submit" value="Create"  class="btn btn-danger">Submit</button>
                                 </div>
                             </form>
                         </div>
