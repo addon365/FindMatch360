@@ -174,6 +174,8 @@ namespace addon365.FindMatch360.Controllers
                 return NotFound();
             }
             ProfileUserEditViewModel vm = new ProfileUserEditViewModel();
+
+            vm.ProfileId = prof.ProfileMasterId;
             vm.Name = prof.Name;
             
             if(prof.Caste!=null)
@@ -188,6 +190,8 @@ namespace addon365.FindMatch360.Controllers
             if(prof.Occupation!=null)
                 vm.OccupationName = prof.Occupation.OccupationName;
 
+
+
             return View(vm);
           
         }
@@ -197,9 +201,9 @@ namespace addon365.FindMatch360.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("MatrimonyProfileId,Name,DateandTimeOfBirth,Place,Color,Height,Nakshatra,Rasi,Lagnam,ChevvaiDosham,BirthNumberinFamily,Brothers,MarriedBrothers,Sisters,MarriedSisters,JobPosition,CompanyAddress,MonthlyRevenue,FatherName,FatherQualification,FatherJob,MotherName,MotherQualification,MotherJob,NativeDistrict,ContactPerson,Address,PhoneNo,MobileNo,EmailId,ExpectedQualification")]Profile matrimonyProfile)
+        public async Task<IActionResult> Edit(Guid id, ProfileUserEditViewModel model)
         {
-            if (id != matrimonyProfile.ProfileMasterId)
+            if (id != model.ProfileId)
             {
                 return NotFound();
             }
@@ -208,12 +212,13 @@ namespace addon365.FindMatch360.Controllers
             {
                 try
                 {
-                    _context.Update(matrimonyProfile);
+                    Profile profile = model.ConvertToProfile();
+                    _context.Update(profile);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MatrimonyProfileExists(matrimonyProfile.ProfileMasterId))
+                    if (!MatrimonyProfileExists(profile.ProfileMasterId))
                     {
                         return NotFound();
                     }
@@ -224,8 +229,9 @@ namespace addon365.FindMatch360.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(matrimonyProfile);
+            return View(model);
         }
+       
 
         // GET: MatrimonyProfiles/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
