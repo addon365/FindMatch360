@@ -121,6 +121,8 @@ namespace addon365.FindMatch360.Controllers
         // GET: MatrimonyProfiles/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
+            string webRootPath = _webHostEnvironment.WebRootPath;
+            string contentRootPath = _webHostEnvironment.ContentRootPath;
             if (id == null)
             {
                 return NotFound();
@@ -132,8 +134,18 @@ namespace addon365.FindMatch360.Controllers
             {
                 return NotFound();
             }
+            MatrimonyProfilesDetailViewModel viewModel = new MatrimonyProfilesDetailViewModel();
 
-            return View(matrimonyProfile);
+
+            if (System.IO.File.Exists(Path.Combine(webRootPath, "ProfilePhotos/Pri_" + matrimonyProfile.ProfileMasterId + ".jpg")))
+            {
+                viewModel.PhotoUrl = "~/ProfilePhotos/Pri_" + matrimonyProfile.ProfileMasterId + ".jpg";
+            }
+            else
+            {
+                viewModel.PhotoUrl = "~/images/profile_pic.png";
+            }
+            return View(viewModel.LoadProfile(matrimonyProfile));
         }
 
         // GET: MatrimonyProfiles/Create
