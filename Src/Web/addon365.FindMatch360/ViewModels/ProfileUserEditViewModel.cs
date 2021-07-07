@@ -9,7 +9,7 @@ namespace addon365.FindMatch360.ViewModels
 {
     public class ProfileUserEditViewModel
     {
-       
+
         public Guid ProfileId { get; set; }
 
         #region Person basic Details
@@ -34,7 +34,7 @@ namespace addon365.FindMatch360.ViewModels
         #endregion
 
         #region Education Details
-     
+
         public string HigherEducationsId { get; set; }
         public string EducationName { get; set; }
         public IEnumerable<EducationMaster> Educations { get; set; }
@@ -42,7 +42,7 @@ namespace addon365.FindMatch360.ViewModels
         #endregion
 
         #region JobDetails
-        
+
         public string EmployeedInMasterId { get; set; }
         public string EmployeedInName { get; set; }
         public IEnumerable<EmployeedInMaster> EmployeedInLst { get; set; }
@@ -55,7 +55,7 @@ namespace addon365.FindMatch360.ViewModels
         #endregion
 
         #region ReligionDetails
-     
+
         public string ReligionMasterId { get; set; }
         public string ReligioName { get; set; }
         public IEnumerable<ReligionMaster> Religions { get; set; }
@@ -116,8 +116,21 @@ namespace addon365.FindMatch360.ViewModels
         #region Preferences
         public byte FromAge { get; set; }
         public byte UptoAge { get; set; }
-      
+
 
         #endregion
+    }
+
+    public static class ProfileUserEditViewModelExtensions
+    {
+        public static Profile ConvertToProfile(this ProfileUserEditViewModel viewModel)
+        {
+            Profile profile = new Profile();
+
+            profile.ProfileMasterId = viewModel.ProfileId;
+            profile.Name = viewModel.Name;
+            
+            return profile;
+        }
     }
 }
