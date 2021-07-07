@@ -261,10 +261,14 @@ namespace addon365.FindMatch360.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        public IActionResult PaymentDetail()
+        {
+            return View();
+        }
         private bool MatrimonyProfileExists(Guid id)
         {
             return _context.Profiles.Any(e => e.ProfileMasterId == id);
         }
+       
     }
 }
