@@ -1,4 +1,4 @@
-﻿@model Profile
+﻿@model MatrimonyProfilesDetailViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -168,7 +168,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4">
                                 <div class="matrimonyprofile-img">
-                                    <img src=@("ProfilePhotos/Pri_"+Model.ProfileMasterId+".jpg") class="img-fluid" id="img-living">
+                                    <img src=@(Model.PhotoUrl) class="img-fluid" id="img-living">
                                 </div>
                             </div>
 
@@ -192,7 +192,7 @@
                                                     <td class="title">
                                                         பணியாளர் பெயர்
                                                     </td>
-                                                    <td class="text">:  @Html.DisplayFor(model => model.EmployeedIn.EmployeedInName)</td>
+                                                    <td class="text">:  @Html.DisplayFor(model => model.EmployeedInName)</td>
                                                 </tr>
                                               
 
@@ -499,7 +499,7 @@
                                 <div class="marriage_profile_right">
                                     <table>
                                         <tr>
-                                            <td class="title">       <a asp-action="Edit" asp-route-id="@Model.ProfileMasterId">Edit</a> |</td>
+                                            <td class="title">       <a asp-action="Edit" asp-route-id="@Model.ProfileId">Edit</a> |</td>
                                             <td class="text">:    <a asp-action="Index">Back to List</a></td>
                                         </tr>
 
