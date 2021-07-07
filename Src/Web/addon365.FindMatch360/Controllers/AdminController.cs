@@ -453,7 +453,7 @@ namespace addon365.FindMatch360.Controllers
             ProfileVM.GothramMasterId = model.GothramMasterId.ToString();
 
             ProfileVM.EmployeedInMasterId = model.EmployeedInMasterId.ToString();
-            ProfileVM.MonthlyRevenue = model.MonthlyRevenue.Value;
+            ProfileVM.MonthlyRevenue = model.MonthlyRevenue==null?0: model.MonthlyRevenue.Value;
             ProfileVM.WorkingAddress = model.WorkingAddress;
 
             ProfileVM.Star = model.Star;
@@ -488,6 +488,10 @@ namespace addon365.FindMatch360.Controllers
             if (model.User != null)
             {
                 ProfileVM.LoginEMailId = model.User.UserName;
+                
+                if (ProfileVM.EmailId == "" || ProfileVM.EmailId==null)
+                    ProfileVM.EmailId = ProfileVM.LoginEMailId;
+
                 ProfileVM.HavingLogin = true;
             }
             else
@@ -514,6 +518,16 @@ namespace addon365.FindMatch360.Controllers
             viewModel.MatrimonyProfileId = profile.ProfileMasterId;
             viewModel = ProfileModelToEditViewModel(profile);
             #region LoadComboxbox
+            PopulateEditViewModelComboBoxDetail(viewModel);
+            #endregion
+
+
+
+
+            return View(viewModel);
+        }
+        private void PopulateEditViewModelComboBoxDetail(AdminProfileEditViewModel viewModel)
+        {
             viewModel.MaritalStatusMasters = _context.MaritalStatusMasters.ToList();
             viewModel.Educations = _context.EducationMasters.ToList();
             viewModel.EmployeedInLst = _context.EmployeedInMasters.ToList();
@@ -529,14 +543,7 @@ namespace addon365.FindMatch360.Controllers
             viewModel.FamilyStatuses = _context.FamilyStatusMasters.ToList();
             viewModel.FamilyTypes = _context.FamilyTypeMasters.ToList();
             viewModel.FamilyValues = _context.FamilyValuesMasters.ToList();
-            #endregion
-
-
-
-
-            return View(viewModel);
         }
-
         // POST: CasteMasters/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -571,6 +578,7 @@ namespace addon365.FindMatch360.Controllers
                 }
                 return RedirectToAction(nameof(AllMembers));
             }
+            PopulateEditViewModelComboBoxDetail(model);
             return View(model);
         }
         public async Task<IActionResult> SendUserName(AdminProfileCreateViewModel model, [FromServices] IEmailSender emailSender,[FromServices] UserManager<ApplicationUser> userManager)

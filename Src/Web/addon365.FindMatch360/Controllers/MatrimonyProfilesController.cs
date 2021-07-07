@@ -139,7 +139,7 @@ namespace addon365.FindMatch360.Controllers
 
             if (System.IO.File.Exists(Path.Combine(webRootPath, "ProfilePhotos/Pri_" + matrimonyProfile.ProfileMasterId + ".jpg")))
             {
-                viewModel.PhotoUrl = "~/ProfilePhotos/Pri_" + matrimonyProfile.ProfileMasterId + ".jpg";
+                viewModel.PhotoUrl = "/ProfilePhotos/Pri_" + matrimonyProfile.ProfileMasterId + ".jpg";
             }
             else
             {
