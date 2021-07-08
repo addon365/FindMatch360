@@ -256,7 +256,10 @@ namespace addon365.FindMatch360.Controllers
                 {
                     matrimonyProfile.OccupationMasterId = Convert.ToInt32(model.OccupationMasterId);
                 }
-
+                if (model.MonthlyRevenue != 0)
+                {
+                    matrimonyProfile.MonthlyRevenue = model.MonthlyRevenue;
+                }
 
                 _context.Update(matrimonyProfile);
                 await _context.SaveChangesAsync();

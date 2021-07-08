@@ -576,7 +576,7 @@ namespace addon365.FindMatch360.Controllers
                 return View(model);
             }
         }
-        [HttpPost]
+
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);

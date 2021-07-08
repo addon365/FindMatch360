@@ -54,8 +54,8 @@ namespace addon365.FindMatch360
             }
             else
             {
-                //app.UseExceptionHandler("/Home/Error");
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Home/Error");
+                //app.UseExceptionHandler("/Error");
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             app.UseStaticFiles();
