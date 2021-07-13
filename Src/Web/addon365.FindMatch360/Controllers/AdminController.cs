@@ -39,7 +39,7 @@ namespace addon365.FindMatch360.Controllers
                 RegDate = s.RegisteredDate,
                 Name = s.Name,
                 Caste = s.Caste != null ? s.Caste.CasteName : string.Empty,
-                Qualification = s.ProfileEducation != null ? s.ProfileEducation.EducationName : string.Empty,
+                Qualification =s.ProfileEducationDetail,
                 Place = s.PlaceOfBirth,
                 Job = s.EmployeedIn != null ? s.EmployeedIn.EmployeedInName : string.Empty,
                 Salary = s.MonthlyRevenue != null ? s.MonthlyRevenue.Value : 0
@@ -111,7 +111,7 @@ namespace addon365.FindMatch360.Controllers
                 RegDate = s.RegisteredDate,
                 ProfileName = s.Name,
                 Caste = s.Caste != null ? s.Caste.CasteName : string.Empty,
-                Qualification = s.ProfileEducation != null ? s.ProfileEducation.EducationName : string.Empty,
+                Qualification = s.ProfileEducationDetail,
                 Place = s.PlaceOfBirth,
                 Job = s.EmployeedIn != null ? s.EmployeedIn.EmployeedInName : string.Empty,
                 MonthlyRevenue = s.MonthlyRevenue != null ? s.MonthlyRevenue.Value:0
@@ -616,7 +616,7 @@ namespace addon365.FindMatch360.Controllers
         private void PopulateEditViewModelComboBoxDetail(AdminProfileEditViewModel viewModel)
         {
             viewModel.MaritalStatusMasters = _context.MaritalStatusMasters.ToList();
-            viewModel.Educations = _context.EducationMasters.ToList();
+            //viewModel.Educations = _context.EducationMasters.ToList();
             viewModel.EmployeedInLst = _context.EmployeedInMasters.ToList();
 
             //Religion Details
@@ -630,6 +630,37 @@ namespace addon365.FindMatch360.Controllers
             viewModel.FamilyStatuses = _context.FamilyStatusMasters.ToList();
             viewModel.FamilyTypes = _context.FamilyTypeMasters.ToList();
             viewModel.FamilyValues = _context.FamilyValuesMasters.ToList();
+
+            viewModel.Countries = new List<SelectListItem>();
+            foreach (var country in _context.CountryMasters)
+            {
+                viewModel.Countries.Add(new SelectListItem { Text = country.CountryName, Value = country.CountryMasterId.ToString() });
+            }
+
+
+            viewModel.States = new List<SelectListItem>();
+            foreach (var item in _context.StateMasters)
+            {
+                viewModel.States.Add(new SelectListItem { Text = item.StateName, Value = item.StateMasterId.ToString() });
+            }
+
+
+            viewModel.Cities = new List<SelectListItem>();
+            foreach (var item in _context.CityMasters)
+            {
+                viewModel.Cities.Add(new SelectListItem { Text = item.CityName, Value = item.CityMasterId.ToString() });
+            }
+            var Rasis = _context.RasiMasters.Select(s => new SelectListItem() { Text = s.RasiName, Value = s.RasiMasterId.ToString() });
+            if (Rasis.Count() > 0)
+            {
+                viewModel.Rasis = new List<SelectListItem>();
+                viewModel.Rasis.AddRange(Rasis.ToList());
+            }
+            viewModel.Stars = new List<SelectListItem>();
+            viewModel.Stars.AddRange(_context.StarMasters.Select(s => new SelectListItem() { Text = s.StarName, Value = s.StarMasterId.ToString() }).ToList());
+
+            viewModel.Lagnams = new List<SelectListItem>();
+            viewModel.Lagnams.AddRange(_context.LagnamMasters.Select(s => new SelectListItem() { Text = s.LagnamName, Value = s.LagnamMasterId.ToString() }).ToList());
         }
         // POST: CasteMasters/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -648,6 +679,25 @@ namespace addon365.FindMatch360.Controllers
                 try
                 {
                     Profile dbModel = ProfileEditViewModelToModel(model);
+
+                    if (model.ImageFile != null)
+                    {
+
+
+
+                        string wwwRooPath = _webHostEnvironment.WebRootPath;
+                        string fileName = "Pri_";
+                        string extension = Path.GetExtension(model.ImageFile.FileName);
+                        model.ImageName = fileName = fileName + dbModel.ProfileMasterId + extension;
+                        string path = Path.Combine(wwwRooPath + "/ProfilePhotos/", fileName);
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await model.ImageFile.CopyToAsync(fileStream);
+                        }
+                        dbModel.PhotoName = model.ImageName;
+
+
+                    }
 
                     _context.Update(dbModel);
                     await _context.SaveChangesAsync();

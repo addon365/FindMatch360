@@ -1,5 +1,6 @@
 ﻿using addon365.FindMatch360.Models.Masters;
 using addon365.FindMatch360.Models.MatrimonyProfileModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace addon365.FindMatch360.ViewModels
         #region Person basic Details
         public String Name { get; set; }
         public string PhotoUrl { get; set; }
+        public string ImageName { get; set; }
+        public IFormFile ImageFile { get; set; }
         public String LastName { get; set; }
         //https://www.youtube.com/watch?v=QpJvqiHl1Fo 
         public byte Gender { get; set; }

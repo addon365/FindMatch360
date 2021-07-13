@@ -39,7 +39,7 @@
 <div class="user-profile-page">
     <div class="card radius-15">
         <div class="card-body">
-            <form asp-controller="Admin" asp-action="EditProfile">
+            <form asp-controller="Admin" asp-action="EditProfile" enctype="multipart/form-data">
                 <input type="hidden" asp-for="MatrimonyProfileId" />
                 <div class="validation text-danger" asp-validation-summary="All"></div>
                 <div class="row">
@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="form-row">
-                                    <button type="button" class="btn btn-primary btn-block mt-2">Upload</button>
+                                    <input asp-for="@Model.ImageFile" accept="image/*">
                                 </div>
                                 <div class="form-row">
                                     <button type="button" class="btn btn-outline-secondary btn-block mt-2">Clear</button>
@@ -408,7 +408,7 @@
 
 
                                     </div>
-                                    <div class="col-12 col-lg-6">
+                                    @*<div class="col-12 col-lg-6">
 
                                         <div class="form-group">
                                             <label for="sel1">Working Country </label>
@@ -432,7 +432,7 @@
 
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>*@
 
                                 </div>
                             </div>
@@ -522,9 +522,9 @@
                                     <div class="col-12 col-lg-6">
 
                                         <div class="form-group">
-                                            <label class="control-label" asp-for="@Model.TimeofBirth">Date of Time*</label>
+                                            <label class="control-label" asp-for="@Model.TimeofBirth">Birth Time*</label>
                                             <div class="col-sm-12">
-                                                <input asp-for="@Model.TimeofBirth" type="date" id="birthDate" class="form-control">
+                                                <input asp-for="@Model.TimeofBirth" type="text" id="birthtime" class="form-control">
                                             </div>
                                         </div>
 
