@@ -42,6 +42,10 @@ namespace addon365.FindMatch360.Data
         public DbSet<CountryMaster> CountryMasters { get; set; }
         public DbSet<StateMaster> StateMasters { get; set; }
         public DbSet<CityMaster> CityMasters { get; set; }
+        public DbSet<RasiMaster> RasiMasters { get; set; }
+        public DbSet<LagnamMaster> LagnamMasters { get; set; }
+        public DbSet<StarMaster> StarMasters { get; set; }
+
 #endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

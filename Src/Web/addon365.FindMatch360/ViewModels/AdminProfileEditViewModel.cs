@@ -16,6 +16,7 @@ namespace addon365.FindMatch360.ViewModels
 
         #region Person basic Details
         public String Name { get; set; }
+        public string PhotoUrl { get; set; }
         public String LastName { get; set; }
         //https://www.youtube.com/watch?v=QpJvqiHl1Fo 
         public byte Gender { get; set; }
@@ -50,10 +51,11 @@ namespace addon365.FindMatch360.ViewModels
         public string HigherEducationsId { get; set; }
         public IEnumerable<EducationMaster> Educations { get; set; }
 
+        public string EducationDetail { get; set; }
         #endregion
 
         #region JobDetails
-        
+
         public string EmployeedInMasterId { get; set; }
         public IEnumerable<EmployeedInMaster> EmployeedInLst { get; set; }
 
@@ -79,9 +81,12 @@ namespace addon365.FindMatch360.ViewModels
         #endregion
 
         #region Horoscope Details
-        public string Star { get; set; }
-        public string Rasi { get; set; }
-        public string Lagnam { get; set; }
+        public string StarId { get; set; }
+        public List<SelectListItem> Stars { get; set; }
+        public string RasiId { get; set; }
+        public List<SelectListItem> Rasis { get; set; }
+        public string LagnamId { get; set; }
+        public List<SelectListItem> Lagnams { get; set; }
         public string TimeofBirth { get; set; }
         public string PlaceOfBirth { get; set; }
         #endregion

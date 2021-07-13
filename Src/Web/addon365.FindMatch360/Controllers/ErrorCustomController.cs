@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace addon365.FindMatch360.Controllers
 {
-    public class ErrorController : Controller
+    public class ErrorCustomController : Controller
     {
-        private readonly ILogger<ErrorController> logger;
+        private readonly ILogger<ErrorCustomController> logger;
 
-        public ErrorController(ILogger<ErrorController> logger)
+        public ErrorCustomController(ILogger<ErrorCustomController> logger)
         {
             this.logger = logger;
         }
@@ -37,8 +37,8 @@ namespace addon365.FindMatch360.Controllers
             return View("NotFound");
         }
         [AllowAnonymous]
-        [Route("Error")]
-        public IActionResult Error()
+       
+        public IActionResult ErrorCustom()
         {
             // Retrieve the exception Details
             var exceptionHandlerPathFeature =

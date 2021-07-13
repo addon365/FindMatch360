@@ -48,7 +48,7 @@
                         <div class="d-md-flex align-items-center">
                             <div class="text-center">
                                 <div class="form-row">
-                                    <img src="~/adminuser/assets/images/avatars/avatar-1.png" class="rounded-circle shadow" width="130" height="130" alt="" />
+                                    <img src="@(Model.PhotoUrl)" class="rounded-circle shadow" width="130" height="130" alt="" />
                                 </div>
 
                                 <div class="form-row">
@@ -363,11 +363,13 @@
                                 <div class="row">
                                     <div class="col-12 col-lg-12 border-right">
                                         <div class="form-group">
-                                            <label asp-for="@Model.HigherEducationsId">Education Details</label>
-                                            <select class="form-control" asp-for="@Model.HigherEducationsId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
-                                                <option>Select Education Details</option>
+                                            <label asp-for="@Model.EducationDetail">Education Details</label>
 
-                                            </select>
+                                            <input asp-for="@Model.EducationDetail" type="text" class="form-control" placeholder="Education">
+                                            @*<select class="form-control" asp-for="@Model.HigherEducationsId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
+            <option>Select Education Details</option>
+
+        </select>*@
                                         </div>
                                     </div>
                                 </div>
@@ -496,18 +498,25 @@
                                 <div class="row">
                                     <div class="col-12 col-lg-6 border-right">
                                         <div class="form-group">
-                                            <label asp-for="@Model.Star">Star:</label>
-                                            <input asp-for="@Model.Star" type="text" class="form-control" placeholder="Enter Star">
+                                            <label asp-for="@Model.StarId">Star:</label>
+                                            <select class="form-control" id="sel1" asp-for="@Model.StarId" asp-items="@Model.Stars"> <option>Select Star</option> </select>
                                         </div>
 
                                         <div class="form-group">
-                                            <label asp-for="@Model.Rasi">Rasi:</label>
-                                            <input asp-for="@Model.Rasi" type="text" class="form-control" placeholder="Enter Rasi">
+                                            <label asp-for="@Model.RasiId">Rasi:</label>
+
+                                            <select class="form-control" id="sel1" asp-for="@Model.RasiId" asp-items="@Model.Rasis">
+                                                <option>Select Rasi</option>
+
+                                            </select>
                                         </div>
 
                                         <div class="form-group">
-                                            <label asp-for="@Model.Lagnam">Lagnam</label>
-                                            <input asp-for="@Model.Lagnam" type="text" class="form-control" placeholder="Enter Lagnam">
+                                            <label asp-for="@Model.LagnamId">Lagnam</label>
+                                            <select class="form-control" id="sel1" asp-for="@Model.LagnamId" asp-items="@Model.Lagnams">
+                                                <option>Select Lagnam</option>
+
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6">

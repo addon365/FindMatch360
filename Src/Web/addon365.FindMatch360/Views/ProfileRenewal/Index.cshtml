@@ -1,8 +1,9 @@
-﻿@model IEnumerable<addon365.FindMatch360.Models.ProfileRenewal>
+﻿@model ProfileRenewalIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int SNo = (Model.AllRenewals.PageStartRecordNumber + 1);
 }
 
 <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
@@ -30,71 +31,139 @@
         <div class="card">
             <div class="card-body">
                 <!--end breadcrumb-->
-                <div class="col-md-12">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ProfileRenewalSpecialId)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.CreatedDate)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.RenewalDate)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Profile)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Amount)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.StartDate)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.EndDate)
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ProfileRenewalSpecialId)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CreatedDate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.RenewalDate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Profile.Name)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Amount)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.StartDate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.EndDate)
-                                    </td>
-                                    <td>
-                                        <a asp-action="Edit" asp-route-id="@item.ProfileRenewalMasterId">Edit</a> |
-                                        <a asp-action="Details" asp-route-id="@item.ProfileRenewalMasterId">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.ProfileRenewalMasterId">Delete</a>
-                                    </td>
+                                    <th>
+                                        S.No
+                                    </th>
+                                    <th>
+                                        Created
+                                    </th>
+                                    <th>
+                                        Renewal Date
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Amount
+                                    </th>
+                                    <th>
+                                        Start Date
+                                    </th>
+                                    <th>
+                                        End Date
+                                    </th>
+                                    <th></th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.AllRenewals)
+                                {
+                                    <tr>
+                                        <td class="sorting_1">
+                                            @SNo
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProfileRenewalSpecialId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RenewalDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Amount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EndDate)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.ProfileRenewalMasterId">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.ProfileRenewalMasterId">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.ProfileRenewalMasterId">Delete</a>
+                                        </td>
+                                    </tr>
+                                    SNo = SNo + 1;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    @{
+                        var prevDisabled = !Model.AllRenewals.HasPreviousPage ? "disabled" : "";
+                        var nextDisabled = !Model.AllRenewals.HasNextPage ? "disabled" : "";
+                    }
+                    <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing @(Model.AllRenewals.PageStartRecordNumber+1) to @Model.AllRenewals.PageEndRecordNumber of @Model.AllRenewals.TotalRecords entries</div>
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+
+                            <ul class="pagination">
+                                <li class="paginate_button page-item previous disabled" id="example2_previous">
+                                    <a asp-action="AllMembers"
+                                       asp-route-sortOrder="@ViewData["CurrentSort"]"
+                                       asp-route-pageNumber="@(Model.AllRenewals.PageIndex - 1)"
+                                       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                       asp-route-FromDate="@ViewData["FromDate"]"
+                                       asp-route-ToDate="@ViewData["ToDate"]"
+                                       class="btn btn-default @prevDisabled">
+                                        Previous
+                                    </a>
+                                </li>
+
+                                @*<li class="paginate_button page-item active">
+                               <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                        </li>*@
+                                @for (int i = 1; i <= Model.AllRenewals.TotalPages; i++)
+                                {
+
+                                    var IsActivePage = Model.AllRenewals.PageIndex == i ? "active" : "";
+
+                                    <li class="paginate_button page-item @IsActivePage">
+                                        <a asp-action="AllMembers"
+                                           asp-route-sortOrder="@ViewData["CurrentSort"]"
+                                           asp-route-pageNumber="@i"
+                                           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                           asp-route-FromDate="@ViewData["FromDate"]"
+                                           asp-route-ToDate="@ViewData["ToDate"]"
+                                           aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">@i</a>
+                                    </li>
+                                }
+                                @*
+                        <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                        <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                        <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                        <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>*@
+                                <li class="paginate_button page-item next" id="example2_next">
+                                    <a asp-action="AllMembers"
+                                       asp-route-sortOrder="@ViewData["CurrentSort"]"
+                                       asp-route-pageNumber="@(Model.AllRenewals.PageIndex + 1)"
+                                       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                       asp-route-FromDate="@ViewData["FromDate"]"
+                                       asp-route-ToDate="@ViewData["ToDate"]"
+                                       class="btn btn-default @nextDisabled">
+                                        Next
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-          
+

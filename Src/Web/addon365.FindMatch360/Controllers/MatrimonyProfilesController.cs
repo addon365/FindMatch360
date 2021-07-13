@@ -75,13 +75,22 @@ namespace addon365.FindMatch360.Controllers
              string webRootPath = _webHostEnvironment.WebRootPath;
             string contentRootPath = _webHostEnvironment.ContentRootPath;
             ValidateProfile();
-            if (!IsCompleteProfile)
-            {
-                return RedirectToAction("UserRegistrationReligionDetails", "home");
-            }
+            //if (!IsCompleteProfile)
+            //{
+            //    return RedirectToAction("UserRegistrationReligionDetails", "home");
+            //}
             System.Security.Claims.ClaimsPrincipal currentUser = _httpContextAccessor.HttpContext.User;
-
-            var data = await _context.Profiles.Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).Where(x => x.UserId != _userManager.GetUserId(currentUser)).ToListAsync();
+         
+            var query= _context.Profiles.Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).Select(s=>s);
+            if (profile != null)
+            {
+                query = query.Where(x => x.UserId != _userManager.GetUserId(currentUser) && x.Gender != profile.Gender);
+            }
+            else
+            {
+                query = query.Where(x => x.UserId != _userManager.GetUserId(currentUser));
+            }
+            var data = await query.ToListAsync();
             MatrimonyProfilesIndexViewModel viewModel = new MatrimonyProfilesIndexViewModel();
             List<ProfileIndexViewModel> profiles = new List<ProfileIndexViewModel>();
             foreach(var item in data)
@@ -101,7 +110,12 @@ namespace addon365.FindMatch360.Controllers
                 dd.RegistrationNo = item.RegistrationNo;
                 dd.RegisteredDate = item.RegisteredDate;
                 dd.DateofBirth = item.DateandTimeOfBirth;
-                dd.Star = item.Star;
+                if(item.Star!=null)
+                {
+                    dd.Star = item.Star.StarName;
+                }
+                
+
                 if (item.ProfileEducation!=null)
                 {
                     dd.EducationQualification = item.ProfileEducation.EducationName;

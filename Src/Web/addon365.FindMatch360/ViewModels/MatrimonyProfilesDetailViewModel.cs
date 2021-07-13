@@ -144,8 +144,10 @@ namespace addon365.FindMatch360.ViewModels
             model.EmployeedInName = profile.EmployeedIn != null ? profile.EmployeedIn.EmployeedInName :"";
             model.Address = profile.Address;
             model.SkinColor = profile.SkinColor;
-            model.Star = profile.Star;
-            model.Lagnam = profile.Lagnam;
+            
+            model.Star = profile.Star!=null?profile.Star.StarName:"";
+            model.Lagnam = profile.Lagnam!=null?profile.Lagnam.LagnamName:"";
+
             model.BirthNumberinFamily = profile.BirthNumberinFamily;
             model.Height = profile.Height;
 

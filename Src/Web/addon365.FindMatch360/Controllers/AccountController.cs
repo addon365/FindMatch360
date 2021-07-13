@@ -209,7 +209,7 @@ namespace addon365.FindMatch360.Controllers
                         ViewBag.ErrorTitle = "Registration successful";
                         ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
                                 "email, by clicking on the confirmation link we have emailed you";
-                        return View("/Error");
+                        return View("/Home/Error");
                     }
                 }
 

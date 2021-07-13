@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using addon365.FindMatch360.Data;
 using addon365.FindMatch360.Models;
 using addon365.FindMatch360.ViewModels;
+using addon365.FindMatch360.Helpers;
 
 namespace addon365.FindMatch360.Controllers
 {
@@ -21,10 +22,85 @@ namespace addon365.FindMatch360.Controllers
         }
 
         // GET: ProfileRenewal
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder,
+    string currentFilter,
+    string searchString,
+    string fromDate,
+    string toDate,
+    int? pageNumber)
         {
-            var ilamaiMatrimonyContext = _context.ProfileRenewals.Include(p => p.Profile);
-            return View(await ilamaiMatrimonyContext.ToListAsync());
+
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["FromDate"] = fromDate;
+            ViewData["ToDate"] = toDate;
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var renewals = _context.ProfileRenewals.Include(p => p.Profile).Select(s => new ProfileRenewalListViewModel()
+            {
+                ProfileRenewalMasterId = s.ProfileRenewalMasterId,
+                ProfileRenewalSpecialId = s.ProfileRenewalSpecialId,
+                CreatedDate = s.CreatedDate,
+                RenewalDate=s.RenewalDate,
+                Name=s.Profile.Name,
+                Amount=s.Amount,
+                StartDate=s.StartDate,
+                EndDate=s.EndDate
+
+            }) ;
+
+            if (fromDate != null && toDate != null)
+            {
+                DateTime FromD = Convert.ToDateTime(fromDate);
+                DateTime ToD = Convert.ToDateTime(toDate);
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    renewals = renewals.Where(s => s.Name.Contains(searchString) && s.RenewalDate.Date >= FromD.Date && s.RenewalDate.Date <= ToD.Date);
+                }
+                else
+                {
+                    renewals = renewals.Where(s => s.RenewalDate.Date >= FromD.Date && s.RenewalDate.Date <= ToD.Date);
+                }
+
+            }
+            else if (!String.IsNullOrEmpty(searchString))
+            {
+                renewals = renewals.Where(s => s.Name.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    renewals = renewals.OrderByDescending(s => s.Name);
+                    break;
+                //case "Date":
+                //    students = students.OrderBy(s => s.EnrollmentDate);
+                //    break;
+                //case "date_desc":
+                //    students = students.OrderByDescending(s => s.EnrollmentDate);
+                //    break;
+                default:
+                    renewals = renewals.OrderBy(s => s.Name);
+                    break;
+            }
+            ProfileRenewalIndexViewModel vm = new ProfileRenewalIndexViewModel();
+
+            int pageSize = 3;
+            vm.AllRenewals = await PaginatedList<ProfileRenewalListViewModel>.CreateAsync(renewals.AsNoTracking(), pageNumber ?? 1, pageSize);
+
+        
+            return View(vm);
         }
 
         // GET: ProfileRenewal/Details/5
@@ -56,13 +132,17 @@ namespace addon365.FindMatch360.Controllers
             if (renewals.Count() == 0)
             {
                 model.ProfileRenewalSpecialId = 1;
-                model.StartDate = System.DateTime.Now;
+             
             }
             else
             {
                 model.ProfileRenewalSpecialId = renewals.Max(a => a.ProfileRenewalSpecialId) + 1;
-                model.StartDate = System.DateTime.Now;
+              
+
             }
+            model.RenewalDate = System.DateTime.Now;
+            model.StartDate = System.DateTime.Now;
+            model.EndDate = System.DateTime.Now;
 
             return View(model);
         }

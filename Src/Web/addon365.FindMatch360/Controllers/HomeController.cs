@@ -105,6 +105,14 @@ namespace addon365.FindMatch360.Controllers
                 {
                     await _userManager.AddToRoleAsync(user, "MatrimonyUser");
                     profile.UserId = user.Id;
+                    if (_context.Profiles.Count() > 0)
+                    {
+                        profile.RegistrationNo = (_context.Profiles.Max(p => Convert.ToInt64(p.RegistrationNo)) + 1).ToString();
+                    }
+                    else
+                    {
+                        profile.RegistrationNo = "1";
+                    }
                     _context.Add(profile);
                     _context.SaveChanges();
 

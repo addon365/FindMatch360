@@ -106,9 +106,17 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         #endregion
 
         #region Horoscope Details
-        public string Star { get; set; }
-        public string Rasi { get; set; }
-        public string Lagnam { get; set; }
+        [ForeignKey("Star")]
+        public int? StarId { get; set; }
+        public StarMaster Star { get; set; }
+
+        [ForeignKey("Rasi")]
+        public int? RasiId { get; set; }
+        public RasiMaster Rasi { get; set; }
+
+        [ForeignKey("Lagnam")]
+        public int? LagnamId { get; set; }
+        public LagnamMaster Lagnam { get; set; }
         public string TimeofBirth { get; set; }
         public string PlaceOfBirth { get; set; }
         #endregion

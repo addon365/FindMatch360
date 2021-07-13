@@ -14,7 +14,8 @@ namespace addon365.FindMatch360.Services
         {
 
         }
-
+        //help support
+        //https://stackoverflow.com/questions/20906077/gmail-error-the-smtp-server-requires-a-secure-connection-or-the-client-was-not
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             string fromMail = "ilamaimatrimony@gmail.com";
