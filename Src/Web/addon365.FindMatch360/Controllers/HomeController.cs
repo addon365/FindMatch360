@@ -190,6 +190,7 @@ namespace addon365.FindMatch360.Controllers
                 {
                     matrimonyProfile.GothramMasterId = Convert.ToInt32(model.GothramMasterId);
                 }
+                matrimonyProfile.DoshamDetail = model.DoshamDetail;
 
                 _context.Update(matrimonyProfile);
                 await _context.SaveChangesAsync();

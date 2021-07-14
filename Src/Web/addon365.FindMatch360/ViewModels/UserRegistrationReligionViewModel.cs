@@ -14,5 +14,8 @@ namespace addon365.FindMatch360.ViewModels
         public IEnumerable<SubCasteMaster> SubCastes { get; set; }
         public string GothramMasterId { get; set; }
         public IEnumerable<GothramMaster> Gothrams { get; set; }
+
+        public string DoshamDetail { get; set; }
+       
     }
 }

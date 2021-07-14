@@ -103,6 +103,7 @@ namespace addon365.FindMatch360.Models.MatrimonyProfileModels
         public int? GothramMasterId { get; set; }
         public GothramMaster Gothram { get; set; }
 
+        public string DoshamDetail { get; set; }
         #endregion
 
         #region Horoscope Details
