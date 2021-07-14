@@ -159,6 +159,8 @@ namespace addon365.FindMatch360.Controllers
                 ProfileRenewal profileRenewal = new ProfileRenewal();
                 profileRenewal.ProfileRenewalMasterId = Guid.NewGuid();
                 profileRenewal.ProfileRenewalSpecialId = model.ProfileRenewalSpecialId;
+                profileRenewal.CreatedDate = System.DateTime.Now;
+                profileRenewal.RenewalDate = model.RenewalDate;
                 profileRenewal.ProfileId = model.ProfileId;
                 profileRenewal.Amount = model.Amount;
                 profileRenewal.StartDate = model.StartDate;
@@ -184,7 +186,7 @@ namespace addon365.FindMatch360.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProfileId"] = new SelectList(_context.Profiles, "ProfileMasterId", "ProfileMasterId", profileRenewal.ProfileId);
+            ViewData["ProfileId"] = new SelectList(_context.Profiles, "ProfileMasterId", "Name", profileRenewal.ProfileId);
             return View(profileRenewal);
         }
 
