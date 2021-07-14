@@ -227,6 +227,7 @@ namespace addon365.FindMatch360.Controllers
                 {
                     matrimonyProfile.FamilyTypeMasterId = Convert.ToInt32(model.FamilyTypeMasterId);
                 }
+                matrimonyProfile.DisabilityDescription = model.Disability;
 
                 _context.Update(matrimonyProfile);
                 await _context.SaveChangesAsync();
@@ -251,11 +252,11 @@ namespace addon365.FindMatch360.Controllers
             if (profile != null)
             {
                 var matrimonyProfile = await _context.Profiles.FindAsync(profile.ProfileMasterId);
-                if (model.EducationMasterId != "" && model.EducationMasterId != "0")
-                {
-                    matrimonyProfile.ProfileEducationMasterId = Convert.ToInt32(model.EducationMasterId);
+                //if (model.EducationMasterId != "" && model.EducationMasterId != "0")
+                //{
+                //    matrimonyProfile.ProfileEducationMasterId = Convert.ToInt32(model.EducationMasterId);
                     matrimonyProfile.ProfileEducationDetail = model.EducationDetail;
-                }
+                //}
                 if (model.EmployeedInMasterId != "" && model.EmployeedInMasterId != "0")
                 {
                     matrimonyProfile.EmployeedInMasterId = Convert.ToInt32(model.EmployeedInMasterId);

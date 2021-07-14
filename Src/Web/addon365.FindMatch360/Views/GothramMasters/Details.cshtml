@@ -1,0 +1,24 @@
+﻿@model addon365.FindMatch360.Models.Masters.GothramMaster
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>GothramMaster</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GothramName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GothramName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.GothramMasterId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

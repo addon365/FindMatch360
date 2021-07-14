@@ -24,19 +24,20 @@
                         <p class="lead">
                             Professional details help us to find the best companion
                         </p>
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label for="sel1">Highest Education:</label>
                             <select class="form-control" asp-for="@Model.EducationMasterId" asp-items="@Model.Educations.Select(m=>new SelectListItem{ Text = m.EducationName, Value = m.EducationMasterId.ToString() })">
                                 <option value="0">Select Education</option>
                                
                             </select>
-                        </div>
+                        </div>*@
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" asp-for="@Model.EducationDetail"  placeholder="Enter Education in Detail" >
-                            </div>
+                    <div class="form-group">
+                        <label for="sel1">Highest Education:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" asp-for="@Model.EducationDetail" placeholder="Enter Education in Detail">
                         </div>
+                    </div>
 
                         <div class="form-group">
                             <label for="sel1">

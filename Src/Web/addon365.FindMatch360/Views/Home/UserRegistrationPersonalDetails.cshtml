@@ -84,10 +84,13 @@
                             <label for="sel1">
                                 Any Disability:
                             </label>
-                            <select class="form-control" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
-                                <option value="0">Select Disability</option>
+                            <div class="input-group">
+                                <input type="text" class="form-control" asp-for="@Model.Disability" placeholder="Enter Disability Detail">
+                            </div>
+                            @*<select class="form-control" asp-for="@Model.MaritalStatusMasterId" asp-items="@Model.MaritalStatusMasters.Select(m=>new SelectListItem{ Text = m.MaritalStatusName, Value = m.MaritalStatusMasterId.ToString() })">
+            <option value="0">Select Disability</option>
 
-                            </select>
+        </select>*@
                         </div>
                         <div class="form-group">
                             <a>
