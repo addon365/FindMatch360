@@ -17,5 +17,6 @@ namespace addon365.FindMatch360.ViewModels
         public IEnumerable<FamilyTypeMaster> FamilyTypes { get; set; }
         public string FamilyValuesMasterId { get; set; }
         public IEnumerable<FamilyValuesMaster> FamilyValues { get; set; }
+        public string Disability { get; set; }
     }
 }
