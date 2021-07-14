@@ -140,12 +140,20 @@ namespace addon365.FindMatch360.ViewModels
             model.ProfileId = profile.ProfileMasterId;
             model.RegistrationNo = profile.RegistrationNo;
             model.Name = profile.Name;
+            model.Gender = profile.Gender;
             model.DateandTimeOfBirth = profile.DateandTimeOfBirth;
-            model.EmployeedInName = profile.EmployeedIn != null ? profile.EmployeedIn.EmployeedInName :"";
             model.Address = profile.Address;
             model.SkinColor = profile.SkinColor;
+            model.Height = profile.Height;
+            
+            model.BirthNumberinFamily = profile.BirthNumberinFamily;
+
+            model.EmployeedInName = profile.EmployeedIn != null ? profile.EmployeedIn.EmployeedInName : "";
+            model.MonthlyRevenue = profile.MonthlyRevenue;
+            model.WorkingAddress = profile.WorkingAddress;
             
             model.Star = profile.Star!=null?profile.Star.StarName:"";
+            model.Rasi = profile.Rasi != null ? profile.Rasi.RasiName : "";
             model.Lagnam = profile.Lagnam!=null?profile.Lagnam.LagnamName:"";
 
             model.BirthNumberinFamily = profile.BirthNumberinFamily;
@@ -161,8 +169,8 @@ namespace addon365.FindMatch360.ViewModels
             model.MobileNo = profile.MobileNo;
             model.EmailId = profile.EmailId;
 
-            model.PreferenceQualification = profile.PreferenceQualification;
-
+            model.ProfileEducationDetail = profile.ProfileEducationDetail;
+            model.EmailId = profile.EmailId;
 
 
 

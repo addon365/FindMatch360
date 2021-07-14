@@ -82,13 +82,16 @@ namespace addon365.FindMatch360.Controllers
             System.Security.Claims.ClaimsPrincipal currentUser = _httpContextAccessor.HttpContext.User;
          
             var query= _context.Profiles.Include(s => s.ProfileEducation).Include(s => s.EmployeedIn).Include(s => s.Occupation).Select(s=>s);
-            if (profile != null)
+            if (_userManager.GetUserId(currentUser) != null)
             {
-                query = query.Where(x => x.UserId != _userManager.GetUserId(currentUser) && x.Gender != profile.Gender);
-            }
-            else
-            {
-                query = query.Where(x => x.UserId != _userManager.GetUserId(currentUser));
+                if (profile != null)
+                {
+                    query = query.Where(x => x.UserId != _userManager.GetUserId(currentUser) && x.Gender != profile.Gender);
+                }
+                else
+                {
+                    query = query.Where(x => x.UserId != _userManager.GetUserId(currentUser));
+                }
             }
             var data = await query.ToListAsync();
             MatrimonyProfilesIndexViewModel viewModel = new MatrimonyProfilesIndexViewModel();
@@ -142,7 +145,10 @@ namespace addon365.FindMatch360.Controllers
                 return NotFound();
             }
 
-            var matrimonyProfile = await _context.Profiles
+            var matrimonyProfile = await _context.Profiles.Include(s=>s.EmployeedIn).
+                Include(s=>s.Star).Include(s=>s.Lagnam).Include(s=>s.Rasi).
+                Include(s=>s.Caste).Include(s=>s.SubCaste)
+
                 .FirstOrDefaultAsync(m => m.ProfileMasterId == id);
             if (matrimonyProfile == null)
             {
