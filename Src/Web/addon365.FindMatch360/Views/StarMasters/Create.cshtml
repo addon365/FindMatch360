@@ -3,6 +3,31 @@
 @{
     ViewData["Title"] = "Create";
 }
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+    <div class="breadcrumb-title pr-3">Star</div>
+    <div class="pl-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item">
+                    <a href="javascript:;"><i class='bx bx-home-alt'></i></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"> Create</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="ml-auto">
+        <div class="btn-group">
+            <a asp-controller="StarMasters" asp-action="Index">
+                <button type="button" class="btn btn-primary" asp-action="Index"> Back to List</button>
+            </a>
+        </div>
+    </div>
+
+</div>
+<!--end breadcrumb-->
 
 <h1>Create</h1>
 

@@ -3,33 +3,63 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.StarName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StarName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.StarMasterId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StarMasterId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StarMasterId">Delete</a>
-            </td>
-        </tr>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-    </tbody>
-</table>
+
+<!--page-wrapper-->
+<!--breadcrumb-->
+<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+    <div class="breadcrumb-title pr-3">StarMasters</div>
+    <div class="pl-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item">
+                    <a href="javascript:;"><i class='bx bx-home-alt'></i></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">All</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--end breadcrumb-->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <!--end breadcrumb-->
+                <h1>Index</h1>
+
+                <p>
+                    <a asp-action="Create">Create New</a>
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.StarName)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StarName)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.StarMasterId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.StarMasterId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.StarMasterId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

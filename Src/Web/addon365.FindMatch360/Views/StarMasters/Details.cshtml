@@ -3,22 +3,58 @@
 @{
     ViewData["Title"] = "Details";
 }
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
-<h1>Details</h1>
-
-<div>
-    <h4>StarMaster</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StarName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StarName)
-        </dd>
-    </dl>
+<!--breadcrumb-->
+<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+    <div class="breadcrumb-title pr-3">StarMasters</div>
+    <div class="pl-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item">
+                    <a href="javascript:;"><i class='bx bx-home-alt'></i> </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"><a asp-action="Index">Details</a></li>
+            </ol>
+        </nav>
+    </div>
+    <div class="ml-auto">
+        <div class="btn-group">
+            <a asp-controller="StarMasters" asp-action="Index">
+                <button type="button" class="btn btn-primary" asp-action="Index"> Back to List</button>
+            </a>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.StarMasterId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<!--end breadcrumb-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <!--end breadcrumb-->
+                <div class="col-md-12">
+                        <h1>Details</h1>
+
+                        <div>
+                            <h4>StarMaster</h4>
+                            <hr />
+                            <dl class="row">
+                                <dt class="col-sm-6">
+                                    @Html.DisplayNameFor(model => model.StarName)
+                                </dt>
+                                <dd class="col-sm-6">
+                                    @Html.DisplayFor(model => model.StarName)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@Model.StarMasterId">Edit</a> |
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -3,25 +3,60 @@
 @{
     ViewData["Title"] = "Delete";
 }
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!--page-wrapper-->
+<!--breadcrumb-->
+<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+    <div class="breadcrumb-title pr-3">Rasi</div>
+    <div class="pl-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item">
+                    <a href="javascript:;"><i class='bx bx-home-alt'></i> </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"><a asp-action="Index">Delete </a></li>
+            </ol>
+        </nav>
+    </div>
+    <div class="ml-auto">
+        <div class="btn-group">
+            <a asp-controller="RasiMasters" asp-action="Index">
+                <button type="button" class="btn btn-primary" asp-action="Index"> Back to List</button>
+            </a>
+        </div>
+    </div>
 
-<h1>Delete</h1>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <!--end breadcrumb-->
+                <div class="col-md-12">
+                    <h1>Delete</h1>
+                    <h3>Are you sure you want to delete this?</h3>
+                    <div>
+                        <h4>RasiMaster</h4>
+                        <hr />
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.RasiName)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.RasiName)
+                            </dd>
+                        </dl>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>RasiMaster</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RasiName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RasiName)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="RasiMasterId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="RasiMasterId" />
+                            <input type="submit" value="Delete" class="btn btn-danger" /> |
+                            <a asp-action="Index">Back to List</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
